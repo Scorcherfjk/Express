@@ -1,8 +1,21 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
-  color: #00B7FF;
+  color: #ffffff;
+}
+.nav-tabs .nav-link{
+  background-color: #C9304C;
+}
+.bg-danger {
+  background-color: #C9304C!important;
+}
+thead{
+  font-size: 0.7em;
+}
+tbody{
+  font-size: 0.7em;
+}
+.nav-item .nav-link{
+  font-size: 0.8em;
 }
