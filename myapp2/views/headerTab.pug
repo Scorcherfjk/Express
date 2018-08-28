@@ -1,41 +1,30 @@
-doctype html
-html(lang='es')
-  head
-    // Required meta tags
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    // Bootstrap CSS
-    link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    title #{title}
-  body
-    .container-fluid
-      ul.nav.nav-tabs.nav-justified
-        li.nav-item
-          a.text-truncate.nav-link.active.show(href='#A', data-toggle='tab')
-            | SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES
-            | PARTICIPANTES
-        li.nav-item
-          a.text-truncate.nav-link(href='#B', data-toggle='tab') 
-            | SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL
-        li.nav-item
-          a.text-truncate.nav-link(href='#C', data-toggle='tab') 
-            | SECCIÓN C: MEMORIA TÉCNICA
-        li.nav-item
-          a.text-truncate.nav-link(href='#D', data-toggle='tab') 
-            | SECCIÓN D: PRESUPUESTO DEL PROYECTO
-    .tab-content
-      #A.container.tab-pane.fade.active.show
-        block A
+extends layout
 
-      #B.container.tab-pane.fade
-        block B
+block content
+  .container-fluid
+    ul.nav.nav-tabs.nav-justified
+      li.nav-item
+        a.text-truncate.nav-link.active.show(href='#A', data-toggle='tab')
+          | SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES
+          | PARTICIPANTES
+      li.nav-item
+        a.text-truncate.nav-link(href='#B', data-toggle='tab') 
+          | SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL
+      li.nav-item
+        a.text-truncate.nav-link(href='#C', data-toggle='tab') 
+          | SECCIÓN C: MEMORIA TÉCNICA
+      li.nav-item
+        a.text-truncate.nav-link(href='#D', data-toggle='tab') 
+          | SECCIÓN D: PRESUPUESTO DEL PROYECTO
+  .tab-content
+    #A.container.tab-pane.fade.active.show
+      block A
+    #B.container.tab-pane.fade
+      block B
+    #C.container.tab-pane.fade
+      block C
+    #D.container.tab-pane.fade
+      block D
 
-      #C.container.tab-pane.fade
-        block C
-
-      #D.container.tab-pane.fade
-        block D
-
-script(src="/javascripts/jquery-3.3.1.min.js")
-script(src="/javascripts/bootstrap.min.js")
+  script(src="/javascripts/jquery-3.3.1.min.js")
+  script(src="/javascripts/bootstrap.min.js")
