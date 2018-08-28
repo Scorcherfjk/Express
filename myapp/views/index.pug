@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  form(action="/users/", method="post")
+    label(for="user") Usuario 
+      input(type="text" name="user")
+    label(for="passwd") Clave
+      input(type="text" name="passwd")
+
+      input(type="submit")
