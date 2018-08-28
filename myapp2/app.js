@@ -8,7 +8,7 @@ var logger = require('morgan');
 
 /*************************Archivos de rutas*******************************/
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users').default;
+var usersRouter = require('./routes/users');
 var formRouter = require('./routes/form');
 /*************************************************************************/
 
