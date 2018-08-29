@@ -1,10 +1,9 @@
 extends layout
 
 block content
-  form(action="/users/", method="post")
-    label(for="user") Usuario 
-      input(type="text" name="user")
-    label(for="passwd") Clave
-      input(type="text" name="passwd")
-
-      input(type="submit")
+    form(action="/users/", method="post")
+        label(for="user") Usuario 
+            input(type="text" name="user")
+        label(for="passwd") Clave
+            input(type="text" name="passwd")
+    input(type="submit")
