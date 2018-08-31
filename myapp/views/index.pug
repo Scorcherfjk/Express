@@ -1,9 +1,24 @@
 extends layout
 
 block content
-    form(action="/users/", method="post")
-        label(for="user") Usuario 
-            input(type="text" name="user")
-        label(for="passwd") Clave
-            input(type="text" name="passwd")
-    input(type="submit")
+    
+    .container
+        form(action="/users/" method="post")
+            div.card.rounded.border-secondary(style="max-width:500px; margin:auto")
+                h5.card-header.text-capitalize.bg-danger.text-white
+                    | Iniciar de Sesi&oacuten
+                .card-body
+                    .form-group
+                        label.h6(for='user') Usuario 
+                            span.text-danger  (*)
+                        input#titulo.form-control(type='textarea' name="user" required)
+                    .form-group
+                        label.h6(for='passwd') Clave
+                            span.text-danger  (*)
+                        input#palabrasClave.form-control(type='text' name="passwd" required)
+                    .row
+                        a.col.text-center(href="/register/natural-person" style="color:gray; font-size: .7em") Soy Persona Natural
+                        a.col.text-center(href="/register/ruc" style="color:gray; font-size: .7em") Tengo n&uacutemero de RUC
+                        a.col.text-center(href="/register/evaluator" style="color:gray; font-size: .7em") Registro de Evaluadores
+                        a.col.text-center(href="#modal" style="color:gray; font-size: .7em") Reestablecer Contraseña
+                input.btn.btn-danger(type="submit")
