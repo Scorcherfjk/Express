@@ -1,0 +1,124 @@
+extends layout
+
+block content
+  .container
+    form(action="", method="post")
+      .card.rounded.border-secondary
+        h5.card-header.text-capitalize.bg-danger.text-white
+          | Registro Persona Jurídica o Persona Natural con Negocio(RUC)
+        .card-body
+          .row
+            .col-sm-6
+              .form-group
+                label.h6(for='tipoDocumento') Tipo Documento
+                  span.text-danger  (*)
+                input#tipoDocumento.form-control(type='text' name="tipoDocumento" required)
+            .col-sm-6
+              .form-group
+                label.h6(for='documentoIdentidad') N&uacutemero
+                  span.text-danger  (*)
+                input#documentoIdentidad.form-control(type='text' name="documentoIdentidad" required)
+          .row
+            .col-sm-6
+              .form-group
+                label.h6(for='nombre') Nombre o Raz&oacuten Social
+                  span.text-danger  (*)
+                input#nombre.form-control(type='text' name="nombre" required)
+            .col-sm-6
+              .form-group
+                label.h6(for='tipoEntidad') Tipo de Entidad
+                  span.text-danger  (*)
+                input#tipoEntidad.form-control(type='text' name="tipoEntidad" required)
+          .row
+            .col
+              .form-group
+                label.h6(for='ciiu') CIIU
+                  span.text-danger  (*)
+                input#ciiu.form-control(type='text' name="ciiu" required)
+          .row
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='pais') Pa&iacutes
+                  span.text-danger  (*)
+                input#pais.form-control(type='text' name="pais" required)
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='departamento') Departamento
+                  span.text-danger  (*)
+                input#departamento.form-control(type='text' name="departamento" required)
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='provincia') Provincia
+                  span.text-danger  (*)
+                input#provincia.form-control(type='text' name="provincia" required)
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='distrito') Distrito
+                  span.text-danger  (*)
+                input#distrito.form-control(type='text' name="distrito" required)
+          .row
+            .col
+              .form-group
+                label.h6(for='direccion') Direcci&oacuten
+                  span.text-danger  (*)
+                input#direccion.form-control(type='text' name="direccion" required)
+          .row
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='telefonoMovil') Tel&eacutefono M&oacutevil
+                  span.text-danger  (*)
+                input#telefonoMovil.form-control(type='number' name="telefonoMovil" required)
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='telefonoFijo') Tel&eacutefono Fijo 1
+                  span.text-danger  (*)
+                input#telefonoFijo.form-control(type='number' name="telefonoFijo" required)
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='telefonoFijo2') Tel&eacutefono Fijo 2
+                input#telefonoFijo2.form-control(type='number' name="telefonoFijo2")
+            .col-sm-6.col-md-3
+              .form-group
+                label.h6(for='telefonoFijo3') Tel&eacutefono Fijo 3
+                input#telefonoFijo3.form-control(type='number' name="telefonoFijo3")
+          .row
+            .col-sm-6.col-md-4
+              .form-group
+                label.h6(for='email') Correo Electr&oacutenico
+                  span.text-danger  (*)
+                input#email.form-control(type='email' name="email" required)
+            .col-sm-6.col-md-4
+              .form-group
+                label.h6(for='email2') Correo Electr&oacutenico Alternativo
+                  span.text-danger  (*)
+                input#email2.form-control(type='email' name="email2" required)
+            .col-sm-6.col-md-4
+              .form-group
+                label.h6(for='sitioWeb') Sitio Web
+                  span.text-danger  (*)
+                input#sitioWeb.form-control(type='text' name="sitioWeb" required)
+      .card.rounded.border-secondary
+        h5.card-header.text-capitalize.bg-danger.text-white
+          | Datos de Acceso
+        .card-body
+          .row
+            .col-sm-4
+              .form-group
+                label.h6(for='usuario') Usuario
+                input#usuario.form-control(type='text' name="usuario" disabled)
+            .col-sm-4
+              .form-group
+                label.h6(for='clave') Contrase&ntildea
+                  span.text-danger  (*)
+                input#clave.form-control(type='password' name="clave" required)
+            .col-sm-4
+              .form-group
+                label.h6(for='confirmarClave') Confirmar Contrase&ntildea
+                  span.text-danger  (*)
+                input#confirmarClave.form-control(type='password' name="confirmarClave" required)
+          .row
+            .col-sm-1.offset-sm-10
+              input.btn.btn-danger.float-right(type="submit", value="Guardar")
+            .col-sm-1.offset-sm-12
+              a.btn.btn-danger.float-right(href="/" role="button") Cancelar
+            
