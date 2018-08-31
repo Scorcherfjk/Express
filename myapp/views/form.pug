@@ -1,4 +1,4 @@
-extends headerTab
+extends tabs
 
 block A
   br
@@ -99,7 +99,9 @@ block A
           .form-group
             label(for='cgpsexo') sexo
               span.text-danger  (*)
-            input#cgpsexo.form-control(type='text' name="cgpsexo" required)
+            select#cgpsexo.form-control(name="cgpsexo" required)
+              option(value='0') Femenino
+              option(value='1') Masculino
       .row
         .col-sm-6.col-md-4
           .form-group
@@ -146,7 +148,9 @@ block A
           .form-group
             label(for='capsexo') sexo
               span.text-danger  (*)
-            input#capsexo.form-control(type='text' name="capsexo" required)
+            select#capsexo.form-control(name="capsexo" required)
+              option(value='0') Femenino
+              option(value='1') Masculino
       .row
         .col-sm-6.col-md-4
           .form-group
@@ -268,7 +272,9 @@ block A
           .form-group
             label(for='rpsexo') sexo
               span.text-danger  (*)
-            input#rpsexo.form-control(type='text' name="rpsexo" required)
+            select#rpsexo.form-control(name="rpsexo" required)
+              option(value='0') Femenino
+              option(value='1') Masculino
       .row
         .col-sm-6.col-md-6
           .form-group
