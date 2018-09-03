@@ -1,11 +1,9 @@
 body {
   padding: 50px;
 }
-a {
-  color: #ffffff;
-}
 .nav-tabs .nav-link{
   background-color: #C9304C;
+  color: #ffffff;
 }
 .bg-danger {
   background-color: #C9304C!important;
@@ -17,5 +15,18 @@ tbody{
   font-size: 0.7em;
 }
 .nav-item .nav-link{
-  font-size: 0.8em;
+  font-size: 0.7em;
+}
+.barra{
+  font-size: 1.5em;
+}
+
+.nav-pills .nav-link{
+    color: #C9304C!important
+}
+.nav-pills .nav-link.active,
+.show>.nav-pills .nav-link{
+  color: #fff!important;
+  background: #C9304C!important;
+    
 }
