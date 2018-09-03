@@ -522,10 +522,14 @@ block C
         textarea#causas.form-control(rows='3' required)
       h6 C.1.4. Tipo de innovación y descripción
       .form-group
-        label(for='tipoDeInnovación')
-          | Tipo de Innovación
+        label(for='tipoDeInnovación') Tipo de Innovación
           span.text-danger  (*)
-        input.form-control(id='tipoDeInnovación', type='text'  required)
+        select#tipoDeInnovacion.form-control(name="tipoDeInnovacion" required)
+          option(selected) ----
+          option(value='0') UN NUEVO PROCESO
+          option(value='1') UN NUEVO PRODUCTO (BIEN O SERVICIO)
+          option(value='2') UN PROCESO YA EXISTENTE CON CARACTERISTICAS DIFERENTES (SIGNIFICATIVAMENTE MEJORADO)
+          option(value='3') UN PRODUCTO YA EXISTENTE CON CARACTERISTICAS DIFERENTES (SIGNIFICATIVAMENTE MEJORADO)
       .form-group
         label(for='describirFuncion')
           | 1. Describir la función que realizará la innovación
