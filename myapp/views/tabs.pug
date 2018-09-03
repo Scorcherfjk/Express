@@ -2,19 +2,15 @@ extends layout
 
 block content
   .container
-    ul.nav.nav-tabs.nav-justified
+    ul.nav.nav-pills.nav-fill
       li.nav-item
-        a.text-truncate.nav-link.active.show(href='#A', data-toggle='tab')
-          | SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES
+        a.nav-link.active.show(href='#A', data-toggle='tab') SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES
       li.nav-item
-        a.text-truncate.nav-link(href='#B', data-toggle='tab') 
-          | SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL
+        a.nav-link(href='#B', data-toggle='tab') SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL
       li.nav-item
-        a.text-truncate.nav-link(href='#C', data-toggle='tab') 
-          | SECCIÓN C: MEMORIA TÉCNICA
+        a.nav-link(href='#C', data-toggle='tab') SECCIÓN C: MEMORIA TÉCNICA
       li.nav-item
-        a.text-truncate.nav-link(href='#D', data-toggle='tab') 
-          | SECCIÓN D: PRESUPUESTO DEL PROYECTO
+        a.nav-link(href='#D', data-toggle='tab') SECCIÓN D: PRESUPUESTO DEL PROYECTO
   .tab-content
     #A.container.tab-pane.fade.active.show
       block A
@@ -24,6 +20,3 @@ block content
       block C
     #D.container.tab-pane.fade
       block D
-
-  script(src="/javascripts/jquery-3.3.1.min.js")
-  script(src="/javascripts/bootstrap.min.js")
