@@ -74,7 +74,12 @@ block A
           .form-group
             label(for='cgptipoDeDocumento') Tipo de documento
               span.text-danger  (*)
-            input#cgptipoDeDocumento.form-control(type='text' name="cgptipoDeDocumento" required)
+            select#cgptipoDeDocumento.form-control(name="cgptipoDeDocumento" required)
+              option(selected) -----
+              option(value='0') CARNET DE EXTRANJERIA
+              option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
+              option(value='2') PASAPORTE
+              option(value='3') REGISTRO &UacuteNICO DE CONTRIBUYENTES
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpnumeroDeDocumento') Numero de documento
@@ -100,6 +105,7 @@ block A
             label(for='cgpsexo') sexo
               span.text-danger  (*)
             select#cgpsexo.form-control(name="cgpsexo" required)
+              option(selected) -----
               option(value='0') Femenino
               option(value='1') Masculino
       .row
@@ -123,7 +129,12 @@ block A
           .form-group
             label(for='captipoDeDocumento') Tipo de documento
               span.text-danger  (*)
-            input#captipoDeDocumento.form-control(type='text' name="captipoDeDocumento" required)
+            select#captipoDeDocumento.form-control(name="captipoDeDocumento" required)
+              option(selected) -----
+              option(value='0') CARNET DE EXTRANJERIA
+              option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
+              option(value='2') PASAPORTE
+              option(value='3') REGISTRO &UacuteNICO DE CONTRIBUYENTES
         .col-sm-6.col-md-4
           .form-group
             label(for='capnumeroDeDocumento') Numero de documento
@@ -149,6 +160,7 @@ block A
             label(for='capsexo') sexo
               span.text-danger  (*)
             select#capsexo.form-control(name="capsexo" required)
+              option(selected) -----
               option(value='0') Femenino
               option(value='1') Masculino
       .row
@@ -177,7 +189,11 @@ block A
           .form-group
             label(for='estipoDeEntidad') Tipo de entidad
               span.text-danger  (*)
-            input#estipoDeEntidad.form-control(type='text' name="estipoDeEntidad" required)
+            select#estipoDeEntidad.form-control(name="estipoDeEntidad" required)
+              option(selected) -----
+              option(value='0') ASOCIACI&OacuteN CIVIL DE PRODUCTORES
+              option(value='1') EMPRESA
+              option(value='2') PERSONA NATURAL CON NEGOCIO
         .col-sm-6.col-md-4
           .form-group
             label(for='estamanoDeLaEmpresa') Tamaño de la empresa
@@ -252,7 +268,12 @@ block A
           .form-group
             label(for='rptipoDeDocumento') Tipo de documento
               span.text-danger  (*)
-            input#rptipoDeDocumento.form-control(type='text' name="rptipoDeDocumento" required)
+            select#rptipoDeDocumento.form-control(name="rptipoDeDocumento" required)
+              option(selected) -----
+              option(value='0') CARNET DE EXTRANJERIA
+              option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
+              option(value='2') PASAPORTE
+              option(value='3') REGISTRO &UacuteNICO DE CONTRIBUYENTES
         .col-sm-6.col-md-4
           .form-group
             label(for='rpnumeroDeDocumento') Numero de documento
@@ -273,6 +294,7 @@ block A
             label(for='rpsexo') sexo
               span.text-danger  (*)
             select#rpsexo.form-control(name="rpsexo" required)
+              option(selected) -----
               option(value='0') Femenino
               option(value='1') Masculino
       .row
