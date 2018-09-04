@@ -2,11 +2,11 @@ body {
   padding: 50px;
 }
 .nav-tabs .nav-link{
-  background-color: #C9304C;
+  background-color: #016FC6;
   color: #ffffff;
 }
 .bg-danger {
-  background-color: #C9304C!important;
+  background-color: #016FC6!important;
 }
 thead{
   font-size: 0.7em;
@@ -22,11 +22,11 @@ tbody{
 }
 
 .nav-pills .nav-link{
-    color: #C9304C!important
+    color: #016FC6!important
 }
 .nav-pills .nav-link.active,
 .show>.nav-pills .nav-link{
   color: #fff!important;
-  background: #C9304C!important;
+  background: #016FC6!important;
     
 }
