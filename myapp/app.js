@@ -1,8 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-// var session = require('express-session');
 var logger = require('morgan');
 
 
@@ -20,14 +20,23 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('trust proxy', 1);
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(session({secret: "Your secret key"}));
-
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: 
+    { 
+      secure: true,
+      maxAge: 3600000
+    }
+}));
 
 /*****************************uso de las rutas*******************************/
 app.use('/', indexRouter);

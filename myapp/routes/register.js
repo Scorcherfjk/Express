@@ -7,15 +7,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/natural-person', function(req, res, next) {
-  res.render('naturalPerson', { title: 'Registro - Persona Natural' });
+  res.render('naturalPerson', { title: 'Registro | Persona Natural' });
 });
 
 router.get('/ruc', function(req, res, next) {
-  res.render('ruc', { title: 'Registro - RUC' });
+  res.render('ruc', { title: 'Registro | RUC' });
 });
 
 router.get('/evaluator', function(req, res, next) {
-  res.render('evaluator', { title: 'Registro - Evaluador' });
+  res.render('evaluator', { title: 'Registro | Evaluador' });
 });
 
 
