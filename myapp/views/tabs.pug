@@ -1,7 +1,7 @@
-extends layout
+extends navbar
 
 block content
-  .container
+  .container-fluid
     ul.nav.nav-pills.nav-fill
       li.nav-item
         a.nav-link.active.show(href='#A', data-toggle='tab') SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES
@@ -12,11 +12,11 @@ block content
       li.nav-item
         a.nav-link(href='#D', data-toggle='tab') SECCIÓN D: PRESUPUESTO DEL PROYECTO
   .tab-content
-    #A.container.tab-pane.fade.active.show
+    #A.container-fluid.tab-pane.fade.active.show
       block A
-    #B.container.tab-pane.fade
+    #B.container-fluid.tab-pane.fade
       block B
-    #C.container.tab-pane.fade
+    #C.container-fluid.tab-pane.fade
       block C
-    #D.container.tab-pane.fade
+    #D.container-fluid.tab-pane.fade
       block D
