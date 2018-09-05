@@ -30,3 +30,7 @@ tbody{
   background: #016FC6!important;
     
 }
+#fondo {
+  background: linear-gradient(top, white, gray);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(gray));
+}
