@@ -6,7 +6,7 @@ exports.config = function () {
         
         options: {
             encrypt: false,
-            database: 'Huacho'
+            database: 'unjfsc'
         }
     };
     return config;
