@@ -7,11 +7,11 @@ var logger = require('morgan');
 
 
 
+
 /*************************Archivos de rutas*******************************/
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var validationRouter = require('./routes/validation');
 var registerRouter = require('./routes/register');
-var formRouter = require('./routes/form');
 /*************************************************************************/
 
 
@@ -40,9 +40,8 @@ app.use(session({
 
 /*****************************uso de las rutas*******************************/
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/validation', validationRouter);
 app.use('/register', registerRouter);
-app.use('/form', formRouter);
 /****************************************************************************/
 
 // catch 404 and forward to error handler
