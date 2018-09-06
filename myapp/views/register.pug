@@ -12,7 +12,11 @@ block content
               .form-group
                 label.h6(for='tipoDocumento') Tipo Documento
                   span.text-danger  (*)
-                input#tipoDocumento.form-control(type='text' name="tipoDocumento" required)
+                select#tipoDocumento.form-control(name="tipoDocumento" required)
+                  option(selected) -----
+                  option(value='0') CARNET DE EXTRANJERIA
+                  option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
+                  option(value='2') PASAPORTE
             .col-sm-6
               .form-group
                 label.h6(for='documentoIdentidad') Documento de Identidad
@@ -38,7 +42,10 @@ block content
               .form-group
                 label.h6(for='genero') G&eacutenero
                   span.text-danger  (*)
-                input#genero.form-control(type='text' name="genero" required)
+                select#genero.form-control(name="genero" required)
+                  option(selected) -----
+                  option(value='0') Femenino
+                  option(value='1') Masculino
           .row
             .col-sm-6.col-md-3
               .form-group
