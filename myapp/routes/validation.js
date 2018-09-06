@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var session = require('express-session');
 var Conn = require('tedious').Connection;
 var Request = require('tedious').Request;
 var config = require('../models/database').config;
@@ -16,11 +15,7 @@ function conexion(conn) {
 }
 
 var conn = new Conn(config());
-try {
-    conexion(conn);
-} catch (ConnectionError) {
-    conexion(conn);
-}
+conexion(conn);
 
 
 /* POST users listing. */
@@ -38,14 +33,16 @@ router.post('/', function(req, res) {
         for (let i = 0; i < result.length; i++) {
             var valor = result[i];
             if( user == valor.usuario && passwd == valor.clave){
+                req.session.user = {user: user, password: passwd};
                 console.log("Acceso concedido");
-                var a = true;
             }
         }
-        if (a) {
-            res.redirect("/form");
-        }else{
+        if(!req.session.user){
+            console.log(req.session.user);
             res.redirect("/");
+        } else {
+            res.locals = { user: req.session.user};
+            res.redirect('/form');
         }
     });
     request.on("row", function (columns) { 
@@ -58,7 +55,6 @@ router.post('/', function(req, res) {
 
     conn.execSql(request);
 });
-
 
 router.get('/', function(req,res){
     res.redirect("/");
