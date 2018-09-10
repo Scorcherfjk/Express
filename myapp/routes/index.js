@@ -31,7 +31,12 @@ router.get('/', function(req, res, next) {
       console.log("sesion destruida");
     }
   });
-  res.render('index', { title: 'Universidad de Huacho' });
+  res.render('index', { title: 'Universidad jfsc' });
+});
+
+router.get('/inicio' ,function(req, res, next) {
+  console.log(res.locals.user);
+  res.render('inicio', { title: "Bienvenido | Universidad jfsc" });
 });
 
 
