@@ -4,9 +4,21 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var Conn = require('tedious').Connection;
+var config = require('./models/database').config;
 
+function conexion(conn) {
+    conn.on('connect', function(err) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Connected"); 
+        }
+    });
+}
 
-
+var conn = new Conn(config());
+conexion(conn);
 
 /*************************Archivos de rutas*******************************/
 var indexRouter = require('./routes/index');
