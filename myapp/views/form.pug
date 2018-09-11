@@ -8,11 +8,11 @@ block A
       .form-group
         label.h6(for='titulo') A.1.1 - Titulo
           span.text-danger  (*)
-        textarea#titulo.form-control(rows='3' name="titulo" required)
+        textarea#titulo.form-control(rows='3' name="titulo")
       .form-group
         label.h6(for='palabrasClave') A.1.2 - Palabras clave
           span.text-danger  (*)
-        textarea#palabrasClave.form-control(rows='3' name="palabrasClave" required)
+        textarea#palabrasClave.form-control(rows='3' name="palabrasClave")
       h6 A.1.3 - Area de innovacion
       .table-responsive
         table.table.table-bordered.table-hover
@@ -61,19 +61,19 @@ block A
       .form-group
         label.h6(for='duracionDelProyecto') A.1.6 - Duracion del proyecto
           span.text-danger  (*)
-        input#duracionDelProyecto.form-control(type='number' name="duracionDelProyecto" required)
+        input#duracionDelProyecto.form-control(type='number' name="duracionDelProyecto")
       .form-group
         label.h6(for='fechaEstimadaDeInicioDelProyecto')
           | A.1.7 - Fecha estimada de inicio del proyecto
           span.text-danger  (*)
-        input#fechaEstimadaDeInicioDelProyecto.form-control(type='date' name="fechaEstimadaDeInicioDelProyecto" required)
+        input#fechaEstimadaDeInicioDelProyecto.form-control(type='date' name="fechaEstimadaDeInicioDelProyecto")
       h6 A.1.8 - Datos del coordinador general del proyecto
       .row
         .col-sm-6.col-md-4
           .form-group
             label(for='cgptipoDeDocumento') Tipo de documento
               span.text-danger  (*)
-            select#cgptipoDeDocumento.form-control(name="cgptipoDeDocumento" required)
+            select#cgptipoDeDocumento.form-control(name="cgptipoDeDocumento")
               option(selected) -----
               option(value='0') CARNET DE EXTRANJERIA
               option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
@@ -83,7 +83,7 @@ block A
           .form-group
             label(for='cgpnumeroDeDocumento') Numero de documento
               span.text-danger  (*)
-            input#cgpnumeroDeDocumento.form-control(type='number' name="cgpnumeroDeDocumento" required)
+            input#cgpnumeroDeDocumento.form-control(type='number' name="cgpnumeroDeDocumento")
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpruc') RUC
@@ -93,17 +93,17 @@ block A
           .form-group
             label(for='cgpnombresYApellidos') Nombres y Apellidos
               span.text-danger  (*)
-            input#cgpnombresYApellidos.form-control(type='text' name="cgpnombresYApellidos" required)
+            input#cgpnombresYApellidos.form-control(type='text' name="cgpnombresYApellidos")
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpfechaDeNacimiento') fecha de nacimiento
               span.text-danger  (*)
-            input#cgpfechaDeNacimiento.form-control(type='date' name="cgpfechaDeNacimiento" required)
+            input#cgpfechaDeNacimiento.form-control(type='date' name="cgpfechaDeNacimiento")
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpsexo') sexo
               span.text-danger  (*)
-            select#cgpsexo.form-control(name="cgpsexo" required)
+            select#cgpsexo.form-control(name="cgpsexo")
               option(selected) -----
               option(value='0') Femenino
               option(value='1') Masculino
@@ -112,23 +112,23 @@ block A
           .form-group
             label(for='cgpemail') Correo electronico
               span.text-danger  (*)
-            input#cgpemail.form-control(type='email' name="cgpemail" required)
+            input#cgpemail.form-control(type='email' name="cgpemail")
         .col-sm-6.col-md-4
           .form-group
             label(for='cgptelefono') Telefono
-            input#cgptelefono.form-control(type='number' name="cgptelefono" required)
+            input#cgptelefono.form-control(type='number' name="cgptelefono")
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpcelular') Celular
               span.text-danger  (*)
-            input#cgpcelular.form-control(type='number' name="cgpcelular" required)
+            input#cgpcelular.form-control(type='number' name="cgpcelular")
       h6 A.1.9 - Datos del coordinador administrativo del proyecto
       .row
         .col-sm-6.col-md-4
           .form-group
             label(for='captipoDeDocumento') Tipo de documento
               span.text-danger  (*)
-            select#captipoDeDocumento.form-control(name="captipoDeDocumento" required)
+            select#captipoDeDocumento.form-control(name="captipoDeDocumento")
               option(selected) -----
               option(value='0') CARNET DE EXTRANJERIA
               option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
@@ -138,7 +138,7 @@ block A
           .form-group
             label(for='capnumeroDeDocumento') Numero de documento
               span.text-danger  (*)
-            input#capnumeroDeDocumento.form-control(type='number' name="capnumeroDeDocumento" required)
+            input#capnumeroDeDocumento.form-control(type='number' name="capnumeroDeDocumento")
         .col-sm-6.col-md-4
           .form-group
             label(for='capruc') RUC
@@ -148,17 +148,17 @@ block A
           .form-group
             label(for='capnombresYApellidos') Nombres y Apellidos
               span.text-danger  (*)
-            input#capnombresYApellidos.form-control(type='text' name="capnombresYApellidos" required)
+            input#capnombresYApellidos.form-control(type='text' name="capnombresYApellidos")
         .col-sm-6.col-md-4
           .form-group
             label(for='capfechaDeNacimiento') fecha de nacimiento
               span.text-danger  (*)
-            input#capfechaDeNacimiento.form-control(type='date' name="capfechaDeNacimiento" required)
+            input#capfechaDeNacimiento.form-control(type='date' name="capfechaDeNacimiento")
         .col-sm-6.col-md-4
           .form-group
             label(for='capsexo') sexo
               span.text-danger  (*)
-            select#capsexo.form-control(name="capsexo" required)
+            select#capsexo.form-control(name="capsexo")
               option(selected) -----
               option(value='0') Femenino
               option(value='1') Masculino
@@ -167,7 +167,7 @@ block A
           .form-group
             label(for='capemail') Correo electronico
               span.text-danger  (*)
-            input#capemail.form-control(type='email' name="capemail" required)
+            input#capemail.form-control(type='email' name="capemail")
         .col-sm-6.col-md-4
           .form-group
             label(for='captelefono') Telefono
@@ -176,7 +176,7 @@ block A
           .form-group
             label(for='capcelular') Celular
               span.text-danger  (*)
-            input#capcelular.form-control(type='number' name="capcelular" required)
+            input#capcelular.form-control(type='number' name="capcelular")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -188,7 +188,7 @@ block A
           .form-group
             label(for='estipoDeEntidad') Tipo de entidad
               span.text-danger  (*)
-            select#estipoDeEntidad.form-control(name="estipoDeEntidad" required)
+            select#estipoDeEntidad.form-control(name="estipoDeEntidad")
               option(selected) -----
               option(value='0') ASOCIACI&OacuteN CIVIL DE PRODUCTORES
               option(value='1') EMPRESA
@@ -197,35 +197,35 @@ block A
           .form-group
             label(for='estamanoDeLaEmpresa') Tamaño de la empresa
               span.text-danger  (*)
-            input#estamanoDeLaEmpresa.form-control(type='text' name="estamañoDeLaEmpresa" required)
+            input#estamanoDeLaEmpresa.form-control(type='text' name="estamañoDeLaEmpresa")
         .col-sm-6.col-md-4
           .form-group
             label(for='esnroDeTrabajadores') Numero de Trabajadores
               span.text-danger  (*)
-            input#esnroDeTrabajadores.form-control(type='number' name="esnroDeTrabajadores" required)
+            input#esnroDeTrabajadores.form-control(type='number' name="esnroDeTrabajadores")
       .form-group
         label(for='esrucRazonSocial') RUC y Razon social
           span.text-danger  (*)
-        input#esrucRazonSocial.form-control(type='text' name="esrucRazonSocial" required)
+        input#esrucRazonSocial.form-control(type='text' name="esrucRazonSocial")
       .form-group
         label(for='esciiu') CIIU
           span.text-danger  (*)
-        input#esciiu.form-control(type='text' name="esciiu" required)
+        input#esciiu.form-control(type='text' name="esciiu")
       .form-group
         label(for='esdireccion') Direccion
           span.text-danger  (*)
-        input#esdireccion.form-control(type='text' name="esdireccion" required)
+        input#esdireccion.form-control(type='text' name="esdireccion")
       .row
         .col-sm-6.col-md-6
           .form-group
             label(for='esfechaDeConstitucion') Fecha de Constitucion
               span.text-danger  (*)
-            input#esfechaDeConstitucion.form-control(type='date' name="esfechaDeConstitucion" required)
+            input#esfechaDeConstitucion.form-control(type='date' name="esfechaDeConstitucion")
         .col-sm-6.col-md-6
           .form-group
             label(for='esinicioDeActividades') Inicio de actividades
               span.text-danger  (*)
-            input#esinicioDeActividades.form-control(type='date' name="esinicioDeActividades" required)
+            input#esinicioDeActividades.form-control(type='date' name="esinicioDeActividades")
       .row
         .col-sm-6.col-md-6
           .form-group
@@ -240,12 +240,12 @@ block A
           .form-group
             label(for='estelefonoCelular') Telefono / Celular
               span.text-danger  (*)
-            input#estelefonoCelular.form-control(type='number' name="estelefonoCelular" required)
+            input#estelefonoCelular.form-control(type='number' name="estelefonoCelular")
         .col-sm-6.col-md-4
           .form-group
             label(for='esemail') Correo electronico
               span.text-danger  (*)
-            input#esemail.form-control(type='email' name="esemail" required)
+            input#esemail.form-control(type='email' name="esemail")
         .col-sm-6.col-md-4
           .form-group
             label(for='espaginaWeb') Pagina Web
@@ -255,19 +255,19 @@ block A
           .form-group
             label(for='esventas2016') Ventas del año 2016
               span.text-danger  (*)
-            input#esventas2016.form-control(type='number' name="esventas2016" required)
+            input#esventas2016.form-control(type='number' name="esventas2016")
         .col-sm-6.col-md-6
           .form-group
             label(for='esventas2017') Ventas del año 2017
               span.text-danger  (*)
-            input#esventas2017.form-control(type='number' name="esventas2017" required)
+            input#esventas2017.form-control(type='number' name="esventas2017")
       h6 Representante legal
       .row
         .col-sm-6.col-md-4
           .form-group
             label(for='rptipoDeDocumento') Tipo de documento
               span.text-danger  (*)
-            select#rptipoDeDocumento.form-control(name="rptipoDeDocumento" required)
+            select#rptipoDeDocumento.form-control(name="rptipoDeDocumento")
               option(selected) -----
               option(value='0') CARNET DE EXTRANJERIA
               option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
@@ -277,7 +277,7 @@ block A
           .form-group
             label(for='rpnumeroDeDocumento') Numero de documento
               span.text-danger  (*)
-            input#rpnumeroDeDocumento.form-control(type='number' name="rpnumeroDeDocumento" required)
+            input#rpnumeroDeDocumento.form-control(type='number' name="rpnumeroDeDocumento")
         .col-sm-6.col-md-4
           .form-group
             label(for='rpruc') RUC
@@ -287,12 +287,12 @@ block A
           .form-group
             label(for='rpnombresYApellidos') Nombres y Apellidos
               span.text-danger  (*)
-            input#rpnombresYApellidos.form-control(type='text' name="rpnombresYApellidos" required)
+            input#rpnombresYApellidos.form-control(type='text' name="rpnombresYApellidos")
         .col-sm-4
           .form-group
             label(for='rpsexo') sexo
               span.text-danger  (*)
-            select#rpsexo.form-control(name="rpsexo" required)
+            select#rpsexo.form-control(name="rpsexo")
               option(selected) -----
               option(value='0') Femenino
               option(value='1') Masculino
@@ -301,24 +301,24 @@ block A
           .form-group
             label(for='rpemail') Correo electronico
               span.text-danger  (*)
-            input#rpemail.form-control(type='email' name="rpemail" required)
+            input#rpemail.form-control(type='email' name="rpemail")
         .col-sm-6.col-md-6
           .form-group
             label(for='rptelefono') Telefonos
               span.text-danger  (*)
-            input#rptelefono.form-control(type='number' name="rptelefono" required)
+            input#rptelefono.form-control(type='number' name="rptelefono")
       .form-group
         label(for='rpproductosComerciales') Indicar los productos ( Bienes y Servicios ) que en en la actualidad comercializa
           span.text-danger  (*)
-        textarea#rpproductosComerciales.form-control(rows='3' name="rpproductosComerciales" required)
+        textarea#rpproductosComerciales.form-control(rows='3' name="rpproductosComerciales")
       .form-group
         label(for='rpactividadesRelacionadas') Principales actividades, investigaciones, tecnologias relacionadas con el proyecto
           span.text-danger  (*)
-        textarea#rpactividadesRelacionadas.form-control(rows='3' name="rpactividadesRelacionadas" required)
+        textarea#rpactividadesRelacionadas.form-control(rows='3' name="rpactividadesRelacionadas")
       .form-group
         label(for='rpinfraestructuraDelSolicitante') Infraestructura fisica, equipamiento, tecnologias y procesos de la entidad solicitante
           span.text-danger  (*)
-        textarea#rpinfraestructuraDelSolicitante.form-control(rows='3' name="rpinfraestructuraDelSolicitante" required)
+        textarea#rpinfraestructuraDelSolicitante.form-control(rows='3' name="rpinfraestructuraDelSolicitante")
       h6 A.2.2 - entidades asociadas
       .table-responsive
         table.table.table-bordered.table-hover
@@ -434,12 +434,12 @@ block B
         label(for='entornoEmpresarial')
           | B.1.1 - situacion del entorno empresarial
           span.text-danger  (*)
-        textarea#entornoEmpresarial.form-control(rows='3' required)
+        textarea#entornoEmpresarial.form-control(rows='3')
       .form-group
         label(for='situacionActual')
           | B.1.2 - situacion actual de la empresa respecto a su negocio y participacion en el mercado
           span.text-danger  (*)
-        textarea#situacionActual.form-control(rows='3' required)
+        textarea#situacionActual.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -449,12 +449,12 @@ block B
         label(for='identificacionDelMercado')
           | B.2.1 Identificación del mercado potencial, donde se implementará a escala comercial los resultados del proyecto
           span.text-danger  (*)
-        textarea#identificacionDelMercado.form-control(rows='3' required)
+        textarea#identificacionDelMercado.form-control(rows='3')
       .form-group
         label(for='competidores')
           | B.2.2 Competidores
           span.text-danger  (*)
-        textarea#competidores.form-control(rows='3' required)
+        textarea#competidores.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -464,7 +464,7 @@ block B
         label(for='modeloDeNegocio')
           | B.3.1 Modelo de negocio y la estrategia empresarial para el ingreso de la innovación al mercado
           span.text-danger  (*)
-        textarea#modeloDeNegocio.form-control(rows='3' required)
+        textarea#modeloDeNegocio.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -474,7 +474,7 @@ block B
         label(for='capacidadFinanciera')
           | B.4.1 Capacidad financiera para el escalamiento de los resultados esperados y la implantación
           span.text-danger  (*)
-        textarea#capacidadFinanciera.form-control(rows='3' required)
+        textarea#capacidadFinanciera.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -484,7 +484,7 @@ block B
         label(for='rentabilidadEconomica')
           | B.5.1 Rentabilidad Económica y Financiera
           span.text-danger  (*)
-        textarea#rentabilidadEconomica.form-control(rows='3' required)
+        textarea#rentabilidadEconomica.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -496,7 +496,7 @@ block B
           span.text-danger  (*)
         br
         .custom-file
-          input#flujoDeCaja.custom-file-input(type='file', name='flujoDeCaja', required)
+          input#flujoDeCaja.custom-file-input(type='file', name='flujoDeCaja',)
           label.custom-file-label(for='flujoDeCaja') Elige Un Archivo
 block C
   .card.rounded.border-secondary
@@ -506,22 +506,22 @@ block C
         label(for='problemaIdentificado')
           | C.1.1 Problema identificado que limita la competitividad de la empresa u oportunidad de mercado
           span.text-danger  (*)
-        textarea#problemaIdentificado.form-control(rows='3'  required)
+        textarea#problemaIdentificado.form-control(rows='3'  )
       .form-group
         label(for='consecuenciasEfectos')
           | C.1.2 Consecuencias o efectos
           span.text-danger  (*)
-        textarea#consecuenciasEfectos.form-control(rows='3' required)
+        textarea#consecuenciasEfectos.form-control(rows='3')
       .form-group
         label(for='causas')
           | C.1.3 Causas
           span.text-danger  (*)
-        textarea#causas.form-control(rows='3' required)
+        textarea#causas.form-control(rows='3')
       h6 C.1.4. Tipo de innovación y descripción
       .form-group
         label(for='tipoDeInnovación') Tipo de Innovación
           span.text-danger  (*)
-        select#tipoDeInnovacion.form-control(name="tipoDeInnovacion" required)
+        select#tipoDeInnovacion.form-control(name="tipoDeInnovacion" )
           option(selected) ----
           option(value='0') UN NUEVO PROCESO
           option(value='1') UN NUEVO PRODUCTO (BIEN O SERVICIO)
@@ -531,17 +531,17 @@ block C
         label(for='describirFuncion')
           | 1. Describir la función que realizará la innovación
           span.text-danger  (*)
-        textarea#describirFuncion.form-control(rows='3' required)
+        textarea#describirFuncion.form-control(rows='3')
       .form-group
         label(for='describirTecnologia')
           | 2. Describir la tecnología que se empleará para construir la innovación
           span.text-danger  (*)
-        textarea#describirTecnologia.form-control(rows='3' required)
+        textarea#describirTecnologia.form-control(rows='3' )
       .form-group
         label(for='describirForma')
           | 3. Describa la forma en que se entregará el resultado
           span.text-danger  (*)
-        textarea#describirForma.form-control(rows='3' required)
+        textarea#describirForma.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -574,12 +574,12 @@ block C
         label(for='antecedentes')
           | C.3.1 Antecedentes e investigaciones recientes sobre el problema a resolver
           span.text-danger  (*)
-        textarea#antecedentes.form-control(rows='3' required)
+        textarea#antecedentes.form-control(rows='3')
       .form-group
         label(for='libreRestrigido')
           | C.3.2 Indicar si el conocimiento o la tecnología que se utilizará son de uso libre o restringido
           span.text-danger  (*)
-        textarea#libreRestrigido.form-control(rows='3' required)
+        textarea#libreRestrigido.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.4 Objetivos
@@ -640,14 +640,14 @@ block C
         label(for='planMetodologico')
           | C.5.1. Plan Metodológico del proyecto
           span.text-danger  (*)
-        textarea#planMetodologico.form-control(rows='3' required)
+        textarea#planMetodologico.form-control(rows='3')
       .form-group
         label(for='planAdjunto')
           | Adjunto Plan Metodológico
           span.text-danger  (*)
         br
         .custom-file
-          input#planAdjunto.custom-file-input(type='file', name='flujoDeCaja' required)
+          input#planAdjunto.custom-file-input(type='file', name='flujoDeCaja')
           label.custom-file-label(for='planAdjunto') Elige Un Archivo
   br
   .card.rounded.border-secondary
@@ -657,7 +657,7 @@ block C
         label(for='propiedadIntelectual')
           | C.6.1 Propiedad Intelectual
           span.text-danger  (*)
-        textarea#propiedadIntelectual.form-control(rows='3' required)
+        textarea#propiedadIntelectual.form-control(rows='3')
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.7 Impactos Esperados
@@ -666,45 +666,45 @@ block C
         label(for='impactosEconomicos')
           | C.7.1 Impactos económicos
           span.text-danger  (*)
-        textarea#impactosEconomicos.form-control(rows='3' required)
+        textarea#impactosEconomicos.form-control(rows='3')
       .form-group
         label(for='impactosSociales')
           | C.7.2 Impactos sociales
           span.text-danger  (*)
-        textarea#impactosSociales.form-control(rows='3' required)
+        textarea#impactosSociales.form-control(rows='3')
       .form-group
         label(for='impactosEnLaFormacion')
           | C.7.3 Impactos en la formación de cadenas productivas o clústeres
           | y otras externalidades
           span.text-danger  (*)
-        textarea#impactosEnLaFormacion.form-control(rows='3' required)
+        textarea#impactosEnLaFormacion.form-control(rows='3')
       .form-group
         label(for='pontencialidad')
           | C.7.4 Potencialidad de ser replicado por empresas similares
           span.text-danger
             | (*)
-        textarea#pontencialidad.form-control(rows='3' required)
+        textarea#pontencialidad.form-control(rows='3')
       .form-group
         label(for='impactosDeLaTecnologia')
           | C.7.5 Impactos en Tecnología
           span.text-danger  (*)
-        textarea#impactosDeLaTecnologia.form-control(rows='3' required)
+        textarea#impactosDeLaTecnologia.form-control(rows='3')
       .form-group
         label(for='impactosAmbientales')
           | C.7.6 Impactos ambientales
           span.text-danger  (*)
-        textarea#impactosAmbientales.form-control(rows='3' required)
+        textarea#impactosAmbientales.form-control(rows='3')
       .form-group
         label(for='medidasDeMitigacion')
           | C.7.7 Medidas de mitigación para los impactos ambientales identificados
           | como negativos y permanentes (o temporales)
           span.text-danger  (*)
-        textarea#medidasDeMitigacion.form-control(rows='3' required)
+        textarea#medidasDeMitigacion.form-control(rows='3')
       .form-group
         label(for='impactosEnLaEmpresa')
           | C.7.8 Impactos en la capacidad interna de innovación de la empresa
           span.text-danger  (*)
-        textarea#impactosEnLaEmpresa.form-control(rows='3' required)
+        textarea#impactosEnLaEmpresa.form-control(rows='3' )
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.8. Recursos Necesarios
@@ -749,7 +749,7 @@ block D
         label(for='monedaDelProyecto')
           | Moneda del Proyecto
           span.text-danger  (*)
-        select#monedaDelProyecto.form-control(required)
+        select#monedaDelProyecto.form-control
           option(value='0') Soles
           option(value='1') Dolares
       h6 D.1.1 CUADRO Nº 1: Equipos y Bienes duraderos
@@ -1019,8 +1019,8 @@ block charge
   nav.navbar.navbar-expand-lg.navbar-light.bg-mine.fixed-bottom
     form.form-inline.my-2.my-lg-0
       .btn-group.my-2.my-sm-0(role="group")
-        a.btn.btn-danger(href='/inicio') Validar
-        a.btn.btn-danger(href='/inicio') Guardar 
-        a.btn.btn-danger(href='/inicio') Cancelar 
-        a.btn.btn-danger(href='/inicio') Guardar y Enviar 
-        a.btn.btn-danger(href='/inicio') Previsualizar 
+        a.btn.btn-success(href='/inicio') Validar
+        a.btn.btn-success(href='/inicio') Guardar 
+        a.btn.btn-success(href='/inicio') Cancelar 
+        a.btn.btn-success(href='/inicio') Guardar y Enviar 
+        a.btn.btn-success(href='/inicio') Previsualizar 
