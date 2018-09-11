@@ -3,7 +3,7 @@ extends layout
 block content
     
     .container
-        form(action="/validation/" method="post")
+        form(action="/validation" method="post")
             div.card.mx-auto.rounded.border-secondary(style="max-width:500px;")
                 h5.card-header.text-capitalize.bg-danger.text-white
                     | Iniciar de Sesi&oacuten
@@ -17,6 +17,6 @@ block content
                             span.text-danger  (*)
                         input#palabrasClave.form-control(type='password' name="passwd" required)
                     .row
-                        a.col.text-center(href="/register/" style="color:gray; font-size: .7em") Registrarse
+                        a.col.text-center(href="/register" style="color:gray; font-size: .7em") Registrarse
                         a.col.text-center(href="#modal" style="color:gray; font-size: .7em") Reestablecer Contraseña
                 input.btn.btn-primary(type="submit")

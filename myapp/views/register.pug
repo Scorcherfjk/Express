@@ -130,7 +130,9 @@ block content
                   span.text-danger  (*)
                 input#confirmarClave.form-control(type='password' name="confirmarClave" required)
           .row
-            .col-sm-1.offset-sm-9
-              input.btn.btn-danger.float-right(type="submit", value="Guardar")
-            .col-sm-1.offset-sm-1
-              a.btn.btn-danger.float-right(href="/" role="button") Cancelar
+            .col-sm-12.col-md-6
+              input#carga.btn.btn-outline-primary.float-right.btn-lg.btn-block(type="submit", value="Guardar")
+            .col-sm-12.col-md-6
+              a.btn.btn-outline-danger.float-right.btn-lg.btn-block(href="/form" role="button") Cancelar
+  script(src="/javascripts/jquery-3.3.1.min.js")
+  script(src="/javascripts/valida.js")
