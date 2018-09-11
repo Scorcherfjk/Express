@@ -42,33 +42,45 @@ router.get('/', function(req, res, next) {
 /*****************************************             ACTIVE SESSION          *************************************************/
 router.get('/inicio' ,function(req, res, next) {
     if(req.session.user){
-      res.render('inicio', { title: "Bienvenido | Universidad jfsc", usuario: req.session.user });
+        res.render('inicio', { 
+            title: "Bienvenido | Universidad jfsc", 
+            usuario: req.session.user 
+        });
     } else {
-      res.redirect("/");
+        res.redirect("/");
     }
   });
   
   router.get('/form' ,function(req, res, next) {
     if(req.session.user){
-      res.render('form', { title: "Formulario", usuario: req.session.user });
+        res.render('form', { 
+            title: "Formulario", 
+            usuario: req.session.user 
+        });
     } else {
-      res.redirect("/");
+        res.redirect("/");
     }
   });
   
   router.get('/change-password' ,function(req, res, next) {
     if(req.session.user){
-      res.render('changePassword', { title: "Cambio de Clave", usuario: req.session.user });
-  } else {
-    res.redirect("/");
+        res.render('changePassword', { 
+            title: "Cambio de Clave", 
+            usuario: req.session.user 
+        });
+    } else {
+        res.redirect("/");
   }
   });
   
   router.get('/change-data' ,function(req, res, next) {
     if(req.session.user){
-      res.render('changeData', { title: "Cambio de Datos", usuario: req.session.user });
-  } else {
-    res.redirect("/");
+        res.render('changeData', { 
+            title: "Cambio de Datos", 
+            usuario: req.session.user 
+        });
+    } else {
+        res.redirect("/");
   }
   });
   
@@ -154,7 +166,7 @@ router.post("/validation/new-user", function (req,res) {
             res.redirect('/inicio');
         }
 
-       });
+    });
 
     request.addParameter("tipo_documento" ,         TYPES.Int           , tipo_documento);
     request.addParameter("documento_identidad" ,    TYPES.Int           , documento_identidad);
@@ -175,6 +187,46 @@ router.post("/validation/new-user", function (req,res) {
     request.addParameter("docente" ,                TYPES.Int           , docente);
     request.addParameter("usuario" ,                TYPES.VarChar       , usuario);
     request.addParameter("clave" ,                  TYPES.VarChar       , clave);
+        
+    request.on('row', function(columns) {  
+        columns.forEach(function(column) {  
+          if (column.value === null) {  
+            console.log('NULL');  
+          } else {  
+            console.log("User id is " + column.value);  
+          }  
+        });  
+    });       
+    conn.execSql(request);
+});
+
+router.post("/validation/new-user", function (req,res) {
+
+    var tipo_documento = req.body.tipo_documento;
+    var documento_identidad = req.body.documento_identidad;
+    var nombres = req.body.nombres;
+    var usuario = req.body.email;
+    
+   var sql = "INSERT INTO [unjfsc].[dbo].[usuario] ([tipo_documento], [documento_identidad], [nombres], [apellido_paterno], [apellido_materno], [genero], [pais], [departamento], [provincia], [distrito], [direccion], [fecha_nacimiento], [telefono_movil], [telefono_fijo], [email], [email2], [docente], [usuario], [clave]) OUTPUT INSERTED.id_usuario VALUES ( @tipo_documento, @documento_identidad, @nombres, @apellido_paterno, @apellido_materno, @genero, @pais, @departamento, @provincia, @distrito, @direccion, @fecha_nacimiento, @telefono_movil, @telefono_fijo, @email, @email2, @docente, @usuario, @clave)";
+    
+    request = new Request(sql, function(err) {  
+        if (err) {  
+           console.log(err);
+        }
+        req.session.user = usuario;
+        console.log("Acceso concedido");
+        if(!req.session.user){
+            console.log(req.session.user);
+            res.redirect("/");
+        } else {
+            res.redirect('/inicio');
+        }
+
+    });
+
+    request.addParameter("tipo_documento" ,         TYPES.Int           , tipo_documento);
+    request.addParameter("documento_identidad" ,    TYPES.Int           , documento_identidad);
+    request.addParameter("nombres" ,                TYPES.VarChar       , nombres);
         
     request.on('row', function(columns) {  
         columns.forEach(function(column) {  
