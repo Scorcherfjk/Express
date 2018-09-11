@@ -4,7 +4,7 @@ var Conn = require('tedious').Connection;
 var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;  
 var config = require('../models/database').config;
-
+var bcrypt = require('bcrypt');
 
 function conexion(conn) {
     conn.on('connect', function(err) {
@@ -104,7 +104,7 @@ router.post('/validation', function(req, res) {
         }
         for (let i = 0; i < result.length; i++) {
             var valor = result[i];
-            if( user == valor.usuario && passwd == valor.clave){
+            if( user == valor.usuario && bcrypt.compareSync(passwd, valor.clave)){
                 req.session.user = req.body.user;
                 console.log("Acceso concedido");
             }
@@ -149,7 +149,7 @@ router.post("/validation/new-user", function (req,res) {
     var email2 = req.body.email2;
     var docente = req.body.docente;
     var usuario = req.body.email;
-    var clave = req.body.clave;
+    var clave = bcrypt.hashSync(req.body.clave,10);
     
    var sql = "INSERT INTO [unjfsc].[dbo].[usuario] ([tipo_documento], [documento_identidad], [nombres], [apellido_paterno], [apellido_materno], [genero], [pais], [departamento], [provincia], [distrito], [direccion], [fecha_nacimiento], [telefono_movil], [telefono_fijo], [email], [email2], [docente], [usuario], [clave]) OUTPUT INSERTED.id_usuario VALUES ( @tipo_documento, @documento_identidad, @nombres, @apellido_paterno, @apellido_materno, @genero, @pais, @departamento, @provincia, @distrito, @direccion, @fecha_nacimiento, @telefono_movil, @telefono_fijo, @email, @email2, @docente, @usuario, @clave)";
     
@@ -199,47 +199,6 @@ router.post("/validation/new-user", function (req,res) {
     });       
     conn.execSql(request);
 });
-
-router.post("/validation/new-user", function (req,res) {
-
-    var tipo_documento = req.body.tipo_documento;
-    var documento_identidad = req.body.documento_identidad;
-    var nombres = req.body.nombres;
-    var usuario = req.body.email;
-    
-   var sql = "INSERT INTO [unjfsc].[dbo].[usuario] ([tipo_documento], [documento_identidad], [nombres], [apellido_paterno], [apellido_materno], [genero], [pais], [departamento], [provincia], [distrito], [direccion], [fecha_nacimiento], [telefono_movil], [telefono_fijo], [email], [email2], [docente], [usuario], [clave]) OUTPUT INSERTED.id_usuario VALUES ( @tipo_documento, @documento_identidad, @nombres, @apellido_paterno, @apellido_materno, @genero, @pais, @departamento, @provincia, @distrito, @direccion, @fecha_nacimiento, @telefono_movil, @telefono_fijo, @email, @email2, @docente, @usuario, @clave)";
-    
-    request = new Request(sql, function(err) {  
-        if (err) {  
-           console.log(err);
-        }
-        req.session.user = usuario;
-        console.log("Acceso concedido");
-        if(!req.session.user){
-            console.log(req.session.user);
-            res.redirect("/");
-        } else {
-            res.redirect('/inicio');
-        }
-
-    });
-
-    request.addParameter("tipo_documento" ,         TYPES.Int           , tipo_documento);
-    request.addParameter("documento_identidad" ,    TYPES.Int           , documento_identidad);
-    request.addParameter("nombres" ,                TYPES.VarChar       , nombres);
-        
-    request.on('row', function(columns) {  
-        columns.forEach(function(column) {  
-          if (column.value === null) {  
-            console.log('NULL');  
-          } else {  
-            console.log("User id is " + column.value);  
-          }  
-        });  
-    });       
-    conn.execSql(request);
-});
-
 
 /*******************************************             FILTERING          ****************************************************/
 
