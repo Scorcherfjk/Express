@@ -4,26 +4,9 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var Conn = require('tedious').Connection;
-var config = require('./models/database').config;
-
-function conexion(conn) {
-    conn.on('connect', function(err) {
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Connected"); 
-        }
-    });
-}
-
-var conn = new Conn(config());
-conexion(conn);
 
 /*************************Archivos de rutas*******************************/
 var indexRouter = require('./routes/index');
-var validationRouter = require('./routes/validation');
-var registerRouter = require('./routes/register');
 /*************************************************************************/
 
 
@@ -43,17 +26,10 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  cookie: 
-    { 
-      secure: true,
-      maxAge: 3600000
-    }
 }));
 
 /*****************************uso de las rutas*******************************/
 app.use('/', indexRouter);
-app.use('/validation', validationRouter);
-app.use('/register', registerRouter);
 /****************************************************************************/
 
 // catch 404 and forward to error handler
