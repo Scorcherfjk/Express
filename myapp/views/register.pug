@@ -2,7 +2,7 @@ extends layout
 
 block content
   .container
-    form(action="", method="post")
+    form(action="/validation/new-user", method="post")
       .card.rounded.border-secondary
         h5.card-header.text-capitalize.bg-danger.text-white
           | Registro Persona Natural
@@ -12,7 +12,7 @@ block content
               .form-group
                 label.h6(for='tipo_documento') Tipo Documento
                   span.text-danger  (*)
-                select#tipoDocumento.form-control(name="tipo_documento" required)
+                select#tipo_documento.form-control(name="tipo_documento" required)
                   option(selected) -----
                   option(value='0') CARNET DE EXTRANJERIA
                   option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
@@ -21,7 +21,7 @@ block content
               .form-group
                 label.h6(for='documento_identidad') Documento de Identidad
                   span.text-danger  (*)
-                input#documentoIdentidad.form-control(type='text' name="documento_identidad" required)
+                input#documento_identidad.form-control(type='text' name="documento_identidad" required)
           .row
             .col-sm-6.col-md-3
               .form-group
@@ -105,11 +105,11 @@ block content
                   span.text-danger  (*)
                 br
                 .custom-control.custom-radio.custom-control-inline                
-                  input#investigadorsi.custom-control-input(type='radio' name="docente" value="SI")
-                  label.custom-control-label(for="investigadorsi") SI
+                  input#docentes.custom-control-input(type='radio' name="docente" value="1")
+                  label.custom-control-label(for="docentes") SI
                 .custom-control.custom-radio.custom-control-inline
-                  input#investigadorno.custom-control-input(type='radio' name="docente" value="NO" checked)
-                  label.custom-control-label(for="investigadorno") NO
+                  input#docenten.custom-control-input(type='radio' name="docente" value="0" checked)
+                  label.custom-control-label(for="docenten") NO
       .card.rounded.border-secondary
         h5.card-header.text-capitalize.bg-danger.text-white
           | Datos de Acceso
