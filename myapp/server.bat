@@ -1,1 +1,1 @@
-set DEBUG=myapp:* & npm start
+hotnode ./bin/www start
