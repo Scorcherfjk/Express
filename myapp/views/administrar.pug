@@ -14,19 +14,15 @@ block content
                 table.table.table-bordered.table-hover
                   thead.thead-light.text-capitalize
                     tr
-                      th 
                       th T&iacutetulo De Proyecto 
                       th Fecha de Registro
                       th Editar
                       th Previsualizar
                     each valor in lista
                       tr
-                        td
                         td #{valor.titulo}
                         td #{valor.fecha_creacion}
-                        td 
-                          a.btn.btn-primary.btn-sm(href="/nuevo-proyecto" role="button") Editar
-                        td 
-                          a.btn.btn-primary.btn-sm(href="/nuevo-proyecto" role="button") Visualizar
+                        td: a.btn.btn-primary.btn-sm(href="/nuevo-proyecto" role="button") Editar
+                        td: a.btn.btn-primary.btn-sm(href="/visualizar" role="button") Visualizar
               br
               a.btn.btn-primary.btn-lg.btn-block(href="/nuevo-proyecto" role="button") Crear Proyecto
