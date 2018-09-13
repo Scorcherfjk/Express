@@ -55,7 +55,8 @@ router.get('/inicio' ,function(req, res, next) {
         res.redirect("/");
     }
 });
-  
+
+/********************** CREACION DE UN NUEVO PROYECTO ************************************** */
 router.get('/nuevo-proyecto' ,function(req, res, next) {
     if(req.session.user){
         res.render('nuevoProyecto', { 
@@ -66,7 +67,7 @@ router.get('/nuevo-proyecto' ,function(req, res, next) {
         res.redirect("/");
     }
   });
-  
+/************************************ CAMBIAR LA CLAVE DE ACCESO **************************** */
 router.get('/change-password' ,function(req, res, next) {
     if(req.session.user){
         res.render('changePassword', { 
@@ -77,7 +78,7 @@ router.get('/change-password' ,function(req, res, next) {
         res.redirect("/");
   }
   });
-  
+/**************************** CAMBIAR LOS DATOS PERSONALES  *********************************** */
 router.get('/change-data' ,function(req, res, next) {
     if(req.session.user){
         res.render('changeData', { 
@@ -88,7 +89,7 @@ router.get('/change-data' ,function(req, res, next) {
         res.redirect("/");
   }
 });
-
+/*********************************  ADMINISTRACION DE LOS PROYECTOS ******************************* */
 router.get('/administrar' ,function(req, res, next) {
 if(req.session.user){
 
