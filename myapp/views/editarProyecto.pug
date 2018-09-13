@@ -78,7 +78,6 @@ block A
               option(value='0') CARNET DE EXTRANJERIA
               option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
               option(value='2') PASAPORTE
-              option(value='3') REGISTRO &UacuteNICO DE CONTRIBUYENTES
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpnumeroDeDocumento') Numero de documento
@@ -133,7 +132,6 @@ block A
               option(value='0') CARNET DE EXTRANJERIA
               option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
               option(value='2') PASAPORTE
-              option(value='3') REGISTRO &UacuteNICO DE CONTRIBUYENTES
         .col-sm-6.col-md-4
           .form-group
             label(for='capnumeroDeDocumento') Numero de documento
@@ -272,7 +270,6 @@ block A
               option(value='0') CARNET DE EXTRANJERIA
               option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
               option(value='2') PASAPORTE
-              option(value='3') REGISTRO &UacuteNICO DE CONTRIBUYENTES
         .col-sm-6.col-md-4
           .form-group
             label(for='rpnumeroDeDocumento') Numero de documento
@@ -434,12 +431,12 @@ block B
         label(for='entornoEmpresarial')
           | B.1.1 - situacion del entorno empresarial
           span.text-danger  (*)
-        textarea#entornoEmpresarial.form-control(rows='3')
+        textarea#entornoEmpresarial.form-control(rows='3' name="entornoEmpresarial")
       .form-group
         label(for='situacionActual')
           | B.1.2 - situacion actual de la empresa respecto a su negocio y participacion en el mercado
           span.text-danger  (*)
-        textarea#situacionActual.form-control(rows='3')
+        textarea#situacionActual.form-control(rows='3'  name="situacionActual")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -449,12 +446,12 @@ block B
         label(for='identificacionDelMercado')
           | B.2.1 Identificación del mercado potencial, donde se implementará a escala comercial los resultados del proyecto
           span.text-danger  (*)
-        textarea#identificacionDelMercado.form-control(rows='3')
+        textarea#identificacionDelMercado.form-control(rows='3' name="identificacionDelMercado")
       .form-group
         label(for='competidores')
           | B.2.2 Competidores
           span.text-danger  (*)
-        textarea#competidores.form-control(rows='3')
+        textarea#competidores.form-control(rows='3' name="competidores")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -464,7 +461,7 @@ block B
         label(for='modeloDeNegocio')
           | B.3.1 Modelo de negocio y la estrategia empresarial para el ingreso de la innovación al mercado
           span.text-danger  (*)
-        textarea#modeloDeNegocio.form-control(rows='3')
+        textarea#modeloDeNegocio.form-control(rows='3' name="modeloDeNegocio")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -474,7 +471,7 @@ block B
         label(for='capacidadFinanciera')
           | B.4.1 Capacidad financiera para el escalamiento de los resultados esperados y la implantación
           span.text-danger  (*)
-        textarea#capacidadFinanciera.form-control(rows='3')
+        textarea#capacidadFinanciera.form-control(rows='3' name="capacidadFinanciera")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -484,7 +481,7 @@ block B
         label(for='rentabilidadEconomica')
           | B.5.1 Rentabilidad Económica y Financiera
           span.text-danger  (*)
-        textarea#rentabilidadEconomica.form-control(rows='3')
+        textarea#rentabilidadEconomica.form-control(rows='3' name="rentabilidadEconomica")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -496,7 +493,7 @@ block B
           span.text-danger  (*)
         br
         .custom-file
-          input#flujoDeCaja.custom-file-input(type='file', name='flujoDeCaja',)
+          input#flujoDeCaja.custom-file-input(type='file', name='flujoDeCaja')
           label.custom-file-label(for='flujoDeCaja') Elige Un Archivo
 block C
   .card.rounded.border-secondary
@@ -506,22 +503,22 @@ block C
         label(for='problemaIdentificado')
           | C.1.1 Problema identificado que limita la competitividad de la empresa u oportunidad de mercado
           span.text-danger  (*)
-        textarea#problemaIdentificado.form-control(rows='3'  )
+        textarea#problemaIdentificado.form-control(rows='3' name="problemaIdentificado")
       .form-group
         label(for='consecuenciasEfectos')
           | C.1.2 Consecuencias o efectos
           span.text-danger  (*)
-        textarea#consecuenciasEfectos.form-control(rows='3')
+        textarea#consecuenciasEfectos.form-control(rows='3' name="consecuenciasEfectos")
       .form-group
         label(for='causas')
           | C.1.3 Causas
           span.text-danger  (*)
-        textarea#causas.form-control(rows='3')
+        textarea#causas.form-control(rows='3' name="causas")
       h6 C.1.4. Tipo de innovación y descripción
       .form-group
         label(for='tipoDeInnovación') Tipo de Innovación
           span.text-danger  (*)
-        select#tipoDeInnovacion.form-control(name="tipoDeInnovacion" )
+        select#tipoDeInnovacion.form-control(name="tipoDeInnovacion")
           option(selected) ----
           option(value='0') UN NUEVO PROCESO
           option(value='1') UN NUEVO PRODUCTO (BIEN O SERVICIO)
@@ -531,22 +528,22 @@ block C
         label(for='describirFuncion')
           | 1. Describir la función que realizará la innovación
           span.text-danger  (*)
-        textarea#describirFuncion.form-control(rows='3')
+        textarea#describirFuncion.form-control(rows='3' name="describirFuncion")
       .form-group
         label(for='describirTecnologia')
           | 2. Describir la tecnología que se empleará para construir la innovación
           span.text-danger  (*)
-        textarea#describirTecnologia.form-control(rows='3' )
+        textarea#describirTecnologia.form-control(rows='3'  name="describirTecnologia")
       .form-group
         label(for='describirForma')
           | 3. Describa la forma en que se entregará el resultado
           span.text-danger  (*)
-        textarea#describirForma.form-control(rows='3')
+        textarea#describirForma.form-control(rows='3' name="describirForma")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
       | C.2 Descripción de las características de producto o proceso de la innovación presentada
-    .card-body
+    .card-body 
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
@@ -574,12 +571,12 @@ block C
         label(for='antecedentes')
           | C.3.1 Antecedentes e investigaciones recientes sobre el problema a resolver
           span.text-danger  (*)
-        textarea#antecedentes.form-control(rows='3')
+        textarea#antecedentes.form-control(rows='3' name="antecedentes")
       .form-group
         label(for='libreRestrigido')
           | C.3.2 Indicar si el conocimiento o la tecnología que se utilizará son de uso libre o restringido
           span.text-danger  (*)
-        textarea#libreRestrigido.form-control(rows='3')
+        textarea#libreRestrigido.form-control(rows='3' name="libreRestrigido")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.4 Objetivos
@@ -640,14 +637,14 @@ block C
         label(for='planMetodologico')
           | C.5.1. Plan Metodológico del proyecto
           span.text-danger  (*)
-        textarea#planMetodologico.form-control(rows='3')
+        textarea#planMetodologico.form-control(rows='3' name="planMetodologico")
       .form-group
         label(for='planAdjunto')
           | Adjunto Plan Metodológico
           span.text-danger  (*)
         br
         .custom-file
-          input#planAdjunto.custom-file-input(type='file', name='flujoDeCaja')
+          input#planAdjunto.custom-file-input(type='file', name='planAdjunto')
           label.custom-file-label(for='planAdjunto') Elige Un Archivo
   br
   .card.rounded.border-secondary
@@ -657,7 +654,7 @@ block C
         label(for='propiedadIntelectual')
           | C.6.1 Propiedad Intelectual
           span.text-danger  (*)
-        textarea#propiedadIntelectual.form-control(rows='3')
+        textarea#propiedadIntelectual.form-control(rows='3' name="propiedadIntelectual")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.7 Impactos Esperados
@@ -666,45 +663,45 @@ block C
         label(for='impactosEconomicos')
           | C.7.1 Impactos económicos
           span.text-danger  (*)
-        textarea#impactosEconomicos.form-control(rows='3')
+        textarea#impactosEconomicos.form-control(rows='3' name="impactosEconomicos")
       .form-group
         label(for='impactosSociales')
           | C.7.2 Impactos sociales
           span.text-danger  (*)
-        textarea#impactosSociales.form-control(rows='3')
+        textarea#impactosSociales.form-control(rows='3' name="impactosSociales")
       .form-group
         label(for='impactosEnLaFormacion')
           | C.7.3 Impactos en la formación de cadenas productivas o clústeres
           | y otras externalidades
           span.text-danger  (*)
-        textarea#impactosEnLaFormacion.form-control(rows='3')
+        textarea#impactosEnLaFormacion.form-control(rows='3' name="impactosEnLaFormacion")
       .form-group
         label(for='pontencialidad')
           | C.7.4 Potencialidad de ser replicado por empresas similares
           span.text-danger
             | (*)
-        textarea#pontencialidad.form-control(rows='3')
+        textarea#pontencialidad.form-control(rows='3' name="pontencialidad")
       .form-group
         label(for='impactosDeLaTecnologia')
           | C.7.5 Impactos en Tecnología
           span.text-danger  (*)
-        textarea#impactosDeLaTecnologia.form-control(rows='3')
+        textarea#impactosDeLaTecnologia.form-control(rows='3' name="impactosDeLaTecnologia")
       .form-group
         label(for='impactosAmbientales')
           | C.7.6 Impactos ambientales
           span.text-danger  (*)
-        textarea#impactosAmbientales.form-control(rows='3')
+        textarea#impactosAmbientales.form-control(rows='3' name="impactosAmbientales")
       .form-group
         label(for='medidasDeMitigacion')
           | C.7.7 Medidas de mitigación para los impactos ambientales identificados
           | como negativos y permanentes (o temporales)
           span.text-danger  (*)
-        textarea#medidasDeMitigacion.form-control(rows='3')
+        textarea#medidasDeMitigacion.form-control(rows='3' name="medidasDeMitigacion")
       .form-group
         label(for='impactosEnLaEmpresa')
           | C.7.8 Impactos en la capacidad interna de innovación de la empresa
           span.text-danger  (*)
-        textarea#impactosEnLaEmpresa.form-control(rows='3' )
+        textarea#impactosEnLaEmpresa.form-control(rows='3' name="impactosEnLaEmpresa")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.8. Recursos Necesarios
@@ -749,7 +746,7 @@ block D
         label(for='monedaDelProyecto')
           | Moneda del Proyecto
           span.text-danger  (*)
-        select#monedaDelProyecto.form-control
+        select#monedaDelProyecto.form-control(name="monedaDelProyecto")
           option(value='0') Soles
           option(value='1') Dolares
       h6 D.1.1 CUADRO Nº 1: Equipos y Bienes duraderos
@@ -1015,12 +1012,3 @@ block D
               td Correo 
               td Teléfono 
               td Celular
-block charge
-  nav.navbar.navbar-expand-lg.navbar-light.bg-mine.fixed-bottom
-    form.form-inline.my-2.my-lg-0
-      .btn-group.my-2.my-sm-0(role="group")
-        a.btn.btn-success(href='/inicio') Validar
-        a.btn.btn-success(href='/inicio') Guardar 
-        a.btn.btn-success(href='/inicio') Cancelar 
-        a.btn.btn-success(href='/inicio') Guardar y Enviar 
-        a.btn.btn-success(href='/inicio') Previsualizar 
