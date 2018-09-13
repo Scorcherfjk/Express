@@ -19,5 +19,14 @@ block content
                       th Fecha de Registro
                       th Editar
                       th Previsualizar
+                    each valor in lista
+                      tr
+                        td
+                        td #{valor.titulo}
+                        td #{valor.fecha_creacion}
+                        td 
+                          a.btn.btn-primary.btn-sm(href="/nuevo-proyecto" role="button") Editar
+                        td 
+                          a.btn.btn-primary.btn-sm(href="/nuevo-proyecto" role="button") Visualizar
               br
-              a.btn.btn-primary.btn-lg.btn-block(href="/nuevoProyecto" role="button") Crear Proyecto
+              a.btn.btn-primary.btn-lg.btn-block(href="/nuevo-proyecto" role="button") Crear Proyecto
