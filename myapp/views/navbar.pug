@@ -11,7 +11,7 @@ block navbar
                 li.nav-item.barra
                     a.nav-link(href='/inicio') Inicio 
                 li.nav-item.barra
-                    a.nav-link(href='/form') Mis Proyectos 
+                    a.nav-link(href='/administrar') Mis Proyectos 
                 li.nav-item.dropdown.barra
                     a.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Seguridad
                         .dropdown-menu(aria-labelledby='navbarDropdown')
@@ -23,6 +23,6 @@ block navbar
             form.form-inline.my-2.my-lg-0
                 // input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
                 .btn-group
-                    a.btn.btn-light.disabled #{usuario}
+                    a.btn.btn-light.disabled #{usuario.nombre} #{usuario.apellido}
                     a.btn.btn-outline-danger.my-2.my-sm-0(href="/") Salir
 block content
