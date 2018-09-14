@@ -5,6 +5,7 @@ var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;  
 var config = require('../models/database').config;
 var bcrypt = require('bcrypt');
+var pdf = require('pdfkit');
 
 function conexion(conn) {
     conn.on('connect', function(err) {
@@ -37,7 +38,19 @@ router.get('/', function(req, res, next) {
   });
 
   router.get('/visualizar', function(req, res, next) {
-    res.send("aqui va el pdf");
+    const doc = new pdf()
+    let filename = "documento";
+    // Stripping special characters
+    filename = encodeURIComponent(filename) + '.pdf'
+    // Setting response to 'attachment' (download).
+    // If you use 'inline' here it will automatically open the PDF
+    res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"')
+    res.setHeader('Content-type', 'application/pdf')
+    const content = "Documento pdf"
+    doc.y = 300
+    doc.text(content, 50, 50)
+    doc.pipe(res)
+    doc.end()
   });
 
 /*******************************************************************************************************************************/
@@ -248,8 +261,9 @@ router.post("/validation/new-user", function (req,res) {
 
 
 
-/********************************** CARGA DEL PROYECTO *****************/
+/********************************** CARGA DEL PROYECTO NUEVO *****************/
 router.post('/validation/cargar-proyecto-nuevo', function(req, res) {
+
     
     var sql = 'INSERT INTO [unjfsc].[dbo].[proyectos] ([id_usuario],[titulo]) OUTPUT INSERTED.id_proyecto VALUES ( @id_usuario, @titulo )';
     var request = new Request(sql, function(err) {
@@ -259,9 +273,84 @@ router.post('/validation/cargar-proyecto-nuevo', function(req, res) {
         res.redirect('/administrar');
     });
 
-    request.addParameter("id_usuario" ,    TYPES.Int,    req.session.user.id);    
-    request.addParameter("titulo" ,        TYPES.Text,    req.body.titulo);
-    
+    request.addParameter("id_usuario" ,                           TYPES.Int             ,req.session.user.id);    
+    request.addParameter("titulo" ,                               TYPES.Text            ,req.body.titulo);
+    request.addParameter( "palabrasClave"  ,                      TYPES.Text            ,req.body.palabrasClave);
+    request.addParameter( "duracionDelProyecto",                  TYPES.Text            ,req.body.duracionDelProyecto);
+    request.addParameter( "fechaEstimadaDeInicioDelProyecto",     TYPES.Text            ,req.body.fechaEstimadaDeInicioDelProyecto);
+    request.addParameter( "cgptipoDeDocumento" ,                  TYPES.Text            ,req.body.cgptipoDeDocumento);
+    request.addParameter( "cgpnumeroDeDocumento"   ,              TYPES.Text            ,req.body.cgpnumeroDeDocumento);
+    request.addParameter( "cgpruc" ,                              TYPES.Text            ,req.body.cgpruc);
+    request.addParameter( "cgpnombresYApellidos"   ,              TYPES.Text            ,req.body.cgpnombresYApellidos);
+    request.addParameter( "cgpfechaDeNacimiento"   ,              TYPES.Text            ,req.body.cgpfechaDeNacimiento);
+    request.addParameter( "cgpsexo",                              TYPES.Text            ,req.body.cgpsexo);
+    request.addParameter( "cgpemail"   ,                          TYPES.Text            ,req.body.cgpemail);
+    request.addParameter( "cgptelefono",                          TYPES.Text            ,req.body.cgptelefono);
+    request.addParameter( "cgpcelular" ,                          TYPES.Text            ,req.body.cgpcelular);
+    request.addParameter( "captipoDeDocumento" ,                  TYPES.Text            ,req.body.captipoDeDocumento);
+    request.addParameter( "capnumeroDeDocumento"   ,              TYPES.Text            ,req.body.capnumeroDeDocumento);
+    request.addParameter( "capruc" ,                              TYPES.Text            ,req.body.capruc);
+    request.addParameter( "capnombresYApellidos"   ,              TYPES.Text            ,req.body.capnombresYApellidos);
+    request.addParameter( "capfechaDeNacimiento"   ,              TYPES.Text            ,req.body.capfechaDeNacimiento);
+    request.addParameter( "capsexo",                              TYPES.Text            ,req.body.capsexo);
+    request.addParameter( "capemail"   ,                          TYPES.Text            ,req.body.capemail);
+    request.addParameter( "captelefono",                          TYPES.Text            ,req.body.captelefono);
+    request.addParameter( "capcelular" ,                          TYPES.Text            ,req.body.capcelular);
+    request.addParameter( "estipoDeEntidad",                      TYPES.Text            ,req.body.estipoDeEntidad);
+    request.addParameter( "estamañoDeLaEmpresa",                  TYPES.Text            ,req.body.estamañoDeLaEmpresa);
+    request.addParameter( "esnroDeTrabajadores",                  TYPES.Text            ,req.body.esnroDeTrabajadores);
+    request.addParameter( "esrucRazonSocial"   ,                  TYPES.Text            ,req.body.esrucRazonSocial);
+    request.addParameter( "esciiu" ,                              TYPES.Text            ,req.body.esciiu);
+    request.addParameter( "esdireccion",                          TYPES.Text            ,req.body.esdireccion);
+    request.addParameter( "esfechaDeConstitucion"  ,              TYPES.Text            ,req.body.esfechaDeConstitucion);
+    request.addParameter( "esinicioDeActividades"  ,              TYPES.Text            ,req.body.esinicioDeActividades);
+    request.addParameter( "esnumeroDePartida"  ,                  TYPES.Text            ,req.body.esnumeroDePartida);
+    request.addParameter( "esoficinaRegistral" ,                  TYPES.Text            ,req.body.esoficinaRegistral);
+    request.addParameter( "estelefonoCelular"  ,                  TYPES.Text            ,req.body.estelefonoCelular);
+    request.addParameter( "esemail",                              TYPES.Text            ,req.body.esemail);
+    request.addParameter( "espaginaWeb",                          TYPES.Text            ,req.body.espaginaWeb);
+    request.addParameter( "esventas2016"   ,                      TYPES.Text            ,req.body.esventas2016);
+    request.addParameter( "esventas2017"   ,                      TYPES.Text            ,req.body.esventas2017);
+    request.addParameter( "rptipoDeDocumento"  ,                  TYPES.Text            ,req.body.rptipoDeDocumento);
+    request.addParameter( "rpnumeroDeDocumento",                  TYPES.Text            ,req.body.rpnumeroDeDocumento);
+    request.addParameter( "rpruc"  ,                              TYPES.Text            ,req.body.rpruc);
+    request.addParameter( "rpnombresYApellidos",                  TYPES.Text            ,req.body.rpnombresYApellidos);
+    request.addParameter( "rpsexo" ,                              TYPES.Text            ,req.body.rpsexo);
+    request.addParameter( "rpemail",                              TYPES.Text            ,req.body.rpemail);
+    request.addParameter( "rptelefono" ,                          TYPES.Text            ,req.body.rptelefono);
+    request.addParameter( "rpproductosComerciales" ,              TYPES.Text            ,req.body.rpproductosComerciales);
+    request.addParameter( "rpactividadesRelacionadas"  ,          TYPES.Text            ,req.body.rpactividadesRelacionadas);
+    request.addParameter( "rpinfraestructuraDelSolicitante",      TYPES.Text            ,req.body.rpinfraestructuraDelSolicitante);
+    request.addParameter( "entornoEmpresarial" ,                  TYPES.Text            ,req.body.entornoEmpresarial);
+    request.addParameter( "situacionActual",                      TYPES.Text            ,req.body.situacionActual);
+    request.addParameter( "identificacionDelMercado"   ,          TYPES.Text            ,req.body.identificacionDelMercado);
+    request.addParameter( "competidores"   ,                      TYPES.Text            ,req.body.competidores);
+    request.addParameter( "modeloDeNegocio",                      TYPES.Text            ,req.body.modeloDeNegocio);
+    request.addParameter( "capacidadFinanciera",                  TYPES.Text            ,req.body.capacidadFinanciera);
+    request.addParameter( "rentabilidadEconomica"  ,              TYPES.Text            ,req.body.rentabilidadEconomica);
+    request.addParameter( "flujoDeCaja",                          TYPES.Text            ,req.body.flujoDeCaja);
+    request.addParameter( "problemaIdentificado"   ,              TYPES.Text            ,req.body.problemaIdentificado);
+    request.addParameter( "consecuenciasEfectos"   ,              TYPES.Text            ,req.body.consecuenciasEfectos);
+    request.addParameter( "causas" ,                              TYPES.Text            ,req.body.causas);
+    request.addParameter( "tipoDeInnovacion"   ,                  TYPES.Text            ,req.body.tipoDeInnovacion);
+    request.addParameter( "describirFuncion"   ,                  TYPES.Text            ,req.body.describirFuncion);
+    request.addParameter( "describirTecnologia",                  TYPES.Text            ,req.body.describirTecnologia);
+    request.addParameter( "describirForma" ,                      TYPES.Text            ,req.body.describirForma);
+    request.addParameter( "antecedentes"   ,                      TYPES.Text            ,req.body.antecedentes);
+    request.addParameter( "libreRestrigido",                      TYPES.Text            ,req.body.libreRestrigido);
+    request.addParameter( "planMetodologico"   ,                  TYPES.Text            ,req.body.planMetodologico);
+    request.addParameter( "planAdjunto",                          TYPES.Text            ,req.body.planAdjunto);
+    request.addParameter( "propiedadIntelectual"   ,              TYPES.Text            ,req.body.propiedadIntelectual);
+    request.addParameter( "impactosEconomicos" ,                  TYPES.Text            ,req.body.impactosEconomicos);
+    request.addParameter( "impactosSociales"   ,                  TYPES.Text            ,req.body.impactosSociales);
+    request.addParameter( "impactosEnLaFormacion"  ,              TYPES.Text            ,req.body.impactosEnLaFormacion);
+    request.addParameter( "pontencialidad" ,                      TYPES.Text            ,req.body.pontencialidad);
+    request.addParameter( "impactosDeLaTecnologia" ,              TYPES.Text            ,req.body.impactosDeLaTecnologia);
+    request.addParameter( "impactosAmbientales",                  TYPES.Text            ,req.body.impactosAmbientales);
+    request.addParameter( "medidasDeMitigacion",                  TYPES.Text            ,req.body.medidasDeMitigacion);
+    request.addParameter( "impactosEnLaEmpresa",                  TYPES.Text            ,req.body.impactosEnLaEmpresa);
+    request.addParameter( "monedaDelProyecto"  ,                  TYPES.Text            ,req.body.monedaDelProyecto);
+
 
     request.on('row', function(columns) {
         columns.forEach(function (column) {
