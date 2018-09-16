@@ -1,0 +1,20 @@
+extends navbar
+
+block content
+    .container
+      .card.rounded.border-secondary
+        h5.card-header.text-capitalize.bg-danger.text-white
+          | Bienvenido
+        .card-body
+          .row
+            .col-sm-12.col-md-4
+                img(src="/images/img.png", alt="bienvenida")
+            .col-sm-12.col-md-8
+                br
+                form(action="/validation/nuevo", method="post")
+                  label.h6(for='titulo') Titulo del Proyecto
+                    span.text-danger  (*)
+                  textarea#titulo.form-control(rows='3' name="titulo")
+                  br
+                  button.btn.btn-primary.btn-lg.btn-block(type="submit") Guardar
+
