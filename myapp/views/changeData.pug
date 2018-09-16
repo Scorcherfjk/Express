@@ -11,8 +11,7 @@ block content
             .col-sm-6
               .form-group
                 label.h6(for='tipo_documento') Tipo Documento
-                  span.text-danger  (*)
-                select#tipoDocumento.form-control(name="tipo_documento" required)
+                select#tipoDocumento.form-control(name="tipo_documento" disabled)
                   option(selected) -----
                   option(value='0') CARNET DE EXTRANJERIA
                   option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
@@ -20,28 +19,24 @@ block content
             .col-sm-6
               .form-group
                 label.h6(for='documento_identidad') Documento de Identidad
-                  span.text-danger  (*)
-                input#documentoIdentidad.form-control(type='text' name="documento_identidad" required)
+                input#documentoIdentidad.form-control(type='text' name="documento_identidad" disabled value=usuario.id)
           .row
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='nombres') Nombres
-                  span.text-danger  (*)
-                input#nombres.form-control(type='text' name="nombres" required)
+                input#nombres.form-control(type='text' name="nombres" value=usuario.nombre disabled)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='apellido_paterno') Apellido Paterno
-                  span.text-danger  (*)
-                input#apellidoPaterno.form-control(type='text' name="apellido_paterno" required)
+                input#apellidoPaterno.form-control(type='text' name="apellido_paterno" disabled value=usuario.apellido) 
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='apellido_materno') Apellido Materno
-                input#apellidoMaterno.form-control(type='text' name="apellido_materno")
+                input#apellidoMaterno.form-control(type='text' name="apellido_materno" disabled)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='genero') G&eacutenero
-                  span.text-danger  (*)
-                select#genero.form-control(name="genero" required)
+                select#genero.form-control(name="genero" disabled)
                   option(selected) -----
                   option(value='0') Femenino
                   option(value='1') Masculino
@@ -49,67 +44,53 @@ block content
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='pais') Pa&iacutes
-                  span.text-danger  (*)
-                input#pais.form-control(type='text' name="pais" required)
+                input#pais.form-control(type='text' name="pais")
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='departamento') Departamento
                   span.text-danger  (*)
-                input#departamento.form-control(type='text' name="departamento" required)
+                input#departamento.form-control(type='text' name="departamento")
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='provincia') Provincia
                   span.text-danger  (*)
-                input#provincia.form-control(type='text' name="provincia" required)
+                input#provincia.form-control(type='text' name="provincia")
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='distrito') Distrito
                   span.text-danger  (*)
-                input#distrito.form-control(type='text' name="distrito" required)
+                input#distrito.form-control(type='text' name="distrito")
           .row
             .col
               .form-group
                 label.h6(for='direccion') Direcci&oacuten
                   span.text-danger  (*)
-                input#direccion.form-control(type='text' name="direccion" required)
+                input#direccion.form-control(type='text' name="direccion")
           .row
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='fecha_nacimiento') Fecha de Nacimiento
-                  span.text-danger  (*)
-                input#fechaNacimiento.form-control(type='date' name="fecha_nacimiento" required)
+                input#fechaNacimiento.form-control(type='date' name="fecha_nacimiento" disabled)
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='telefono_movil') Tel&eacutefono M&oacutevil
                   span.text-danger  (*)
-                input#telefonoMovil.form-control(type='number' name="telefono_movil" required)
+                input#telefonoMovil.form-control(type='number' name="telefono_movil")
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='telefono_fijo') Tel&eacutefono  Fijo
                   span.text-danger  (*)
-                input#telefonoFijo.form-control(type='number' name="telefono_fijo" required)
+                input#telefonoFijo.form-control(type='number' name="telefono_fijo")
           .row
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='email') Correo Electr&oacutenico
-                  span.text-danger  (*)
-                input#email.form-control(type='email' name="email" required)
+                input#email.form-control(type='text' name="email" disabled value=usuario.usuario)
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='email2') Correo Electr&oacutenico Alternativo
                   span.text-danger  (*)
-                input#email2.form-control(type='email' name="email2" required)
-            .col-sm-6.col-md-4
-              .form-group
-                label.h6(for='docente') Docente
-                  span.text-danger  (*)
-                br
-                .custom-control.custom-radio.custom-control-inline                
-                  input#investigadorsi.custom-control-input(type='radio' name="docente" value="SI")
-                  label.custom-control-label(for="investigadorsi") SI
-                .custom-control.custom-radio.custom-control-inline
-                  input#investigadorno.custom-control-input(type='radio' name="docente" value="NO" checked)
-                  label.custom-control-label(for="investigadorno") NO
+                input#email2.form-control(type='email' name="email2")
           .row
             .col-sm-12.col-md-6
               input#carga.btn.btn-outline-primary.float-right.btn-lg.btn-block(type="submit", value="Guardar")
