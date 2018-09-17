@@ -12,9 +12,11 @@ block content
             .col-sm-12.col-md-8
                 br
                 form(action="/validation/nuevo", method="post")
-                  label.h6(for='titulo') Titulo del Proyecto
-                    span.text-danger  (*)
-                  textarea#titulo.form-control(rows='3' name="titulo")
-                  br
-                  button.btn.btn-primary.btn-lg.btn-block(type="submit") Guardar
+                  blockquote.blockquote
+                    label.h6(for='titulo') Titulo del Proyecto
+                      span.text-danger  (*)
+                    footer.blockquote-footer: small: em El titulo puede ser modificado en la fase de documentacion del proyecto
+                    textarea#titulo.form-control(rows='3' name="titulo")
+                    br
+                    button.btn.btn-primary.btn-lg.btn-block(type="submit") Guardar
 
