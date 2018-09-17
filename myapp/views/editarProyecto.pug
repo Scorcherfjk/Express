@@ -9,6 +9,7 @@ block A
         label.h6(for='titulo') A.1.1 - Titulo
           span.text-danger  (*)
         textarea#titulo.form-control(rows='3' name="titulo") #{lista.titulo}
+        input(type="hidden", name="id_proyecto" value=lista.id_proyecto)
       .form-group
         label.h6(for='palabrasClave') A.1.2 - Palabras clave
           span.text-danger  (*)
@@ -74,10 +75,10 @@ block A
             label(for='cgptipoDeDocumento') Tipo de documento
               span.text-danger  (*)
             select#cgptipoDeDocumento.form-control(name="cgptipoDeDocumento")
-              option(selected) -----
-              option(value='0') CARNET DE EXTRANJERIA
-              option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
-              option(value='2') PASAPORTE
+              option(value="0" selected) -----
+              option(value='1') CARNET DE EXTRANJERIA
+              option(value='2') DOCUMENTO NACIONAL DE IDENTIDAD
+              option(value='3') PASAPORTE
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpnumeroDeDocumento') Numero de documento
@@ -103,9 +104,9 @@ block A
             label(for='cgpsexo') sexo
               span.text-danger  (*)
             select#cgpsexo.form-control(name="cgpsexo")
-              option(selected) -----
-              option(value='0') Femenino
-              option(value='1') Masculino
+              option(value="0" selected) -----
+              option(value='1') Femenino
+              option(value='2') Masculino
       .row
         .col-sm-6.col-md-4
           .form-group
@@ -128,10 +129,10 @@ block A
             label(for='captipoDeDocumento') Tipo de documento
               span.text-danger  (*)
             select#captipoDeDocumento.form-control(name="captipoDeDocumento")
-              option(selected) -----
-              option(value='0') CARNET DE EXTRANJERIA
-              option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
-              option(value='2') PASAPORTE
+              option(value="0" selected) -----
+              option(value='1') CARNET DE EXTRANJERIA
+              option(value='2') DOCUMENTO NACIONAL DE IDENTIDAD
+              option(value='3') PASAPORTE
         .col-sm-6.col-md-4
           .form-group
             label(for='capnumeroDeDocumento') Numero de documento
@@ -157,9 +158,9 @@ block A
             label(for='capsexo') sexo
               span.text-danger  (*)
             select#capsexo.form-control(name="capsexo")
-              option(selected) -----
-              option(value='0') Femenino
-              option(value='1') Masculino
+              option(value="0" selected) -----
+              option(value='1') Femenino
+              option(value='2') Masculino
       .row
         .col-sm-6.col-md-4
           .form-group
@@ -187,10 +188,10 @@ block A
             label(for='estipoDeEntidad') Tipo de entidad
               span.text-danger  (*)
             select#estipoDeEntidad.form-control(name="estipoDeEntidad")
-              option(selected) -----
-              option(value='0') ASOCIACI&OacuteN CIVIL DE PRODUCTORES
-              option(value='1') EMPRESA
-              option(value='2') PERSONA NATURAL CON NEGOCIO
+              option(value="0" selected) -----
+              option(value='1') ASOCIACI&OacuteN CIVIL DE PRODUCTORES
+              option(value='2') EMPRESA
+              option(value='3') PERSONA NATURAL CON NEGOCIO
         .col-sm-6.col-md-4
           .form-group
             label(for='estamanoDeLaEmpresa') Tamaño de la empresa
@@ -266,10 +267,10 @@ block A
             label(for='rptipoDeDocumento') Tipo de documento
               span.text-danger  (*)
             select#rptipoDeDocumento.form-control(name="rptipoDeDocumento")
-              option(selected) -----
-              option(value='0') CARNET DE EXTRANJERIA
-              option(value='1') DOCUMENTO NACIONAL DE IDENTIDAD
-              option(value='2') PASAPORTE
+              option(value="0" selected) -----
+              option(value='1') CARNET DE EXTRANJERIA
+              option(value='2') DOCUMENTO NACIONAL DE IDENTIDAD
+              option(value='3') PASAPORTE
         .col-sm-6.col-md-4
           .form-group
             label(for='rpnumeroDeDocumento') Numero de documento
@@ -290,9 +291,9 @@ block A
             label(for='rpsexo') sexo
               span.text-danger  (*)
             select#rpsexo.form-control(name="rpsexo")
-              option(selected) -----
-              option(value='0') Femenino
-              option(value='1') Masculino
+              option(value="0" selected) -----
+              option(value='1') Femenino
+              option(value='2') Masculino
       .row
         .col-sm-6.col-md-6
           .form-group
@@ -519,11 +520,11 @@ block C
         label(for='tipoDeInnovación') Tipo de Innovación
           span.text-danger  (*)
         select#tipoDeInnovacion.form-control(name="tipoDeInnovacion")
-          option(selected) ----
-          option(value='0') UN NUEVO PROCESO
-          option(value='1') UN NUEVO PRODUCTO (BIEN O SERVICIO)
-          option(value='2') UN PROCESO YA EXISTENTE CON CARACTERISTICAS DIFERENTES (SIGNIFICATIVAMENTE MEJORADO)
-          option(value='3') UN PRODUCTO YA EXISTENTE CON CARACTERISTICAS DIFERENTES (SIGNIFICATIVAMENTE MEJORADO)
+          option(value="0" selected) ----
+          option(value='1') UN NUEVO PROCESO
+          option(value='2') UN NUEVO PRODUCTO (BIEN O SERVICIO)
+          option(value='3') UN PROCESO YA EXISTENTE CON CARACTERISTICAS DIFERENTES (SIGNIFICATIVAMENTE MEJORADO)
+          option(value='4') UN PRODUCTO YA EXISTENTE CON CARACTERISTICAS DIFERENTES (SIGNIFICATIVAMENTE MEJORADO)
       .form-group
         label(for='describirFuncion')
           | 1. Describir la función que realizará la innovación
