@@ -22,7 +22,10 @@ block content
                       tr
                         td #{valor.titulo}
                         td #{valor.fecha_creacion}
-                        td: a.btn.btn-primary.btn-sm(href="/editar-proyecto" role="button") Editar
+                        td
+                          form(action="/editar-proyecto", method="post")
+                            input(type="hidden", name="idproyecto" value=valor.id_proyecto)
+                            button.btn.btn-primary.btn-sm(type="submit" ) Editar
                         td: a.btn.btn-primary.btn-sm(href="/visualizar" role="button") Visualizar
               br
               a.btn.btn-primary.btn-lg.btn-block(href="/nuevo" role="button") Crear Proyecto
