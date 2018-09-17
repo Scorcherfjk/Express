@@ -22,6 +22,7 @@ conexion(conn);
 
 
 /********************************************             INDEX              ***************************************************************************************************************************************************************/
+
 router.get('/', function(req, res, next) {
     req.session.destroy( function (err) {
       if(err){
@@ -55,9 +56,8 @@ router.get('/', function(req, res, next) {
 
 /*******************************************************************************************************************************/
 
-
-
 /*****************************************             ACTIVE SESSION          ***************************************************************************************************************************************************************/
+
 router.get('/inicio' ,function(req, res, next) {
     if(req.session.user){
         res.render('inicio', { 
@@ -69,7 +69,8 @@ router.get('/inicio' ,function(req, res, next) {
     }
 });
 
-/********************** CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
+/* CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
+
 router.get('/nuevo-proyecto' ,function(req, res, next) {
     if(req.session.user){
         res.render('nuevoProyecto', { 
@@ -80,7 +81,9 @@ router.get('/nuevo-proyecto' ,function(req, res, next) {
         res.redirect("/");
     }
   });
-/************************************ CAMBIAR LA CLAVE DE ACCESO ****************************************************************************************************************************************** */
+
+/* CAMBIAR LA CLAVE DE ACCESO ****************************************************************************************************************************************** */
+
 router.get('/change-password' ,function(req, res, next) {
     if(req.session.user){
         res.render('changePassword', { 
@@ -92,7 +95,8 @@ router.get('/change-password' ,function(req, res, next) {
   }
   });
 
-/************************************ CAMBIAR LA CLAVE DE ACCESO ***************************************************************************************************************************************** */
+/* CAMBIAR LA CLAVE DE ACCESO ***************************************************************************************************************************************** */
+
 router.get('/nuevo' ,function(req, res, next) {
     if(req.session.user){
         res.render('nuevo', { 
@@ -103,7 +107,9 @@ router.get('/nuevo' ,function(req, res, next) {
         res.redirect("/");
   }
   });
-/**************************** CAMBIAR LOS DATOS PERSONALES  ************************************************************************************************************************************************* */
+
+/* CAMBIAR LOS DATOS PERSONALES  ************************************************************************************************************************************************* */
+
 router.get('/change-data' ,function(req, res, next) {
     if(req.session.user){
         res.render('changeData', { 
@@ -114,7 +120,9 @@ router.get('/change-data' ,function(req, res, next) {
         res.redirect("/");
   }
 });
-/*********************************  ADMINISTRACION DE LOS PROYECTOS ********************************************************************************************************************************************* */
+
+/* ADMINISTRACION DE LOS PROYECTOS ********************************************************************************************************************************************* */
+
 router.get('/administrar' ,function(req, res, next) {
     if(req.session.user){
 
@@ -154,11 +162,12 @@ router.get('/administrar' ,function(req, res, next) {
     }
 });
 
-/********************** CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
+/* CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
+
 router.post('/editar-proyecto' ,function(req, res, next) {
     if(req.session.user){
         
-        var sql = 'SELECT TOP 1 id_proyecto, titulo from unjfsc.dbo.proyectos WHERE id_usuario = @id_usuario AND id_proyecto = @idproyecto';
+        var sql = 'SELECT TOP 1 * from unjfsc.dbo.proyectos WHERE id_usuario = @id_usuario AND id_proyecto = @idproyecto';
         var result = {};
 
         var request = new Request(sql, function(err) {
@@ -178,7 +187,7 @@ router.post('/editar-proyecto' ,function(req, res, next) {
         });
 
         request.addParameter("id_usuario" ,    TYPES.Int,    req.session.user.id);
-        request.addParameter("idproyecto" ,    TYPES.Int,    req.body.idproyecto);
+        request.addParameter("idproyecto" ,    TYPES.Int,    req.body.idproyecto ? req.body.idproyecto : res.session.idproyecto);
 
         request.on("row", function (columns) { 
             var item = {}; 
@@ -195,14 +204,12 @@ router.post('/editar-proyecto' ,function(req, res, next) {
     }
   });
 
-
 /*********************************************************************************************************************************************************************************************************************************************/
-
 
 /**********************************************         DATABASE             *****************************************************************************************************************************************************************/
 
+/* INICIO DE SESION*******************************************************************************************************************************/
 
-/********************************** INICIO DE SESION*******************************************************************************************************************************/
 router.post('/validation', function(req, res) {
 
     var user = req.body.user;
@@ -239,8 +246,8 @@ router.post('/validation', function(req, res) {
     conn.execSql(request);
 });
 
+/* REGISTRO DE NUEVO USUARIO*******************************************************************************************************************************/
 
-/*********************************REGISTRO DE NUEVO USUARIO*******************************************************************************************************************************/
 router.post("/validation/new-user", function (req,res) {
 
     var tipo_documento = req.body.tipo_documento;
@@ -312,9 +319,8 @@ router.post("/validation/new-user", function (req,res) {
     conn.execSql(request);
 });
 
+/* CARGA DEL PROYECTO NUEVO *******************************************************************************************************************************/
 
-
-/********************************** CARGA DEL PROYECTO NUEVO *******************************************************************************************************************************/
 router.post('/validation/nuevo', function(req, res) {
 
     
@@ -343,9 +349,8 @@ router.post('/validation/nuevo', function(req, res) {
 
 });
 
+/* CARGA DEL PROYECTO NUEVO *********************************************************************************************************************/
 
-
-/********************************** CARGA DEL PROYECTO NUEVO *********************************************************************************************************************/
 router.post('/validation/editar-proyecto', function(req, res) {
 
     
@@ -436,7 +441,7 @@ router.post('/validation/editar-proyecto', function(req, res) {
     request.addParameter("id_usuario" ,                           TYPES.Int             ,req.session.user.id);    
     request.addParameter("titulo" ,                               TYPES.Text            ,req.body.titulo);
     request.addParameter("id_proyecto" ,                          TYPES.Int             ,req.body.id_proyecto);
-    request.addParameter( "palabrasClave"  ,                      TYPES.Text            ,req.body.palabrasClave);
+    request.addParameter( "palabrasClave"  ,                      TYPES.Text            ,req.body.palabrasClave ? req.body.palabrasClave : null);
     request.addParameter( "duracionDelProyecto",                  TYPES.Int             ,req.body.duracionDelProyecto ? req.body.duracionDelProyecto : null);
     request.addParameter( "fechaEstimadaDeInicioDelProyecto",     TYPES.Date            ,req.body.fechaEstimadaDeInicioDelProyecto ? req.body.fechaEstimadaDeInicioDelProyecto : null);
     request.addParameter( "cgptipoDeDocumento" ,                  TYPES.Int             ,req.body.cgptipoDeDocumento ? req.body.cgptipoDeDocumento : null);
@@ -515,21 +520,21 @@ router.post('/validation/editar-proyecto', function(req, res) {
     conn.execSql(request);
 
 });
-/*******************************************             FILTERING          ****************************************************/
 
+/*******************************************             FILTERING          ****************************************************/
 
 router.get('/validation', function(req,res){
   res.redirect("/");
 });
+
 router.get('/validation/cargar-proyecto', function(req,res){
     res.redirect("/");
   });
+
   router.get('/validation/new-user', function(req,res){
     res.redirect("/");
   });
 
 /*******************************************************************************************************************************/
-
-
 
 module.exports = router;
