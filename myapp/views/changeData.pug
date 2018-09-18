@@ -2,10 +2,10 @@ extends navbar
 
 block content
   .container
-    form(action="", method="post")
+    form(action="/validation/change-data", method="post")
       .card.rounded.border-secondary
         h5.card-header.text-capitalize.bg-danger.text-white
-          | Registro Persona Natural
+          | Actualizar datos personales
         .card-body
           .row
             .col-sm-6
@@ -19,20 +19,20 @@ block content
             .col-sm-6
               .form-group
                 label.h6(for='documento_identidad') Documento de Identidad
-                input#documentoIdentidad.form-control(type='text' name="documento_identidad" disabled value=usuario.id)
+                input#documentoIdentidad.form-control(type='text' name="documento_identidad" disabled value=lista.documento_identidad)
           .row
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='nombres') Nombres
-                input#nombres.form-control(type='text' name="nombres" value=usuario.nombre disabled)
+                input#nombres.form-control(type='text' name="nombres" value=lista.nombres disabled)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='apellido_paterno') Apellido Paterno
-                input#apellidoPaterno.form-control(type='text' name="apellido_paterno" disabled value=usuario.apellido) 
+                input#apellidoPaterno.form-control(type='text' name="apellido_paterno" disabled value=lista.apellido_paterno) 
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='apellido_materno') Apellido Materno
-                input#apellidoMaterno.form-control(type='text' name="apellido_materno" disabled)
+                input#apellidoMaterno.form-control(type='text' name="apellido_materno" disabled value=lista.apellido_materno)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='genero') G&eacutenero
@@ -44,53 +44,53 @@ block content
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='pais') Pa&iacutes
-                input#pais.form-control(type='text' name="pais")
+                input#pais.form-control(type='text' name="pais" value=lista.pais)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='departamento') Departamento
                   span.text-danger  (*)
-                input#departamento.form-control(type='text' name="departamento")
+                input#departamento.form-control(type='text' name="departamento" value=lista.departamento)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='provincia') Provincia
                   span.text-danger  (*)
-                input#provincia.form-control(type='text' name="provincia")
+                input#provincia.form-control(type='text' name="provincia" value=lista.provincia)
             .col-sm-6.col-md-3
               .form-group
                 label.h6(for='distrito') Distrito
                   span.text-danger  (*)
-                input#distrito.form-control(type='text' name="distrito")
+                input#distrito.form-control(type='text' name="distrito" value=lista.distrito)
           .row
             .col
               .form-group
                 label.h6(for='direccion') Direcci&oacuten
                   span.text-danger  (*)
-                input#direccion.form-control(type='text' name="direccion")
+                input#direccion.form-control(type='text' name="direccion" value=lista.direccion)
           .row
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='fecha_nacimiento') Fecha de Nacimiento
-                input#fechaNacimiento.form-control(type='date' name="fecha_nacimiento" disabled)
+                input#fecha_nacimiento.form-control(type='date' name="fecha_nacimiento" disabled value=lista.fecha_nacimiento)
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='telefono_movil') Tel&eacutefono M&oacutevil
                   span.text-danger  (*)
-                input#telefonoMovil.form-control(type='number' name="telefono_movil")
+                input#telefono_movil.form-control(type='number' name="telefono_movil" value=lista.telefono_movil)
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='telefono_fijo') Tel&eacutefono  Fijo
                   span.text-danger  (*)
-                input#telefonoFijo.form-control(type='number' name="telefono_fijo")
+                input#telefono_fijo.form-control(type='number' name="telefono_fijo" value=lista.telefono_fijo)
           .row
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='email') Correo Electr&oacutenico
-                input#email.form-control(type='text' name="email" disabled value=usuario.usuario)
+                input#email.form-control(type='text' name="email" disabled value=lista.email)
             .col-sm-6.col-md-4
               .form-group
                 label.h6(for='email2') Correo Electr&oacutenico Alternativo
                   span.text-danger  (*)
-                input#email2.form-control(type='email' name="email2")
+                input#email2.form-control(type='email' name="email2" value=lista.email2)
           .row
             .col-sm-12.col-md-6
               input#carga.btn.btn-outline-primary.float-right.btn-lg.btn-block(type="submit", value="Guardar")
