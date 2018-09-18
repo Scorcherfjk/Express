@@ -19,46 +19,40 @@ block A
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Area
               th Sub-area
               th Area tematica
           tbody
             tr
-              td 1
-              td Tecnologia
-              td Sistemas
-              td Informatica
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 A.1.4 - actividad economica en la que se aplicara la innovacion
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Area de aplicacion
               th Sub-area de aplicacion
           tbody
             tr
-              td 1
-              td Tecnologia
-              td Sistemas
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 A.1.5 - localizacion del proyecto
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Departamento
               th Provincia
               th Distrito
               th Ubigeo
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
-              td Miraflores
-              td 150122
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="number")
       .form-group
         label.h6(for='duracionDelProyecto') A.1.6 - Duracion del proyecto
           span.text-danger  (*)
@@ -322,7 +316,6 @@ block A
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th ruc
               th nombre de la entidad
               th tipo de entidad
@@ -330,12 +323,11 @@ block A
               th nombre completo
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
-              td Miraflores
-              td 150122
-              td Ubigeo
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -346,46 +338,39 @@ block A
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th nombre de la entidad
               th principales actividades y experiencia
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 A.3.2 - Principales actividades, investigaciones, tecnologias y procesos que se aportaran al proyecto
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th nombre de la entidad
               th principal infraestructura fisica
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 A.3.3 - Principales aspectos que evidencien que la entidad se beneficiara con los resultados
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th nombre de la entidad
               th justificacion para contar con la entidad
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 A.3.4 - Fondos recibidos por alguna entidad del estado hacia la entidad solicitante
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th nombre del otorgante
               th nombre del proyecto
               th monto
@@ -393,18 +378,16 @@ block A
               th fecha de finalizacion
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
-              td monto
-              td fecha de reposicion
-              td fecha de finalizacion
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="date")
+              td: input.form-control(type="date")
       h6 A.3.5 - Situacion de los proyectos financiados por innovate peru ( PIMEN, PIPEI, PITEI, PIPEA )
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th contrato
               th titulo
               th aporte RNR
@@ -414,14 +397,13 @@ block A
               th situacion actual
           tbody
             tr
-              td 1
-              td Lima
-              td Lima
-              td monto
-              td fecha de reposicion
-              td fecha de finalizacion
-              td estado
-              td situacion actual
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="date")
+              td: input.form-control(type="date")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       br
 block B
   .card.rounded.border-secondary
