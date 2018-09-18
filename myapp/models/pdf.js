@@ -14,6 +14,7 @@ exports.pdf = (lista) => {
     }
     table, td, th {
         border: 2px solid black;
+        font-size: .8em;
     }
     table {
         width: 100%;
@@ -33,15 +34,15 @@ exports.pdf = (lista) => {
 </style>
 </head>
 <body>
-<h2> A. INFORMACION GENERAL</h2>
+<h2>SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES</h2>
 <h3>A.1 - Datos generales del proyecto</h3>
-<h4>A.1.1 - Titulo</h4>
+<h4>A.1.1 - Título</h4>
 <p>`+ lista.titulo +`</p>
 
 <h4>A.1.2 - Palabras clave</h4>
 <p>`+ lista.palabras_clave +`</p>
 
-<h4>A.1.3 - Area de innovacion</h4>
+<h4>A.1.3 - Area de innovación</h4>
 <br>
 <table border="1">
     <thead>
@@ -389,7 +390,7 @@ exports.pdf = (lista) => {
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<h2>B. MERCADO - COMPETITIVIDAD EMPRESARIAL</h2>
+<h2>SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL</h2>
 
 <h3>B.1 - situacion actual de mercado del producto y/o servicio y de la empresarial</h3>
 
@@ -426,7 +427,7 @@ exports.pdf = (lista) => {
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<h2>C. MEMORIA TÉCNICA</h2>
+<h2>SECCIÓN C: MEMORIA TÉCNICA</h2>
 
 <h3>C.1 Diagnóstico</h3>
 <h4>C.1.1 Problema identificado que limita la competitividad de la empresa u oportunidad de mercado</h4>
@@ -635,7 +636,7 @@ C.4 Objetivos
 </table>
 
 
-<h2>D - PRESUPUESTO DEL PROYECTO</h2>
+<h2>SECCIÓN D: PRESUPUESTO DEL PROYECTO</h2>
 
 <h3>D.1 Moneda y Presupuesto del Proyecto</h3>
 <h5>Moneda del Proyecto</h5>
