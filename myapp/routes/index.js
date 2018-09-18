@@ -54,15 +54,15 @@ router.get('/inicio' ,function(req, res, next) {
 
 /* CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
 
-router.get('/nuevo-proyecto' ,function(req, res, next) {
+router.get('/nuevo' ,function(req, res, next) {
     if(req.session.user){
-        res.render('nuevoProyecto', { 
-            title: "Nuevo Proyecto", 
+        res.render('nuevo', { 
+            title: "Nuevo", 
             usuario: req.session.user 
         });
     } else {
         res.redirect("/");
-    }
+  }
   });
 
 /* CAMBIAR LA CLAVE DE ACCESO ****************************************************************************************************************************************** */
@@ -78,30 +78,107 @@ router.get('/change-password' ,function(req, res, next) {
   }
   });
 
-/* CAMBIAR LA CLAVE DE ACCESO ***************************************************************************************************************************************** */
-
-router.get('/nuevo' ,function(req, res, next) {
+router.post('/validation/change-password' ,function(req, res, next) {
     if(req.session.user){
-        res.render('nuevo', { 
-            title: "Nuevo", 
-            usuario: req.session.user 
+
+        var sql = `UPDATE [unjfsc].[dbo].[usuario]
+                SET [clave] = @clave
+                WHERE id_usuario = @id_usuario`;
+
+        var request = new Request(sql, function(err) {
+            if (err) {
+                console.log(err);
+            }
+            res.redirect('/inicio');
         });
+
+        request.addParameter("id_usuario" ,         TYPES.Int,              req.session.user.id);
+        request.addParameter("email2" ,             TYPES.VarChar,          req.body.clave);
+
+        conn.execSql(request);
     } else {
         res.redirect("/");
-  }
-  });
+    }
+});
 
 /* CAMBIAR LOS DATOS PERSONALES  ************************************************************************************************************************************************* */
 
 router.get('/change-data' ,function(req, res, next) {
     if(req.session.user){
-        res.render('changeData', { 
-            title: "Cambio de Datos", 
-            usuario: req.session.user 
+        
+        var sql = 'SELECT TOP 1 * from unjfsc.dbo.usuario WHERE id_usuario = @id_usuario';
+        var result = {};
+
+        var request = new Request(sql, function(err) {
+            if (err) {
+                console.log(err);
+            }
+            if(!req.session.user){
+                console.log(req.session.user);
+                res.redirect("/");
+            } else {
+                res.render('changeData', { 
+                    title: "Cambio de Datos", 
+                    usuario: req.session.user,
+                    lista: result
+                });
+            }
         });
+
+        request.addParameter("id_usuario" ,    TYPES.Int,    req.session.user.id);
+
+        request.on("row", function (columns) { 
+            var item = {}; 
+            columns.forEach(function (column) { 
+                item[column.metadata.colName] = column.value; 
+            }); 
+            result = item;
+        });
+
+        conn.execSql(request);
+
     } else {
         res.redirect("/");
-  }
+    }
+});
+
+router.post('/validation/change-data' ,function(req, res, next) {
+    if(req.session.user){
+        
+
+        var sql = `UPDATE [unjfsc].[dbo].[usuario]
+            SET [pais] = @pais
+                ,[departamento] =  @departamento
+                ,[provincia] = @provincia
+                ,[distrito] = @distrito
+                ,[direccion] =  @direccion
+                ,[telefono_movil] = @telefono_movil
+                ,[telefono_fijo] =  @telefono_fijo
+                ,[email2] =  @email2
+                WHERE id_usuario = @id_usuario`;
+
+        var request = new Request(sql, function(err) {
+            if (err) {
+                console.log(err);
+            }
+            res.redirect('/change-data');
+        });
+
+        request.addParameter("id_usuario" ,         TYPES.Int,              req.session.user.id);
+        request.addParameter("pais" ,               TYPES.VarChar,          req.body.pais);
+        request.addParameter("departamento" ,       TYPES.VarChar,          req.body.departamento);
+        request.addParameter("provincia" ,          TYPES.VarChar,          req.body.provincia);
+        request.addParameter("distrito" ,           TYPES.VarChar,          req.body.distrito);
+        request.addParameter("direccion" ,          TYPES.VarChar,          req.body.direccion);
+        request.addParameter("telefono_movil" ,     TYPES.Int,              req.body.telefono_movil);
+        request.addParameter("telefono_fijo" ,      TYPES.Int,              req.body.telefono_fijo);
+        request.addParameter("email2" ,             TYPES.VarChar,          req.body.email2);
+
+        conn.execSql(request);
+
+    } else {
+        res.redirect("/");
+    }
 });
 
 /* ADMINISTRACION DE LOS PROYECTOS ********************************************************************************************************************************************* */
@@ -497,9 +574,7 @@ router.post('/validation/editar-proyecto', function(req, res) {
     request.addParameter( "medidasDeMitigacion",                  TYPES.Text            ,req.body.medidasDeMitigacion ? req.body.medidasDeMitigacion : null );
     request.addParameter( "impactosEnLaEmpresa",                  TYPES.Text            ,req.body.impactosEnLaEmpresa ? req.body.impactosEnLaEmpresa : null );
     request.addParameter( "monedaDelProyecto"  ,                  TYPES.Int             ,req.body.monedaDelProyecto ? req.body.monedaDelProyecto : null );
-
-
-    request.on('row', function(columns) {   });       
+       
     conn.execSql(request);
 
 });
@@ -537,7 +612,7 @@ router.post('/visualizar', function(req, res, next) {
         } else {
             conversion({ html: pdf(result) }, 
             function(err, pdf) {
-                console.log("Documento con " + pdf.numberOfPages+ " paginas.");
+                console.log("Documento generado con " + pdf.numberOfPages+ " paginas.");
 
                 res.setHeader('content-type', 'application/pdf');
                 pdf.stream.pipe(res);
@@ -558,7 +633,7 @@ router.post('/visualizar', function(req, res, next) {
 
     conn.execSql(request);
 
-  });
+});
 
 
 module.exports = router;
