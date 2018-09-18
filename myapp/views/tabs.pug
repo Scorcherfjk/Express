@@ -23,11 +23,13 @@ block content
           block D
         nav.navbar.navbar-expand-lg.navbar-light.bg-mine.fixed-bottom
           .btn-group.my-2.my-sm-0(role="group")
-            button.btn.btn-success(type='button', data-toggle='modal', data-target='#Validar') Validar
+            //- button.btn.btn-success(type='button', data-toggle='modal', data-target='#Validar') Validar
             button.btn.btn-success(type="submit") Guardar 
             a.btn.btn-success(href='/inicio') Cancelar 
-            button.btn.btn-success(type='button', data-toggle='modal', data-target='#guardarEnviar')  Guardar y Enviar 
-            a.btn.btn-success(href='/visualizar') Previsualizar 
+            //- button.btn.btn-success(type='button', data-toggle='modal', data-target='#guardarEnviar')  Guardar y Enviar 
+            //- form(action="/visualizar", method="post")
+            //-   input(type="hidden", name="idproyecto" value=lista.id_proyecto)
+            //-   button.btn.btn-success(type="submit") Visualizar
   #Validar.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
     .modal-dialog(role='document')
       .modal-content
