@@ -5,7 +5,6 @@ var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;  
 var config = require('../models/database').config;
 var bcrypt = require('bcrypt');
-var pdf = require('pdfkit');
 
 function conexion(conn) {
     conn.on('connect', function(err) {
@@ -34,25 +33,9 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Universidad jfsc' });
   });
   
-  router.get('/register', function(req, res, next) {
-    res.render('register', { title: 'Registro de usuario' });
-  });
-
-  router.get('/visualizar', function(req, res, next) {
-    const doc = new pdf()
-    let filename = "documento";
-    // Stripping special characters
-    filename = encodeURIComponent(filename) + '.pdf'
-    // Setting response to 'attachment' (download).
-    // If you use 'inline' here it will automatically open the PDF
-    res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"')
-    res.setHeader('Content-type', 'application/pdf')
-    const content = "Documento pdf"
-    doc.y = 300
-    doc.text(content, 50, 50)
-    doc.pipe(res)
-    doc.end()
-  });
+router.get('/register', function(req, res, next) {
+res.render('register', { title: 'Registro de usuario' });
+});
 
 /*******************************************************************************************************************************/
 
@@ -187,7 +170,7 @@ router.post('/editar-proyecto' ,function(req, res, next) {
         });
 
         request.addParameter("id_usuario" ,    TYPES.Int,    req.session.user.id);
-        request.addParameter("idproyecto" ,    TYPES.Int,    req.body.idproyecto ? req.body.idproyecto : res.session.idproyecto);
+        request.addParameter("idproyecto" ,    TYPES.Int,    req.body.idproyecto);
 
         request.on("row", function (columns) { 
             var item = {}; 
@@ -531,10 +514,51 @@ router.get('/validation/cargar-proyecto', function(req,res){
     res.redirect("/");
   });
 
-  router.get('/validation/new-user', function(req,res){
+router.get('/validation/new-user', function(req,res){
     res.redirect("/");
-  });
+});
 
 /*******************************************************************************************************************************/
+
+router.post('/visualizar', function(req, res, next) {
+    var conversion = require("phantom-html-to-pdf")();
+    var pdf = require('../models/pdf').pdf;
+
+    var sql = 'SELECT TOP 1 * from unjfsc.dbo.proyectos WHERE id_usuario = @id_usuario AND id_proyecto = @idproyecto';
+    var result = {};
+
+    var request = new Request(sql, function(err) {
+        if (err) {
+            console.log(err);
+        }
+        if(!req.session.user){
+            console.log(req.session.user);
+            res.redirect("/");
+        } else {
+            conversion({ html: pdf(result) }, 
+            function(err, pdf) {
+                console.log("Documento con " + pdf.numberOfPages+ " paginas.");
+
+                res.setHeader('content-type', 'application/pdf');
+                pdf.stream.pipe(res);
+            });
+        }
+    });
+
+    request.addParameter("id_usuario" ,    TYPES.Int,    req.session.user.id);
+    request.addParameter("idproyecto" ,    TYPES.Int,    req.body.idproyecto);
+
+    request.on("row", function (columns) { 
+        var item = {}; 
+        columns.forEach(function (column) { 
+            item[column.metadata.colName] = column.value; 
+        }); 
+        result = item;
+    });
+
+    conn.execSql(request);
+
+  });
+
 
 module.exports = router;

@@ -27,6 +27,9 @@ block content
                           form(action="/editar-proyecto", method="post")
                             input(type="hidden", name="idproyecto" value=valor.id_proyecto)
                             button.btn.btn-primary.btn-sm(type="submit" ) Editar
-                        td: a.btn.btn-primary.btn-sm(href="/visualizar" role="button") Visualizar
+                        td 
+                          form(action="/visualizar", method="post")
+                            input(type="hidden", name="idproyecto" value=valor.id_proyecto)
+                            button.btn.btn-primary.btn-sm(type="submit") Visualizar
               br
               a.btn.btn-primary.btn-lg.btn-block(href="/nuevo" role="button") Crear Proyecto
