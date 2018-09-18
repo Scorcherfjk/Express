@@ -38,3 +38,9 @@ tbody{
   color: black;
   background-color:rgba(177, 173, 173, 0);
 }
+label, h6, th{
+    text-transform: capitalize;
+}
+th{
+  text-align: center;
+}
