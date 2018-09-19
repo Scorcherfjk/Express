@@ -44,3 +44,6 @@ label, h6, th{
 th{
   text-align: center;
 }
+td{
+  vertical-align:center ;
+}
