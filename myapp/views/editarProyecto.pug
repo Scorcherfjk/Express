@@ -1,6 +1,8 @@
 extends tabs
 
 block A
+  - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
+  - function fecha(i){ if (i != null) { var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }else { return i;} }
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
       | A.1 - Datos generales del proyecto
@@ -24,9 +26,9 @@ block A
               th Area tematica
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#area_innovacion_area.form-control(type="text" name="area_innovacion_area" value=lista.area_innovacion_area)
+              td: input#area_innovacion_subarea.form-control(type="text" name="area_innovacion_subarea" value=lista.area_innovacion_subarea)
+              td: input#area_innovacion_tematica.form-control(type="text" name="area_innovacion_tematica" value=lista.area_innovacion_tematica)
       h6 A.1.4 - actividad economica en la que se aplicara la innovacion
       .table-responsive
         table.table.table-bordered.table-hover
@@ -36,8 +38,8 @@ block A
               th Sub-area de aplicacion
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#aplicacion_area.form-control(type="text" name="aplicacion_area" value=lista.aplicacion_area)
+              td: input#aplicacion_subarea.form-control(type="text" name="aplicacion_subarea" value=lista.aplicacion_subarea)
       h6 A.1.5 - localizacion del proyecto
       .table-responsive
         table.table.table-bordered.table-hover
@@ -49,10 +51,10 @@ block A
               th Ubigeo
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="number")
+              td: input#localizacion_departamento.form-control(type="text" name="localizacion_departamento" value=lista.localizacion_departamento)
+              td: input#localizacion_provincia.form-control(type="text" name="localizacion_provincia" value=lista.localizacion_provincia)
+              td: input#localizacion_distrito.form-control(type="text" name="localizacion_distrito" value=lista.localizacion_distrito)
+              td: input#localizacion_ubigeo.form-control(type="number" name="localizacion_ubigeo" value=lista.localizacion_ubigeo)
       .form-group
         label.h6(for='duracionDelProyecto') A.1.6 - Duracion del proyecto
           span.text-danger  (*)
@@ -61,7 +63,7 @@ block A
         label.h6(for='fechaEstimadaDeInicioDelProyecto')
           | A.1.7 - Fecha estimada de inicio del proyecto
           span.text-danger  (*)
-        input#fechaEstimadaDeInicioDelProyecto.form-control(type='date' name="fechaEstimadaDeInicioDelProyecto" value=lista.fecha_estimada_inicio)
+        input#fechaEstimadaDeInicioDelProyecto.form-control(type='date' name="fechaEstimadaDeInicioDelProyecto" value=fecha(lista.fecha_estimada_inicio))
       h6 A.1.8 - Datos del coordinador general del proyecto
       .row
         .col-sm-6.col-md-4
@@ -92,7 +94,7 @@ block A
           .form-group
             label(for='cgpfechaDeNacimiento') fecha de nacimiento
               span.text-danger  (*)
-            input#cgpfechaDeNacimiento.form-control(type='date' name="cgpfechaDeNacimiento" value=lista.cgp_fecha_nac)
+            input#cgpfechaDeNacimiento.form-control(type='date' name="cgpfechaDeNacimiento" value=fecha(lista.cgp_fecha_nac))
         .col-sm-6.col-md-4
           .form-group
             label(for='cgpsexo') sexo
@@ -146,7 +148,7 @@ block A
           .form-group
             label(for='capfechaDeNacimiento') fecha de nacimiento
               span.text-danger  (*)
-            input#capfechaDeNacimiento.form-control(type='date' name="capfechaDeNacimiento" value=lista.cap_fecha_nac)
+            input#capfechaDeNacimiento.form-control(type='date' name="capfechaDeNacimiento" value=fecha(lista.cap_fecha_nac))
         .col-sm-6.col-md-4
           .form-group
             label(for='capsexo') sexo
@@ -199,7 +201,7 @@ block A
       .form-group
         label(for='esrucRazonSocial') RUC y Razon social
           span.text-danger  (*)
-        input#esrucRazonSocial.form-control(type='text' name="esrucRazonSocial" value=lista.es_ruc)
+        textarea#esrucRazonSocial.form-control(name="esrucRazonSocial" style="height: 38px;") #{lista.es_ruc}
       .form-group
         label(for='esciiu') CIIU
           span.text-danger  (*)
@@ -213,12 +215,12 @@ block A
           .form-group
             label(for='esfechaDeConstitucion') Fecha de Constitucion
               span.text-danger  (*)
-            input#esfechaDeConstitucion.form-control(type='date' name="esfechaDeConstitucion" value=lista.es_fecha_constitucion)
+            input#esfechaDeConstitucion.form-control(type='date' name="esfechaDeConstitucion" value=fecha(lista.es_fecha_constitucion))
         .col-sm-6.col-md-6
           .form-group
             label(for='esinicioDeActividades') Inicio de actividades
               span.text-danger  (*)
-            input#esinicioDeActividades.form-control(type='date' name="esinicioDeActividades" value=lista.es_inicio_actividades)
+            input#esinicioDeActividades.form-control(type='date' name="esinicioDeActividades" value=fecha(lista.es_inicio_actividades))
       .row
         .col-sm-6.col-md-6
           .form-group
@@ -323,11 +325,23 @@ block A
               th nombre completo
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#a22_1_1.form-control(type="text" name="a22_1_1" value=lista.a22_1_1)
+              td: input#a22_2_1.form-control(type="text" name="a22_2_1" value=lista.a22_2_1)
+              td: input#a22_3_1.form-control(type="text" name="a22_3_1" value=lista.a22_3_1)
+              td: input#a22_4_1.form-control(type="text" name="a22_4_1" value=lista.a22_4_1)
+              td: input#a22_5_1.form-control(type="text" name="a22_5_1" value=lista.a22_5_1)
+            tr
+              td: input#a22_1_2.form-control(type="text" name="a22_1_2" value=lista.a22_1_2)
+              td: input#a22_2_2.form-control(type="text" name="a22_2_2" value=lista.a22_2_2)
+              td: input#a22_3_2.form-control(type="text" name="a22_3_2" value=lista.a22_3_2)
+              td: input#a22_4_2.form-control(type="text" name="a22_4_2" value=lista.a22_4_2)
+              td: input#a22_5_2.form-control(type="text" name="a22_5_2" value=lista.a22_5_2)
+            tr
+              td: input#a22_1_3.form-control(type="text" name="a22_1_3" value=lista.a22_1_3)
+              td: input#a22_2_3.form-control(type="text" name="a22_2_3" value=lista.a22_2_3)
+              td: input#a22_3_3.form-control(type="text" name="a22_3_3" value=lista.a22_3_3)
+              td: input#a22_4_3.form-control(type="text" name="a22_4_3" value=lista.a22_4_3)
+              td: input#a22_5_3.form-control(type="text" name="a22_5_3" value=lista.a22_5_3)
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -338,34 +352,52 @@ block A
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th nombre de la entidad
+              th(style="width: 30%;") nombre de la entidad
               th principales actividades y experiencia
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-      h6 A.3.2 - Principales actividades, investigaciones, tecnologias y procesos que se aportaran al proyecto
+              td: input#a31_1_1.form-control(type="text" name="a31_1_1" value=lista.a31_1_1)
+              td: textarea#a31_2_1.form-control(name="a31_2_1" style="height: 38px;") #{lista.a31_2_1}
+            tr
+              td: input#a31_1_2.form-control(type="text" name="a31_1_2" value=lista.a31_1_2)
+              td: textarea#a31_2_2.form-control(name="a31_2_2" style="height: 38px;") #{lista.a31_2_2}
+            tr
+              td: input#a31_1_3.form-control(type="text" name="a31_1_3" value=lista.a31_1_3)
+              td: textarea#a31_2_3.form-control( name="a31_2_3" style="height: 38px;") #{lista.a31_2_3}
+      h6 A.3.2 - Principal infraestructura, equipamiento, tecnologias y procesos que se aportaran al proyecto
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th nombre de la entidad
+              th(style="width: 30%;") nombre de la entidad
               th principal infraestructura fisica
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#a32_1_1.form-control(type="text" name="a32_1_1" value=lista.a32_1_1)
+              td: textarea#a32_2_1.form-control(name="a32_2_1" style="height: 38px;") #{lista.a32_2_1}
+            tr
+              td: input#a32_1_2.form-control(type="text" name="a32_1_2" value=lista.a32_1_2)
+              td: textarea#a32_2_2.form-control(name="a32_2_2" style="height: 38px;") #{lista.a32_2_2}
+            tr
+              td: input#a32_1_3.form-control(type="text" name="a32_1_3" value=lista.a32_1_3)
+              td: textarea#a32_2_3.form-control(name="a32_2_3" style="height: 38px;") #{lista.a32_2_3}
       h6 A.3.3 - Principales aspectos que evidencien que la entidad se beneficiara con los resultados
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th nombre de la entidad
+              th(style="width: 30%;") nombre de la entidad
               th justificacion para contar con la entidad
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#a33_1_1.form-control(type="text" name="a33_1_1" value=lista.a33_1_1)
+              td: textarea#a33_2_1.form-control(name="a33_2_1" style="height: 38px;") #{lista.a33_2_1}
+            tr
+              td: input#a33_1_2.form-control(type="text" name="a33_1_2" value=lista.a33_1_2)
+              td: textarea#a33_2_2.form-control(name="a33_2_2" style="height: 38px;") #{lista.a33_2_2}
+            tr
+              td: input#a33_1_3.form-control(type="text" name="a33_1_3" value=lista.a33_1_3)
+              td: textarea#a33_2_3.form-control(name="a33_2_3" style="height: 38px;") #{lista.a33_2_3}
       h6 A.3.4 - Fondos recibidos por alguna entidad del estado hacia la entidad solicitante
       .table-responsive
         table.table.table-bordered.table-hover
@@ -378,11 +410,23 @@ block A
               th fecha de finalizacion
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="date")
-              td: input.form-control(type="date")
+              td: input#a34_1_1.form-control(type="text" name="a34_1_1" value=lista.a34_1_1)
+              td: input#a34_2_1.form-control(type="text" name="a34_2_1" value=lista.a34_2_1)
+              td: input#a34_3_1.form-control(type="text" name="a34_3_1" value=lista.a34_3_1)
+              td: input#a34_4_1.form-control(type="date" name="a34_4_1" value=fecha(lista.a34_4_1))
+              td: input#a34_5_1.form-control(type="date" name="a34_5_1" value=fecha(lista.a34_5_1))
+            tr
+              td: input#a34_1_2.form-control(type="text" name="a34_1_2" value=lista.a34_1_2)
+              td: input#a34_2_2.form-control(type="text" name="a34_2_2" value=lista.a34_2_2)
+              td: input#a34_3_2.form-control(type="text" name="a34_3_2" value=lista.a34_3_2)
+              td: input#a34_4_2.form-control(type="date" name="a34_4_2" value=fecha(lista.a34_4_2))
+              td: input#a34_5_2.form-control(type="date" name="a34_5_2" value=fecha(lista.a34_5_2))
+            tr
+              td: input#a34_1_3.form-control(type="text" name="a34_1_3" value=lista.a34_1_3)
+              td: input#a34_2_3.form-control(type="text" name="a34_2_3" value=lista.a34_2_3)
+              td: input#a34_3_3.form-control(type="text" name="a34_3_3" value=lista.a34_3_3)
+              td: input#a34_4_3.form-control(type="date" name="a34_4_3" value=fecha(lista.a34_4_3))
+              td: input#a34_5_3.form-control(type="date" name="a34_5_3" value=fecha(lista.a34_5_3))
       h6 A.3.5 - Situacion de los proyectos financiados por innovate peru ( PIMEN, PIPEI, PITEI, PIPEA )
       .table-responsive
         table.table.table-bordered.table-hover
@@ -397,15 +441,33 @@ block A
               th situacion actual
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="date")
-              td: input.form-control(type="date")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#a35_1_1.form-control(type="text" name="a35_1_1" value=lista.a35_1_1)
+              td: input#a35_2_1.form-control(type="text" name="a35_2_1" value=lista.a35_2_1)
+              td: input#a35_3_1.form-control(type="text" name="a35_3_1" value=lista.a35_3_1)
+              td: input#a35_4_1.form-control(type="date" name="a35_4_1" value=fecha(lista.a35_4_1))
+              td: input#a35_5_1.form-control(type="date" name="a35_5_1" value=fecha(lista.a35_5_1))
+              td: input#a35_6_1.form-control(type="text" name="a35_6_1" value=lista.a35_6_1)
+              td: input#a35_7_1.form-control(type="text" name="a35_7_1" value=lista.a35_7_1)
+            tr
+              td: input#a35_1_2.form-control(type="text" name="a35_1_2" value=lista.a35_1_2)
+              td: input#a35_2_2.form-control(type="text" name="a35_2_2" value=lista.a35_2_2)
+              td: input#a35_3_2.form-control(type="text" name="a35_3_2" value=lista.a35_3_2)
+              td: input#a35_4_2.form-control(type="date" name="a35_4_2" value=fecha(lista.a35_4_2))
+              td: input#a35_5_2.form-control(type="date" name="a35_5_2" value=fecha(lista.a35_5_2))
+              td: input#a35_6_2.form-control(type="text" name="a35_6_2" value=lista.a35_6_2)
+              td: input#a35_7_2.form-control(type="text" name="a35_7_2" value=lista.a35_7_2)
+            tr
+              td: input#a35_1_3.form-control(type="text" name="a35_1_3" value=lista.a35_1_3)
+              td: input#a35_2_3.form-control(type="text" name="a35_2_3" value=lista.a35_2_3)
+              td: input#a35_3_3.form-control(type="text" name="a35_3_3" value=lista.a35_3_3)
+              td: input#a35_4_3.form-control(type="date" name="a35_4_3" value=fecha(lista.a35_4_3))
+              td: input#a35_5_3.form-control(type="date" name="a35_5_3" value=fecha(lista.a35_5_3))
+              td: input#a35_6_3.form-control(type="text" name="a35_6_3" value=lista.a35_6_3)
+              td: input#a35_7_3.form-control(type="text" name="a35_7_3" value=lista.a35_7_3)
       br
 block B
+  - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
+  - function fecha(i){ if (i != null) { var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }else { return i;} }
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
       | B.1 - situacion actual de mercado del producto y/o servicio y de la empresarial
@@ -479,6 +541,8 @@ block B
           input#flujoDeCaja.custom-file-input(type='file', name='flujoDeCaja')
           label.custom-file-label(for='flujoDeCaja') Elige Un Archivo
 block C
+  - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
+  - function fecha(i){ if (i != null) { var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }else { return i;} }
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.1 Diagnóstico
     .card-body
@@ -531,7 +595,6 @@ block C
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th atributo
               th competidor 1
               th competidor 2
@@ -539,12 +602,11 @@ block C
               th propuesta de proyecto
           tbody
             tr
-              td 1
-              td atributo
-              td competidor 1
-              td competidor 2
-              td competidor 3
-              td propuesta de proyecto
+              td: input.form-control(type="text")  
+              td: input.form-control(type="text")      
+              td: input.form-control(type="text")      
+              td: input.form-control(type="text")      
+              td: input.form-control(type="text")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
@@ -570,48 +632,58 @@ block C
         table#objetivoGeneral.table.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th objetivo general - proposito del proyecto
               th resultados finales
               th medios de verificacion
           tbody
             tr
-              td 1
-              td atributo
-              td competidor 1
-              td competidor 2
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       label(for='objetivoEspecifico') Objetivo Especifico
       .table-responsive
         table#objetivoEspecifico.table.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th objetivo específico - componentes
               th resultados intermedios
               th medios de verificacion
           tbody
             tr
-              td 1
-              td atributo
-              td competidor 1
-              td competidor 2
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+            tr
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+            tr
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+            tr
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+            tr
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 C.4.2.Cronograma de actividades
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th actividad
               th unidad de medida
               th meta fisica
               th año 1
           tbody
             tr
-              td 1
-              td atributo
-              td competidor 1
-              td competidor 2
-              td año 1
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.5 Descripción de la Metodología
@@ -621,14 +693,14 @@ block C
           | C.5.1. Plan Metodológico del proyecto
           span.text-danger  (*)
         textarea#planMetodologico.form-control(rows='3' name="planMetodologico") #{lista.plan_metodologico}
-      .form-group
-        label(for='planAdjunto')
-          | Adjunto Plan Metodológico
-          span.text-danger  (*)
-        br
-        .custom-file
-          input#planAdjunto.custom-file-input(type='file', name='planAdjunto')
-          label.custom-file-label(for='planAdjunto') Elige Un Archivo
+      //- .form-group
+      //-   label(for='planAdjunto')
+      //-     | Adjunto Plan Metodológico
+      //-     span.text-danger  (*)
+      //-   br
+      //-   .custom-file
+      //-     input#planAdjunto.custom-file-input(type='file', name='planAdjunto')
+      //-     label.custom-file-label(for='planAdjunto') Elige Un Archivo
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.6. Propiedad Intelectual
@@ -693,7 +765,6 @@ block C
         table#datosDelEquipoTecnico.table.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Es Investigador
               th Nombre
               th Ap. Paterno
@@ -707,19 +778,20 @@ block C
               th Entidad a la que pertenecen
           tbody
             tr
-              td Id
-              td Es Investigador
-              td Nombre
-              td Ap. Paterno
-              td Ap. Materno
-              td Especialidad
-              td Función Técnica
-              td Porcentaje de Dedicación
-              td Investigador Principal
-              td Coordinador General
-              td Coordinador Administrativo
-              td Entidad a la que pertenecen
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
 block D
+  - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
+  - function fecha(i){ if (i != null) { var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }else { return i;} }
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white
       | D.1 Moneda y Presupuesto del Proyecto
@@ -736,7 +808,6 @@ block D
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Valorizable 
               th Equipos y Bienes duraderos 
               th Especificación técnica 
@@ -751,25 +822,23 @@ block D
               th Entidad Aportante 
           tbody
             tr
-              td 1
-              td Valorizable 
-              td Equipos y Bienes duraderos 
-              td Especificación técnica 
-              td Proforma 
-              td Unidad de medida 
-              td Costo Unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento NO monetario 
-              td Entidad Aportante 
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.2 CUADRO Nº 2: Honorarios de los Recursos Humanos - Valorización del equipo Técnico
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Nombre 
               th Entidad 
               th Porcentaje de dedicación 
@@ -782,23 +851,21 @@ block D
               th Entidad Aportante
           tbody
             tr
-              td 1
-              td Nombre 
-              td Entidad 
-              td Porcentaje de dedicación 
-              td Honorario mensual 
-              td No. Meses 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento no monetario 
-              td Entidad Aportante
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.3 CUADRO Nº 3: Consultorías
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Descripción 
               th Unidad Medida 
               th Costo unitario 
@@ -810,22 +877,20 @@ block D
               th Entidad Aportante
           tbody
             tr
-              td 1
-              td Descripción 
-              td Unidad Medida 
-              td Costo unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento no monetario 
-              td Entidad Aportante
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.4 CUADRO Nº 4: Servicios de terceros
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Descripción 
               th Unidad de medida 
               th Costo Unitario 
@@ -837,22 +902,20 @@ block D
               th Entidad Aportante
           tbody
             tr
-              td 1
-              td Descripción 
-              td Unidad de medida 
-              td Costo Unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento NO monetario 
-              td Entidad Aportante
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.5 CUADRO Nº 5: Pasajes y viáticos
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Tipo 
               th Tipo de viático 
               th Tipo de Actividad 
@@ -868,26 +931,24 @@ block D
               th Entidad Aportante
           tbody
             tr
-              td 1
-              td Tipo 
-              td Tipo de viático 
-              td Tipo de Actividad 
-              td Destino 
-              td Descripción 
-              td Unidad de medida 
-              td Costo Unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento NO monetario 
-              td Entidad Aportante
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
       h6 D.1.6 CUADRO Nº 6: Materiales e insumos
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Valorizable 
               th Descripción 
               th Especificación técnica 
@@ -902,25 +963,23 @@ block D
               th Entidad Aportante
           tbody
             tr
-              td 1
-              td Valorizable 
-              td Descripción 
-              td Especificación técnica 
-              td Proforma 
-              td Unidad Medida 
-              td Costo unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento no monetario 
-              td Entidad Aportante
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.7 CUADRO Nº 7: Otros gastos elegibles
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Valorizable 
               th Descripción 
               th Unidad Medida 
@@ -933,23 +992,21 @@ block D
               th Entidad Aportante
           tbody
             tr
-              td 1
-              td Valorizable 
-              td Descripción 
-              td Unidad Medida 
-              td Costo unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento no monetario 
-              td Entidad Aportante
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.8 CUADRO Nº8: Gastos de gestión
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Descripción 
               th Unidad Medida 
               th Costo unitario 
@@ -961,22 +1018,20 @@ block D
               th Entidad Aportante 
           tbody
             tr
-              td 1
-              td Descripción 
-              td Unidad Medida 
-              td Costo unitario 
-              td Cantidad 
-              td Costo Total 
-              td RNR 
-              td Cofinanciamiento monetario 
-              td Cofinanciamiento no monetario 
-              td Entidad Aportante 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
       h6 D.1.9 Equipo Formulador del Proyecto
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th Id
               th Tipo de Documento 
               th Número de Documento 
               th Nombres 
@@ -986,11 +1041,10 @@ block D
               th Celular 
           tbody
             tr
-              td 1
-              td Tipo de Documento 
-              td Número de Documento 
-              td Nombres 
-              td Apellidos 
-              td Correo 
-              td Teléfono 
-              td Celular
+              td: input.form-control(type="text")
+              td: input.form-control(type="text") 
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
+              td: input.form-control(type="text")
