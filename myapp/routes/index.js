@@ -20,7 +20,7 @@ var conn = new Conn(config());
 conexion(conn);
 
 
-/********************************************             INDEX              ***************************************************************************************************************************************************************/
+/********************************************             INDEX              **************************************************************************************************************/
 
 router.get('/', function(req, res, next) {
     req.session.destroy( function (err) {
@@ -39,7 +39,7 @@ router.get('/register', function(req, res, next) {
 
 /*******************************************************************************************************************************/
 
-/*****************************************             ACTIVE SESSION          ***************************************************************************************************************************************************************/
+/*****************************************             ACTIVE SESSION          ***************************************************************************************************************************/
 
 router.get('/inicio' ,function(req, res, next) {
     if(req.session.user){
@@ -76,7 +76,7 @@ router.get('/change-password' ,function(req, res, next) {
     } else {
         res.redirect("/");
   }
-  });
+});
 
 router.post('/validation/change-password' ,function(req, res, next) {
     if(req.session.user){
@@ -262,13 +262,13 @@ router.post('/editar-proyecto' ,function(req, res, next) {
     } else {
         res.redirect("/");
     }
-  });
+});
 
-/*********************************************************************************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
 
-/**********************************************         DATABASE             *****************************************************************************************************************************************************************/
+/**********************************************         DATABASE             *******************************************************************************************/
 
-/* INICIO DE SESION*******************************************************************************************************************************/
+/* INICIO DE SESION *******************************************************************************************************************************/
 
 router.post('/validation', function(req, res) {
 
@@ -306,7 +306,7 @@ router.post('/validation', function(req, res) {
     conn.execSql(request);
 });
 
-/* REGISTRO DE NUEVO USUARIO*******************************************************************************************************************************/
+/* REGISTRO DE NUEVO USUARIO *******************************************************************************************************************************/
 
 router.post("/validation/new-user", function (req,res) {
 
@@ -417,51 +417,48 @@ router.post('/validation/editar-proyecto', function(req, res) {
     var sql = `UPDATE [unjfsc].[dbo].[proyectos] 
     SET 
     [titulo] = @titulo, 
-    [palabras_clave] = @palabrasClave, 
-    [duracion_proyecto] = @duracionDelProyecto, 
-    [fecha_estimada_inicio] = @fechaEstimadaDeInicioDelProyecto, 
+    [palabras_clave] = @palabrasClave,
+    [area_innovacion_area] = @area_innovacion_area, [area_innovacion_subarea] = @area_innovacion_subarea, [area_innovacion_tematica] = @area_innovacion_tematica,
+    [aplicacion_area] = @aplicacion_area, [aplicacion_subarea] = @aplicacion_subarea,
+    [localizacion_departamento] = @localizacion_departamento, [localizacion_provincia] = @localizacion_provincia, 
+    [localizacion_distrito] = @localizacion_distrito, [localizacion_ubigeo] = @localizacion_ubigeo,
+    [a22_1_1] = @a22_1_1, [a22_2_1] = @a22_2_1, [a22_3_1] = @a22_3_1, [a22_4_1] = @a22_4_1, [a22_5_1] = @a22_5_1,
+    [a22_1_2] = @a22_1_2, [a22_2_2] = @a22_2_2, [a22_3_2] = @a22_3_2, [a22_4_2] = @a22_4_2, [a22_5_2] = @a22_5_2,
+    [a22_1_3] = @a22_1_3, [a22_2_3] = @a22_2_3, [a22_3_3] = @a22_3_3, [a22_4_3] = @a22_4_3, [a22_5_3] = @a22_5_3,
+    [a31_1_1] = @a31_1_1, [a31_2_1] = @a31_2_1,
+    [a31_1_2] = @a31_1_2, [a31_2_2] = @a31_2_2,
+    [a31_1_3] = @a31_1_3, [a31_2_3] = @a31_2_3,
+    [a32_1_1] = @a32_1_1, [a32_2_1] = @a32_2_1,
+    [a32_1_2] = @a32_1_2, [a32_2_2] = @a32_2_2,
+    [a32_1_3] = @a32_1_3, [a32_2_3] = @a32_2_3,
+    [a33_1_1] = @a33_1_1, [a33_2_1] = @a33_2_1,
+    [a33_1_2] = @a33_1_2, [a33_2_2] = @a33_2_2,
+    [a33_1_3] = @a33_1_3, [a33_2_3] = @a33_2_3,
+    [a34_1_1] = @a34_1_1, [a34_2_1] = @a34_2_1, [a34_3_1] = @a34_3_1, [a34_4_1] = @a34_4_1, [a34_5_1] = @a34_5_1,
+    [a34_1_2] = @a34_1_2, [a34_2_2] = @a34_2_2, [a34_3_2] = @a34_3_2, [a34_4_2] = @a34_4_2, [a34_5_2] = @a34_5_2,
+    [a34_1_3] = @a34_1_3, [a34_2_3] = @a34_2_3, [a34_3_3] = @a34_3_3, [a34_4_3] = @a34_4_3, [a34_5_3] = @a34_5_3,
+    [a35_1_1] = @a35_1_1, [a35_2_1] = @a35_2_1, [a35_3_1] = @a35_3_1, [a35_4_1] = @a35_4_1, [a35_5_1] = @a35_5_1, [a35_6_1] = @a35_6_1, [a35_7_1] = @a35_7_1,
+    [a35_1_2] = @a35_1_2, [a35_2_2] = @a35_2_2, [a35_3_2] = @a35_3_2, [a35_4_2] = @a35_4_2, [a35_5_2] = @a35_5_2, [a35_6_2] = @a35_6_2, [a35_7_2] = @a35_7_2,
+    [a35_1_3] = @a35_1_3, [a35_2_3] = @a35_2_3, [a35_3_3] = @a35_3_3, [a35_4_3] = @a35_4_3, [a35_5_3] = @a35_5_3, [a35_6_3] = @a35_6_3, [a35_7_3] = @a35_7_3,
+    [duracion_proyecto] = @duracionDelProyecto, [fecha_estimada_inicio] = @fechaEstimadaDeInicioDelProyecto, 
     [cgp_tipo_documento] = @cgptipoDeDocumento, 
-    [cgp_nro_documento] = @cgpnumeroDeDocumento, 
-    [cgp_ruc] = @cgpruc, 
-    [cgp_nombre] = @cgpnombresYApellidos, 
-    [cgp_fecha_nac] = @cgpfechaDeNacimiento, 
-    [cgp_sexo] = @cgpsexo, [cgp_email] = @cgpemail, 
-    [cgp_telefono] = @cgptelefono, 
-    [cgp_celular] = @cgpcelular, 
+    [cgp_nro_documento] = @cgpnumeroDeDocumento, [cgp_ruc] = @cgpruc, 
+    [cgp_nombre] = @cgpnombresYApellidos, [cgp_fecha_nac] = @cgpfechaDeNacimiento, [cgp_sexo] = @cgpsexo, 
+    [cgp_email] = @cgpemail, [cgp_telefono] = @cgptelefono, [cgp_celular] = @cgpcelular, 
     [cap_tipo_documento] = @captipoDeDocumento, 
-    [cap_nro_documento] = @capnumeroDeDocumento, 
-    [cap_ruc] = @capruc, 
-    [cap_nombre] = @capnombresYApellidos, 
-    [cap_fecha_nac] = @capfechaDeNacimiento, 
-    [cap_sexo] = @capsexo, 
-    [cap_email] = @capemail, 
-    [cap_telefono] = @captelefono, 
-    [cap_celular] = @capcelular, 
-    [es_tipo] = @estipoDeEntidad, 
-    [es_tamano] = @estamañoDeLaEmpresa, 
-    [es_nro_trabajadores] = @esnroDeTrabajadores, 
-    [es_ruc] = @esrucRazonSocial, 
-    [es_ciiu] = @esciiu, 
-    [es_direccion] = @esdireccion, 
-    [es_fecha_constitucion] = @esfechaDeConstitucion, 
-    [es_inicio_actividades] = @esinicioDeActividades, 
-    [es_nro_partida] = @esnumeroDePartida, 
-    [es_oficina_registral] = @esoficinaRegistral, 
-    [es_telefono] = @estelefonoCelular, 
-    [es_correo] = @esemail, 
-    [es_pagina_web] = @espaginaWeb, 
-    [es_ventas2016] = @esventas2016, 
-    [es_ventas2017] = @esventas2017, 
+    [cap_nro_documento] = @capnumeroDeDocumento, [cap_ruc] = @capruc, 
+    [cap_nombre] = @capnombresYApellidos, [cap_fecha_nac] = @capfechaDeNacimiento, [cap_sexo] = @capsexo, 
+    [cap_email] = @capemail, [cap_telefono] = @captelefono, [cap_celular] = @capcelular, 
+    [es_tipo] = @estipoDeEntidad,  
+    [es_tamano] = @estamañoDeLaEmpresa,  [es_nro_trabajadores] = @esnroDeTrabajadores,  
+    [es_ruc] = @esrucRazonSocial,  [es_ciiu] = @esciiu,  [es_direccion] = @esdireccion,  
+    [es_fecha_constitucion] = @esfechaDeConstitucion,  [es_inicio_actividades] = @esinicioDeActividades,  
+    [es_nro_partida] = @esnumeroDePartida,  [es_oficina_registral] = @esoficinaRegistral,  [es_telefono] = @estelefonoCelular,  
+    [es_correo] = @esemail,  [es_pagina_web] = @espaginaWeb,  [es_ventas2016] = @esventas2016,  [es_ventas2017] = @esventas2017, 
     [rl_tipo_documento] = @rptipoDeDocumento, 
-    [rl_nro_documento] = @rpnumeroDeDocumento, 
-    [rl_ruc] = @rpruc, 
-    [rl_nombre] = @rpnombresYApellidos, 
-    [rl_sexo] =@rpsexo, 
-    [rl_email] = @rpemail, 
-    [rl_telefono] = @rptelefono, 
-    [rl_productos_comercializados] = @rpproductosComerciales, 
-    [rl_actividades_relacionadas] = @rpactividadesRelacionadas, 
-    [rl_infraestructura_es] = @rpinfraestructuraDelSolicitante, 
+    [rl_nro_documento] = @rpnumeroDeDocumento, [rl_ruc] = @rpruc, [rl_nombre] = @rpnombresYApellidos, [rl_sexo] =@rpsexo, 
+    [rl_email] = @rpemail, [rl_telefono] = @rptelefono, [rl_productos_comercializados] = @rpproductosComerciales, 
+    [rl_actividades_relacionadas] = @rpactividadesRelacionadas, [rl_infraestructura_es] = @rpinfraestructuraDelSolicitante, 
     [entorno_empresarial] = @entornoEmpresarial, 
     [situacion_actual] =@situacionActual, 
     [identificacion_mercado] = @identificacionDelMercado, 
@@ -502,6 +499,84 @@ router.post('/validation/editar-proyecto', function(req, res) {
     request.addParameter("titulo" ,                               TYPES.Text            ,req.body.titulo);
     request.addParameter("id_proyecto" ,                          TYPES.Int             ,req.body.id_proyecto);
     request.addParameter( "palabrasClave"  ,                      TYPES.Text            ,req.body.palabrasClave ? req.body.palabrasClave : null);
+    request.addParameter( "area_innovacion_area"  ,               TYPES.Text            ,req.body.area_innovacion_area ? req.body.area_innovacion_area : null);
+    request.addParameter( "area_innovacion_subarea"  ,            TYPES.Text            ,req.body.area_innovacion_subarea ? req.body.area_innovacion_subarea : null);
+    request.addParameter( "area_innovacion_tematica"  ,           TYPES.Text            ,req.body.area_innovacion_tematica ? req.body.area_innovacion_tematica : null);
+    request.addParameter( "aplicacion_area"  ,                    TYPES.Text            ,req.body.aplicacion_area ? req.body.aplicacion_area : null);
+    request.addParameter( "aplicacion_subarea"  ,                 TYPES.Text            ,req.body.aplicacion_subarea ? req.body.aplicacion_subarea : null);
+    request.addParameter( "localizacion_departamento"   ,         TYPES.Text            ,req.body.localizacion_departamento ? req.body.localizacion_departamento : null);
+    request.addParameter( "localizacion_provincia"   ,            TYPES.Text            ,req.body.localizacion_provincia ? req.body.localizacion_provincia : null);
+    request.addParameter( "localizacion_distrito"   ,             TYPES.Text            ,req.body.localizacion_distrito ? req.body.localizacion_distrito : null);
+    request.addParameter( "localizacion_ubigeo"   ,               TYPES.Int             ,req.body.localizacion_ubigeo ? req.body.localizacion_ubigeo : null);
+    request.addParameter("a22_1_1" ,           TYPES.Text            ,req.body.a22_1_1 ? req.body.a22_1_1 : null);
+    request.addParameter("a22_2_1" ,           TYPES.Text            ,req.body.a22_2_1 ? req.body.a22_2_1 : null);
+    request.addParameter("a22_3_1" ,           TYPES.Text            ,req.body.a22_3_1 ? req.body.a22_3_1 : null);
+    request.addParameter("a22_4_1" ,           TYPES.Text            ,req.body.a22_4_1 ? req.body.a22_4_1 : null);
+    request.addParameter("a22_5_1" ,           TYPES.Text            ,req.body.a22_5_1 ? req.body.a22_5_1 : null);
+    request.addParameter("a22_1_2" ,           TYPES.Text            ,req.body.a22_1_2 ? req.body.a22_1_2 : null);
+    request.addParameter("a22_2_2" ,           TYPES.Text            ,req.body.a22_2_2 ? req.body.a22_2_2 : null);
+    request.addParameter("a22_3_2" ,           TYPES.Text            ,req.body.a22_3_2 ? req.body.a22_3_2 : null);
+    request.addParameter("a22_4_2" ,           TYPES.Text            ,req.body.a22_4_2 ? req.body.a22_4_2 : null);
+    request.addParameter("a22_5_2" ,           TYPES.Text            ,req.body.a22_5_2 ? req.body.a22_5_2 : null);
+    request.addParameter("a22_1_3" ,           TYPES.Text            ,req.body.a22_1_3 ? req.body.a22_1_3 : null);
+    request.addParameter("a22_2_3" ,           TYPES.Text            ,req.body.a22_2_3 ? req.body.a22_2_3 : null);
+    request.addParameter("a22_3_3" ,           TYPES.Text            ,req.body.a22_3_3 ? req.body.a22_3_3 : null);
+    request.addParameter("a22_4_3" ,           TYPES.Text            ,req.body.a22_4_3 ? req.body.a22_4_3 : null);
+    request.addParameter("a22_5_3" ,           TYPES.Text            ,req.body.a22_5_3 ? req.body.a22_5_3 : null);
+    request.addParameter("a31_1_1" ,           TYPES.Text            ,req.body.a31_1_1 ? req.body.a31_1_1 : null);
+    request.addParameter("a31_2_1" ,           TYPES.Text            ,req.body.a31_2_1 ? req.body.a31_2_1 : null);
+    request.addParameter("a31_1_2" ,           TYPES.Text            ,req.body.a31_1_2 ? req.body.a31_1_2 : null);
+    request.addParameter("a31_2_2" ,           TYPES.Text            ,req.body.a31_2_2 ? req.body.a31_2_2 : null);
+    request.addParameter("a31_1_3" ,           TYPES.Text            ,req.body.a31_1_3 ? req.body.a31_1_3 : null);
+    request.addParameter("a31_2_3" ,           TYPES.Text            ,req.body.a31_2_3 ? req.body.a31_2_3 : null);
+    request.addParameter("a32_1_1" ,           TYPES.Text            ,req.body.a32_1_1 ? req.body.a32_1_1 : null);
+    request.addParameter("a32_2_1" ,           TYPES.Text            ,req.body.a32_2_1 ? req.body.a32_2_1 : null);
+    request.addParameter("a32_1_2" ,           TYPES.Text            ,req.body.a32_1_2 ? req.body.a32_1_2 : null);
+    request.addParameter("a32_2_2" ,           TYPES.Text            ,req.body.a32_2_2 ? req.body.a32_2_2 : null);
+    request.addParameter("a32_1_3" ,           TYPES.Text            ,req.body.a32_1_3 ? req.body.a32_1_3 : null);
+    request.addParameter("a32_2_3" ,           TYPES.Text            ,req.body.a32_2_3 ? req.body.a32_2_3 : null);
+    request.addParameter("a33_1_1" ,           TYPES.Text            ,req.body.a33_1_1 ? req.body.a33_1_1 : null);
+    request.addParameter("a33_2_1" ,           TYPES.Text            ,req.body.a33_2_1 ? req.body.a33_2_1 : null);
+    request.addParameter("a33_1_2" ,           TYPES.Text            ,req.body.a33_1_2 ? req.body.a33_1_2 : null);
+    request.addParameter("a33_2_2" ,           TYPES.Text            ,req.body.a33_2_2 ? req.body.a33_2_2 : null);
+    request.addParameter("a33_1_3" ,           TYPES.Text            ,req.body.a33_1_3 ? req.body.a33_1_3 : null);
+    request.addParameter("a33_2_3" ,           TYPES.Text            ,req.body.a33_2_3 ? req.body.a33_2_3 : null);
+    request.addParameter("a34_1_1" ,           TYPES.Text            ,req.body.a34_1_1 ? req.body.a34_1_1 : null);
+    request.addParameter("a34_2_1" ,           TYPES.Text            ,req.body.a34_2_1 ? req.body.a34_2_1 : null);
+    request.addParameter("a34_3_1" ,           TYPES.Text            ,req.body.a34_3_1 ? req.body.a34_3_1 : null);
+    request.addParameter("a34_4_1" ,           TYPES.Date            ,req.body.a34_4_1 ? req.body.a34_4_1 : null);
+    request.addParameter("a34_5_1" ,           TYPES.Date            ,req.body.a34_5_1 ? req.body.a34_5_1 : null);
+    request.addParameter("a34_1_2" ,           TYPES.Text            ,req.body.a34_1_2 ? req.body.a34_1_2 : null);
+    request.addParameter("a34_2_2" ,           TYPES.Text            ,req.body.a34_2_2 ? req.body.a34_2_2 : null);
+    request.addParameter("a34_3_2" ,           TYPES.Text            ,req.body.a34_3_2 ? req.body.a34_3_2 : null);
+    request.addParameter("a34_4_2" ,           TYPES.Date            ,req.body.a34_4_2 ? req.body.a34_4_2 : null);
+    request.addParameter("a34_5_2" ,           TYPES.Date            ,req.body.a34_5_2 ? req.body.a34_5_2 : null);
+    request.addParameter("a34_1_3" ,           TYPES.Text            ,req.body.a34_1_3 ? req.body.a34_1_3 : null);
+    request.addParameter("a34_2_3" ,           TYPES.Text            ,req.body.a34_2_3 ? req.body.a34_2_3 : null);
+    request.addParameter("a34_3_3" ,           TYPES.Text            ,req.body.a34_3_3 ? req.body.a34_3_3 : null);
+    request.addParameter("a34_4_3" ,           TYPES.Date            ,req.body.a34_4_3 ? req.body.a34_4_3 : null);
+    request.addParameter("a34_5_3" ,           TYPES.Date            ,req.body.a34_5_3 ? req.body.a34_5_3 : null);    
+    request.addParameter("a35_1_1" ,           TYPES.Text            ,req.body.a35_1_1 ? req.body.a35_1_1 : null);
+    request.addParameter("a35_2_1" ,           TYPES.Text            ,req.body.a35_2_1 ? req.body.a35_2_1 : null);
+    request.addParameter("a35_3_1" ,           TYPES.Text            ,req.body.a35_3_1 ? req.body.a35_3_1 : null);
+    request.addParameter("a35_4_1" ,           TYPES.Date            ,req.body.a35_4_1 ? req.body.a35_4_1 : null);
+    request.addParameter("a35_5_1" ,           TYPES.Date            ,req.body.a35_5_1 ? req.body.a35_5_1 : null);
+    request.addParameter("a35_6_1" ,           TYPES.Text            ,req.body.a35_6_1 ? req.body.a35_6_1 : null);
+    request.addParameter("a35_7_1" ,           TYPES.Text            ,req.body.a35_7_1 ? req.body.a35_7_1 : null);
+    request.addParameter("a35_1_2" ,           TYPES.Text            ,req.body.a35_1_2 ? req.body.a35_1_2 : null);
+    request.addParameter("a35_2_2" ,           TYPES.Text            ,req.body.a35_2_2 ? req.body.a35_2_2 : null);
+    request.addParameter("a35_3_2" ,           TYPES.Text            ,req.body.a35_3_2 ? req.body.a35_3_2 : null);
+    request.addParameter("a35_4_2" ,           TYPES.Date            ,req.body.a35_4_2 ? req.body.a35_4_2 : null);
+    request.addParameter("a35_5_2" ,           TYPES.Date            ,req.body.a35_5_2 ? req.body.a35_5_2 : null);
+    request.addParameter("a35_6_2" ,           TYPES.Text            ,req.body.a35_6_2 ? req.body.a35_6_2 : null);
+    request.addParameter("a35_7_2" ,           TYPES.Text            ,req.body.a35_7_2 ? req.body.a35_7_2 : null);
+    request.addParameter("a35_1_3" ,           TYPES.Text            ,req.body.a35_1_3 ? req.body.a35_1_3 : null);
+    request.addParameter("a35_2_3" ,           TYPES.Text            ,req.body.a35_2_3 ? req.body.a35_2_3 : null);
+    request.addParameter("a35_3_3" ,           TYPES.Text            ,req.body.a35_3_3 ? req.body.a35_3_3 : null);
+    request.addParameter("a35_4_3" ,           TYPES.Date            ,req.body.a35_4_3 ? req.body.a35_4_3 : null);
+    request.addParameter("a35_5_3" ,           TYPES.Date            ,req.body.a35_5_3 ? req.body.a35_5_3 : null);
+    request.addParameter("a35_6_3" ,           TYPES.Text            ,req.body.a35_6_3 ? req.body.a35_6_3 : null);
+    request.addParameter("a35_7_3" ,           TYPES.Text            ,req.body.a35_7_3 ? req.body.a35_7_3 : null);
     request.addParameter( "duracionDelProyecto",                  TYPES.Int             ,req.body.duracionDelProyecto ? req.body.duracionDelProyecto : null);
     request.addParameter( "fechaEstimadaDeInicioDelProyecto",     TYPES.Date            ,req.body.fechaEstimadaDeInicioDelProyecto ? req.body.fechaEstimadaDeInicioDelProyecto : null);
     request.addParameter( "cgptipoDeDocumento" ,                  TYPES.Int             ,req.body.cgptipoDeDocumento ? req.body.cgptipoDeDocumento : null);
@@ -587,7 +662,7 @@ router.get('/validation', function(req,res){
 
 router.get('/validation/cargar-proyecto', function(req,res){
     res.redirect("/");
-  });
+});
 
 router.get('/validation/new-user', function(req,res){
     res.redirect("/");
