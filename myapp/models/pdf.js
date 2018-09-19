@@ -1,3 +1,23 @@
+var hoy = new Date();
+function addZero(i) { 
+    if (i < 10) { 
+        i = '0' + i; 
+    } return i; 
+}
+function fecha(i){ 
+    if (i != null) { 
+        var dd = i.getDate(); 
+        var mm = i.getMonth()+1; 
+        var yyyy = i.getFullYear(); 
+        dd = addZero(dd); 
+        mm = addZero(mm); 
+        return dd+'-'+mm+'-'+yyyy; 
+    }else { 
+        return i;
+    } 
+}
+  
+
 exports.pdf = (lista) => {
     return `
 <!DOCTYPE html>
@@ -31,9 +51,18 @@ exports.pdf = (lista) => {
     h1,h2,h3,h4,h5,h6{
         text-transform: capitalize;
     }
+    .centrado{
+        margin: auto;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
+<img src="./presentacion.png" alt="logo de la universidad">
+
+<h2 class="centrado">FORMATO DEL PROYECTO</h2>
+<h3 class="centrado">`+ fecha(hoy) +`</h3>
+
 <h2>SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES</h2>
 <h3>A.1 - Datos generales del proyecto</h3>
 <h4>A.1.1 - Título</h4>
@@ -47,7 +76,6 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Area</th>
             <th>Sub-area</th>
             <th>Area tematica</th>
@@ -55,10 +83,9 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Tecnologia</td>
-            <td>Sistemas</td>
-            <td>Informatica</td>
+            <td>`+ lista.area_innovacion_area +`</td>
+            <td>`+ lista.area_innovacion_subarea +`</td>
+            <td>`+ lista.area_innovacion_tematica +`</td>
         </tr>
     </tbody>
 </table>
@@ -67,16 +94,14 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Area de aplicacion</th>
             <th>Sub-area de aplicacion</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Tecnologia</td>
-            <td>Sistemas</td>
+            <td>`+ lista.aplicacion_area +`</td>
+            <td>`+ lista.aplicacion_subarea +`</td>
         </tr>
     </tbody>
 </table>
@@ -85,7 +110,6 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Departamento</th>
             <th>Provincia</th>
             <th>Distrito</th>
@@ -94,11 +118,10 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-            <td>Miraflores</td>
-            <td>150122</td>
+            <td>`+ lista.localizacion_departamento +`</td>
+            <td>`+ lista.localizacion_provincia +`</td>
+            <td>`+ lista.localizacion_distrito +`</td>
+            <td>`+ lista.localizacion_ubigeo +`</td>
         </tr>
     </tbody>
 </table>
@@ -107,7 +130,7 @@ exports.pdf = (lista) => {
 <p>`+ lista.duracion_proyecto +`</p>
 
 <h5>A.1.7 - Fecha estimada de inicio del proyecto</h5>
-<p> `+ lista.fecha_estimada_inicio +` </p>
+<p> `+ fecha(lista.fecha_estimada_inicio) +` </p>
 
 <h4>A.1.8 - Datos del coordinador general del proyecto</h4>
 
@@ -124,7 +147,7 @@ exports.pdf = (lista) => {
 <p> `+ lista.cgp_nombre +` </p>
 
 <h5>fecha de nacimiento</h5>
-<p> `+ lista.cgp_fecha_nac +` </p>
+<p> `+ fecha(lista.cgp_fecha_nac) +` </p>
 
 <h5>sexo</h5>
 <p> `+ lista.cgp_sexo +` </p>
@@ -154,7 +177,7 @@ exports.pdf = (lista) => {
 <p> `+ lista.cap_nombre +` </p>
 
 <h5>fecha de nacimiento</h5>
-<p> `+ lista.cap_fecha_nac +` </p>
+<p> `+ fecha(lista.cap_fecha_nac) +` </p>
 
 <h5>sexo</h5>
 <p> `+ lista.cap_sexo +` </p>
@@ -192,10 +215,10 @@ exports.pdf = (lista) => {
 <p> `+ lista.es_direccion +` </p>
 
 <h5>Fecha de Constitucion</h5>
-<p> `+ lista.es_fecha_constitucion +` </p>
+<p> `+ fecha(lista.es_fecha_constitucion) +` </p>
 
 <h5>Inicio de actividades</h5>
-<p> `+ lista.es_inicio_actividades +` </p>
+<p> `+ fecha(lista.es_inicio_actividades) +` </p>
 
 <h5>Numero de partida</h5>
 <p> `+ lista.es_nro_partida +` </p>
@@ -951,6 +974,5 @@ C.4 Objetivos
     </tbody>
 </table>
 </body>
-</html>
-    `;
+</html>`;
 }
