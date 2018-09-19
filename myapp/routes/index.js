@@ -31,10 +31,10 @@ router.get('/', function(req, res, next) {
       }
     });
     res.render('index', { title: 'Universidad jfsc' });
-  });
+});
   
 router.get('/register', function(req, res, next) {
-res.render('register', { title: 'Registro de usuario' });
+    res.render('register', { title: 'Registro de usuario' });
 });
 
 /*******************************************************************************************************************************/
@@ -93,7 +93,7 @@ router.post('/validation/change-password' ,function(req, res, next) {
         });
 
         request.addParameter("id_usuario" ,         TYPES.Int,              req.session.user.id);
-        request.addParameter("email2" ,             TYPES.VarChar,          req.body.clave);
+        request.addParameter("clave" ,             TYPES.VarChar,          bcrypt.hashSync(req.body.clave,10));
 
         conn.execSql(request);
     } else {
