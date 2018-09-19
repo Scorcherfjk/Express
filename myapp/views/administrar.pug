@@ -1,6 +1,11 @@
 extends navbar
 
+
+
+
 block content
+    - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
+    - function fecha(i){ var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }
     .container
       .card.rounded.border-secondary
         h5.card-header.text-capitalize.bg-danger.text-white
@@ -21,10 +26,11 @@ block content
                   tbody
                     each valor in lista
                       tr
-                        td #{valor.titulo}
-                        td #{valor.fecha_creacion}
+                        td: input#titulo.form-control(type="text", name="titulo" disabled value=valor.titulo)
+                        td: input#fecha.form-control(type="date", name="fecha" disabled value=fecha(valor.fecha_creacion))
                         td
                           form(action="/editar-proyecto", method="post")
+                          
                             input(type="hidden", name="idproyecto" value=valor.id_proyecto)
                             button.btn.btn-primary.btn-sm(type="submit" ) Editar
                         td 
