@@ -1,41 +1,37 @@
 extends navbar
 
-
-
-
 block content
-    - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
-    - function fecha(i){ var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }
-    .container
-      .card.rounded.border-secondary
-        h5.card-header.text-capitalize.bg-danger.text-white
-          | Administraci&oacuten de Proyectos
-        .card-body
-          .row
-            .col-sm-4
-                img(src="/images/img.png", alt="bienvenida")
-            .col-sm-8
-              .table-responsive
-                table.table.table-bordered.table-hover
-                  thead.thead-light.text-capitalize
+  - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
+  - function fecha(i){ var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }
+  .container
+    .card.rounded.border-secondary
+      h5.card-header.text-capitalize.bg-danger.text-white
+        | Administraci&oacuten de Proyectos
+      .card-body
+        .row
+          .col-sm-12.col-md-4
+              img(src="/images/img.png", alt="bienvenida")
+          .col-sm-12.col-md-8
+            .table-responsive
+              table.table.table-bordered.table-hover
+                thead.thead-light.text-capitalize
+                  tr
+                    th T&iacutetulo De Proyecto 
+                    th Fecha de Registro
+                    th Editar
+                    th Previsualizar
+                tbody
+                  each valor in lista
                     tr
-                      th T&iacutetulo De Proyecto 
-                      th Fecha de Registro
-                      th Editar
-                      th Previsualizar
-                  tbody
-                    each valor in lista
-                      tr
-                        td: input#titulo.form-control(type="text", name="titulo" disabled value=valor.titulo)
-                        td: input#fecha.form-control(type="date", name="fecha" disabled value=fecha(valor.fecha_creacion))
-                        td
-                          form(action="/editar-proyecto", method="post")
-                          
-                            input(type="hidden", name="idproyecto" value=valor.id_proyecto)
-                            button.btn.btn-primary.btn-sm(type="submit" ) Editar
-                        td 
-                          form(action="/visualizar", method="post")
-                            input(type="hidden", name="idproyecto" value=valor.id_proyecto)
-                            button.btn.btn-primary.btn-sm(type="submit") Visualizar
-              br
-              a.btn.btn-primary.btn-lg.btn-block(href="/nuevo" role="button") Crear Proyecto
+                      td: input#titulo.form-control(type="text", name="titulo" disabled value=valor.titulo style="min-width: 200px;")
+                      td: input#fecha.form-control(type="date", name="fecha" disabled value=fecha(valor.fecha_creacion))
+                      td
+                        form(action="/editar-proyecto", method="post")
+                          input(type="hidden", name="idproyecto" value=valor.id_proyecto)
+                          button.btn.btn-primary(type="submit"  style="width:100%;" ) Editar
+                      td 
+                        form(action="/visualizar", method="post" )
+                          input(type="hidden", name="idproyecto" value=valor.id_proyecto)
+                          button.btn.btn-primary(type="submit" style="width:100%;") Visualizar
+            br
+            a.btn.btn-primary.btn-lg.btn-block(href="/nuevo" role="button") Crear Proyecto
