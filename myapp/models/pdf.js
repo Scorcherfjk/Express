@@ -19,7 +19,7 @@ function fecha(i){
   
 
 exports.pdf = (lista) => {
-    return `
+    var html = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +31,7 @@ exports.pdf = (lista) => {
     p {
         border: 2px solid black;
         padding-left: 4px;
+        font-size: .8em;
     }
     table, td, th {
         border: 2px solid black;
@@ -55,10 +56,14 @@ exports.pdf = (lista) => {
         margin: auto;
         text-align: center;
     }
+    img{
+        width:400px;
+        height:120px;
+    }
 </style>
 </head>
 <body>
-<img src="./presentacion.png" alt="logo de la universidad">
+<img src="http://127.0.0.1:3000/images/presentacion.png" alt="logo de la universidad">
 
 <h2 class="centrado">FORMATO DEL PROYECTO</h2>
 <h3 class="centrado">`+ fecha(hoy) +`</h3>
@@ -975,4 +980,5 @@ C.4 Objetivos
 </table>
 </body>
 </html>`;
+return html;
 }
