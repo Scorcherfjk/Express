@@ -56,12 +56,21 @@ exports.pdf = (lista) => {
         width:400px;
         height:120px;
     }
+    .datos{
+        margin: auto;
+    }
 </style>
 </head>`;
 
 html += `<body><img src="http://127.0.0.1:3000/images/presentacion.png" alt="logo de la universidad">
 <h2 class="centrado">FORMATO DEL PROYECTO</h2>
-<h3 class="centrado"> `+   fecha(hoy)  +`  </h3>`;
+<h3 class="centrado"> `+   fecha(hoy)  +`  </h3>
+<hr>
+<h3 class="datos">Fecha de Registro:  `+   fecha(lista.fecha_creacion) +`</h3>
+<h3 class="datos">Solicitante:  `+ lista.nombres +` `+ lista.apellido_paterno +`</h3>
+<h3 class="datos">Telefono:  `+ lista.telefono_movil +`</h3>
+<h3 class="datos">Correo:  `+ lista.email + `</h3>
+`;
 
 html+=`<h2>SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES</h2>
 <h3>A.1 - Datos generales del proyecto</h3>
@@ -638,10 +647,18 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>actividad</th>
-            <th>unidad de medida</th>
-            <th>meta fisica</th>
-            <th>año 1</th>
+            <th rowspan="2">actividad</th>
+            <th rowspan="2">unidad de medida</th>
+            <th rowspan="2">meta fisica</th>
+            <th colspan="6">año 1</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
         </tr>
     </thead>
     <tbody>
@@ -650,6 +667,12 @@ C.4 Objetivos
             <td>competidor 1</td>
             <td>competidor 2</td>
             <td>año 1</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
         </tr>
     </tbody>
 </table>

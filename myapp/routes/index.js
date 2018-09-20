@@ -20,7 +20,7 @@ var conn = new Conn(config());
 conexion(conn);
 
 
-/********************************************             INDEX              **************************************************************************************************************/
+/********************************************             INDEX              ****************************************************************************/
 
 router.get('/', function(req, res, next) {
     req.session.destroy( function (err) {
@@ -39,7 +39,7 @@ router.get('/register', function(req, res, next) {
 
 /*******************************************************************************************************************************/
 
-/*****************************************             ACTIVE SESSION          ***************************************************************************************************************************/
+/*****************************************             ACTIVE SESSION          *********************************************************************************/
 
 router.get('/inicio' ,function(req, res, next) {
     if(req.session.user){
@@ -52,7 +52,7 @@ router.get('/inicio' ,function(req, res, next) {
     }
 });
 
-/* CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
+/* CREACION DE UN NUEVO PROYECTO ********************************************************************************************************************** */
 
 router.get('/nuevo' ,function(req, res, next) {
     if(req.session.user){
@@ -65,7 +65,7 @@ router.get('/nuevo' ,function(req, res, next) {
   }
   });
 
-/* CAMBIAR LA CLAVE DE ACCESO ****************************************************************************************************************************************** */
+/* CAMBIAR LA CLAVE DE ACCESO *************************************************************************************************************************** */
 
 router.get('/change-password' ,function(req, res, next) {
     if(req.session.user){
@@ -101,7 +101,7 @@ router.post('/validation/change-password' ,function(req, res, next) {
     }
 });
 
-/* CAMBIAR LOS DATOS PERSONALES  ************************************************************************************************************************************************* */
+/* CAMBIAR LOS DATOS PERSONALES  ******************************************************************************************************************* */
 
 router.get('/change-data' ,function(req, res, next) {
     if(req.session.user){
@@ -181,7 +181,7 @@ router.post('/validation/change-data' ,function(req, res, next) {
     }
 });
 
-/* ADMINISTRACION DE LOS PROYECTOS ********************************************************************************************************************************************* */
+/* ADMINISTRACION DE LOS PROYECTOS **************************************************************************************************************************** */
 
 router.get('/administrar' ,function(req, res, next) {
     if(req.session.user){
@@ -222,7 +222,7 @@ router.get('/administrar' ,function(req, res, next) {
     }
 });
 
-/* CREACION DE UN NUEVO PROYECTO **************************************************************************************************************************************************** */
+/* CREACION DE UN NUEVO PROYECTO ********************************************************************************************************************************** */
 
 router.post('/editar-proyecto' ,function(req, res, next) {
     if(req.session.user){
@@ -264,9 +264,9 @@ router.post('/editar-proyecto' ,function(req, res, next) {
     }
 });
 
-/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************/
 
-/**********************************************         DATABASE             *******************************************************************************************/
+/**********************************************         DATABASE             ********************************************************************************/
 
 /* INICIO DE SESION *******************************************************************************************************************************/
 
@@ -413,7 +413,8 @@ router.post('/validation/nuevo', function(req, res) {
 
 router.post('/validation/editar-proyecto', function(req, res) {
 
-    
+    res.send(req.body);
+        
     var sql = `UPDATE [unjfsc].[dbo].[proyectos] 
     SET 
     [titulo] = @titulo, 
@@ -485,7 +486,9 @@ router.post('/validation/editar-proyecto', function(req, res) {
     [impactos_ambientales] = @impactosAmbientales, 
     [medidas_mitigacion] = @medidasDeMitigacion, 
     [impactos_empresa] = @impactosEnLaEmpresa, 
-    [tipo_moneda] = @monedaDelProyecto 
+    [tipo_moneda] = @monedaDelProyecto,
+    [flujoDeCaja] = @flujoDeCaja,
+    [planAdjunto] = @planAdjunto
     WHERE  [id_proyecto] = @id_proyecto`;
     
     var request = new Request(sql, function(err) {
@@ -649,7 +652,9 @@ router.post('/validation/editar-proyecto', function(req, res) {
     request.addParameter( "medidasDeMitigacion",                  TYPES.Text            ,req.body.medidasDeMitigacion ? req.body.medidasDeMitigacion : null );
     request.addParameter( "impactosEnLaEmpresa",                  TYPES.Text            ,req.body.impactosEnLaEmpresa ? req.body.impactosEnLaEmpresa : null );
     request.addParameter( "monedaDelProyecto"  ,                  TYPES.Int             ,req.body.monedaDelProyecto ? req.body.monedaDelProyecto : null );
-       
+    request.addParameter( "flujoDeCaja"  ,                        TYPES.Image           ,req.body.flujoDeCaja ? req.body.flujoDeCaja : null ); 
+    request.addParameter( "planAdjunto"  ,                        TYPES.Image           ,req.body.planAdjunto ? req.body.planAdjunto : null );    
+
     conn.execSql(request);
 
 });
@@ -674,7 +679,7 @@ router.post('/visualizar', function(req, res, next) {
     var conversion = require("phantom-html-to-pdf")();
     var pdf = require('../models/pdf').pdf;
 
-    var sql = 'SELECT TOP 1 * from unjfsc.dbo.proyectos WHERE id_usuario = @id_usuario AND id_proyecto = @idproyecto';
+    var sql = 'SELECT usuario.*, proyectos.*  from unjfsc.dbo.proyectos INNER JOIN unjfsc.dbo.usuario ON usuario.id_usuario = 3 and proyectos.id_proyecto = 1';
     var result = {};
 
     var request = new Request(sql, function(err) {

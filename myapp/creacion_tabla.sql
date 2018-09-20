@@ -72,8 +72,8 @@ CREATE TABLE dbo.proyectos
     a34_1_3 Text NULL,
     a34_2_3 Text NULL,
     a34_3_3 Text NULL,
-    a34_4_3 date NULL,
-    a34_5_3 date NULL,
+    a34_4_3 Date NULL,
+    a34_5_3 Date NULL,
     a35_1_1 Text NULL,
     a35_2_1 Text NULL,
     a35_3_1 Text NULL,
@@ -167,7 +167,9 @@ CREATE TABLE dbo.proyectos
 	medidas_mitigacion text NULL,
 	impactos_empresa text NULL,
 	tipo_moneda int NULL,
-	enviado int NOT NULL
+	enviado int NOT NULL,
+	flujoDeCaja IMAGE NULL,
+	planAdjunto IMAGE NULL
 	)  ON [PRIMARY]
 	 TEXTIMAGE_ON [PRIMARY]
 GO
