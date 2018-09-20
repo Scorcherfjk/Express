@@ -19,15 +19,10 @@ function fecha(i){
   
 
 exports.pdf = (lista) => {
-    var html = `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
+    var html = `<!DOCTYPE html><html><head><meta charset="utf-8">
 <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
+        body { font-family: Arial, Helvetica, sans-serif; }
+        h1,h2,h3,h4,h5,h6 { text-transform: capitalize; }
     p {
         border: 2px solid black;
         padding-left: 4px;
@@ -49,8 +44,9 @@ exports.pdf = (lista) => {
         padding: 5px;
         text-align: left;
     }
-    h1,h2,h3,h4,h5,h6{
-        text-transform: capitalize;
+        img{
+            width:400px;
+            height:120px;
     }
     .centrado{
         margin: auto;
@@ -61,20 +57,19 @@ exports.pdf = (lista) => {
         height:120px;
     }
 </style>
-</head>
-<body>
-<img src="http://127.0.0.1:3000/images/presentacion.png" alt="logo de la universidad">
+</head>`;
 
+html += `<body><img src="http://127.0.0.1:3000/images/presentacion.png" alt="logo de la universidad">
 <h2 class="centrado">FORMATO DEL PROYECTO</h2>
-<h3 class="centrado">`+ fecha(hoy) +`</h3>
+<h3 class="centrado"> `+   fecha(hoy)  +`  </h3>`;
 
-<h2>SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES</h2>
+html+=`<h2>SECCIÓN A: IDENTIFICACIÓN DE LAS ENTIDADES PARTICIPANTES</h2>
 <h3>A.1 - Datos generales del proyecto</h3>
 <h4>A.1.1 - Título</h4>
-<p>`+ lista.titulo +`</p>
+<p> `+   lista.titulo  +`  </p>
 
 <h4>A.1.2 - Palabras clave</h4>
-<p>`+ lista.palabras_clave +`</p>
+<p> `+   lista.palabras_clave  +`  </p>
 
 <h4>A.1.3 - Area de innovación</h4>
 <br>
@@ -88,9 +83,9 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>`+ lista.area_innovacion_area +`</td>
-            <td>`+ lista.area_innovacion_subarea +`</td>
-            <td>`+ lista.area_innovacion_tematica +`</td>
+            <td> `+   lista.area_innovacion_area  +`  </td>
+            <td> `+   lista.area_innovacion_subarea  +`  </td>
+            <td> `+   lista.area_innovacion_tematica  +`  </td>
         </tr>
     </tbody>
 </table>
@@ -105,8 +100,8 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>`+ lista.aplicacion_area +`</td>
-            <td>`+ lista.aplicacion_subarea +`</td>
+            <td> `+   lista.aplicacion_area  +`  </td>
+            <td> `+   lista.aplicacion_subarea  +`  </td>
         </tr>
     </tbody>
 </table>
@@ -123,78 +118,78 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>`+ lista.localizacion_departamento +`</td>
-            <td>`+ lista.localizacion_provincia +`</td>
-            <td>`+ lista.localizacion_distrito +`</td>
-            <td>`+ lista.localizacion_ubigeo +`</td>
+            <td> `+   lista.localizacion_departamento  +`  </td>
+            <td> `+   lista.localizacion_provincia  +`  </td>
+            <td> `+   lista.localizacion_distrito  +`  </td>
+            <td> `+   lista.localizacion_ubigeo  +`  </td>
         </tr>
     </tbody>
 </table>
 
 <h5>A.1.6 - Duracion del proyecto</h5>
-<p>`+ lista.duracion_proyecto +`</p>
+<p> `+   lista.duracion_proyecto  +`  </p>
 
 <h5>A.1.7 - Fecha estimada de inicio del proyecto</h5>
-<p> `+ fecha(lista.fecha_estimada_inicio) +` </p>
+<p>  `+   fecha(lista.fecha_estimada_inicio)  +`   </p>
 
 <h4>A.1.8 - Datos del coordinador general del proyecto</h4>
 
 <h5>Tipo de documento</h5>
-<p> `+ lista.cgp_tipo_documento +` </p>
+<p>  `+   lista.cgp_tipo_documento  +`   </p>
 
 <h5>Numero de documento</h5>
-<p> `+ lista.cgp_nro_documento +` </p>
+<p>  `+   lista.cgp_nro_documento  +`   </p>
 
 <h5>RUC</h5>
-<p> `+ lista.cgp_ruc +` </p>
+<p>  `+   lista.cgp_ruc  +`   </p>
 
 <h5>Nombres y Apellidos</h5>
-<p> `+ lista.cgp_nombre +` </p>
+<p>  `+   lista.cgp_nombre  +`   </p>
 
 <h5>fecha de nacimiento</h5>
-<p> `+ fecha(lista.cgp_fecha_nac) +` </p>
+<p>  `+   fecha(lista.cgp_fecha_nac)  +`   </p>
 
 <h5>sexo</h5>
-<p> `+ lista.cgp_sexo +` </p>
+<p>  `+   lista.cgp_sexo  +`   </p>
 
 <h5>Correo electronico</h5>
-<p> `+ lista.cgp_email +` </p>
+<p>  `+   lista.cgp_email  +`   </p>
 
 <h5>Telefono</h5>
-<p> `+ lista.cgp_telefono +` </p>
+<p>  `+   lista.cgp_telefono  +`   </p>
 
 <h5>Celular</h5>
-<p> `+ lista.cgp_celular +` </p>
+<p>  `+   lista.cgp_celular  +`   </p>
 
 
 <h4>A.1.9 - Datos del coordinador administrativo del proyecto</h4>
 
 <h5>Tipo de documento</h5>
-<p> `+ lista.cap_tipo_documento +` </p>
+<p>  `+   lista.cap_tipo_documento  +`   </p>
 
 <h5>Numero de documento</h5>
-<p> `+ lista.cap_nro_documento +` </p>
+<p>  `+   lista.cap_nro_documento  +`   </p>
 
 <h5>RUC</h5>
-<p> `+ lista.cap_ruc +` </p>
+<p>  `+   lista.cap_ruc  +`   </p>
 
 <h5>Nombres y Apellidos</h5>
-<p> `+ lista.cap_nombre +` </p>
+<p>  `+   lista.cap_nombre  +`   </p>
 
 <h5>fecha de nacimiento</h5>
-<p> `+ fecha(lista.cap_fecha_nac) +` </p>
+<p>  `+   fecha(lista.cap_fecha_nac)  +`   </p>
 
 <h5>sexo</h5>
-<p> `+ lista.cap_sexo +` </p>
+<p>  `+   lista.cap_sexo  +`   </p>
 
 <h5>Correo electronico</h5>
-<p> `+ lista.cap_email +` </p>
+<p>  `+   lista.cap_email  +`   </p>
 
 <h5>Telefono</h5>
-<p> `+ lista.cap_telefono +` </p>
+<p>  `+   lista.cap_telefono  +`   </p>
 
 <h5>Celular</h5>
-<p> `+ lista.cap_celular +` </p>
+<p>  `+   lista.cap_celular  +`   </p>
 
 
 <h3>A.2 - Datos de las entidades participantes</h3>
@@ -202,89 +197,88 @@ exports.pdf = (lista) => {
 <h4>A.2.1 - Entidad solicitante</h4>
 
 <h5>Tipo de entidad</h5>
-<p> `+ lista.es_tipo +` </p>
+<p>  `+   lista.es_tipo  +`   </p>
 
 <h5>Tamaño de la empresa</h5>
-<p> `+ lista.es_tamano +` </p>
+<p>  `+   lista.es_tamano  +`   </p>
 
 <h5>Numero de Trabajadores</h5>
-<p> `+ lista.es_nro_trabajadores +` </p>
+<p>  `+   lista.es_nro_trabajadores  +`   </p>
 
 <h5>RUC y Razon social</h5>
-<p> `+ lista.es_ruc +` </p>
+<p>  `+   lista.es_ruc  +`   </p>
 
 <h5>CIIU</h5>
-<p> `+ lista.es_ciiu +` </p>
+<p>  `+   lista.es_ciiu  +`   </p>
 
 <h5>Direccion</h5>
-<p> `+ lista.es_direccion +` </p>
+<p>  `+   lista.es_direccion  +`   </p>
 
 <h5>Fecha de Constitucion</h5>
-<p> `+ fecha(lista.es_fecha_constitucion) +` </p>
+<p>  `+   fecha(lista.es_fecha_constitucion)  +`   </p>
 
 <h5>Inicio de actividades</h5>
-<p> `+ fecha(lista.es_inicio_actividades) +` </p>
+<p>  `+   fecha(lista.es_inicio_actividades)  +`   </p>
 
 <h5>Numero de partida</h5>
-<p> `+ lista.es_nro_partida +` </p>
+<p>  `+   lista.es_nro_partida  +`   </p>
 
 <h5>Oficina registral</h5>
-<p> `+ lista.es_oficina_registral +` </p>
+<p>  `+   lista.es_oficina_registral  +`   </p>
 
 <h5>Telefono / Celular</h5>
-<p> `+ lista.es_telefono +` </p>
+<p>  `+   lista.es_telefono  +`   </p>
 
 <h5>Correo electronico</h5>
-<p> `+ lista.es_correo +` </p>
+<p>  `+   lista.es_correo  +`   </p>
 
 <h5>Pagina Web</h5>
-<p> `+ lista.es_pagina_web +` </p>
+<p>  `+   lista.es_pagina_web  +`   </p>
 
 <h5>Ventas del año 2016</h5>
-<p> `+ lista.es_ventas2016 +` </p>
+<p>  `+   lista.es_ventas2016  +`   </p>
 
 <h5>Ventas del año 2017</h5>
-<p> `+ lista.es_ventas2017 +` </p>
+<p>  `+   lista.es_ventas2017  +`   </p>
 
 <h4>Representante legal</h4>
 
 <h5>Tipo de documento</h5>
-<p> `+ lista.rl_tipo_documento +` </p>
+<p>  `+   lista.rl_tipo_documento  +`   </p>
 
 <h5>Numero de documento</h5>
-<p> `+ lista.rl_nro_documento +` </p>
+<p>  `+   lista.rl_nro_documento  +`   </p>
 
 <h5>RUC</h5>
-<p> `+ lista.rl_ruc +` </p>
+<p>  `+   lista.rl_ruc  +`   </p>
 
 <h5>Nombres y Apellidos</h5>
-<p> `+ lista.rl_nombre +` </p>
+<p>  `+   lista.rl_nombre  +`   </p>
 
 <h5>sexo</h5>
-<p> `+ lista.rl_sexo +` </p>
+<p>  `+   lista.rl_sexo  +`   </p>
 
 <h5>Correo electronico</h5>
-<p> `+ lista.rl_email +` </p>
+<p>  `+   lista.rl_email  +`   </p>
 
 <h5>Telefonos</h5>
-<p> `+ lista.rl_telefono +` </p>
+<p>  `+   lista.rl_telefono  +`   </p>
 
 <h5>Indicar los productos ( Bienes y Servicios ) que en en la actualidad comercializa</h5>
-<p> `+ lista.rl_productos_comercializados +` </p>
+<p>  `+   lista.rl_productos_comercializados  +`   </p>
 
 <h5>Principales actividades, investigaciones, tecnologias relacionadas con el proyecto</h5>
-<p> `+ lista.rl_actividades_relacionadas +` </p>
+<p>  `+   lista.rl_actividades_relacionadas  +`   </p>
 
 <h5>Infraestructura fisica, equipamiento, tecnologias y procesos de la entidad solicitante</h5>
-<p> `+ lista.rl_infraestructura_es +` </p>
+<p>  `+   lista.rl_infraestructura_es  +`   </p>`;
 
-
-<h4> A.2.2 - entidades asociadas</h4>
+html+=`<h4> A.2.2 - entidades asociadas</h4>
 <br>
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
+            
             <th>ruc</th>
             <th>nombre de la entidad</th>
             <th>tipo de entidad</th>
@@ -294,14 +288,31 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-            <td>Miraflores</td>
-            <td>150122</td>
-            <td>Ubigeo</td>
-        </tr>
-    </tbody>
+            <td> `+  lista.a22_1_1 +`  </td>
+            <td> `+  lista.a22_2_1 +`  </td>
+            <td> `+  lista.a22_3_1 +`  </td>
+            <td> `+  lista.a22_4_1 +`  </td>
+            <td> `+  lista.a22_5_1 +`  </td>
+        </tr>`;
+if (lista.a22_1_2 || lista.a22_2_2 || lista.a22_3_2 || lista.a22_4_2 || lista.a22_5_2 ){
+    html += `<tr>
+            <td> `+  lista.a22_1_2 +`  </td>
+            <td> `+  lista.a22_2_2 +`  </td>
+            <td> `+  lista.a22_3_2 +`  </td>
+            <td> `+  lista.a22_4_2 +`  </td>
+            <td> `+  lista.a22_5_2 +`  </td>
+        </tr>`;
+}
+if (lista.a22_1_3 || lista.a22_2_3 || lista.a22_3_3 || lista.a22_4_3 || lista.a22_5_3 ){
+    html += `<tr>
+            <td> `+  lista.a22_1_3 +`  </td>
+            <td> `+  lista.a22_2_3 +`  </td>
+            <td> `+  lista.a22_3_3 +`  </td>
+            <td> `+  lista.a22_4_3 +`  </td>
+            <td> `+  lista.a22_5_3 +`  </td>
+        </tr>`;
+}
+html += `</tbody>
 </table>
 
 <h3>A.3 - antecedentes de las entidades participantes</h3>
@@ -310,18 +321,28 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>nombre de la entidad</th>
             <th>principales actividades y experiencia</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-        </tr>
-    </tbody>
+            <td> `+  lista.a31_1_1 +`  </td>
+            <td> `+  lista.a31_2_1 +`  </td>
+        </tr>`;
+if (lista.a31_1_2 || lista.a31_2_2){
+    html += `<tr>
+            <td> `+  lista.a31_1_2 +`  </td>
+            <td> `+  lista.a31_2_2 +`  </td>
+        </tr>`;
+}
+if (lista.a31_1_3 || lista.a31_2_3){
+    html += `<tr>
+            <td> `+  lista.a31_1_3 +`  </td>
+            <td> `+  lista.a31_2_3 +`  </td>
+        </tr>`;
+}
+html += `</tbody>
 </table>
 
 <h4>A.3.2 - Principales actividades, investigaciones, tecnologias y procesos que se aportaran al proyecto</h4>
@@ -329,18 +350,29 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
+            
             <th>nombre de la entidad</th>
             <th>principal infraestructura fisica</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-        </tr>
-    </tbody>
+            <td> `+  lista.a32_1_1 +`  </td>
+            <td> `+  lista.a32_2_1 +`  </td>
+        </tr>`;
+if (lista.a32_1_2 || lista.a32_2_2){
+    html += `<tr>
+            <td> `+  lista.a32_1_2 +`  </td>
+            <td> `+  lista.a32_2_2 +`  </td>
+        </tr>`;
+}
+if (lista.a32_1_3 || lista.a32_2_3){
+    html += `<tr>
+            <td> `+  lista.a32_1_3 +`  </td>
+            <td> `+  lista.a32_2_3 +`  </td>
+        </tr>`;
+}
+html += `</tbody>
 </table>
 
 <h4>A.3.3 - Principales aspectos que evidencien que la entidad se beneficiara con los resultados</h4>
@@ -348,18 +380,29 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
+            
             <th>nombre de la entidad</th>
             <th>justificacion para contar con la entidad</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-        </tr>
-    </tbody>
+        <td> `+  lista.a33_1_1 +`  </td>
+        <td> `+  lista.a33_2_1 +`  </td>
+    </tr>`;
+    if (lista.a33_1_2 || lista.a33_2_2){
+        html += `<tr>
+                <td> `+  lista.a33_1_2 +`  </td>
+                <td> `+  lista.a33_2_2 +`  </td>
+            </tr>`;
+    }
+    if (lista.a33_1_3 || lista.a33_2_3){
+        html += `<tr>
+                <td> `+  lista.a33_1_3 +`  </td>
+                <td> `+  lista.a33_2_3 +`  </td>
+            </tr>`;
+    }
+html += `</tbody>
 </table>
 
 <h4>A.3.4 - Fondos recibidos por alguna entidad del estado hacia la entidad solicitante</h4>
@@ -367,7 +410,7 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
+            
             <th>nombre del otorgante</th>
             <th>nombre del proyecto</th>
             <th>monto</th>
@@ -377,14 +420,31 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-            <td>monto</td>
-            <td>fecha de reposicion</td>
-            <td>fecha de finalizacion</td>
-        </tr>
-    </tbody>
+            <td> `+  lista.a34_1_1 +`  </td>
+            <td> `+  lista.a34_2_1 +`  </td>
+            <td> `+  lista.a34_3_1 +`  </td>
+            <td> `+ fecha(lista.a34_4_1) +`  </td>
+            <td> `+ fecha(lista.a34_5_1) +`  </td>
+        </tr>`;
+    if (lista.a34_1_2 || lista.a34_2_2 || lista.a34_3_2 || lista.a34_4_2 || lista.a34_5_2 ){
+        html += `<tr>
+                <td> `+  lista.a34_1_2 +`  </td>
+                <td> `+  lista.a34_2_2 +`  </td>
+                <td> `+  lista.a34_3_2 +`  </td>
+                <td> `+ fecha(lista.a34_4_2) +`  </td>
+                <td> `+ fecha(lista.a34_5_2) +`  </td>
+            </tr>`;
+    }
+    if (lista.a34_1_3 || lista.a34_2_3 || lista.a34_3_3 || lista.a34_4_3 || lista.a34_5_3 ){
+        html += `<tr>
+                <td> `+  lista.a34_1_3 +`  </td>
+                <td> `+  lista.a34_2_3 +`  </td>
+                <td> `+  lista.a34_3_3 +`  </td>
+                <td> `+ fecha(lista.a34_4_3) +`  </td>
+                <td> `+ fecha(lista.a34_5_3) +`  </td>
+            </tr>`;
+    }
+html += `</tbody>
 </table>
 
 <h4>A.3.5 - Situacion de los proyectos financiados por innovate peru ( PIMEN, PIPEI, PITEI, PIPEA )</h4>
@@ -392,7 +452,7 @@ exports.pdf = (lista) => {
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
+            
             <th>contrato</th>
             <th>titulo</th>
             <th>aporte RNR</th>
@@ -404,54 +464,74 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Lima</td>
-            <td>Lima</td>
-            <td>monto</td>
-            <td>fecha de reposicion</td>
-            <td>fecha de finalizacion</td>
-            <td>estado</td>
-            <td>situacion actual</td>
-        </tr>
-    </tbody>
-</table>
+        <td> `+ lista.a35_1_1  +` </td>
+        <td> `+ lista.a35_2_1  +` </td>
+        <td> `+ lista.a35_3_1  +` </td>
+        <td> `+ fecha(lista.a35_4_1)  +` </td>
+        <td> `+ fecha(lista.a35_5_1)  +` </td>
+        <td> `+ lista.a35_6_1  +` </td>
+        <td> `+ lista.a35_7_1  +` </td>
+    </tr>`;
+    if (lista.a35_1_2 || lista.a35_2_2 || lista.a35_3_2 || lista.a35_4_2 || lista.a35_5_2 || lista.a35_6_2 || lista.a35_7_2){
+    html += `<tr>
+            <td> `+ lista.a35_1_2 +` </td>
+            <td> `+ lista.a35_2_2 +` </td>
+            <td> `+ lista.a35_3_2 +` </td>
+            <td> `+ fecha(lista.a35_4_2) +` </td>
+            <td> `+ fecha(lista.a35_5_2) +` </td>
+            <td> `+ lista.a35_6_2 +` </td>
+            <td> `+ lista.a35_7_2 +` </td>
+        </tr>`;
+    }
+    if (lista.a35_1_3 || lista.a35_2_3 || lista.a35_3_3 || lista.a35_4_3 || lista.a35_5_3 || lista.a35_6_3 || lista.a35_7_3){
+    html += `<tr>
+            <td> `+ lista.a35_1_3 +` </td>
+            <td> `+ lista.a35_2_3 +` </td>
+            <td> `+ lista.a35_3_3 +` </td>
+            <td> `+ fecha(lista.a35_4_3) +` </td>
+            <td> `+ fecha(lista.a35_5_3) +` </td>
+            <td> `+ lista.a35_6_3 +` </td>
+            <td> `+ lista.a35_7_3 +` </td>
+        </tr>`;
+    }
+html += `</tbody>
+</table>`;
 
-<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<h2>SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL</h2>
+
+
+html +=`<h2>SECCIÓN B: MERCADO - COMPETITIVIDAD EMPRESARIAL</h2>
 
 <h3>B.1 - situacion actual de mercado del producto y/o servicio y de la empresarial</h3>
 
 
 
 <h4>B.1.1 - situacion del entorno empresarial</h4>
-<p>
-     `+ lista.entorno_empresarial +` 
-</p>
+<p>   `+   lista.entorno_empresarial  +`   </p>
 <h4>B.1.2 - situacion actual de la empresa respecto a su negocio y participacion en el mercado</h4>
-<p> `+ lista.situacion_actual +` </p>
+<p>  `+   lista.situacion_actual  +`   </p>
 
 
 <h3>B.2 - Identificación del mercado potencial de la innovación y sustentación de la oportunidad comercial</h3>
 
 <h4>B.2.1 Identificación del mercado potencial, donde se implementará a escala comercial los resultados del proyecto</h4>
-<p> `+ lista.identificacion_mercado +` </p>
+<p>  `+   lista.identificacion_mercado  +`   </p>
 <h4>B.2.2 Competidores</h4>
-<p> `+ lista.competidores +` </p>
+<p>  `+   lista.competidores  +`   </p>
 
 
 
 <h3>B.3 Modelo de negocio y la estrategia empresarial para el ingreso de la innovación al mercado</h3>
 <h4>B.3.1 Modelo de negocio y la estrategia empresarial para el ingreso de la innovación al mercado</h4>
-<p> `+ lista.modelo_negocio +` </p>
+<p>  `+   lista.modelo_negocio  +`   </p>
 
 <h3>B.4 Capacidad financiera para el escalamiento de los resultados esperados y la implantación</h3>
 <h4>B.4.1 Capacidad financiera para el escalamiento de los resultados esperados y la implantación</h4>
-<p> `+ lista.capacidad_financiera +` </p>
+<p>  `+   lista.capacidad_financiera  +`   </p>
 
 <h3>B.5 Rentabilidad Económica y Financiera</h3>
 <h4>B.5.1 Rentabilidad Económica y Financiera</h4>
-<p> `+ lista.rentabilidad_econimica +` </p>
+<p>  `+   lista.rentabilidad_econimica  +`   </p>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -459,29 +539,28 @@ exports.pdf = (lista) => {
 
 <h3>C.1 Diagnóstico</h3>
 <h4>C.1.1 Problema identificado que limita la competitividad de la empresa u oportunidad de mercado</h4>
-<p> `+ lista.problemas_identificados +` </p>
+<p>  `+   lista.problemas_identificados  +`   </p>
 <h4>C.1.2 Consecuencias o efectos</h4>
-<p> `+ lista.consecuencias_efectos +` </p>
+<p>  `+   lista.consecuencias_efectos  +`   </p>
 <h4>C.1.3 Causas</h4>
-<p> `+ lista.causas +` </p>
+<p>  `+   lista.causas  +`   </p>
 <h4>C.1.4. Tipo de innovación y descripción</h4>
-<p> `+ lista.tipo_innovacion +` </p>
+<p>  `+   lista.tipo_innovacion  +`   </p>
 
 
 <h5>Tipo de Innovación</h5>
 <h5>1. Describir la función que realizará la innovación</h5>
-<p> `+ lista.funcion_innovacion +` </p>
+<p>  `+   lista.funcion_innovacion  +`   </p>
 <h5>2. Describir la tecnología que se empleará para construir la innovación</h5>
-<p> `+ lista.tecnologia +` </p>
+<p>  `+   lista.tecnologia  +`   </p>
 <h5>3. Describa la forma en que se entregará el resultado</h5>
-<p> `+ lista.forma_resultado +` </p>
+<p>  `+   lista.forma_resultado  +`   </p>
 
 <h3>C.2 Descripción de las características de producto o proceso de la innovación presentada</h3>
 <br>
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>atributo</th>
             <th>competidor 1</th>
             <th>competidor 2</th>
@@ -491,7 +570,6 @@ exports.pdf = (lista) => {
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>atributo</td>
             <td>competidor 1</td>
             <td>competidor 2</td>
@@ -506,10 +584,10 @@ exports.pdf = (lista) => {
 C.3 Antecedentes e Investigaciones recientes sobre la innovación a desarrollar
 
 <h4>C.3.1 Antecedentes e investigaciones recientes sobre el problema a resolver</h4>
-<p> `+ lista.antecedentes +` </p>
+<p>  `+   lista.antecedentes  +`   </p>
 
 <h4>C.3.2 Indicar si el conocimiento o la tecnología que se utilizará son de uso libre o restringido</h4>
-<p> `+ lista.tipo_conocimiento +` </p>
+<p>  `+   lista.tipo_conocimiento  +`   </p>
 
 
 C.4 Objetivos
@@ -521,7 +599,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>objetivo general - proposito del proyecto</th>
             <th>resultados finales</th>
             <th>medios de verificacion</th>
@@ -529,7 +606,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>atributo</td>
             <td>competidor 1</td>
             <td>competidor 2</td>
@@ -543,7 +619,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>objetivo específico - componentes</th>
             <th>resultados intermedios</th>
             <th>medios de verificacion</th>
@@ -551,7 +626,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>atributo</td>
             <td>competidor 1</td>
             <td>competidor 2</td>
@@ -564,7 +638,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>actividad</th>
             <th>unidad de medida</th>
             <th>meta fisica</th>
@@ -573,7 +646,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>atributo</td>
             <td>competidor 1</td>
             <td>competidor 2</td>
@@ -585,39 +657,39 @@ C.4 Objetivos
 <h3>C.5 Descripción de la Metodología</h3>
 
 <h4>C.5.1. Plan Metodológico del proyecto</h4>
-<p> `+ lista.plan_metodologico +` </p>
+<p>  `+   lista.plan_metodologico  +`   </p>
 
 <h3>C.6. Propiedad Intelectual</h3>
 
 <h4>C.6.1 Propiedad Intelectual</h4>
-<p> `+ lista.propiedad_intelectual +` </p>
+<p>  `+   lista.propiedad_intelectual  +`   </p>
 
 <h3>C.7 Impactos Esperados</h3>
 
 <h4>C.7.1 Impactos económicos</h4>
-<p> `+ lista.impactos_economicos +` </p>
+<p>  `+   lista.impactos_economicos  +`   </p>
 
 <h4>C.7.2 Impactos sociales</h4>
-<p> `+ lista.impactos_sociales +` </p>
+<p>  `+   lista.impactos_sociales  +`   </p>
 
 <h4>C.7.3 Impactos en la formación de cadenas productivas o clústeres y otras externalidades</h4>
-<p> `+ lista.impactos_formacion +` </p>
+<p>  `+   lista.impactos_formacion  +`   </p>
 
 <h4>C.7.4 Potencialidad de ser replicado por empresas similares</h4>
-<p> `+ lista.potencialidad +` </p>
+<p>  `+   lista.potencialidad  +`   </p>
 
 <h4>C.7.5 Impactos en Tecnología</h4>
-<p> `+ lista.impactos_tecnologico +` </p>
+<p>  `+   lista.impactos_tecnologico  +`   </p>
 
 <h4>C.7.6 Impactos ambientales</h4>
-<p> `+ lista.impactos_ambientales +` </p>
+<p>  `+   lista.impactos_ambientales  +`   </p>
 
 <h4>C.7.7 Medidas de mitigación para los impactos ambientales identificados como negativos y permanentes (o
     temporales)</h4>
-<p> `+ lista.medidas_mitigacion +` </p>
+<p>  `+   lista.medidas_mitigacion  +`   </p>
 
 <h4>C.7.8 Impactos en la capacidad interna de innovación de la empresa</h4>
-<p> `+ lista.impactos_empresa +` </p>
+<p>  `+   lista.impactos_empresa  +`   </p>
 
 
 
@@ -631,7 +703,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Es Investigador</th>
             <th>Nombre</th>
             <th>Ap. Paterno</th>
@@ -647,7 +718,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>Id</td>
             <td>Es Investigador</td>
             <td>Nombre</td>
             <td>Ap. Paterno</td>
@@ -663,19 +733,17 @@ C.4 Objetivos
     </tbody>
 </table>
 
-
 <h2>SECCIÓN D: PRESUPUESTO DEL PROYECTO</h2>
 
 <h3>D.1 Moneda y Presupuesto del Proyecto</h3>
 <h5>Moneda del Proyecto</h5>
-<p> `+ lista.tipo_moneda +` </p>
+<p>  `+   lista.tipo_moneda  +`   </p>
 
 <h4>D.1.1 CUADRO Nº 1: Equipos y Bienes duraderos</h4>
 <br>
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Valorizable </th>
             <th>Equipos y Bienes duraderos </th>
             <th>Especificación técnica </th>
@@ -691,8 +759,7 @@ C.4 Objetivos
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
+        <tr> 
             <td>Valorizable </td>
             <td>Equipos y Bienes duraderos </td>
             <td>Especificación técnica </td>
@@ -713,7 +780,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Nombre </th>
             <th>Entidad </th>
             <th>Porcentaje de dedicación </th>
@@ -728,7 +794,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>Nombre </td>
             <td>Entidad </td>
             <td>Porcentaje de dedicación </td>
@@ -747,7 +812,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Descripción </th>
             <th>Unidad Medida </th>
             <th>Costo unitario </th>
@@ -761,7 +825,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>Descripción </td>
             <td>Unidad Medida </td>
             <td>Costo unitario </td>
@@ -779,7 +842,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Descripción </th>
             <th>Unidad de medida </th>
             <th>Costo Unitario </th>
@@ -793,7 +855,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>Descripción </td>
             <td>Unidad de medida </td>
             <td>Costo Unitario </td>
@@ -811,7 +872,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Tipo </th>
             <th>Tipo de viático </th>
             <th>Tipo de Actividad </th>
@@ -828,8 +888,7 @@ C.4 Objetivos
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
+        <tr> 
             <td>Tipo </td>
             <td>Tipo de viático </td>
             <td>Tipo de Actividad </td>
@@ -851,7 +910,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Valorizable </th>
             <th>Descripción </th>
             <th>Especificación técnica </th>
@@ -867,8 +925,7 @@ C.4 Objetivos
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
+        <tr> 
             <td>Valorizable </td>
             <td>Descripción </td>
             <td>Especificación técnica </td>
@@ -889,7 +946,6 @@ C.4 Objetivos
 <table border="1">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Valorizable </th>
             <th>Descripción </th>
             <th>Unidad Medida </th>
@@ -903,8 +959,7 @@ C.4 Objetivos
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
+        <tr> 
             <td>Valorizable </td>
             <td>Descripción </td>
             <td>Unidad Medida </td>
@@ -922,8 +977,7 @@ C.4 Objetivos
 <br>
 <table border="1">
     <thead>
-        <tr>
-            <th>Id</th>
+        <tr>      
             <th>Descripción </th>
             <th>Unidad Medida </th>
             <th>Costo unitario </th>
@@ -936,8 +990,7 @@ C.4 Objetivos
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
+        <tr>      
             <td>Descripción </td>
             <td>Unidad Medida </td>
             <td>Costo unitario </td>
@@ -954,8 +1007,7 @@ C.4 Objetivos
 <br>
 <table border="1">
     <thead>
-        <tr>
-            <th>Id</th>
+        <tr>          
             <th>Tipo de Documento </th>
             <th>Número de Documento </th>
             <th>Nombres </th>
@@ -967,7 +1019,6 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
             <td>Tipo de Documento </td>
             <td>Número de Documento </td>
             <td>Nombres </td>
