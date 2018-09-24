@@ -637,9 +637,9 @@ block C
               th medios de verificacion
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: textarea#c41og_1.form-control( name="c41og_1" style="height: 38px;") #{lista.c41og_1}
+              td: textarea#c41og_2.form-control( name="c41og_2" style="height: 38px;") #{lista.c41og_2}
+              td: textarea#c41og_3.form-control( name="c41og_3" style="height: 38px;") #{lista.c41og_3}
       label(for='objetivoEspecifico') Objetivo Especifico
       .table-responsive
         table#objetivoEspecifico.table.table-hover
@@ -650,40 +650,52 @@ block C
               th medios de verificacion
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: textarea#c41oe_1_1.form-control(name="c41oe_1_1" style="height: 38px;") #{lista.c41oe_1_1}
+              td: textarea#c41oe_2_1.form-control(name="c41oe_2_1" style="height: 38px;") #{lista.c41oe_2_1}
+              td: textarea#c41oe_3_1.form-control(name="c41oe_3_1" style="height: 38px;") #{lista.c41oe_3_1}
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: textarea#c41oe_1_2.form-control(name="c41oe_1_2" style="height: 38px;") #{lista.c41oe_1_2}
+              td: textarea#c41oe_2_2.form-control(name="c41oe_2_2" style="height: 38px;") #{lista.c41oe_2_2}
+              td: textarea#c41oe_3_2.form-control(name="c41oe_3_2" style="height: 38px;") #{lista.c41oe_3_2}
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: textarea#c41oe_1_3.form-control(name="c41oe_1_3" style="height: 38px;") #{lista.c41oe_1_3}
+              td: textarea#c41oe_2_3.form-control(name="c41oe_2_3" style="height: 38px;") #{lista.c41oe_2_3}
+              td: textarea#c41oe_3_3.form-control(name="c41oe_3_3" style="height: 38px;") #{lista.c41oe_3_3}
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: textarea#c41oe_1_4.form-control(name="c41oe_1_4" style="height: 38px;") #{lista.c41oe_1_4}
+              td: textarea#c41oe_2_4.form-control(name="c41oe_2_4" style="height: 38px;") #{lista.c41oe_2_4}
+              td: textarea#c41oe_3_4.form-control(name="c41oe_3_4" style="height: 38px;") #{lista.c41oe_3_4}
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: textarea#c41oe_1_5.form-control(name="c41oe_1_5" style="height: 38px;") #{lista.c41oe_1_5}
+              td: textarea#c41oe_2_5.form-control(name="c41oe_2_5" style="height: 38px;") #{lista.c41oe_2_5}
+              td: textarea#c41oe_3_5.form-control(name="c41oe_3_5" style="height: 38px;") #{lista.c41oe_3_5}
       h6 C.4.2.Cronograma de actividades
       .table-responsive
         table.table.table-bordered.table-hover
           thead.thead-light.text-capitalize
             tr
-              th actividad
-              th unidad de medida
-              th meta fisica
-              th año 1
+              th(rowspan="2") actividad
+              th(rowspan="2") unidad de medida
+              th(rowspan="2") meta fisica
+              th(colspan="6") año 1
+            tr
+              th 1
+              th 2
+              th 3
+              th 4
+              th 5
+              th 6
           tbody
             tr
               td: input.form-control(type="text")
               td: input.form-control(type="text")
               td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input.form-control(type="checkbox")
+              td: input.form-control(type="checkbox")
+              td: input.form-control(type="checkbox")
+              td: input.form-control(type="checkbox")
+              td: input.form-control(type="checkbox")
+              td: input.form-control(type="checkbox")
   br
   .card.rounded.border-secondary
     h5.card-header.text-capitalize.bg-danger.text-white C.5 Descripción de la Metodología
@@ -778,17 +790,66 @@ block C
               th Entidad a la que pertenecen
           tbody
             tr
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
-              td: input.form-control(type="text")
+              td: input#c8_1_1.form-control(type="text" name="c8_1_1" value=lista.c8_1_1)
+              td: input#c8_2_1.form-control(type="text" name="c8_2_1" value=lista.c8_2_1)
+              td: input#c8_3_1.form-control(type="text" name="c8_3_1" value=lista.c8_3_1)
+              td: input#c8_4_1.form-control(type="text" name="c8_4_1" value=lista.c8_4_1)
+              td: input#c8_5_1.form-control(type="text" name="c8_5_1" value=lista.c8_5_1)
+              td: input#c8_6_1.form-control(type="text" name="c8_6_1" value=lista.c8_6_1)
+              td: input#c8_7_1.form-control(type="text" name="c8_7_1" value=lista.c8_7_1)
+              td: input#c8_8_1.form-control(type="text" name="c8_8_1" value=lista.c8_8_1)
+              td: input#c8_9_1.form-control(type="text" name="c8_9_1" value=lista.c8_9_1)
+              td: input#c8_10_1.form-control(type="text" name="c8_10_1" value=lista.c8_10_1)
+              td: input#c8_11_1.form-control(type="text" name="c8_11_1" value=lista.c8_11_1)
+            tr
+              td: input#c8_1_2.form-control(type="text" name="c8_1_2" value=lista.c8_1_2 )
+              td: input#c8_2_2.form-control(type="text" name="c8_2_2" value=lista.c8_2_2 )
+              td: input#c8_3_2.form-control(type="text" name="c8_3_2" value=lista.c8_3_2 )
+              td: input#c8_4_2.form-control(type="text" name="c8_4_2" value=lista.c8_4_2 )
+              td: input#c8_5_2.form-control(type="text" name="c8_5_2" value=lista.c8_5_2 )
+              td: input#c8_6_2.form-control(type="text" name="c8_6_2" value=lista.c8_6_2 )
+              td: input#c8_7_2.form-control(type="text" name="c8_7_2" value=lista.c8_7_2 )
+              td: input#c8_8_2.form-control(type="text" name="c8_8_2" value=lista.c8_8_2 )
+              td: input#c8_9_2.form-control(type="text" name="c8_9_2" value=lista.c8_9_2 )
+              td: input#c8_10_2.form-control(type="text" name="c8_10_2" value=lista.c8_10_2 )
+              td: input#c8_11_2.form-control(type="text" name="c8_11_2" value=lista.c8_11_2 )
+            tr
+              td: input#c8_1_3.form-control(type="text" name="c8_1_3" value=lista.c8_1_3 )
+              td: input#c8_2_3.form-control(type="text" name="c8_2_3" value=lista.c8_2_3 )
+              td: input#c8_3_3.form-control(type="text" name="c8_3_3" value=lista.c8_3_3 )
+              td: input#c8_4_3.form-control(type="text" name="c8_4_3" value=lista.c8_4_3 )
+              td: input#c8_5_3.form-control(type="text" name="c8_5_3" value=lista.c8_5_3 )
+              td: input#c8_6_3.form-control(type="text" name="c8_6_3" value=lista.c8_6_3 )
+              td: input#c8_7_3.form-control(type="text" name="c8_7_3" value=lista.c8_7_3 )
+              td: input#c8_8_3.form-control(type="text" name="c8_8_3" value=lista.c8_8_3 )
+              td: input#c8_9_3.form-control(type="text" name="c8_9_3" value=lista.c8_9_3 )
+              td: input#c8_10_3.form-control(type="text" name="c8_10_3" value=lista.c8_10_3 )
+              td: input#c8_11_3.form-control(type="text" name="c8_11_3" value=lista.c8_11_3 )
+            tr
+              td: input#c8_1_4.form-control(type="text" name="c8_1_4" value=lista.c8_1_4 )
+              td: input#c8_2_4.form-control(type="text" name="c8_2_4" value=lista.c8_2_4 )
+              td: input#c8_3_4.form-control(type="text" name="c8_3_4" value=lista.c8_3_4 )
+              td: input#c8_4_4.form-control(type="text" name="c8_4_4" value=lista.c8_4_4 )
+              td: input#c8_5_4.form-control(type="text" name="c8_5_4" value=lista.c8_5_4 )
+              td: input#c8_6_4.form-control(type="text" name="c8_6_4" value=lista.c8_6_4 )
+              td: input#c8_7_4.form-control(type="text" name="c8_7_4" value=lista.c8_7_4 )
+              td: input#c8_8_4.form-control(type="text" name="c8_8_4" value=lista.c8_8_4 )
+              td: input#c8_9_4.form-control(type="text" name="c8_9_4" value=lista.c8_9_4 )
+              td: input#c8_10_4.form-control(type="text" name="c8_10_4" value=lista.c8_10_4 )
+              td: input#c8_11_4.form-control(type="text" name="c8_11_4" value=lista.c8_11_4 )
+            tr
+              td: input#c8_1_5.form-control(type="text" name="c8_1_5" value=lista.c8_1_5 )
+              td: input#c8_2_5.form-control(type="text" name="c8_2_5" value=lista.c8_2_5 )
+              td: input#c8_3_5.form-control(type="text" name="c8_3_5" value=lista.c8_3_5 )
+              td: input#c8_4_5.form-control(type="text" name="c8_4_5" value=lista.c8_4_5 )
+              td: input#c8_5_5.form-control(type="text" name="c8_5_5" value=lista.c8_5_5 )
+              td: input#c8_6_5.form-control(type="text" name="c8_6_5" value=lista.c8_6_5 )
+              td: input#c8_7_5.form-control(type="text" name="c8_7_5" value=lista.c8_7_5 )
+              td: input#c8_8_5.form-control(type="text" name="c8_8_5" value=lista.c8_8_5 )
+              td: input#c8_9_5.form-control(type="text" name="c8_9_5" value=lista.c8_9_5 )
+              td: input#c8_10_5.form-control(type="text" name="c8_10_5" value=lista.c8_10_5 )
+              td: input#c8_11_5.form-control(type="text" name="c8_11_5" value=lista.c8_11_5 )
+
 block D
   - function addZero(i) { if (i < 10) { i = '0' + i; } return i; }
   - function fecha(i){ if (i != null) { var dd = i.getDate(); var mm = i.getMonth()+1; var yyyy = i.getFullYear(); dd = addZero(dd); mm = addZero(mm); return yyyy+'-'+mm+'-'+dd; }else { return i;} }
@@ -829,18 +890,70 @@ block D
                       th Entidad Aportante 
                   tbody
                     tr
-                      td: input.form-control(type="text") 
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text") 
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text") 
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text") 
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
+                      td: input#d11_1_1.form-control(type="text" name="d11_1_1" value=lista.d11_1_1) 
+                      td: input#d11_2_1.form-control(type="text" name="d11_2_1" value=lista.d11_2_1)
+                      td: input#d11_3_1.form-control(type="text" name="d11_3_1" value=lista.d11_3_1) 
+                      td: input#d11_4_1.form-control(type="text" name="d11_4_1" value=lista.d11_4_1)
+                      td: input#d11_5_1.form-control(type="text" name="d11_5_1" value=lista.d11_5_1)
+                      td: input#d11_6_1.form-control(type="text" name="d11_6_1" value=lista.d11_6_1) 
+                      td: input#d11_7_1.form-control(type="text" name="d11_7_1" value=lista.d11_7_1)
+                      td: input#d11_8_1.form-control(type="text" name="d11_8_1" value=lista.d11_8_1)
+                      td: input#d11_9_1.form-control(type="text" name="d11_9_1" value=lista.d11_9_1) 
+                      td: input#d11_10_1.form-control(type="text" name="d11_10_1" value=lista.d11_10_1)
+                      td: input#d11_11_1.form-control(type="text" name="d11_11_1" value=lista.d11_11_1)
+                      td: input#d11_12_1.form-control(type="text" name="d11_12_1" value=lista.d11_12_1)
+                    tr
+                      td: input#d11_1_2.form-control(type="text" name="d11_1_2" value=lista.d11_1_2) 
+                      td: input#d11_2_2.form-control(type="text" name="d11_2_2" value=lista.d11_2_2)
+                      td: input#d11_3_2.form-control(type="text" name="d11_3_2" value=lista.d11_3_2) 
+                      td: input#d11_4_2.form-control(type="text" name="d11_4_2" value=lista.d11_4_2)
+                      td: input#d11_5_2.form-control(type="text" name="d11_5_2" value=lista.d11_5_2)
+                      td: input#d11_6_2.form-control(type="text" name="d11_6_2" value=lista.d11_6_2) 
+                      td: input#d11_7_2.form-control(type="text" name="d11_7_2" value=lista.d11_7_2)
+                      td: input#d11_8_2.form-control(type="text" name="d11_8_2" value=lista.d11_8_2)
+                      td: input#d11_9_2.form-control(type="text" name="d11_9_2" value=lista.d11_9_2) 
+                      td: input#d11_10_2.form-control(type="text" name="d11_10_2" value=lista.d11_10_2)
+                      td: input#d11_11_2.form-control(type="text" name="d11_11_2" value=lista.d11_11_2)
+                      td: input#d11_12_2.form-control(type="text" name="d11_12_2" value=lista.d11_12_2)
+                    tr
+                      td: input#d11_1_3.form-control(type="text" name="d11_1_3" value=lista.d11_1_3 )
+                      td: input#d11_2_3.form-control(type="text" name="d11_2_3" value=lista.d11_2_3 )
+                      td: input#d11_3_3.form-control(type="text" name="d11_3_3" value=lista.d11_3_3 )
+                      td: input#d11_4_3.form-control(type="text" name="d11_4_3" value=lista.d11_4_3 )
+                      td: input#d11_5_3.form-control(type="text" name="d11_5_3" value=lista.d11_5_3 )
+                      td: input#d11_6_3.form-control(type="text" name="d11_6_3" value=lista.d11_6_3 )
+                      td: input#d11_7_3.form-control(type="text" name="d11_7_3" value=lista.d11_7_3 )
+                      td: input#d11_8_3.form-control(type="text" name="d11_8_3" value=lista.d11_8_3 )
+                      td: input#d11_9_3.form-control(type="text" name="d11_9_3" value=lista.d11_9_3 )
+                      td: input#d11_10_3.form-control(type="text" name="d11_10_3" value=lista.d11_10_3 )
+                      td: input#d11_11_3.form-control(type="text" name="d11_11_3" value=lista.d11_11_3 )
+                      td: input#d11_12_3.form-control(type="text" name="d11_12_3" value=lista.d11_12_3 )
+                    tr
+                      td: input#d11_1_4.form-control(type="text" name="d11_1_4" value=lista.d11_1_4) 
+                      td: input#d11_2_4.form-control(type="text" name="d11_2_4" value=lista.d11_2_4)
+                      td: input#d11_3_4.form-control(type="text" name="d11_3_4" value=lista.d11_3_4) 
+                      td: input#d11_4_4.form-control(type="text" name="d11_4_4" value=lista.d11_4_4)
+                      td: input#d11_5_4.form-control(type="text" name="d11_5_4" value=lista.d11_5_4)
+                      td: input#d11_6_4.form-control(type="text" name="d11_6_4" value=lista.d11_6_4) 
+                      td: input#d11_7_4.form-control(type="text" name="d11_7_4" value=lista.d11_7_4)
+                      td: input#d11_8_4.form-control(type="text" name="d11_8_4" value=lista.d11_8_4)
+                      td: input#d11_9_4.form-control(type="text" name="d11_9_4" value=lista.d11_9_4) 
+                      td: input#d11_10_4.form-control(type="text" name="d11_10_4" value=lista.d11_10_4)
+                      td: input#d11_11_4.form-control(type="text" name="d11_11_4" value=lista.d11_11_4)
+                      td: input#d11_12_4.form-control(type="text" name="d11_12_4" value=lista.d11_12_4)
+                    tr
+                      td: input#d11_1_5.form-control(type="text" name="d11_1_5" value=lista.d11_1_5 ) 
+                      td: input#d11_2_5.form-control(type="text" name="d11_2_5" value=lista.d11_2_5 )
+                      td: input#d11_3_5.form-control(type="text" name="d11_3_5" value=lista.d11_3_5 ) 
+                      td: input#d11_4_5.form-control(type="text" name="d11_4_5" value=lista.d11_4_5 )
+                      td: input#d11_5_5.form-control(type="text" name="d11_5_5" value=lista.d11_5_5 )
+                      td: input#d11_6_5.form-control(type="text" name="d11_6_5" value=lista.d11_6_5 ) 
+                      td: input#d11_7_5.form-control(type="text" name="d11_7_5" value=lista.d11_7_5 )
+                      td: input#d11_8_5.form-control(type="text" name="d11_8_5" value=lista.d11_8_5 )
+                      td: input#d11_9_5.form-control(type="text" name="d11_9_5" value=lista.d11_9_5 ) 
+                      td: input#d11_10_5.form-control(type="text" name="d11_10_5" value=lista.d11_10_5 )
+                      td: input#d11_11_5.form-control(type="text" name="d11_11_5" value=lista.d11_11_5 )
+                      td: input#d11_12_5.form-control(type="text" name="d11_12_5" value=lista.d11_12_5 )
         .card
           #headingd12.card-header
             h5.mb-0
@@ -864,16 +977,60 @@ block D
                       th Entidad Aportante
                   tbody
                     tr
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text") 
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
+                      td: input#d12_1_1.form-control(type="text" name="d12_1_1" value=lista.d12_1_1) 
+                      td: input#d12_2_1.form-control(type="text" name="d12_2_1" value=lista.d12_2_1)
+                      td: input#d12_3_1.form-control(type="text" name="d12_3_1" value=lista.d12_3_1) 
+                      td: input#d12_4_1.form-control(type="text" name="d12_4_1" value=lista.d12_4_1)
+                      td: input#d12_5_1.form-control(type="text" name="d12_5_1" value=lista.d12_5_1)
+                      td: input#d12_6_1.form-control(type="text" name="d12_6_1" value=lista.d12_6_1) 
+                      td: input#d12_7_1.form-control(type="text" name="d12_7_1" value=lista.d12_7_1)
+                      td: input#d12_8_1.form-control(type="text" name="d12_8_1" value=lista.d12_8_1)
+                      td: input#d12_9_1.form-control(type="text" name="d12_9_1" value=lista.d12_9_1) 
+                      td: input#d12_10_1.form-control(type="text" name="d12_10_1" value=lista.d12_10_1)
+                    tr
+                      td: input#d12_1_2.form-control(type="text" name="d12_1_2" value=lista.d12_1_2) 
+                      td: input#d12_2_2.form-control(type="text" name="d12_2_2" value=lista.d12_2_2)
+                      td: input#d12_3_2.form-control(type="text" name="d12_3_2" value=lista.d12_3_2) 
+                      td: input#d12_4_2.form-control(type="text" name="d12_4_2" value=lista.d12_4_2)
+                      td: input#d12_5_2.form-control(type="text" name="d12_5_2" value=lista.d12_5_2)
+                      td: input#d12_6_2.form-control(type="text" name="d12_6_2" value=lista.d12_6_2) 
+                      td: input#d12_7_2.form-control(type="text" name="d12_7_2" value=lista.d12_7_2)
+                      td: input#d12_8_2.form-control(type="text" name="d12_8_2" value=lista.d12_8_2)
+                      td: input#d12_9_2.form-control(type="text" name="d12_9_2" value=lista.d12_9_2) 
+                      td: input#d12_10_2.form-control(type="text" name="d12_10_2" value=lista.d12_10_2)
+                    tr
+                      td: input#d12_1_3.form-control(type="text" name="d12_1_3" value=lista.d12_1_3 )
+                      td: input#d12_2_3.form-control(type="text" name="d12_2_3" value=lista.d12_2_3 )
+                      td: input#d12_3_3.form-control(type="text" name="d12_3_3" value=lista.d12_3_3 )
+                      td: input#d12_4_3.form-control(type="text" name="d12_4_3" value=lista.d12_4_3 )
+                      td: input#d12_5_3.form-control(type="text" name="d12_5_3" value=lista.d12_5_3 )
+                      td: input#d12_6_3.form-control(type="text" name="d12_6_3" value=lista.d12_6_3 )
+                      td: input#d12_7_3.form-control(type="text" name="d12_7_3" value=lista.d12_7_3 )
+                      td: input#d12_8_3.form-control(type="text" name="d12_8_3" value=lista.d12_8_3 )
+                      td: input#d12_9_3.form-control(type="text" name="d12_9_3" value=lista.d12_9_3 )
+                      td: input#d12_10_3.form-control(type="text" name="d12_10_3" value=lista.d12_10_3 )
+                    tr
+                      td: input#d12_1_4.form-control(type="text" name="d12_1_4" value=lista.d12_1_4) 
+                      td: input#d12_2_4.form-control(type="text" name="d12_2_4" value=lista.d12_2_4)
+                      td: input#d12_3_4.form-control(type="text" name="d12_3_4" value=lista.d12_3_4) 
+                      td: input#d12_4_4.form-control(type="text" name="d12_4_4" value=lista.d12_4_4)
+                      td: input#d12_5_4.form-control(type="text" name="d12_5_4" value=lista.d12_5_4)
+                      td: input#d12_6_4.form-control(type="text" name="d12_6_4" value=lista.d12_6_4) 
+                      td: input#d12_7_4.form-control(type="text" name="d12_7_4" value=lista.d12_7_4)
+                      td: input#d12_8_4.form-control(type="text" name="d12_8_4" value=lista.d12_8_4)
+                      td: input#d12_9_4.form-control(type="text" name="d12_9_4" value=lista.d12_9_4) 
+                      td: input#d12_10_4.form-control(type="text" name="d12_10_4" value=lista.d12_10_4)
+                    tr
+                      td: input#d12_1_5.form-control(type="text" name="d12_1_5" value=lista.d12_1_5 ) 
+                      td: input#d12_2_5.form-control(type="text" name="d12_2_5" value=lista.d12_2_5 )
+                      td: input#d12_3_5.form-control(type="text" name="d12_3_5" value=lista.d12_3_5 ) 
+                      td: input#d12_4_5.form-control(type="text" name="d12_4_5" value=lista.d12_4_5 )
+                      td: input#d12_5_5.form-control(type="text" name="d12_5_5" value=lista.d12_5_5 )
+                      td: input#d12_6_5.form-control(type="text" name="d12_6_5" value=lista.d12_6_5 ) 
+                      td: input#d12_7_5.form-control(type="text" name="d12_7_5" value=lista.d12_7_5 )
+                      td: input#d12_8_5.form-control(type="text" name="d12_8_5" value=lista.d12_8_5 )
+                      td: input#d12_9_5.form-control(type="text" name="d12_9_5" value=lista.d12_9_5 ) 
+                      td: input#d12_10_5.form-control(type="text" name="d12_10_5" value=lista.d12_10_5 )
         .card
           #headingd13.card-header
             h5.mb-0
@@ -896,15 +1053,55 @@ block D
                       th Entidad Aportante
                   tbody
                     tr
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
-                      td: input.form-control(type="text")
+                      td: input#d13_1_1.form-control(type="text" name="d13_1_1" value=lista.d13_1_1) 
+                      td: input#d13_2_1.form-control(type="text" name="d13_2_1" value=lista.d13_2_1)
+                      td: input#d13_3_1.form-control(type="text" name="d13_3_1" value=lista.d13_3_1) 
+                      td: input#d13_4_1.form-control(type="text" name="d13_4_1" value=lista.d13_4_1)
+                      td: input#d13_5_1.form-control(type="text" name="d13_5_1" value=lista.d13_5_1)
+                      td: input#d13_6_1.form-control(type="text" name="d13_6_1" value=lista.d13_6_1) 
+                      td: input#d13_7_1.form-control(type="text" name="d13_7_1" value=lista.d13_7_1)
+                      td: input#d13_8_1.form-control(type="text" name="d13_8_1" value=lista.d13_8_1)
+                      td: input#d13_9_1.form-control(type="text" name="d13_9_1" value=lista.d13_9_1) 
+                    tr
+                      td: input#d13_1_2.form-control(type="text" name="d13_1_2" value=lista.d13_1_2) 
+                      td: input#d13_2_2.form-control(type="text" name="d13_2_2" value=lista.d13_2_2)
+                      td: input#d13_3_2.form-control(type="text" name="d13_3_2" value=lista.d13_3_2) 
+                      td: input#d13_4_2.form-control(type="text" name="d13_4_2" value=lista.d13_4_2)
+                      td: input#d13_5_2.form-control(type="text" name="d13_5_2" value=lista.d13_5_2)
+                      td: input#d13_6_2.form-control(type="text" name="d13_6_2" value=lista.d13_6_2) 
+                      td: input#d13_7_2.form-control(type="text" name="d13_7_2" value=lista.d13_7_2)
+                      td: input#d13_8_2.form-control(type="text" name="d13_8_2" value=lista.d13_8_2)
+                      td: input#d13_9_2.form-control(type="text" name="d13_9_2" value=lista.d13_9_2) 
+                    tr
+                      td: input#d13_1_3.form-control(type="text" name="d13_1_3" value=lista.d13_1_3 )
+                      td: input#d13_2_3.form-control(type="text" name="d13_2_3" value=lista.d13_2_3 )
+                      td: input#d13_3_3.form-control(type="text" name="d13_3_3" value=lista.d13_3_3 )
+                      td: input#d13_4_3.form-control(type="text" name="d13_4_3" value=lista.d13_4_3 )
+                      td: input#d13_5_3.form-control(type="text" name="d13_5_3" value=lista.d13_5_3 )
+                      td: input#d13_6_3.form-control(type="text" name="d13_6_3" value=lista.d13_6_3 )
+                      td: input#d13_7_3.form-control(type="text" name="d13_7_3" value=lista.d13_7_3 )
+                      td: input#d13_8_3.form-control(type="text" name="d13_8_3" value=lista.d13_8_3 )
+                      td: input#d13_9_3.form-control(type="text" name="d13_9_3" value=lista.d13_9_3 )
+                    tr
+                      td: input#d13_1_4.form-control(type="text" name="d13_1_4" value=lista.d13_1_4) 
+                      td: input#d13_2_4.form-control(type="text" name="d13_2_4" value=lista.d13_2_4)
+                      td: input#d13_3_4.form-control(type="text" name="d13_3_4" value=lista.d13_3_4) 
+                      td: input#d13_4_4.form-control(type="text" name="d13_4_4" value=lista.d13_4_4)
+                      td: input#d13_5_4.form-control(type="text" name="d13_5_4" value=lista.d13_5_4)
+                      td: input#d13_6_4.form-control(type="text" name="d13_6_4" value=lista.d13_6_4) 
+                      td: input#d13_7_4.form-control(type="text" name="d13_7_4" value=lista.d13_7_4)
+                      td: input#d13_8_4.form-control(type="text" name="d13_8_4" value=lista.d13_8_4)
+                      td: input#d13_9_4.form-control(type="text" name="d13_9_4" value=lista.d13_9_4)
+                    tr
+                      td: input#d13_1_5.form-control(type="text" name="d13_1_5" value=lista.d13_1_5 )
+                      td: input#d13_2_5.form-control(type="text" name="d13_2_5" value=lista.d13_2_5 )
+                      td: input#d13_3_5.form-control(type="text" name="d13_3_5" value=lista.d13_3_5 ) 
+                      td: input#d13_4_5.form-control(type="text" name="d13_4_5" value=lista.d13_4_5 )
+                      td: input#d13_5_5.form-control(type="text" name="d13_5_5" value=lista.d13_5_5 )
+                      td: input#d13_6_5.form-control(type="text" name="d13_6_5" value=lista.d13_6_5 ) 
+                      td: input#d13_7_5.form-control(type="text" name="d13_7_5" value=lista.d13_7_5 )
+                      td: input#d13_8_5.form-control(type="text" name="d13_8_5" value=lista.d13_8_5 )
+                      td: input#d13_9_5.form-control(type="text" name="d13_9_5" value=lista.d13_9_5 ) 
           .card
             #headingd14.card-header
               h5.mb-0
@@ -927,15 +1124,55 @@ block D
                         th Entidad Aportante
                     tbody
                       tr
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
+                        td: input#d14_1_1.form-control(type="text" name="d14_1_1" value=lista.d14_1_1) 
+                        td: input#d14_2_1.form-control(type="text" name="d14_2_1" value=lista.d14_2_1)
+                        td: input#d14_3_1.form-control(type="text" name="d14_3_1" value=lista.d14_3_1) 
+                        td: input#d14_4_1.form-control(type="text" name="d14_4_1" value=lista.d14_4_1)
+                        td: input#d14_5_1.form-control(type="text" name="d14_5_1" value=lista.d14_5_1)
+                        td: input#d14_6_1.form-control(type="text" name="d14_6_1" value=lista.d14_6_1) 
+                        td: input#d14_7_1.form-control(type="text" name="d14_7_1" value=lista.d14_7_1)
+                        td: input#d14_8_1.form-control(type="text" name="d14_8_1" value=lista.d14_8_1)
+                        td: input#d14_9_1.form-control(type="text" name="d14_9_1" value=lista.d14_9_1) 
+                      tr
+                        td: input#d14_1_2.form-control(type="text" name="d14_1_2" value=lista.d14_1_2) 
+                        td: input#d14_2_2.form-control(type="text" name="d14_2_2" value=lista.d14_2_2)
+                        td: input#d14_3_2.form-control(type="text" name="d14_3_2" value=lista.d14_3_2) 
+                        td: input#d14_4_2.form-control(type="text" name="d14_4_2" value=lista.d14_4_2)
+                        td: input#d14_5_2.form-control(type="text" name="d14_5_2" value=lista.d14_5_2)
+                        td: input#d14_6_2.form-control(type="text" name="d14_6_2" value=lista.d14_6_2) 
+                        td: input#d14_7_2.form-control(type="text" name="d14_7_2" value=lista.d14_7_2)
+                        td: input#d14_8_2.form-control(type="text" name="d14_8_2" value=lista.d14_8_2)
+                        td: input#d14_9_2.form-control(type="text" name="d14_9_2" value=lista.d14_9_2) 
+                      tr
+                        td: input#d14_1_3.form-control(type="text" name="d14_1_3" value=lista.d14_1_3)
+                        td: input#d14_2_3.form-control(type="text" name="d14_2_3" value=lista.d14_2_3)
+                        td: input#d14_3_3.form-control(type="text" name="d14_3_3" value=lista.d14_3_3)
+                        td: input#d14_4_3.form-control(type="text" name="d14_4_3" value=lista.d14_4_3)
+                        td: input#d14_5_3.form-control(type="text" name="d14_5_3" value=lista.d14_5_3)
+                        td: input#d14_6_3.form-control(type="text" name="d14_6_3" value=lista.d14_6_3)
+                        td: input#d14_7_3.form-control(type="text" name="d14_7_3" value=lista.d14_7_3)
+                        td: input#d14_8_3.form-control(type="text" name="d14_8_3" value=lista.d14_8_3)
+                        td: input#d14_9_3.form-control(type="text" name="d14_9_3" value=lista.d14_9_3)
+                      tr
+                        td: input#d14_1_4.form-control(type="text" name="d14_1_4" value=lista.d14_1_4) 
+                        td: input#d14_2_4.form-control(type="text" name="d14_2_4" value=lista.d14_2_4)
+                        td: input#d14_3_4.form-control(type="text" name="d14_3_4" value=lista.d14_3_4) 
+                        td: input#d14_4_4.form-control(type="text" name="d14_4_4" value=lista.d14_4_4)
+                        td: input#d14_5_4.form-control(type="text" name="d14_5_4" value=lista.d14_5_4)
+                        td: input#d14_6_4.form-control(type="text" name="d14_6_4" value=lista.d14_6_4) 
+                        td: input#d14_7_4.form-control(type="text" name="d14_7_4" value=lista.d14_7_4)
+                        td: input#d14_8_4.form-control(type="text" name="d14_8_4" value=lista.d14_8_4)
+                        td: input#d14_9_4.form-control(type="text" name="d14_9_4" value=lista.d14_9_4)
+                      tr
+                        td: input#d14_1_5.form-control(type="text" name="d14_1_5" value=lista.d14_1_5)
+                        td: input#d14_2_5.form-control(type="text" name="d14_2_5" value=lista.d14_2_5)
+                        td: input#d14_3_5.form-control(type="text" name="d14_3_5" value=lista.d14_3_5) 
+                        td: input#d14_4_5.form-control(type="text" name="d14_4_5" value=lista.d14_4_5)
+                        td: input#d14_5_5.form-control(type="text" name="d14_5_5" value=lista.d14_5_5)
+                        td: input#d14_6_5.form-control(type="text" name="d14_6_5" value=lista.d14_6_5) 
+                        td: input#d14_7_5.form-control(type="text" name="d14_7_5" value=lista.d14_7_5)
+                        td: input#d14_8_5.form-control(type="text" name="d14_8_5" value=lista.d14_8_5)
+                        td: input#d14_9_5.form-control(type="text" name="d14_9_5" value=lista.d14_9_5)
           .card
             #headingd15.card-header
               h5.mb-0
@@ -962,19 +1199,75 @@ block D
                         th Entidad Aportante
                     tbody
                       tr
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text") 
-                        td: input.form-control(type="text")
+                        td: input#d15_1_1.form-control(type="text" name="d15_1_1" value=lista.d15_1_1) 
+                        td: input#d15_2_1.form-control(type="text" name="d15_2_1" value=lista.d15_2_1)
+                        td: input#d15_3_1.form-control(type="text" name="d15_3_1" value=lista.d15_3_1) 
+                        td: input#d15_4_1.form-control(type="text" name="d15_4_1" value=lista.d15_4_1)
+                        td: input#d15_5_1.form-control(type="text" name="d15_5_1" value=lista.d15_5_1)
+                        td: input#d15_6_1.form-control(type="text" name="d15_6_1" value=lista.d15_6_1) 
+                        td: input#d15_7_1.form-control(type="text" name="d15_7_1" value=lista.d15_7_1)
+                        td: input#d15_8_1.form-control(type="text" name="d15_8_1" value=lista.d15_8_1)
+                        td: input#d15_9_1.form-control(type="text" name="d15_9_1" value=lista.d15_9_1) 
+                        td: input#d15_10_1.form-control(type="text" name="d15_10_1" value=lista.d15_10_1)
+                        td: input#d15_11_1.form-control(type="text" name="d15_11_1" value=lista.d15_11_1)
+                        td: input#d15_12_1.form-control(type="text" name="d15_12_1" value=lista.d15_12_1)
+                        td: input#d15_13_1.form-control(type="text" name="d15_13_1" value=lista.d15_13_1)
+                      tr
+                        td: input#d15_1_2.form-control(type="text" name="d15_1_2" value=lista.d15_1_2) 
+                        td: input#d15_2_2.form-control(type="text" name="d15_2_2" value=lista.d15_2_2)
+                        td: input#d15_3_2.form-control(type="text" name="d15_3_2" value=lista.d15_3_2) 
+                        td: input#d15_4_2.form-control(type="text" name="d15_4_2" value=lista.d15_4_2)
+                        td: input#d15_5_2.form-control(type="text" name="d15_5_2" value=lista.d15_5_2)
+                        td: input#d15_6_2.form-control(type="text" name="d15_6_2" value=lista.d15_6_2) 
+                        td: input#d15_7_2.form-control(type="text" name="d15_7_2" value=lista.d15_7_2)
+                        td: input#d15_8_2.form-control(type="text" name="d15_8_2" value=lista.d15_8_2)
+                        td: input#d15_9_2.form-control(type="text" name="d15_9_2" value=lista.d15_9_2) 
+                        td: input#d15_10_2.form-control(type="text" name="d15_10_2" value=lista.d15_10_2)
+                        td: input#d15_11_2.form-control(type="text" name="d15_11_2" value=lista.d15_11_2)
+                        td: input#d15_12_2.form-control(type="text" name="d15_12_2" value=lista.d15_12_2)
+                        td: input#d15_13_2.form-control(type="text" name="d15_13_2" value=lista.d15_13_2)
+                      tr
+                        td: input#d15_1_3.form-control(type="text" name="d15_1_3" value=lista.d15_1_3 )
+                        td: input#d15_2_3.form-control(type="text" name="d15_2_3" value=lista.d15_2_3 )
+                        td: input#d15_3_3.form-control(type="text" name="d15_3_3" value=lista.d15_3_3 )
+                        td: input#d15_4_3.form-control(type="text" name="d15_4_3" value=lista.d15_4_3 )
+                        td: input#d15_5_3.form-control(type="text" name="d15_5_3" value=lista.d15_5_3 )
+                        td: input#d15_6_3.form-control(type="text" name="d15_6_3" value=lista.d15_6_3 )
+                        td: input#d15_7_3.form-control(type="text" name="d15_7_3" value=lista.d15_7_3 )
+                        td: input#d15_8_3.form-control(type="text" name="d15_8_3" value=lista.d15_8_3 )
+                        td: input#d15_9_3.form-control(type="text" name="d15_9_3" value=lista.d15_9_3 )
+                        td: input#d15_10_3.form-control(type="text" name="d15_10_3" value=lista.d15_10_3 )
+                        td: input#d15_11_3.form-control(type="text" name="d15_11_3" value=lista.d15_11_3 )
+                        td: input#d15_12_3.form-control(type="text" name="d15_12_3" value=lista.d15_12_3 )
+                        td: input#d15_13_3.form-control(type="text" name="d15_13_3" value=lista.d15_13_3)
+                      tr
+                        td: input#d15_1_4.form-control(type="text" name="d15_1_4" value=lista.d15_1_4) 
+                        td: input#d15_2_4.form-control(type="text" name="d15_2_4" value=lista.d15_2_4)
+                        td: input#d15_3_4.form-control(type="text" name="d15_3_4" value=lista.d15_3_4) 
+                        td: input#d15_4_4.form-control(type="text" name="d15_4_4" value=lista.d15_4_4)
+                        td: input#d15_5_4.form-control(type="text" name="d15_5_4" value=lista.d15_5_4)
+                        td: input#d15_6_4.form-control(type="text" name="d15_6_4" value=lista.d15_6_4) 
+                        td: input#d15_7_4.form-control(type="text" name="d15_7_4" value=lista.d15_7_4)
+                        td: input#d15_8_4.form-control(type="text" name="d15_8_4" value=lista.d15_8_4)
+                        td: input#d15_9_4.form-control(type="text" name="d15_9_4" value=lista.d15_9_4) 
+                        td: input#d15_10_4.form-control(type="text" name="d15_10_4" value=lista.d15_10_4)
+                        td: input#d15_11_4.form-control(type="text" name="d15_11_4" value=lista.d15_11_4)
+                        td: input#d15_12_4.form-control(type="text" name="d15_12_4" value=lista.d15_12_4)
+                        td: input#d15_13_4.form-control(type="text" name="d15_13_4" value=lista.d15_13_4)
+                      tr
+                        td: input#d15_1_5.form-control(type="text" name="d15_1_5" value=lista.d15_1_5 ) 
+                        td: input#d15_2_5.form-control(type="text" name="d15_2_5" value=lista.d15_2_5 )
+                        td: input#d15_3_5.form-control(type="text" name="d15_3_5" value=lista.d15_3_5 ) 
+                        td: input#d15_4_5.form-control(type="text" name="d15_4_5" value=lista.d15_4_5 )
+                        td: input#d15_5_5.form-control(type="text" name="d15_5_5" value=lista.d15_5_5 )
+                        td: input#d15_6_5.form-control(type="text" name="d15_6_5" value=lista.d15_6_5 ) 
+                        td: input#d15_7_5.form-control(type="text" name="d15_7_5" value=lista.d15_7_5 )
+                        td: input#d15_8_5.form-control(type="text" name="d15_8_5" value=lista.d15_8_5 )
+                        td: input#d15_9_5.form-control(type="text" name="d15_9_5" value=lista.d15_9_5 ) 
+                        td: input#d15_10_5.form-control(type="text" name="d15_10_5" value=lista.d15_10_5 )
+                        td: input#d15_11_5.form-control(type="text" name="d15_11_5" value=lista.d15_11_5 )
+                        td: input#d15_12_5.form-control(type="text" name="d15_12_5" value=lista.d15_12_5 )
+                        td: input#d15_13_5.form-control(type="text" name="d15_13_5" value=lista.d15_13_5)
           .card
             #headingd16.card-header
               h5.mb-0
@@ -1000,18 +1293,70 @@ block D
                         th Entidad Aportante
                     tbody
                       tr
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
+                        td: input#d16_1_1.form-control(type="text" name="d16_1_1" value=lista.d16_1_1) 
+                        td: input#d16_2_1.form-control(type="text" name="d16_2_1" value=lista.d16_2_1)
+                        td: input#d16_3_1.form-control(type="text" name="d16_3_1" value=lista.d16_3_1) 
+                        td: input#d16_4_1.form-control(type="text" name="d16_4_1" value=lista.d16_4_1)
+                        td: input#d16_5_1.form-control(type="text" name="d16_5_1" value=lista.d16_5_1)
+                        td: input#d16_6_1.form-control(type="text" name="d16_6_1" value=lista.d16_6_1) 
+                        td: input#d16_7_1.form-control(type="text" name="d16_7_1" value=lista.d16_7_1)
+                        td: input#d16_8_1.form-control(type="text" name="d16_8_1" value=lista.d16_8_1)
+                        td: input#d16_9_1.form-control(type="text" name="d16_9_1" value=lista.d16_9_1) 
+                        td: input#d16_10_1.form-control(type="text" name="d16_10_1" value=lista.d16_10_1)
+                        td: input#d16_11_1.form-control(type="text" name="d16_11_1" value=lista.d16_11_1)
+                        td: input#d16_12_1.form-control(type="text" name="d16_12_1" value=lista.d16_12_1)
+                      tr
+                        td: input#d16_1_2.form-control(type="text" name="d16_1_2" value=lista.d16_1_2) 
+                        td: input#d16_2_2.form-control(type="text" name="d16_2_2" value=lista.d16_2_2)
+                        td: input#d16_3_2.form-control(type="text" name="d16_3_2" value=lista.d16_3_2) 
+                        td: input#d16_4_2.form-control(type="text" name="d16_4_2" value=lista.d16_4_2)
+                        td: input#d16_5_2.form-control(type="text" name="d16_5_2" value=lista.d16_5_2)
+                        td: input#d16_6_2.form-control(type="text" name="d16_6_2" value=lista.d16_6_2) 
+                        td: input#d16_7_2.form-control(type="text" name="d16_7_2" value=lista.d16_7_2)
+                        td: input#d16_8_2.form-control(type="text" name="d16_8_2" value=lista.d16_8_2)
+                        td: input#d16_9_2.form-control(type="text" name="d16_9_2" value=lista.d16_9_2) 
+                        td: input#d16_10_2.form-control(type="text" name="d16_10_2" value=lista.d16_10_2)
+                        td: input#d16_11_2.form-control(type="text" name="d16_11_2" value=lista.d16_11_2)
+                        td: input#d16_12_2.form-control(type="text" name="d16_12_2" value=lista.d16_12_2)
+                      tr
+                        td: input#d16_1_3.form-control(type="text" name="d16_1_3" value=lista.d16_1_3 )
+                        td: input#d16_2_3.form-control(type="text" name="d16_2_3" value=lista.d16_2_3 )
+                        td: input#d16_3_3.form-control(type="text" name="d16_3_3" value=lista.d16_3_3 )
+                        td: input#d16_4_3.form-control(type="text" name="d16_4_3" value=lista.d16_4_3 )
+                        td: input#d16_5_3.form-control(type="text" name="d16_5_3" value=lista.d16_5_3 )
+                        td: input#d16_6_3.form-control(type="text" name="d16_6_3" value=lista.d16_6_3 )
+                        td: input#d16_7_3.form-control(type="text" name="d16_7_3" value=lista.d16_7_3 )
+                        td: input#d16_8_3.form-control(type="text" name="d16_8_3" value=lista.d16_8_3 )
+                        td: input#d16_9_3.form-control(type="text" name="d16_9_3" value=lista.d16_9_3 )
+                        td: input#d16_10_3.form-control(type="text" name="d16_10_3" value=lista.d16_10_3 )
+                        td: input#d16_11_3.form-control(type="text" name="d16_11_3" value=lista.d16_11_3 )
+                        td: input#d16_12_3.form-control(type="text" name="d16_12_3" value=lista.d16_12_3 )
+                      tr
+                        td: input#d16_1_4.form-control(type="text" name="d16_1_4" value=lista.d16_1_4) 
+                        td: input#d16_2_4.form-control(type="text" name="d16_2_4" value=lista.d16_2_4)
+                        td: input#d16_3_4.form-control(type="text" name="d16_3_4" value=lista.d16_3_4) 
+                        td: input#d16_4_4.form-control(type="text" name="d16_4_4" value=lista.d16_4_4)
+                        td: input#d16_5_4.form-control(type="text" name="d16_5_4" value=lista.d16_5_4)
+                        td: input#d16_6_4.form-control(type="text" name="d16_6_4" value=lista.d16_6_4) 
+                        td: input#d16_7_4.form-control(type="text" name="d16_7_4" value=lista.d16_7_4)
+                        td: input#d16_8_4.form-control(type="text" name="d16_8_4" value=lista.d16_8_4)
+                        td: input#d16_9_4.form-control(type="text" name="d16_9_4" value=lista.d16_9_4) 
+                        td: input#d16_10_4.form-control(type="text" name="d16_10_4" value=lista.d16_10_4)
+                        td: input#d16_11_4.form-control(type="text" name="d16_11_4" value=lista.d16_11_4)
+                        td: input#d16_12_4.form-control(type="text" name="d16_12_4" value=lista.d16_12_4)
+                      tr
+                        td: input#d16_1_5.form-control(type="text" name="d16_1_5" value=lista.d16_1_5 ) 
+                        td: input#d16_2_5.form-control(type="text" name="d16_2_5" value=lista.d16_2_5 )
+                        td: input#d16_3_5.form-control(type="text" name="d16_3_5" value=lista.d16_3_5 ) 
+                        td: input#d16_4_5.form-control(type="text" name="d16_4_5" value=lista.d16_4_5 )
+                        td: input#d16_5_5.form-control(type="text" name="d16_5_5" value=lista.d16_5_5 )
+                        td: input#d16_6_5.form-control(type="text" name="d16_6_5" value=lista.d16_6_5 ) 
+                        td: input#d16_7_5.form-control(type="text" name="d16_7_5" value=lista.d16_7_5 )
+                        td: input#d16_8_5.form-control(type="text" name="d16_8_5" value=lista.d16_8_5 )
+                        td: input#d16_9_5.form-control(type="text" name="d16_9_5" value=lista.d16_9_5 ) 
+                        td: input#d16_10_5.form-control(type="text" name="d16_10_5" value=lista.d16_10_5 )
+                        td: input#d16_11_5.form-control(type="text" name="d16_11_5" value=lista.d16_11_5 )
+                        td: input#d16_12_5.form-control(type="text" name="d16_12_5" value=lista.d16_12_5 )
           .card
             #headingd17.card-header
               h5.mb-0
@@ -1035,16 +1380,60 @@ block D
                         th Entidad Aportante
                     tbody
                       tr
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
+                        td: input#d17_1_1.form-control(type="text" name="d17_1_1" value=lista.d17_1_1) 
+                        td: input#d17_2_1.form-control(type="text" name="d17_2_1" value=lista.d17_2_1)
+                        td: input#d17_3_1.form-control(type="text" name="d17_3_1" value=lista.d17_3_1) 
+                        td: input#d17_4_1.form-control(type="text" name="d17_4_1" value=lista.d17_4_1)
+                        td: input#d17_5_1.form-control(type="text" name="d17_5_1" value=lista.d17_5_1)
+                        td: input#d17_6_1.form-control(type="text" name="d17_6_1" value=lista.d17_6_1) 
+                        td: input#d17_7_1.form-control(type="text" name="d17_7_1" value=lista.d17_7_1)
+                        td: input#d17_8_1.form-control(type="text" name="d17_8_1" value=lista.d17_8_1)
+                        td: input#d17_9_1.form-control(type="text" name="d17_9_1" value=lista.d17_9_1) 
+                        td: input#d17_10_1.form-control(type="text" name="d17_10_1" value=lista.d17_10_1)
+                      tr
+                        td: input#d17_1_2.form-control(type="text" name="d17_1_2" value=lista.d17_1_2) 
+                        td: input#d17_2_2.form-control(type="text" name="d17_2_2" value=lista.d17_2_2)
+                        td: input#d17_3_2.form-control(type="text" name="d17_3_2" value=lista.d17_3_2) 
+                        td: input#d17_4_2.form-control(type="text" name="d17_4_2" value=lista.d17_4_2)
+                        td: input#d17_5_2.form-control(type="text" name="d17_5_2" value=lista.d17_5_2)
+                        td: input#d17_6_2.form-control(type="text" name="d17_6_2" value=lista.d17_6_2) 
+                        td: input#d17_7_2.form-control(type="text" name="d17_7_2" value=lista.d17_7_2)
+                        td: input#d17_8_2.form-control(type="text" name="d17_8_2" value=lista.d17_8_2)
+                        td: input#d17_9_2.form-control(type="text" name="d17_9_2" value=lista.d17_9_2) 
+                        td: input#d17_10_2.form-control(type="text" name="d17_10_2" value=lista.d17_10_2)
+                      tr
+                        td: input#d17_1_3.form-control(type="text" name="d17_1_3" value=lista.d17_1_3 )
+                        td: input#d17_2_3.form-control(type="text" name="d17_2_3" value=lista.d17_2_3 )
+                        td: input#d17_3_3.form-control(type="text" name="d17_3_3" value=lista.d17_3_3 )
+                        td: input#d17_4_3.form-control(type="text" name="d17_4_3" value=lista.d17_4_3 )
+                        td: input#d17_5_3.form-control(type="text" name="d17_5_3" value=lista.d17_5_3 )
+                        td: input#d17_6_3.form-control(type="text" name="d17_6_3" value=lista.d17_6_3 )
+                        td: input#d17_7_3.form-control(type="text" name="d17_7_3" value=lista.d17_7_3 )
+                        td: input#d17_8_3.form-control(type="text" name="d17_8_3" value=lista.d17_8_3 )
+                        td: input#d17_9_3.form-control(type="text" name="d17_9_3" value=lista.d17_9_3 )
+                        td: input#d17_10_3.form-control(type="text" name="d17_10_3" value=lista.d17_10_3 )
+                      tr
+                        td: input#d17_1_4.form-control(type="text" name="d17_1_4" value=lista.d17_1_4) 
+                        td: input#d17_2_4.form-control(type="text" name="d17_2_4" value=lista.d17_2_4)
+                        td: input#d17_3_4.form-control(type="text" name="d17_3_4" value=lista.d17_3_4) 
+                        td: input#d17_4_4.form-control(type="text" name="d17_4_4" value=lista.d17_4_4)
+                        td: input#d17_5_4.form-control(type="text" name="d17_5_4" value=lista.d17_5_4)
+                        td: input#d17_6_4.form-control(type="text" name="d17_6_4" value=lista.d17_6_4) 
+                        td: input#d17_7_4.form-control(type="text" name="d17_7_4" value=lista.d17_7_4)
+                        td: input#d17_8_4.form-control(type="text" name="d17_8_4" value=lista.d17_8_4)
+                        td: input#d17_9_4.form-control(type="text" name="d17_9_4" value=lista.d17_9_4) 
+                        td: input#d17_10_4.form-control(type="text" name="d17_10_4" value=lista.d17_10_4)
+                      tr
+                        td: input#d17_1_5.form-control(type="text" name="d17_1_5" value=lista.d17_1_5 ) 
+                        td: input#d17_2_5.form-control(type="text" name="d17_2_5" value=lista.d17_2_5 )
+                        td: input#d17_3_5.form-control(type="text" name="d17_3_5" value=lista.d17_3_5 ) 
+                        td: input#d17_4_5.form-control(type="text" name="d17_4_5" value=lista.d17_4_5 )
+                        td: input#d17_5_5.form-control(type="text" name="d17_5_5" value=lista.d17_5_5 )
+                        td: input#d17_6_5.form-control(type="text" name="d17_6_5" value=lista.d17_6_5 ) 
+                        td: input#d17_7_5.form-control(type="text" name="d17_7_5" value=lista.d17_7_5 )
+                        td: input#d17_8_5.form-control(type="text" name="d17_8_5" value=lista.d17_8_5 )
+                        td: input#d17_9_5.form-control(type="text" name="d17_9_5" value=lista.d17_9_5 ) 
+                        td: input#d17_10_5.form-control(type="text" name="d17_10_5" value=lista.d17_10_5 )
           .card
             #headingd18.card-header
               h5.mb-0
@@ -1067,15 +1456,55 @@ block D
                         th Entidad Aportante 
                     tbody
                       tr
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
+                        td: input#d18_1_1.form-control(type="text" name="d18_1_1" value=lista.d18_1_1) 
+                        td: input#d18_2_1.form-control(type="text" name="d18_2_1" value=lista.d18_2_1)
+                        td: input#d18_3_1.form-control(type="text" name="d18_3_1" value=lista.d18_3_1) 
+                        td: input#d18_4_1.form-control(type="text" name="d18_4_1" value=lista.d18_4_1)
+                        td: input#d18_5_1.form-control(type="text" name="d18_5_1" value=lista.d18_5_1)
+                        td: input#d18_6_1.form-control(type="text" name="d18_6_1" value=lista.d18_6_1) 
+                        td: input#d18_7_1.form-control(type="text" name="d18_7_1" value=lista.d18_7_1)
+                        td: input#d18_8_1.form-control(type="text" name="d18_8_1" value=lista.d18_8_1)
+                        td: input#d18_9_1.form-control(type="text" name="d18_9_1" value=lista.d18_9_1) 
+                      tr
+                        td: input#d18_1_2.form-control(type="text" name="d18_1_2" value=lista.d18_1_2) 
+                        td: input#d18_2_2.form-control(type="text" name="d18_2_2" value=lista.d18_2_2)
+                        td: input#d18_3_2.form-control(type="text" name="d18_3_2" value=lista.d18_3_2) 
+                        td: input#d18_4_2.form-control(type="text" name="d18_4_2" value=lista.d18_4_2)
+                        td: input#d18_5_2.form-control(type="text" name="d18_5_2" value=lista.d18_5_2)
+                        td: input#d18_6_2.form-control(type="text" name="d18_6_2" value=lista.d18_6_2) 
+                        td: input#d18_7_2.form-control(type="text" name="d18_7_2" value=lista.d18_7_2)
+                        td: input#d18_8_2.form-control(type="text" name="d18_8_2" value=lista.d18_8_2)
+                        td: input#d18_9_2.form-control(type="text" name="d18_9_2" value=lista.d18_9_2) 
+                      tr
+                        td: input#d18_1_3.form-control(type="text" name="d18_1_3" value=lista.d18_1_3)
+                        td: input#d18_2_3.form-control(type="text" name="d18_2_3" value=lista.d18_2_3)
+                        td: input#d18_3_3.form-control(type="text" name="d18_3_3" value=lista.d18_3_3)
+                        td: input#d18_4_3.form-control(type="text" name="d18_4_3" value=lista.d18_4_3)
+                        td: input#d18_5_3.form-control(type="text" name="d18_5_3" value=lista.d18_5_3)
+                        td: input#d18_6_3.form-control(type="text" name="d18_6_3" value=lista.d18_6_3)
+                        td: input#d18_7_3.form-control(type="text" name="d18_7_3" value=lista.d18_7_3)
+                        td: input#d18_8_3.form-control(type="text" name="d18_8_3" value=lista.d18_8_3)
+                        td: input#d18_9_3.form-control(type="text" name="d18_9_3" value=lista.d18_9_3)
+                      tr
+                        td: input#d18_1_4.form-control(type="text" name="d18_1_4" value=lista.d18_1_4) 
+                        td: input#d18_2_4.form-control(type="text" name="d18_2_4" value=lista.d18_2_4)
+                        td: input#d18_3_4.form-control(type="text" name="d18_3_4" value=lista.d18_3_4) 
+                        td: input#d18_4_4.form-control(type="text" name="d18_4_4" value=lista.d18_4_4)
+                        td: input#d18_5_4.form-control(type="text" name="d18_5_4" value=lista.d18_5_4)
+                        td: input#d18_6_4.form-control(type="text" name="d18_6_4" value=lista.d18_6_4) 
+                        td: input#d18_7_4.form-control(type="text" name="d18_7_4" value=lista.d18_7_4)
+                        td: input#d18_8_4.form-control(type="text" name="d18_8_4" value=lista.d18_8_4)
+                        td: input#d18_9_4.form-control(type="text" name="d18_9_4" value=lista.d18_9_4)
+                      tr
+                        td: input#d18_1_5.form-control(type="text" name="d18_1_5" value=lista.d18_1_5)
+                        td: input#d18_2_5.form-control(type="text" name="d18_2_5" value=lista.d18_2_5)
+                        td: input#d18_3_5.form-control(type="text" name="d18_3_5" value=lista.d18_3_5) 
+                        td: input#d18_4_5.form-control(type="text" name="d18_4_5" value=lista.d18_4_5)
+                        td: input#d18_5_5.form-control(type="text" name="d18_5_5" value=lista.d18_5_5)
+                        td: input#d18_6_5.form-control(type="text" name="d18_6_5" value=lista.d18_6_5) 
+                        td: input#d18_7_5.form-control(type="text" name="d18_7_5" value=lista.d18_7_5)
+                        td: input#d18_8_5.form-control(type="text" name="d18_8_5" value=lista.d18_8_5)
+                        td: input#d18_9_5.form-control(type="text" name="d18_9_5" value=lista.d18_9_5)
           .card
             #headingd19.card-header
               h5.mb-0
@@ -1096,10 +1525,42 @@ block D
                         th Celular 
                     tbody
                       tr
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text") 
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
-                        td: input.form-control(type="text")
+                        td: input#d19_1_1.form-control(type="text" name="d19_1_1" value=lista.d19_1_1) 
+                        td: input#d19_2_1.form-control(type="text" name="d19_2_1" value=lista.d19_2_1)
+                        td: input#d19_3_1.form-control(type="text" name="d19_3_1" value=lista.d19_3_1) 
+                        td: input#d19_4_1.form-control(type="text" name="d19_4_1" value=lista.d19_4_1)
+                        td: input#d19_5_1.form-control(type="text" name="d19_5_1" value=lista.d19_5_1)
+                        td: input#d19_6_1.form-control(type="text" name="d19_6_1" value=lista.d19_6_1) 
+                        td: input#d19_7_1.form-control(type="text" name="d19_7_1" value=lista.d19_7_1) 
+                      tr
+                        td: input#d19_1_2.form-control(type="text" name="d19_1_2" value=lista.d19_1_2) 
+                        td: input#d19_2_2.form-control(type="text" name="d19_2_2" value=lista.d19_2_2)
+                        td: input#d19_3_2.form-control(type="text" name="d19_3_2" value=lista.d19_3_2) 
+                        td: input#d19_4_2.form-control(type="text" name="d19_4_2" value=lista.d19_4_2)
+                        td: input#d19_5_2.form-control(type="text" name="d19_5_2" value=lista.d19_5_2)
+                        td: input#d19_6_2.form-control(type="text" name="d19_6_2" value=lista.d19_6_2) 
+                        td: input#d19_7_2.form-control(type="text" name="d19_7_2" value=lista.d19_7_2) 
+                      tr
+                        td: input#d19_1_3.form-control(type="text" name="d19_1_3" value=lista.d19_1_3)
+                        td: input#d19_2_3.form-control(type="text" name="d19_2_3" value=lista.d19_2_3)
+                        td: input#d19_3_3.form-control(type="text" name="d19_3_3" value=lista.d19_3_3)
+                        td: input#d19_4_3.form-control(type="text" name="d19_4_3" value=lista.d19_4_3)
+                        td: input#d19_5_3.form-control(type="text" name="d19_5_3" value=lista.d19_5_3)
+                        td: input#d19_6_3.form-control(type="text" name="d19_6_3" value=lista.d19_6_3)
+                        td: input#d19_7_3.form-control(type="text" name="d19_7_3" value=lista.d19_7_3)
+                      tr
+                        td: input#d19_1_4.form-control(type="text" name="d19_1_4" value=lista.d19_1_4) 
+                        td: input#d19_2_4.form-control(type="text" name="d19_2_4" value=lista.d19_2_4)
+                        td: input#d19_3_4.form-control(type="text" name="d19_3_4" value=lista.d19_3_4) 
+                        td: input#d19_4_4.form-control(type="text" name="d19_4_4" value=lista.d19_4_4)
+                        td: input#d19_5_4.form-control(type="text" name="d19_5_4" value=lista.d19_5_4)
+                        td: input#d19_6_4.form-control(type="text" name="d19_6_4" value=lista.d19_6_4) 
+                        td: input#d19_7_4.form-control(type="text" name="d19_7_4" value=lista.d19_7_4)
+                      tr
+                        td: input#d19_1_5.form-control(type="text" name="d19_1_5" value=lista.d19_1_5)
+                        td: input#d19_2_5.form-control(type="text" name="d19_2_5" value=lista.d19_2_5)
+                        td: input#d19_3_5.form-control(type="text" name="d19_3_5" value=lista.d19_3_5) 
+                        td: input#d19_4_5.form-control(type="text" name="d19_4_5" value=lista.d19_4_5)
+                        td: input#d19_5_5.form-control(type="text" name="d19_5_5" value=lista.d19_5_5)
+                        td: input#d19_6_5.form-control(type="text" name="d19_6_5" value=lista.d19_6_5) 
+                        td: input#d19_7_5.form-control(type="text" name="d19_7_5" value=lista.d19_7_5)
