@@ -227,7 +227,16 @@ router.get('/administrar' ,function(req, res, next) {
 router.post('/editar-proyecto' ,function(req, res, next) {
     if(req.session.user){
         
-        var sql = 'SELECT TOP 1 * from unjfsc.dbo.proyectos WHERE id_usuario = @id_usuario AND id_proyecto = @idproyecto';
+        var sql = `SELECT usuario.*, proyectos.*, 
+        tabla1.*, tabla2.*, 
+        tabla3.*, tabla4.*, tabla5.* from unjfsc.dbo.proyectos 
+        INNER JOIN unjfsc.dbo.usuario 
+        ON usuario.id_usuario = @id_usuario and proyectos.id_proyecto = @idproyecto
+        INNER JOIN unjfsc.dbo.tabla1 ON tabla1.id_proyecto = @idproyecto
+        INNER JOIN unjfsc.dbo.tabla2 ON tabla2.id_proyecto = @idproyecto
+        INNER JOIN unjfsc.dbo.tabla3 ON tabla3.id_proyecto = @idproyecto
+        INNER JOIN unjfsc.dbo.tabla4 ON tabla4.id_proyecto = @idproyecto
+        INNER JOIN unjfsc.dbo.tabla5 ON tabla5.id_proyecto = @idproyecto`;
         var result = {};
 
         var request = new Request(sql, function(err) {
@@ -384,7 +393,20 @@ router.post("/validation/new-user", function (req,res) {
 router.post('/validation/nuevo', function(req, res) {
 
     
-    var sql = 'INSERT INTO [unjfsc].[dbo].[proyectos] ([id_usuario], [titulo]) OUTPUT INSERTED.id_proyecto VALUES ( @id_usuario, @titulo)';
+    var sql = `
+    INSERT INTO [unjfsc].[dbo].[proyectos] ([id_usuario], [titulo]) 
+    OUTPUT INSERTED.id_proyecto VALUES ( @id_usuario, @titulo)
+    INSERT INTO [unjfsc].[dbo].[tabla1] ([id_proyecto]) VALUES 
+    ((SELECT max(id_proyecto) from dbo.proyectos))
+    INSERT INTO [unjfsc].[dbo].[tabla2] ([id_proyecto]) VALUES 
+    ((SELECT max(id_proyecto) from dbo.proyectos))
+    INSERT INTO [unjfsc].[dbo].[tabla3] ([id_proyecto]) VALUES 
+    ((SELECT max(id_proyecto) from dbo.proyectos))
+    INSERT INTO [unjfsc].[dbo].[tabla4] ([id_proyecto]) VALUES 
+    ((SELECT max(id_proyecto) from dbo.proyectos))
+    INSERT INTO [unjfsc].[dbo].[tabla5] ([id_proyecto]) VALUES 
+    ((SELECT max(id_proyecto) from dbo.proyectos))
+    `;
 
     var request = new Request(sql, function(err) {
         if (err) {
@@ -413,8 +435,6 @@ router.post('/validation/nuevo', function(req, res) {
 
 router.post('/validation/editar-proyecto', function(req, res) {
 
-    res.send(req.body);
-        
     var sql = `UPDATE [unjfsc].[dbo].[proyectos] 
     SET 
     [titulo] = @titulo, 
@@ -459,7 +479,10 @@ router.post('/validation/editar-proyecto', function(req, res) {
     [rl_tipo_documento] = @rptipoDeDocumento, 
     [rl_nro_documento] = @rpnumeroDeDocumento, [rl_ruc] = @rpruc, [rl_nombre] = @rpnombresYApellidos, [rl_sexo] =@rpsexo, 
     [rl_email] = @rpemail, [rl_telefono] = @rptelefono, [rl_productos_comercializados] = @rpproductosComerciales, 
-    [rl_actividades_relacionadas] = @rpactividadesRelacionadas, [rl_infraestructura_es] = @rpinfraestructuraDelSolicitante, 
+    [rl_actividades_relacionadas] = @rpactividadesRelacionadas, [rl_infraestructura_es] = @rpinfraestructuraDelSolicitante 
+    WHERE  [id_proyecto] = @id_proyecto;
+    UPDATE [unjfsc].[dbo].[tabla1] 
+    SET 
     [entorno_empresarial] = @entornoEmpresarial, 
     [situacion_actual] =@situacionActual, 
     [identificacion_mercado] = @identificacionDelMercado, 
@@ -476,6 +499,11 @@ router.post('/validation/editar-proyecto', function(req, res) {
     [forma_resultado] = @describirForma, 
     [antecedentes] =  @antecedentes, 
     [tipo_conocimiento] = @libreRestrigido, 
+    [c41og_1] = @c41og_1, [c41og_2] = @c41og_2, [c41og_3] = @c41og_3, 
+    [c41oe_1_1] = @c41oe_1_1, [c41oe_2_1] = @c41oe_2_1, [c41oe_3_1] = @c41oe_3_1, [c41oe_1_2] = @c41oe_1_2, 
+    [c41oe_2_2] = @c41oe_2_2, [c41oe_3_2] = @c41oe_3_2, [c41oe_1_3] = @c41oe_1_3, [c41oe_2_3] = @c41oe_2_3, 
+    [c41oe_3_3] = @c41oe_3_3, [c41oe_1_4] = @c41oe_1_4, [c41oe_2_4] = @c41oe_2_4, [c41oe_3_4] = @c41oe_3_4,
+    [c41oe_1_5] = @c41oe_1_5, [c41oe_2_5] = @c41oe_2_5, [c41oe_3_5] = @c41oe_3_5,
     [plan_metodologico] = @planMetodologico, 
     [propiedad_intelectual] = @propiedadIntelectual, 
     [impactos_economicos] = @impactosEconomicos, 
@@ -485,11 +513,78 @@ router.post('/validation/editar-proyecto', function(req, res) {
     [impactos_tecnologico] = @impactosDeLaTecnologia, 
     [impactos_ambientales] = @impactosAmbientales, 
     [medidas_mitigacion] = @medidasDeMitigacion, 
-    [impactos_empresa] = @impactosEnLaEmpresa, 
-    [tipo_moneda] = @monedaDelProyecto,
-    [flujoDeCaja] = @flujoDeCaja,
-    [planAdjunto] = @planAdjunto
-    WHERE  [id_proyecto] = @id_proyecto`;
+    [impactos_empresa] = @impactosEnLaEmpresa,
+    [c8_1_1] = @c8_1_1, [c8_2_1] = @c8_2_1, [c8_3_1] = @c8_3_1, [c8_4_1] = @c8_4_1, 
+    [c8_5_1] = @c8_5_1, [c8_6_1] = @c8_6_1, [c8_7_1] = @c8_7_1, [c8_8_1] = @c8_8_1, 
+    [c8_9_1] = @c8_9_1, [c8_10_1] = @c8_10_1, [c8_11_1] = @c8_11_1,
+    [c8_1_2] = @c8_1_2, [c8_2_2] = @c8_2_2, [c8_3_2] = @c8_3_2, [c8_4_2] = @c8_4_2, 
+    [c8_5_2] = @c8_5_2, [c8_6_2] = @c8_6_2, [c8_7_2] = @c8_7_2, [c8_8_2] = @c8_8_2, 
+    [c8_9_2] = @c8_9_2, [c8_10_2] = @c8_10_2, [c8_11_2] = @c8_11_2,
+    [c8_1_3] = @c8_1_3, [c8_2_3] = @c8_2_3, [c8_3_3] = @c8_3_3, [c8_4_3] = @c8_4_3, 
+    [c8_5_3] = @c8_5_3, [c8_6_3] = @c8_6_3, [c8_7_3] = @c8_7_3, [c8_8_3] = @c8_8_3, 
+    [c8_9_3] = @c8_9_3, [c8_10_3] = @c8_10_3, [c8_11_3] = @c8_11_3,
+    [c8_1_4] = @c8_1_4, [c8_2_4] = @c8_2_4, [c8_3_4] = @c8_3_4, [c8_4_4] = @c8_4_4, 
+    [c8_5_4] = @c8_5_4, [c8_6_4] = @c8_6_4, [c8_7_4] = @c8_7_4, [c8_8_4] = @c8_8_4, 
+    [c8_9_4] = @c8_9_4, [c8_10_4] = @c8_10_4, [c8_11_4] = @c8_11_4,
+    [c8_1_5] = @c8_1_5, [c8_2_5] = @c8_2_5, [c8_3_5] = @c8_3_5, [c8_4_5] = @c8_4_5, 
+    [c8_5_5] = @c8_5_5, [c8_6_5] = @c8_6_5, [c8_7_5] = @c8_7_5, [c8_8_5] = @c8_8_5, 
+    [c8_9_5] = @c8_9_5, [c8_10_5] = @c8_10_5, [c8_11_5] = @c8_11_5,
+    [tipo_moneda] = @monedaDelProyecto
+    WHERE  [id_proyecto] = @id_proyecto;
+    
+    UPDATE [unjfsc].[dbo].[tabla2] 
+    SET
+    [d11_1_1] = @d11_1_1, [d11_2_1] = @d11_2_1, [d11_3_1] = @d11_3_1, [d11_4_1] = @d11_4_1, [d11_5_1] = @d11_5_1, [d11_6_1] = @d11_6_1, [d11_7_1] = @d11_7_1, [d11_8_1] = @d11_8_1, [d11_9_1] = @d11_9_1, [d11_10_1] = @d11_10_1, [d11_11_1] = @d11_11_1, [d11_12_1] = @d11_12_1,
+    [d11_1_2] = @d11_1_2, [d11_2_2] = @d11_2_2, [d11_3_2] = @d11_3_2, [d11_4_2] = @d11_4_2, [d11_5_2] = @d11_5_2, [d11_6_2] = @d11_6_2, [d12_7_2] = @d12_7_2, [d12_8_2] = @d12_8_2, [d12_9_2] = @d12_9_2, [d12_10_2] = @d12_10_2,
+    [d12_1_3] = @d12_1_3, [d12_2_3] = @d12_2_3, [d12_3_3] = @d12_3_3, [d12_4_3] = @d12_4_3, [d12_5_3] = @d12_5_3, [d12_6_3] = @d12_6_3, [d12_7_3] = @d12_7_3, [d12_8_3] = @d12_8_3, [d12_9_3] = @d12_9_3, [d12_10_3] = @d12_10_3,
+    [d12_1_4] = @d12_1_4, [d12_2_4] = @d12_2_4, [d12_3_4] = @d12_3_4, [d12_4_4] = @d12_4_4, [d12_5_4] = @d12_5_4, [d12_6_4 ] = @d12_6_4, [d12_7_4] = @d12_7_4, [d12_8_4] = @d12_8_4, [d12_9_4 ] = @d12_9_4, [d12_10_4] = @d12_10_4,
+    [d12_1_5] = @d12_1_5, [d12_2_5] = @d12_2_5, [d12_3_5] = @d12_3_5, [d12_4_5] = @d12_4_5, [d12_5_5] = @d12_5_5, [d12_6_5] = @d12_6_5, [d12_7_5] = @d12_7_5, [d12_8_5] = @d12_8_5, [d12_9_5] = @d12_9_5, [d12_10_5] = @d12_10_5
+    WHERE  [id_proyecto] = @id_proyecto;
+    UPDATE [unjfsc].[dbo].[tabla3] 
+    SET
+    [d13_1_1] = @d13_1_1, [d13_2_1] = @d13_2_1, [d13_3_1] = @d13_3_1, [d13_4_1] = @d13_4_1, [d13_5_1] = @d13_5_1, [d13_6_1] = @d13_6_1, [d13_7_1] = @d13_7_1, [d13_8_1] = @d13_8_1, [d13_9_1] = @d13_9_1,
+    [d13_1_2] = @d13_1_2, [d13_2_2] = @d13_2_2, [d13_3_2] = @d13_3_2, [d13_4_2] = @d13_4_2, [d13_5_2] = @d13_5_2, [d13_6_2] = @d13_6_2, [d13_7_2] = @d13_7_2, [d13_8_2] = @d13_8_2, [d13_9_2] = @d13_9_2,
+    [d13_1_3] = @d13_1_3, [d13_2_3] = @d13_2_3, [d13_3_3] = @d13_3_3, [d13_4_3] = @d13_4_3, [d13_5_3] = @d13_5_3, [d13_6_3] = @d13_6_3, [d13_7_3] = @d13_7_3, [d13_8_3] = @d13_8_3, [d13_9_3] = @d13_9_3,
+    [d13_1_4] = @d13_1_4, [d13_2_4] = @d13_2_4, [d13_3_4] = @d13_3_4, [d13_4_4] = @d13_4_4, [d13_5_4] = @d13_5_4, [d13_6_4] = @d13_6_4, [d13_7_4] = @d13_7_4, [d13_8_4] = @d13_8_4, [d13_9_4] = @d13_9_4,
+    [d13_1_5] = @d13_1_5, [d13_2_5] = @d13_2_5, [d13_3_5] = @d13_3_5, [d13_4_5] = @d13_4_5, [d13_5_5] = @d13_5_5, [d13_6_5] = @d13_6_5, [d13_7_5] = @d13_7_5, [d13_8_5] = @d13_8_5, [d13_9_5] = @d13_9_5,
+    [d14_1_1] = @d14_1_1, [d14_2_1] = @d14_2_1, [d14_3_1] = @d14_3_1, [d14_4_1] = @d14_4_1, [d14_5_1] = @d14_5_1, [d14_6_1] = @d14_6_1, [d14_7_1] = @d14_7_1, [d14_8_1] = @d14_8_1, [d14_9_1] = @d14_9_1,
+    [d14_1_2] = @d14_1_2, [d14_2_2] = @d14_2_2, [d14_3_2] = @d14_3_2, [d14_4_2] = @d14_4_2, [d14_5_2] = @d14_5_2, [d14_6_2] = @d14_6_2, [d14_7_2] = @d14_7_2, [d14_8_2] = @d14_8_2, [d14_9_2] = @d14_9_2,
+    [d14_1_3] = @d14_1_3, [d14_2_3] = @d14_2_3, [d14_3_3] = @d14_3_3, [d14_4_3] = @d14_4_3, [d14_5_3] = @d14_5_3, [d14_6_3] = @d14_6_3, [d14_7_3] = @d14_7_3, [d14_8_3] = @d14_8_3, [d14_9_3] = @d14_9_3,
+    [d14_1_4] = @d14_1_4, [d14_2_4] = @d14_2_4, [d14_3_4] = @d14_3_4, [d14_4_4] = @d14_4_4, [d14_5_4] = @d14_5_4, [d14_6_4] = @d14_6_4, [d14_7_4] = @d14_7_4, [d14_8_4] = @d14_8_4, [d14_9_4] = @d14_9_4,
+    [d14_1_5] = @d14_1_5, [d14_2_5] = @d14_2_5, [d14_3_5] = @d14_3_5, [d14_4_5] = @d14_4_5, [d14_5_5] = @d14_5_5, [d14_6_5] = @d14_6_5, [d14_7_5] = @d14_7_5, [d14_8_5] = @d14_8_5, [d14_9_5] = @d14_9_5
+    WHERE  [id_proyecto] = @id_proyecto;
+    UPDATE [unjfsc].[dbo].[tabla4] 
+    SET 
+    [d15_1_1] = @d15_1_1, [d15_2_1] = @d15_2_1, [d15_3_1] = @d15_3_1, [d15_4_1] = @d15_4_1, [d15_5_1] = @d15_5_1, [d15_6_1] = @d15_6_1, [d15_7_1] = @d15_7_1, [d15_8_1] = @d15_8_1, [d15_9_1] = @d15_9_1, [d15_10_1] = @d15_10_1, [d15_11_1] = @d15_11_1, [d15_12_1] = @d15_12_1, [d15_13_1] = @d15_13_1,
+    [d15_1_2] = @d15_1_2, [d15_2_2] = @d15_2_2, [d15_3_2] = @d15_3_2, [d15_4_2] = @d15_4_2, [d15_5_2] = @d15_5_2, [d15_6_2] = @d15_6_2, [d15_7_2] = @d15_7_2, [d15_8_2] = @d15_8_2, [d15_9_2] = @d15_9_2, [d15_10_2] = @d15_10_2, [d15_11_2] = @d15_11_2, [d15_12_2] = @d15_12_2, [d15_13_2] = @d15_13_2,
+    [d15_1_3] = @d15_1_3, [d15_2_3] = @d15_2_3, [d15_3_3] = @d15_3_3, [d15_4_3] = @d15_4_3, [d15_5_3] = @d15_5_3, [d15_6_3] = @d15_6_3, [d15_7_3] = @d15_7_3, [d15_8_3] = @d15_8_3, [d15_9_3] = @d15_9_3, [d15_10_3] = @d15_10_3, [d15_11_3] = @d15_11_3, [d15_12_3] = @d15_12_3, [d15_13_3] = @d15_13_3,
+    [d15_1_4] = @d15_1_4, [d15_2_4] = @d15_2_4, [d15_3_4] = @d15_3_4, [d15_4_4] = @d15_4_4, [d15_5_4] = @d15_5_4, [d15_6_4] = @d15_6_4, [d15_7_4] = @d15_7_4, [d15_8_4] = @d15_8_4, [d15_9_4] = @d15_9_4, [d15_10_4] = @d15_10_4, [d15_11_4] = @d15_11_4, [d15_12_4] = @d15_12_4, [d15_13_4] = @d15_13_4,
+    [d15_1_5] = @d15_1_5, [d15_2_5] = @d15_2_5, [d15_3_5] = @d15_3_5, [d15_4_5] = @d15_4_5, [d15_5_5] = @d15_5_5, [d15_6_5] = @d15_6_5, [d15_7_5] = @d15_7_5, [d15_8_5] = @d15_8_5, [d15_9_5] = @d15_9_5, [d15_10_5] = @d15_10_5, [d15_11_5] = @d15_11_5, [d15_12_5] = @d15_12_5, [d15_13_5] = @d15_13_5,
+    [d16_1_1] = @d16_1_1, [d16_2_1] = @d16_2_1, [d16_3_1] = @d16_3_1, [d16_4_1] = @d16_4_1, [d16_5_1] = @d16_5_1, [d16_6_1] = @d16_6_1, [d16_7_1] = @d16_7_1, [d16_8_1] = @d16_8_1, [d16_9_1] = @d16_9_1, [d16_10_1] = @d16_10_1, [d16_11_1] = @d16_11_1, [d16_12_1] = @d16_12_1,
+    [d16_1_2] = @d16_1_2, [d16_2_2] = @d16_2_2, [d16_3_2] = @d16_3_2, [d16_4_2] = @d16_4_2, [d16_5_2] = @d16_5_2, [d16_6_2] = @d16_6_2, [d16_7_2] = @d16_7_2, [d16_8_2] = @d16_8_2, [d16_9_2] = @d16_9_2, [d16_10_2] = @d16_10_2, [d16_11_2] = @d16_11_2, [d16_12_2] = @d16_12_2,
+    [d16_1_3] = @d16_1_3, [d16_2_3] = @d16_2_3, [d16_3_3] = @d16_3_3, [d16_4_3] = @d16_4_3, [d16_5_3] = @d16_5_3, [d16_6_3] = @d16_6_3, [d16_7_3] = @d16_7_3, [d16_8_3] = @d16_8_3, [d16_9_3] = @d16_9_3, [d16_10_3] = @d16_10_3, [d16_11_3] = @d16_11_3, [d16_12_3] = @d16_12_3,
+    [d16_1_4] = @d16_1_4, [d16_2_4] = @d16_2_4, [d16_3_4] = @d16_3_4, [d16_4_4] = @d16_4_4, [d16_5_4] = @d16_5_4, [d16_6_4] = @d16_6_4, [d16_7_4] = @d16_7_4, [d16_8_4] = @d16_8_4, [d16_9_4] = @d16_9_4, [d16_10_4] = @d16_10_4, [d16_11_4] = @d16_11_4, [d16_12_4] = @d16_12_4,
+    [d16_1_5] = @d16_1_5, [d16_2_5] = @d16_2_5, [d16_3_5] = @d16_3_5, [d16_4_5] = @d16_4_5, [d16_5_5] = @d16_5_5, [d16_6_5] = @d16_6_5, [d16_7_5] = @d16_7_5, [d16_8_5] = @d16_8_5, [d16_9_5] = @d16_9_5, [d16_10_5] = @d16_10_5, [d16_11_5] = @d16_11_5, [d16_12_5] = @d16_12_5
+    WHERE  [id_proyecto] = @id_proyecto;
+    UPDATE [unjfsc].[dbo].[tabla5] 
+    SET
+    [d17_1_1] = @d17_1_1, [d17_2_1] = @d17_2_1, [d17_3_1] = @d17_3_1, [d17_4_1] = @d17_4_1, [d17_5_1] = @d17_5_1, [d17_6_1] = @d17_6_1, [d17_7_1] = @d17_7_1, [d17_8_1] = @d17_8_1, [d17_9_1] = @d17_9_1, [d17_10_1] = @d17_10_1,
+    [d17_1_2] = @d17_1_2, [d17_2_2] = @d17_2_2, [d17_3_2] = @d17_3_2, [d17_4_2] = @d17_4_2, [d17_5_2] = @d17_5_2, [d17_6_2] = @d17_6_2, [d17_7_2] = @d17_7_2, [d17_8_2] = @d17_8_2, [d17_9_2] = @d17_9_2, [d17_10_2] = @d17_10_2,
+    [d17_1_3] = @d17_1_3, [d17_2_3] = @d17_2_3, [d17_3_3] = @d17_3_3, [d17_4_3] = @d17_4_3, [d17_5_3] = @d17_5_3, [d17_6_3] = @d17_6_3, [d17_7_3] = @d17_7_3, [d17_8_3] = @d17_8_3, [d17_9_3] = @d17_9_3, [d17_10_3] = @d17_10_3,
+    [d17_1_4] = @d17_1_4, [d17_2_4] = @d17_2_4, [d17_3_4] = @d17_3_4, [d17_4_4] = @d17_4_4, [d17_5_4] = @d17_5_4, [d17_6_4] = @d17_6_4, [d17_7_4] = @d17_7_4, [d17_8_4] = @d17_8_4, [d17_9_4] = @d17_9_4, [d17_10_4] = @d17_10_4,
+    [d17_1_5] = @d17_1_5, [d17_2_5] = @d17_2_5, [d17_3_5] = @d17_3_5, [d17_4_5] = @d17_4_5, [d17_5_5] = @d17_5_5, [d17_6_5] = @d17_6_5, [d17_7_5] = @d17_7_5, [d17_8_5] = @d17_8_5, [d17_9_5] = @d17_9_5, [d17_10_5] = @d17_10_5,
+    [d18_1_1] = @d18_1_1, [d18_2_1] = @d18_2_1, [d18_3_1] = @d18_3_1, [d18_4_1] = @d18_4_1, [d18_5_1] = @d18_5_1, [d18_6_1] = @d18_6_1, [d18_7_1] = @d18_7_1, [d18_8_1] = @d18_8_1, [d18_9_1] = @d18_9_1,
+    [d18_1_2] = @d18_1_2, [d18_2_2] = @d18_2_2, [d18_3_2] = @d18_3_2, [d18_4_2] = @d18_4_2, [d18_5_2] = @d18_5_2, [d18_6_2] = @d18_6_2, [d18_7_2] = @d18_7_2, [d18_8_2] = @d18_8_2, [d18_9_2] = @d18_9_2,
+    [d18_1_3] = @d18_1_3, [d18_2_3] = @d18_2_3, [d18_3_3] = @d18_3_3, [d18_4_3] = @d18_4_3, [d18_5_3] = @d18_5_3, [d18_6_3] = @d18_6_3, [d18_7_3] = @d18_7_3, [d18_8_3] = @d18_8_3, [d18_9_3] = @d18_9_3,
+    [d18_1_4] = @d18_1_4, [d18_2_4] = @d18_2_4, [d18_3_4] = @d18_3_4, [d18_4_4] = @d18_4_4, [d18_5_4] = @d18_5_4, [d18_6_4] = @d18_6_4, [d18_7_4] = @d18_7_4, [d18_8_4] = @d18_8_4, [d18_9_4] = @d18_9_4,
+    [d18_1_5] = @d18_1_5, [d18_2_5] = @d18_2_5, [d18_3_5] = @d18_3_5, [d18_4_5] = @d18_4_5, [d18_5_5] = @d18_5_5, [d18_6_5] = @d18_6_5, [d18_7_5] = @d18_7_5, [d18_8_5] = @d18_8_5, [d18_9_5] = @d18_9_5,
+    [d19_1_1] = @d19_1_1, [d19_2_1] = @d19_2_1, [d19_3_1] = @d19_3_1, [d19_4_1] = @d19_4_1, [d19_5_1] = @d19_5_1, [d19_6_1] = @d19_6_1, [d19_7_1] = @d19_7_1,
+    [d19_1_2] = @d19_1_2, [d19_2_2] = @d19_2_2, [d19_3_2] = @d19_3_2, [d19_4_2] = @d19_4_2, [d19_5_2] = @d19_5_2, [d19_6_2] = @d19_6_2, [d19_7_2] = @d19_7_2,
+    [d19_1_3] = @d19_1_3, [d19_2_3] = @d19_2_3, [d19_3_3] = @d19_3_3, [d19_4_3] = @d19_4_3, [d19_5_3] = @d19_5_3, [d19_6_3] = @d19_6_3, [d19_7_3] = @d19_7_3,
+    [d19_1_4] = @d19_1_4, [d19_2_4] = @d19_2_4, [d19_3_4] = @d19_3_4, [d19_4_4] = @d19_4_4, [d19_5_4] = @d19_5_4, [d19_6_4] = @d19_6_4, [d19_7_4] = @d19_7_4,
+    [d19_1_5] = @d19_1_5, [d19_2_5] = @d19_2_5, [d19_3_5] = @d19_3_5, [d19_4_5] = @d19_4_5, [d19_5_5] = @d19_5_5, [d19_6_5] = @d19_6_5, [d19_7_5] = @d19_7_5
+    WHERE  [id_proyecto] = @id_proyecto
+    `;
     
     var request = new Request(sql, function(err) {
         if (err) {
@@ -498,36 +593,36 @@ router.post('/validation/editar-proyecto', function(req, res) {
         res.redirect('/administrar');
     });
 
-    request.addParameter("id_usuario" ,                           TYPES.Int             ,req.session.user.id);    
-    request.addParameter("titulo" ,                               TYPES.Text            ,req.body.titulo);
-    request.addParameter("id_proyecto" ,                          TYPES.Int             ,req.body.id_proyecto);
-    request.addParameter( "palabrasClave"  ,                      TYPES.Text            ,req.body.palabrasClave ? req.body.palabrasClave : null);
-    request.addParameter( "area_innovacion_area"  ,               TYPES.Text            ,req.body.area_innovacion_area ? req.body.area_innovacion_area : null);
-    request.addParameter( "area_innovacion_subarea"  ,            TYPES.Text            ,req.body.area_innovacion_subarea ? req.body.area_innovacion_subarea : null);
-    request.addParameter( "area_innovacion_tematica"  ,           TYPES.Text            ,req.body.area_innovacion_tematica ? req.body.area_innovacion_tematica : null);
-    request.addParameter( "aplicacion_area"  ,                    TYPES.Text            ,req.body.aplicacion_area ? req.body.aplicacion_area : null);
-    request.addParameter( "aplicacion_subarea"  ,                 TYPES.Text            ,req.body.aplicacion_subarea ? req.body.aplicacion_subarea : null);
-    request.addParameter( "localizacion_departamento"   ,         TYPES.Text            ,req.body.localizacion_departamento ? req.body.localizacion_departamento : null);
-    request.addParameter( "localizacion_provincia"   ,            TYPES.Text            ,req.body.localizacion_provincia ? req.body.localizacion_provincia : null);
-    request.addParameter( "localizacion_distrito"   ,             TYPES.Text            ,req.body.localizacion_distrito ? req.body.localizacion_distrito : null);
-    request.addParameter( "localizacion_ubigeo"   ,               TYPES.Int             ,req.body.localizacion_ubigeo ? req.body.localizacion_ubigeo : null);
-    request.addParameter("a22_1_1" ,           TYPES.Text            ,req.body.a22_1_1 ? req.body.a22_1_1 : null);
-    request.addParameter("a22_2_1" ,           TYPES.Text            ,req.body.a22_2_1 ? req.body.a22_2_1 : null);
-    request.addParameter("a22_3_1" ,           TYPES.Text            ,req.body.a22_3_1 ? req.body.a22_3_1 : null);
-    request.addParameter("a22_4_1" ,           TYPES.Text            ,req.body.a22_4_1 ? req.body.a22_4_1 : null);
-    request.addParameter("a22_5_1" ,           TYPES.Text            ,req.body.a22_5_1 ? req.body.a22_5_1 : null);
-    request.addParameter("a22_1_2" ,           TYPES.Text            ,req.body.a22_1_2 ? req.body.a22_1_2 : null);
-    request.addParameter("a22_2_2" ,           TYPES.Text            ,req.body.a22_2_2 ? req.body.a22_2_2 : null);
-    request.addParameter("a22_3_2" ,           TYPES.Text            ,req.body.a22_3_2 ? req.body.a22_3_2 : null);
-    request.addParameter("a22_4_2" ,           TYPES.Text            ,req.body.a22_4_2 ? req.body.a22_4_2 : null);
-    request.addParameter("a22_5_2" ,           TYPES.Text            ,req.body.a22_5_2 ? req.body.a22_5_2 : null);
-    request.addParameter("a22_1_3" ,           TYPES.Text            ,req.body.a22_1_3 ? req.body.a22_1_3 : null);
-    request.addParameter("a22_2_3" ,           TYPES.Text            ,req.body.a22_2_3 ? req.body.a22_2_3 : null);
-    request.addParameter("a22_3_3" ,           TYPES.Text            ,req.body.a22_3_3 ? req.body.a22_3_3 : null);
-    request.addParameter("a22_4_3" ,           TYPES.Text            ,req.body.a22_4_3 ? req.body.a22_4_3 : null);
-    request.addParameter("a22_5_3" ,           TYPES.Text            ,req.body.a22_5_3 ? req.body.a22_5_3 : null);
-    request.addParameter("a31_1_1" ,           TYPES.Text            ,req.body.a31_1_1 ? req.body.a31_1_1 : null);
-    request.addParameter("a31_2_1" ,           TYPES.Text            ,req.body.a31_2_1 ? req.body.a31_2_1 : null);
+    request.addParameter("id_usuario",                           TYPES.Int            ,req.session.user.id);    
+    request.addParameter("titulo",                               TYPES.Text           ,req.body.titulo);
+    request.addParameter("id_proyecto",                          TYPES.Int            ,req.body.id_proyecto);
+    request.addParameter( "palabrasClave" ,                      TYPES.Text           ,req.body.palabrasClave ? req.body.palabrasClave : null);
+    request.addParameter( "area_innovacion_area" ,               TYPES.Text           ,req.body.area_innovacion_area ? req.body.area_innovacion_area : null);
+    request.addParameter( "area_innovacion_subarea" ,            TYPES.Text           ,req.body.area_innovacion_subarea ? req.body.area_innovacion_subarea : null);
+    request.addParameter( "area_innovacion_tematica" ,           TYPES.Text           ,req.body.area_innovacion_tematica ? req.body.area_innovacion_tematica : null);
+    request.addParameter( "aplicacion_area" ,                    TYPES.Text           ,req.body.aplicacion_area ? req.body.aplicacion_area : null);
+    request.addParameter( "aplicacion_subarea" ,                 TYPES.Text           ,req.body.aplicacion_subarea ? req.body.aplicacion_subarea : null);
+    request.addParameter( "localizacion_departamento"  ,         TYPES.Text           ,req.body.localizacion_departamento ? req.body.localizacion_departamento : null);
+    request.addParameter( "localizacion_provincia"  ,            TYPES.Text           ,req.body.localizacion_provincia ? req.body.localizacion_provincia : null);
+    request.addParameter( "localizacion_distrito"  ,             TYPES.Text           ,req.body.localizacion_distrito ? req.body.localizacion_distrito : null);
+    request.addParameter( "localizacion_ubigeo"  ,               TYPES.Int            ,req.body.localizacion_ubigeo ? req.body.localizacion_ubigeo : null);
+    request.addParameter("a22_1_1",           TYPES.Text           ,req.body.a22_1_1 ? req.body.a22_1_1 : null);
+    request.addParameter("a22_2_1",           TYPES.Text           ,req.body.a22_2_1 ? req.body.a22_2_1 : null);
+    request.addParameter("a22_3_1",           TYPES.Text           ,req.body.a22_3_1 ? req.body.a22_3_1 : null);
+    request.addParameter("a22_4_1",           TYPES.Text           ,req.body.a22_4_1 ? req.body.a22_4_1 : null);
+    request.addParameter("a22_5_1",           TYPES.Text           ,req.body.a22_5_1 ? req.body.a22_5_1 : null);
+    request.addParameter("a22_1_2",           TYPES.Text           ,req.body.a22_1_2 ? req.body.a22_1_2 : null);
+    request.addParameter("a22_2_2",           TYPES.Text           ,req.body.a22_2_2 ? req.body.a22_2_2 : null);
+    request.addParameter("a22_3_2",           TYPES.Text           ,req.body.a22_3_2 ? req.body.a22_3_2 : null);
+    request.addParameter("a22_4_2",           TYPES.Text           ,req.body.a22_4_2 ? req.body.a22_4_2 : null);
+    request.addParameter("a22_5_2",           TYPES.Text           ,req.body.a22_5_2 ? req.body.a22_5_2 : null);
+    request.addParameter("a22_1_3",           TYPES.Text           ,req.body.a22_1_3 ? req.body.a22_1_3 : null);
+    request.addParameter("a22_2_3",           TYPES.Text           ,req.body.a22_2_3 ? req.body.a22_2_3 : null);
+    request.addParameter("a22_3_3",           TYPES.Text           ,req.body.a22_3_3 ? req.body.a22_3_3 : null);
+    request.addParameter("a22_4_3",           TYPES.Text           ,req.body.a22_4_3 ? req.body.a22_4_3 : null);
+    request.addParameter("a22_5_3",           TYPES.Text           ,req.body.a22_5_3 ? req.body.a22_5_3 : null);
+    request.addParameter("a31_1_1",           TYPES.Text           ,req.body.a31_1_1 ? req.body.a31_1_1 : null);
+    request.addParameter("a31_2_1",           TYPES.Text            ,req.body.a31_2_1 ? req.body.a31_2_1 : null);
     request.addParameter("a31_1_2" ,           TYPES.Text            ,req.body.a31_1_2 ? req.body.a31_1_2 : null);
     request.addParameter("a31_2_2" ,           TYPES.Text            ,req.body.a31_2_2 ? req.body.a31_2_2 : null);
     request.addParameter("a31_1_3" ,           TYPES.Text            ,req.body.a31_1_3 ? req.body.a31_1_3 : null);
@@ -641,6 +736,24 @@ router.post('/validation/editar-proyecto', function(req, res) {
     request.addParameter( "describirForma" ,                      TYPES.Text            ,req.body.describirForma ? req.body.describirForma : null );
     request.addParameter( "antecedentes"   ,                      TYPES.Text            ,req.body.antecedentes ? req.body.antecedentes : null );
     request.addParameter( "libreRestrigido",                      TYPES.Text            ,req.body.libreRestrigido ? req.body.libreRestrigido : null );
+    request.addParameter("c41og_1" ,             TYPES.Text            ,req.body.c41og_1   ? req.body.c41og_1   : null);
+    request.addParameter("c41og_2" ,             TYPES.Text            ,req.body.c41og_2   ? req.body.c41og_2   : null);
+    request.addParameter("c41og_3" ,             TYPES.Text            ,req.body.c41og_3   ? req.body.c41og_3   : null);
+    request.addParameter("c41oe_1_1" ,           TYPES.Text            ,req.body.c41oe_1_1 ? req.body.c41oe_1_1 : null);
+    request.addParameter("c41oe_2_1" ,           TYPES.Text            ,req.body.c41oe_2_1 ? req.body.c41oe_2_1 : null);
+    request.addParameter("c41oe_3_1" ,           TYPES.Text            ,req.body.c41oe_3_1 ? req.body.c41oe_3_1 : null);
+    request.addParameter("c41oe_1_2" ,           TYPES.Text            ,req.body.c41oe_1_2 ? req.body.c41oe_1_2 : null);
+    request.addParameter("c41oe_2_2" ,           TYPES.Text            ,req.body.c41oe_2_2 ? req.body.c41oe_2_2 : null);
+    request.addParameter("c41oe_3_2" ,           TYPES.Text            ,req.body.c41oe_3_2 ? req.body.c41oe_3_2 : null);
+    request.addParameter("c41oe_1_3" ,           TYPES.Text            ,req.body.c41oe_1_3 ? req.body.c41oe_1_3 : null);
+    request.addParameter("c41oe_2_3" ,           TYPES.Text            ,req.body.c41oe_2_3 ? req.body.c41oe_2_3 : null);
+    request.addParameter("c41oe_3_3" ,           TYPES.Text            ,req.body.c41oe_3_3 ? req.body.c41oe_3_3 : null);
+    request.addParameter("c41oe_1_4" ,           TYPES.Text            ,req.body.c41oe_1_4 ? req.body.c41oe_1_4 : null);
+    request.addParameter("c41oe_2_4" ,           TYPES.Text            ,req.body.c41oe_2_4 ? req.body.c41oe_2_4 : null);
+    request.addParameter("c41oe_3_4" ,           TYPES.Text            ,req.body.c41oe_3_4 ? req.body.c41oe_3_4 : null);
+    request.addParameter("c41oe_1_5" ,           TYPES.Text            ,req.body.c41oe_1_5 ? req.body.c41oe_1_5 : null);
+    request.addParameter("c41oe_2_5" ,           TYPES.Text            ,req.body.c41oe_2_5 ? req.body.c41oe_2_5 : null);
+    request.addParameter("c41oe_3_5" ,           TYPES.Text            ,req.body.c41oe_3_5 ? req.body.c41oe_3_5 : null);
     request.addParameter( "planMetodologico"   ,                  TYPES.Text            ,req.body.planMetodologico ? req.body.planMetodologico : null );
     request.addParameter( "propiedadIntelectual"   ,              TYPES.Text            ,req.body.propiedadIntelectual ? req.body.propiedadIntelectual : null );
     request.addParameter( "impactosEconomicos" ,                  TYPES.Text            ,req.body.impactosEconomicos ? req.body.impactosEconomicos : null );
@@ -651,9 +764,518 @@ router.post('/validation/editar-proyecto', function(req, res) {
     request.addParameter( "impactosAmbientales",                  TYPES.Text            ,req.body.impactosAmbientales ? req.body.impactosAmbientales : null );
     request.addParameter( "medidasDeMitigacion",                  TYPES.Text            ,req.body.medidasDeMitigacion ? req.body.medidasDeMitigacion : null );
     request.addParameter( "impactosEnLaEmpresa",                  TYPES.Text            ,req.body.impactosEnLaEmpresa ? req.body.impactosEnLaEmpresa : null );
-    request.addParameter( "monedaDelProyecto"  ,                  TYPES.Int             ,req.body.monedaDelProyecto ? req.body.monedaDelProyecto : null );
-    request.addParameter( "flujoDeCaja"  ,                        TYPES.Image           ,req.body.flujoDeCaja ? req.body.flujoDeCaja : null ); 
-    request.addParameter( "planAdjunto"  ,                        TYPES.Image           ,req.body.planAdjunto ? req.body.planAdjunto : null );    
+    request.addParameter( "c8_1_1" ,           TYPES.Text            ,req.body.c8_1_1 ? req.body.c8_1_1 : null );
+    request.addParameter( "c8_2_1" ,           TYPES.Text            ,req.body.c8_2_1 ? req.body.c8_2_1 : null );
+    request.addParameter( "c8_3_1" ,           TYPES.Text            ,req.body.c8_3_1 ? req.body.c8_3_1 : null );
+    request.addParameter( "c8_4_1" ,           TYPES.Text            ,req.body.c8_4_1 ? req.body.c8_4_1 : null );
+    request.addParameter( "c8_5_1" ,           TYPES.Text            ,req.body.c8_5_1 ? req.body.c8_5_1 : null );
+    request.addParameter( "c8_6_1" ,           TYPES.Text            ,req.body.c8_6_1 ? req.body.c8_6_1 : null );
+    request.addParameter( "c8_7_1" ,           TYPES.Text            ,req.body.c8_7_1 ? req.body.c8_7_1 : null );
+    request.addParameter( "c8_8_1" ,           TYPES.Text            ,req.body.c8_8_1 ? req.body.c8_8_1 : null );
+    request.addParameter( "c8_9_1" ,           TYPES.Text            ,req.body.c8_9_1 ? req.body.c8_9_1 : null );
+    request.addParameter( "c8_10_1" ,          TYPES.Text            ,req.body.c8_10_1 ? req.body.c8_10_1 : null );
+    request.addParameter( "c8_11_1" ,          TYPES.Text            ,req.body.c8_11_1 ? req.body.c8_11_1 : null );
+    request.addParameter( "c8_1_2" ,           TYPES.Text            ,req.body.c8_1_2 ? req.body.c8_1_2 : null );
+    request.addParameter( "c8_2_2" ,           TYPES.Text            ,req.body.c8_2_2 ? req.body.c8_2_2 : null );
+    request.addParameter( "c8_3_2" ,           TYPES.Text            ,req.body.c8_3_2 ? req.body.c8_3_2 : null );
+    request.addParameter( "c8_4_2" ,           TYPES.Text            ,req.body.c8_4_2 ? req.body.c8_4_2 : null );
+    request.addParameter( "c8_5_2" ,           TYPES.Text            ,req.body.c8_5_2 ? req.body.c8_5_2 : null );
+    request.addParameter( "c8_6_2" ,           TYPES.Text            ,req.body.c8_6_2 ? req.body.c8_6_2 : null );
+    request.addParameter( "c8_7_2" ,           TYPES.Text            ,req.body.c8_7_2 ? req.body.c8_7_2 : null );
+    request.addParameter( "c8_8_2" ,           TYPES.Text            ,req.body.c8_8_2 ? req.body.c8_8_2 : null );
+    request.addParameter( "c8_9_2" ,           TYPES.Text            ,req.body.c8_9_2 ? req.body.c8_9_2 : null );
+    request.addParameter( "c8_10_2" ,          TYPES.Text            ,req.body.c8_10_2 ? req.body.c8_10_2 : null );
+    request.addParameter( "c8_11_2" ,          TYPES.Text            ,req.body.c8_11_2 ? req.body.c8_11_2 : null );
+    request.addParameter( "c8_1_3" ,           TYPES.Text            ,req.body.c8_1_3 ? req.body.c8_1_3 : null );
+    request.addParameter( "c8_2_3" ,           TYPES.Text            ,req.body.c8_2_3 ? req.body.c8_2_3 : null );
+    request.addParameter( "c8_3_3" ,           TYPES.Text            ,req.body.c8_3_3 ? req.body.c8_3_3 : null );
+    request.addParameter( "c8_4_3" ,           TYPES.Text            ,req.body.c8_4_3 ? req.body.c8_4_3 : null );
+    request.addParameter( "c8_5_3" ,           TYPES.Text            ,req.body.c8_5_3 ? req.body.c8_5_3 : null );
+    request.addParameter( "c8_6_3" ,           TYPES.Text            ,req.body.c8_6_3 ? req.body.c8_6_3 : null );
+    request.addParameter( "c8_7_3" ,           TYPES.Text            ,req.body.c8_7_3 ? req.body.c8_7_3 : null );
+    request.addParameter( "c8_8_3" ,           TYPES.Text            ,req.body.c8_8_3 ? req.body.c8_8_3 : null );
+    request.addParameter( "c8_9_3" ,           TYPES.Text            ,req.body.c8_9_3 ? req.body.c8_9_3 : null );
+    request.addParameter( "c8_10_3" ,          TYPES.Text            ,req.body.c8_10_3 ? req.body.c8_10_3 : null );
+    request.addParameter( "c8_11_3" ,          TYPES.Text            ,req.body.c8_11_3 ? req.body.c8_11_3 : null );
+    request.addParameter( "c8_1_4" ,           TYPES.Text            ,req.body.c8_1_4 ? req.body.c8_1_4 : null );
+    request.addParameter( "c8_2_4" ,           TYPES.Text            ,req.body.c8_2_4 ? req.body.c8_2_4 : null );
+    request.addParameter( "c8_3_4" ,           TYPES.Text            ,req.body.c8_3_4 ? req.body.c8_3_4 : null );
+    request.addParameter( "c8_4_4" ,           TYPES.Text            ,req.body.c8_4_4 ? req.body.c8_4_4 : null );
+    request.addParameter( "c8_5_4" ,           TYPES.Text            ,req.body.c8_5_4 ? req.body.c8_5_4 : null );
+    request.addParameter( "c8_6_4" ,           TYPES.Text            ,req.body.c8_6_4 ? req.body.c8_6_4 : null );
+    request.addParameter( "c8_7_4" ,           TYPES.Text            ,req.body.c8_7_4 ? req.body.c8_7_4 : null );
+    request.addParameter( "c8_8_4" ,           TYPES.Text            ,req.body.c8_8_4 ? req.body.c8_8_4 : null );
+    request.addParameter( "c8_9_4" ,           TYPES.Text            ,req.body.c8_9_4 ? req.body.c8_9_4 : null );
+    request.addParameter( "c8_10_4" ,          TYPES.Text            ,req.body.c8_10_4 ? req.body.c8_10_4 : null );
+    request.addParameter( "c8_11_4" ,          TYPES.Text            ,req.body.c8_11_4 ? req.body.c8_11_4 : null );
+    request.addParameter( "c8_1_5" ,           TYPES.Text            ,req.body.c8_1_5 ? req.body.c8_1_5 : null );
+    request.addParameter( "c8_2_5" ,           TYPES.Text            ,req.body.c8_2_5 ? req.body.c8_2_5 : null );
+    request.addParameter( "c8_3_5" ,           TYPES.Text            ,req.body.c8_3_5 ? req.body.c8_3_5 : null );
+    request.addParameter( "c8_4_5" ,           TYPES.Text            ,req.body.c8_4_5 ? req.body.c8_4_5 : null );
+    request.addParameter( "c8_5_5" ,           TYPES.Text            ,req.body.c8_5_5 ? req.body.c8_5_5 : null );
+    request.addParameter( "c8_6_5" ,           TYPES.Text            ,req.body.c8_6_5 ? req.body.c8_6_5 : null );
+    request.addParameter( "c8_7_5" ,           TYPES.Text            ,req.body.c8_7_5 ? req.body.c8_7_5 : null );
+    request.addParameter( "c8_8_5" ,           TYPES.Text            ,req.body.c8_8_5 ? req.body.c8_8_5 : null );
+    request.addParameter( "c8_9_5" ,           TYPES.Text            ,req.body.c8_9_5 ? req.body.c8_9_5 : null );
+    request.addParameter( "c8_10_5" ,          TYPES.Text            ,req.body.c8_10_5 ? req.body.c8_10_5 : null );
+    request.addParameter( "c8_11_5" ,          TYPES.Text            ,req.body.c8_11_5 ? req.body.c8_11_5 : null );
+    request.addParameter( "monedaDelProyecto", TYPES.Int             ,req.body.monedaDelProyecto ? req.body.monedaDelProyecto : null );
+    request.addParameter( "d11_1_1 " ,         TYPES.Text            ,req.body.d11_1_1  ? req.body.d11_1_1  : null );
+    request.addParameter( "d11_2_1 " ,         TYPES.Text            ,req.body.d11_2_1 ? req.body.d11_2_1 : null );
+    request.addParameter( "d11_3_1 " ,         TYPES.Text            ,req.body.d11_3_1 ? req.body.d11_3_1  : null );
+    request.addParameter( "d11_4_1" ,          TYPES.Text            ,req.body.d11_4_1 ? req.body.d11_4_1 : null );
+    request.addParameter( "d11_5_1" ,          TYPES.Text            ,req.body.d11_5_1 ? req.body.d11_5_1 : null );
+    request.addParameter( "d11_6_1 " ,         TYPES.Text            ,req.body.d11_6_1 ? req.body.d11_6_1  : null );
+    request.addParameter( "d11_7_1" ,          TYPES.Text            ,req.body.d11_7_1 ? req.body.d11_7_1 : null );
+    request.addParameter( "d11_8_1" ,          TYPES.Text            ,req.body.d11_8_1 ? req.body.d11_8_1 : null );
+    request.addParameter( "d11_9_1 " ,         TYPES.Text            ,req.body.d11_9_1 ? req.body.d11_9_1  : null );
+    request.addParameter( "d11_10_1" ,         TYPES.Text            ,req.body.d11_10_1? req.body.d11_10_1 : null );
+    request.addParameter( "d11_11_1" ,         TYPES.Text            ,req.body.d11_11_1? req.body.d11_11_1 : null );
+    request.addParameter( "d11_12_1" ,         TYPES.Text            ,req.body.d11_12_1? req.body.d11_12_1 : null );
+    request.addParameter( "d11_1_2" ,          TYPES.Text            ,req.body.d11_1_2 ? req.body.d11_1_2 : null );
+    request.addParameter( "d11_2_2" ,          TYPES.Text            ,req.body.d11_2_2 ? req.body.d11_2_2 : null );
+    request.addParameter( "d11_3_2" ,          TYPES.Text            ,req.body.d11_3_2 ? req.body.d11_3_2 : null );
+    request.addParameter( "d11_4_2" ,          TYPES.Text            ,req.body.d11_4_2 ? req.body.d11_4_2 : null );
+    request.addParameter( "d11_5_2" ,          TYPES.Text            ,req.body.d11_5_2 ? req.body.d11_5_2 : null );
+    request.addParameter( "d11_6_2" ,          TYPES.Text            ,req.body.d11_6_2 ? req.body.d11_6_2 : null );
+    request.addParameter( "d11_7_2" ,          TYPES.Text            ,req.body.d11_7_2 ? req.body.d11_7_2 : null );
+    request.addParameter( "d11_8_2" ,          TYPES.Text            ,req.body.d11_8_2 ? req.body.d11_8_2 : null );
+    request.addParameter( "d11_9_2" ,          TYPES.Text            ,req.body.d11_9_2 ? req.body.d11_9_2 : null );
+    request.addParameter( "d11_10_2" ,         TYPES.Text            ,req.body.d11_10_2? req.body.d11_10_2 : null );
+    request.addParameter( "d11_11_2" ,         TYPES.Text            ,req.body.d11_11_2? req.body.d11_11_2 : null );
+    request.addParameter( "d11_12_2" ,         TYPES.Text            ,req.body.d11_12_2? req.body.d11_12_2 : null );
+    request.addParameter( "d11_1_3" ,          TYPES.Text            ,req.body.d11_1_3 ? req.body.d11_1_3 : null );
+    request.addParameter( "d11_2_3" ,          TYPES.Text            ,req.body.d11_2_3 ? req.body.d11_2_3 : null );
+    request.addParameter( "d11_3_3" ,          TYPES.Text            ,req.body.d11_3_3 ? req.body.d11_3_3 : null );
+    request.addParameter( "d11_4_3" ,          TYPES.Text            ,req.body.d11_4_3 ? req.body.d11_4_3 : null );
+    request.addParameter( "d11_5_3" ,          TYPES.Text            ,req.body.d11_5_3 ? req.body.d11_5_3 : null );
+    request.addParameter( "d11_6_3" ,          TYPES.Text            ,req.body.d11_6_3 ? req.body.d11_6_3 : null );
+    request.addParameter( "d11_7_3" ,          TYPES.Text            ,req.body.d11_7_3 ? req.body.d11_7_3 : null );
+    request.addParameter( "d11_8_3" ,          TYPES.Text            ,req.body.d11_8_3 ? req.body.d11_8_3 : null );
+    request.addParameter( "d11_9_3" ,          TYPES.Text            ,req.body.d11_9_3 ? req.body.d11_9_3 : null );
+    request.addParameter( "d11_10_3" ,         TYPES.Text            ,req.body.d11_10_3? req.body.d11_10_3 : null );
+    request.addParameter( "d11_11_3" ,         TYPES.Text            ,req.body.d11_11_3? req.body.d11_11_3 : null );
+    request.addParameter( "d11_12_3" ,         TYPES.Text            ,req.body.d11_12_3? req.body.d11_12_3 : null );
+    request.addParameter( "d11_1_4" ,          TYPES.Text            ,req.body.d11_1_4 ? req.body.d11_1_4 : null );
+    request.addParameter( "d11_2_4" ,          TYPES.Text            ,req.body.d11_2_4 ? req.body.d11_2_4 : null );
+    request.addParameter( "d11_3_4" ,          TYPES.Text            ,req.body.d11_3_4 ? req.body.d11_3_4 : null );
+    request.addParameter( "d11_4_4" ,          TYPES.Text            ,req.body.d11_4_4 ? req.body.d11_4_4 : null );
+    request.addParameter( "d11_5_4" ,          TYPES.Text            ,req.body.d11_5_4 ? req.body.d11_5_4 : null );
+    request.addParameter( "d11_6_4" ,          TYPES.Text            ,req.body.d11_6_4 ? req.body.d11_6_4 : null );
+    request.addParameter( "d11_7_4" ,          TYPES.Text            ,req.body.d11_7_4 ? req.body.d11_7_4 : null );
+    request.addParameter( "d11_8_4" ,          TYPES.Text            ,req.body.d11_8_4 ? req.body.d11_8_4 : null );
+    request.addParameter( "d11_9_4" ,          TYPES.Text            ,req.body.d11_9_4 ? req.body.d11_9_4 : null );
+    request.addParameter( "d11_10_4" ,         TYPES.Text            ,req.body.d11_10_4? req.body.d11_10_4 : null );
+    request.addParameter( "d11_11_4" ,         TYPES.Text            ,req.body.d11_11_4? req.body.d11_11_4 : null );
+    request.addParameter( "d11_12_4" ,         TYPES.Text            ,req.body.d11_12_4? req.body.d11_12_4 : null );
+    request.addParameter( "d11_1_5 " ,         TYPES.Text            ,req.body.d11_1_5 ? req.body.d11_1_5  : null );
+    request.addParameter( "d11_2_5" ,          TYPES.Text            ,req.body.d11_2_5 ? req.body.d11_2_5 : null );
+    request.addParameter( "d11_3_5 " ,         TYPES.Text            ,req.body.d11_3_5 ? req.body.d11_3_5  : null );
+    request.addParameter( "d11_4_5" ,          TYPES.Text            ,req.body.d11_4_5 ? req.body.d11_4_5 : null );
+    request.addParameter( "d11_5_5" ,          TYPES.Text            ,req.body.d11_5_5 ? req.body.d11_5_5 : null );
+    request.addParameter( "d11_6_5 " ,         TYPES.Text            ,req.body.d11_6_5 ? req.body.d11_6_5  : null );
+    request.addParameter( "d11_7_5" ,          TYPES.Text            ,req.body.d11_7_5 ? req.body.d11_7_5 : null );
+    request.addParameter( "d11_8_5" ,          TYPES.Text            ,req.body.d11_8_5 ? req.body.d11_8_5 : null );
+    request.addParameter( "d11_9_5 " ,         TYPES.Text            ,req.body.d11_9_5 ? req.body.d11_9_5  : null );
+    request.addParameter( "d11_10_5" ,         TYPES.Text            ,req.body.d11_10_5? req.body.d11_10_5 : null );
+    request.addParameter( "d11_11_5" ,         TYPES.Text            ,req.body.d11_11_5? req.body.d11_11_5 : null );
+    request.addParameter( "d11_12_5" ,         TYPES.Text            ,req.body.d11_12_5? req.body.d11_12_5 : null );
+    request.addParameter( "d12_1_1 " ,         TYPES.Text            ,req.body.d12_1_1 ? req.body.d12_1_1  : null );
+    request.addParameter( "d12_2_1" ,          TYPES.Text            ,req.body.d12_2_1 ? req.body.d12_2_1 : null );
+    request.addParameter( "d12_3_1 " ,         TYPES.Text            ,req.body.d12_3_1 ? req.body.d12_3_1  : null );
+    request.addParameter( "d12_4_1" ,          TYPES.Text            ,req.body.d12_4_1 ? req.body.d12_4_1 : null );
+    request.addParameter( "d12_5_1" ,          TYPES.Text            ,req.body.d12_5_1 ? req.body.d12_5_1 : null );
+    request.addParameter( "d12_6_1 " ,         TYPES.Text            ,req.body.d12_6_1 ? req.body.d12_6_1  : null );
+    request.addParameter( "d12_7_1" ,          TYPES.Text            ,req.body.d12_7_1 ? req.body.d12_7_1 : null );
+    request.addParameter( "d12_8_1" ,          TYPES.Text            ,req.body.d12_8_1 ? req.body.d12_8_1 : null );
+    request.addParameter( "d12_9_1 " ,         TYPES.Text            ,req.body.d12_9_1 ? req.body.d12_9_1  : null );
+    request.addParameter( "d12_10_1" ,         TYPES.Text            ,req.body.d12_10_1? req.body.d12_10_1 : null );
+    request.addParameter( "d12_1_2 " ,         TYPES.Text            ,req.body.d12_1_2 ? req.body.d12_1_2  : null );
+    request.addParameter( "d12_2_2" ,          TYPES.Text            ,req.body.d12_2_2 ? req.body.d12_2_2 : null );
+    request.addParameter( "d12_3_2 " ,         TYPES.Text            ,req.body.d12_3_2 ? req.body.d12_3_2  : null );
+    request.addParameter( "d12_4_2" ,          TYPES.Text            ,req.body.d12_4_2 ? req.body.d12_4_2 : null );
+    request.addParameter( "d12_5_2" ,          TYPES.Text            ,req.body.d12_5_2 ? req.body.d12_5_2 : null );
+    request.addParameter( "d12_6_2 " ,         TYPES.Text            ,req.body.d12_6_2 ? req.body.d12_6_2  : null );
+    request.addParameter( "d12_7_2" ,          TYPES.Text            ,req.body.d12_7_2 ? req.body.d12_7_2 : null );
+    request.addParameter( "d12_8_2" ,          TYPES.Text            ,req.body.d12_8_2 ? req.body.d12_8_2 : null );
+    request.addParameter( "d12_9_2 " ,         TYPES.Text            ,req.body.d12_9_2 ? req.body.d12_9_2  : null );
+    request.addParameter( "d12_10_2" ,         TYPES.Text            ,req.body.d12_10_2? req.body.d12_10_2 : null );
+    request.addParameter( "d12_1_3" ,          TYPES.Text            ,req.body.d12_1_3 ? req.body.d12_1_3 : null );
+    request.addParameter( "d12_2_3" ,          TYPES.Text            ,req.body.d12_2_3 ? req.body.d12_2_3 : null );
+    request.addParameter( "d12_3_3" ,          TYPES.Text            ,req.body.d12_3_3 ? req.body.d12_3_3 : null );
+    request.addParameter( "d12_4_3" ,          TYPES.Text            ,req.body.d12_4_3 ? req.body.d12_4_3 : null );
+    request.addParameter( "d12_5_3" ,          TYPES.Text            ,req.body.d12_5_3 ? req.body.d12_5_3 : null );
+    request.addParameter( "d12_6_3" ,          TYPES.Text            ,req.body.d12_6_3 ? req.body.d12_6_3 : null );
+    request.addParameter( "d12_7_3" ,          TYPES.Text            ,req.body.d12_7_3 ? req.body.d12_7_3 : null );
+    request.addParameter( "d12_8_3" ,          TYPES.Text            ,req.body.d12_8_3 ? req.body.d12_8_3 : null );
+    request.addParameter( "d12_9_3" ,          TYPES.Text            ,req.body.d12_9_3 ? req.body.d12_9_3 : null );
+    request.addParameter( "d12_10_3" ,         TYPES.Text            ,req.body.d12_10_3? req.body.d12_10_3 : null );
+    request.addParameter( "d12_1_4 " ,         TYPES.Text            ,req.body.d12_1_4 ? req.body.d12_1_4  : null );
+    request.addParameter( "d12_2_4" ,          TYPES.Text            ,req.body.d12_2_4 ? req.body.d12_2_4 : null );
+    request.addParameter( "d12_3_4 " ,         TYPES.Text            ,req.body.d12_3_4 ? req.body.d12_3_4  : null );
+    request.addParameter( "d12_4_4" ,          TYPES.Text            ,req.body.d12_4_4 ? req.body.d12_4_4 : null );
+    request.addParameter( "d12_5_4" ,          TYPES.Text            ,req.body.d12_5_4 ? req.body.d12_5_4 : null );
+    request.addParameter( "d12_6_4 " ,         TYPES.Text            ,req.body.d12_6_4 ? req.body.d12_6_4  : null );
+    request.addParameter( "d12_7_4" ,          TYPES.Text            ,req.body.d12_7_4 ? req.body.d12_7_4 : null );
+    request.addParameter( "d12_8_4" ,          TYPES.Text            ,req.body.d12_8_4 ? req.body.d12_8_4 : null );
+    request.addParameter( "d12_9_4 " ,         TYPES.Text            ,req.body.d12_9_4 ? req.body.d12_9_4  : null );
+    request.addParameter( "d12_10_4" ,         TYPES.Text            ,req.body.d12_10_4? req.body.d12_10_4 : null );
+    request.addParameter( "d12_1_5" ,          TYPES.Text            ,req.body.d12_1_5 ? req.body.d12_1_5 : null );
+    request.addParameter( "d12_2_5" ,          TYPES.Text            ,req.body.d12_2_5 ? req.body.d12_2_5 : null );
+    request.addParameter( "d12_3_5" ,          TYPES.Text            ,req.body.d12_3_5 ? req.body.d12_3_5 : null );
+    request.addParameter( "d12_4_5" ,          TYPES.Text            ,req.body.d12_4_5 ? req.body.d12_4_5 : null );
+    request.addParameter( "d12_5_5" ,          TYPES.Text            ,req.body.d12_5_5 ? req.body.d12_5_5 : null );
+    request.addParameter( "d12_6_5" ,          TYPES.Text            ,req.body.d12_6_5 ? req.body.d12_6_5 : null );
+    request.addParameter( "d12_7_5" ,          TYPES.Text            ,req.body.d12_7_5 ? req.body.d12_7_5 : null );
+    request.addParameter( "d12_8_5" ,          TYPES.Text            ,req.body.d12_8_5 ? req.body.d12_8_5 : null );
+    request.addParameter( "d12_9_5" ,          TYPES.Text            ,req.body.d12_9_5 ? req.body.d12_9_5 : null );
+    request.addParameter( "d12_10_5" ,         TYPES.Text            ,req.body.d12_10_5? req.body.d12_10_5 : null );
+    request.addParameter( "d13_1_1" ,          TYPES.Text            ,req.body.d13_1_1 ? req.body.d13_1_1 : null );
+    request.addParameter( "d13_2_1" ,          TYPES.Text            ,req.body.d13_2_1 ? req.body.d13_2_1 : null );
+    request.addParameter( "d13_3_1" ,          TYPES.Text            ,req.body.d13_3_1 ? req.body.d13_3_1 : null );
+    request.addParameter( "d13_4_1" ,          TYPES.Text            ,req.body.d13_4_1 ? req.body.d13_4_1 : null );
+    request.addParameter( "d13_5_1" ,          TYPES.Text            ,req.body.d13_5_1 ? req.body.d13_5_1 : null );
+    request.addParameter( "d13_6_1" ,          TYPES.Text            ,req.body.d13_6_1 ? req.body.d13_6_1 : null );
+    request.addParameter( "d13_7_1" ,          TYPES.Text            ,req.body.d13_7_1 ? req.body.d13_7_1 : null );
+    request.addParameter( "d13_8_1" ,          TYPES.Text            ,req.body.d13_8_1 ? req.body.d13_8_1 : null );
+    request.addParameter( "d13_9_1" ,          TYPES.Text            ,req.body.d13_9_1 ? req.body.d13_9_1 : null );
+    request.addParameter( "d13_1_2" ,          TYPES.Text            ,req.body.d13_1_2 ? req.body.d13_1_2 : null );
+    request.addParameter( "d13_2_2" ,          TYPES.Text            ,req.body.d13_2_2 ? req.body.d13_2_2 : null );
+    request.addParameter( "d13_3_2" ,          TYPES.Text            ,req.body.d13_3_2 ? req.body.d13_3_2 : null );
+    request.addParameter( "d13_4_2" ,          TYPES.Text            ,req.body.d13_4_2 ? req.body.d13_4_2 : null );
+    request.addParameter( "d13_5_2" ,          TYPES.Text            ,req.body.d13_5_2 ? req.body.d13_5_2 : null );
+    request.addParameter( "d13_6_2" ,          TYPES.Text            ,req.body.d13_6_2 ? req.body.d13_6_2 : null );
+    request.addParameter( "d13_7_2" ,          TYPES.Text            ,req.body.d13_7_2 ? req.body.d13_7_2 : null );
+    request.addParameter( "d13_8_2" ,          TYPES.Text            ,req.body.d13_8_2 ? req.body.d13_8_2 : null );
+    request.addParameter( "d13_9_2" ,          TYPES.Text            ,req.body.d13_9_2 ? req.body.d13_9_2 : null );
+    request.addParameter( "d13_1_3" ,          TYPES.Text            ,req.body.d13_1_3 ? req.body.d13_1_3 : null );
+    request.addParameter( "d13_2_3" ,          TYPES.Text            ,req.body.d13_2_3 ? req.body.d13_2_3 : null );
+    request.addParameter( "d13_3_3" ,          TYPES.Text            ,req.body.d13_3_3 ? req.body.d13_3_3 : null );
+    request.addParameter( "d13_4_3" ,          TYPES.Text            ,req.body.d13_4_3 ? req.body.d13_4_3 : null );
+    request.addParameter( "d13_5_3" ,          TYPES.Text            ,req.body.d13_5_3 ? req.body.d13_5_3 : null );
+    request.addParameter( "d13_6_3" ,          TYPES.Text            ,req.body.d13_6_3 ? req.body.d13_6_3 : null );
+    request.addParameter( "d13_7_3" ,          TYPES.Text            ,req.body.d13_7_3 ? req.body.d13_7_3 : null );
+    request.addParameter( "d13_8_3" ,          TYPES.Text            ,req.body.d13_8_3 ? req.body.d13_8_3 : null );
+    request.addParameter( "d13_9_3" ,          TYPES.Text            ,req.body.d13_9_3 ? req.body.d13_9_3 : null );
+    request.addParameter( "d13_1_4" ,          TYPES.Text            ,req.body.d13_1_4 ? req.body.d13_1_4 : null );
+    request.addParameter( "d13_2_4" ,          TYPES.Text            ,req.body.d13_2_4 ? req.body.d13_2_4 : null );
+    request.addParameter( "d13_3_4" ,          TYPES.Text            ,req.body.d13_3_4 ? req.body.d13_3_4 : null );
+    request.addParameter( "d13_4_4" ,          TYPES.Text            ,req.body.d13_4_4 ? req.body.d13_4_4 : null );
+    request.addParameter( "d13_5_4" ,          TYPES.Text            ,req.body.d13_5_4 ? req.body.d13_5_4 : null );
+    request.addParameter( "d13_6_4" ,          TYPES.Text            ,req.body.d13_6_4 ? req.body.d13_6_4 : null );
+    request.addParameter( "d13_7_4" ,          TYPES.Text            ,req.body.d13_7_4 ? req.body.d13_7_4 : null );
+    request.addParameter( "d13_8_4" ,          TYPES.Text            ,req.body.d13_8_4 ? req.body.d13_8_4 : null );
+    request.addParameter( "d13_9_4" ,          TYPES.Text            ,req.body.d13_9_4 ? req.body.d13_9_4 : null );
+    request.addParameter( "d13_1_5" ,          TYPES.Text            ,req.body.d13_1_5 ? req.body.d13_1_5 : null );
+    request.addParameter( "d13_2_5" ,          TYPES.Text            ,req.body.d13_2_5 ? req.body.d13_2_5 : null );
+    request.addParameter( "d13_3_5 " ,          TYPES.Text            ,req.body.d13_3_5 ? req.body.d13_3_5  : null );
+    request.addParameter( "d13_4_5" ,          TYPES.Text            ,req.body.d13_4_5 ? req.body.d13_4_5 : null );
+    request.addParameter( "d13_5_5" ,          TYPES.Text            ,req.body.d13_5_5 ? req.body.d13_5_5 : null );
+    request.addParameter( "d13_6_5 " ,          TYPES.Text            ,req.body.d13_6_5 ? req.body.d13_6_5  : null );
+    request.addParameter( "d13_7_5" ,          TYPES.Text            ,req.body.d13_7_5 ? req.body.d13_7_5 : null );
+    request.addParameter( "d13_8_5" ,          TYPES.Text            ,req.body.d13_8_5 ? req.body.d13_8_5 : null );
+    request.addParameter( "d13_9_5 " ,          TYPES.Text            ,req.body.d13_9_5  ? req.body.d13_9_5  : null );
+    request.addParameter( "d14_1_1" ,          TYPES.Text            ,req.body.d14_1_1 ? req.body.d14_1_1 : null );
+    request.addParameter( "d14_2_1" ,          TYPES.Text            ,req.body.d14_2_1 ? req.body.d14_2_1 : null );
+    request.addParameter( "d14_3_1" ,          TYPES.Text            ,req.body.d14_3_1 ? req.body.d14_3_1 : null );
+    request.addParameter( "d14_4_1" ,          TYPES.Text            ,req.body.d14_4_1 ? req.body.d14_4_1 : null );
+    request.addParameter( "d14_5_1" ,          TYPES.Text            ,req.body.d14_5_1 ? req.body.d14_5_1 : null );
+    request.addParameter( "d14_6_1" ,          TYPES.Text            ,req.body.d14_6_1 ? req.body.d14_6_1 : null );
+    request.addParameter( "d14_7_1" ,          TYPES.Text            ,req.body.d14_7_1 ? req.body.d14_7_1 : null );
+    request.addParameter( "d14_8_1" ,          TYPES.Text            ,req.body.d14_8_1 ? req.body.d14_8_1 : null );
+    request.addParameter( "d14_9_1" ,          TYPES.Text            ,req.body.d14_9_1 ? req.body.d14_9_1 : null );
+    request.addParameter( "d14_1_2" ,          TYPES.Text            ,req.body.d14_1_2 ? req.body.d14_1_2 : null );
+    request.addParameter( "d14_2_2" ,          TYPES.Text            ,req.body.d14_2_2 ? req.body.d14_2_2 : null );
+    request.addParameter( "d14_3_2" ,          TYPES.Text            ,req.body.d14_3_2 ? req.body.d14_3_2 : null );
+    request.addParameter( "d14_4_2" ,          TYPES.Text            ,req.body.d14_4_2 ? req.body.d14_4_2 : null );
+    request.addParameter( "d14_5_2" ,          TYPES.Text            ,req.body.d14_5_2 ? req.body.d14_5_2 : null );
+    request.addParameter( "d14_6_2" ,          TYPES.Text            ,req.body.d14_6_2 ? req.body.d14_6_2 : null );
+    request.addParameter( "d14_7_2" ,          TYPES.Text            ,req.body.d14_7_2 ? req.body.d14_7_2 : null );
+    request.addParameter( "d14_8_2" ,          TYPES.Text            ,req.body.d14_8_2 ? req.body.d14_8_2 : null );
+    request.addParameter( "d14_9_2" ,          TYPES.Text            ,req.body.d14_9_2 ? req.body.d14_9_2 : null );
+    request.addParameter( "d14_1_3" ,          TYPES.Text            ,req.body.d14_1_3 ? req.body.d14_1_3 : null );
+    request.addParameter( "d14_2_3" ,          TYPES.Text            ,req.body.d14_2_3 ? req.body.d14_2_3 : null );
+    request.addParameter( "d14_3_3" ,          TYPES.Text            ,req.body.d14_3_3 ? req.body.d14_3_3 : null );
+    request.addParameter( "d14_4_3" ,          TYPES.Text            ,req.body.d14_4_3 ? req.body.d14_4_3 : null );
+    request.addParameter( "d14_5_3" ,          TYPES.Text            ,req.body.d14_5_3 ? req.body.d14_5_3 : null );
+    request.addParameter( "d14_6_3" ,          TYPES.Text            ,req.body.d14_6_3 ? req.body.d14_6_3 : null );
+    request.addParameter( "d14_7_3" ,          TYPES.Text            ,req.body.d14_7_3 ? req.body.d14_7_3 : null );
+    request.addParameter( "d14_8_3" ,          TYPES.Text            ,req.body.d14_8_3 ? req.body.d14_8_3 : null );
+    request.addParameter( "d14_9_3" ,          TYPES.Text            ,req.body.d14_9_3 ? req.body.d14_9_3 : null );
+    request.addParameter( "d14_1_4" ,          TYPES.Text            ,req.body.d14_1_4 ? req.body.d14_1_4 : null );
+    request.addParameter( "d14_2_4" ,          TYPES.Text            ,req.body.d14_2_4 ? req.body.d14_2_4 : null );
+    request.addParameter( "d14_3_4" ,          TYPES.Text            ,req.body.d14_3_4 ? req.body.d14_3_4 : null );
+    request.addParameter( "d14_4_4" ,          TYPES.Text            ,req.body.d14_4_4 ? req.body.d14_4_4 : null );
+    request.addParameter( "d14_5_4" ,          TYPES.Text            ,req.body.d14_5_4 ? req.body.d14_5_4 : null );
+    request.addParameter( "d14_6_4" ,          TYPES.Text            ,req.body.d14_6_4 ? req.body.d14_6_4 : null );
+    request.addParameter( "d14_7_4" ,          TYPES.Text            ,req.body.d14_7_4 ? req.body.d14_7_4 : null );
+    request.addParameter( "d14_8_4" ,          TYPES.Text            ,req.body.d14_8_4 ? req.body.d14_8_4 : null );
+    request.addParameter( "d14_9_4" ,          TYPES.Text            ,req.body.d14_9_4 ? req.body.d14_9_4 : null );
+    request.addParameter( "d14_1_5" ,          TYPES.Text            ,req.body.d14_1_5 ? req.body.d14_1_5 : null );
+    request.addParameter( "d14_2_5" ,          TYPES.Text            ,req.body.d14_2_5 ? req.body.d14_2_5 : null );
+    request.addParameter( "d14_3_5" ,          TYPES.Text            ,req.body.d14_3_5 ? req.body.d14_3_5 : null );
+    request.addParameter( "d14_4_5" ,          TYPES.Text            ,req.body.d14_4_5 ? req.body.d14_4_5 : null );
+    request.addParameter( "d14_5_5" ,          TYPES.Text            ,req.body.d14_5_5 ? req.body.d14_5_5 : null );
+    request.addParameter( "d14_6_5" ,          TYPES.Text            ,req.body.d14_6_5 ? req.body.d14_6_5 : null );
+    request.addParameter( "d14_7_5" ,          TYPES.Text            ,req.body.d14_7_5 ? req.body.d14_7_5 : null );
+    request.addParameter( "d14_8_5" ,          TYPES.Text            ,req.body.d14_8_5 ? req.body.d14_8_5 : null );
+    request.addParameter( "d14_9_5" ,          TYPES.Text            ,req.body.d14_9_5 ? req.body.d14_9_5 : null );
+    request.addParameter( "d15_1_1 " ,          TYPES.Text            ,req.body.d15_1_1  ? req.body.d15_1_1  : null );
+    request.addParameter( "d15_2_1" ,          TYPES.Text            ,req.body.d15_2_1 ? req.body.d15_2_1 : null );
+    request.addParameter( "d15_3_1 " ,          TYPES.Text            ,req.body.d15_3_1  ? req.body.d15_3_1  : null );
+    request.addParameter( "d15_4_1" ,          TYPES.Text            ,req.body.d15_4_1 ? req.body.d15_4_1 : null );
+    request.addParameter( "d15_5_1" ,          TYPES.Text            ,req.body.d15_5_1 ? req.body.d15_5_1 : null );
+    request.addParameter( "d15_6_1 " ,          TYPES.Text            ,req.body.d15_6_1  ? req.body.d15_6_1  : null );
+    request.addParameter( "d15_7_1" ,          TYPES.Text            ,req.body.d15_7_1 ? req.body.d15_7_1 : null );
+    request.addParameter( "d15_8_1" ,          TYPES.Text            ,req.body.d15_8_1 ? req.body.d15_8_1 : null );
+    request.addParameter( "d15_9_1 " ,          TYPES.Text            ,req.body.d15_9_1  ? req.body.d15_9_1  : null );
+    request.addParameter( "d15_10_1" ,          TYPES.Text            ,req.body.d15_10_1 ? req.body.d15_10_1 : null );
+    request.addParameter( "d15_11_1" ,          TYPES.Text            ,req.body.d15_11_1 ? req.body.d15_11_1 : null );
+    request.addParameter( "d15_12_1" ,          TYPES.Text            ,req.body.d15_12_1 ? req.body.d15_12_1 : null );
+    request.addParameter( "d15_13_1" ,          TYPES.Text            ,req.body.d15_13_1 ? req.body.d15_13_1 : null );
+    request.addParameter( "d15_1_2 " ,          TYPES.Text            ,req.body.d15_1_2  ? req.body.d15_1_2  : null );
+    request.addParameter( "d15_2_2" ,          TYPES.Text            ,req.body.d15_2_2 ? req.body.d15_2_2 : null );
+    request.addParameter( "d15_3_2 " ,          TYPES.Text            ,req.body.d15_3_2  ? req.body.d15_3_2  : null );
+    request.addParameter( "d15_4_2" ,          TYPES.Text            ,req.body.d15_4_2 ? req.body.d15_4_2 : null );
+    request.addParameter( "d15_5_2" ,          TYPES.Text            ,req.body.d15_5_2 ? req.body.d15_5_2 : null );
+    request.addParameter( "d15_6_2 " ,          TYPES.Text            ,req.body.d15_6_2  ? req.body.d15_6_2  : null );
+    request.addParameter( "d15_7_2" ,          TYPES.Text            ,req.body.d15_7_2 ? req.body.d15_7_2 : null );
+    request.addParameter( "d15_8_2" ,          TYPES.Text            ,req.body.d15_8_2 ? req.body.d15_8_2 : null );
+    request.addParameter( "d15_9_2 " ,          TYPES.Text            ,req.body.d15_9_2  ? req.body.d15_9_2  : null );
+    request.addParameter( "d15_10_2" ,          TYPES.Text            ,req.body.d15_10_2 ? req.body.d15_10_2 : null );
+    request.addParameter( "d15_11_2" ,          TYPES.Text            ,req.body.d15_11_2 ? req.body.d15_11_2 : null );
+    request.addParameter( "d15_12_2" ,          TYPES.Text            ,req.body.d15_12_2 ? req.body.d15_12_2 : null );
+    request.addParameter( "d15_13_2" ,          TYPES.Text            ,req.body.d15_13_2 ? req.body.d15_13_2 : null );
+    request.addParameter( "d15_1_3" ,          TYPES.Text            ,req.body.d15_1_3 ? req.body.d15_1_3 : null );
+    request.addParameter( "d15_2_3" ,          TYPES.Text            ,req.body.d15_2_3 ? req.body.d15_2_3 : null );
+    request.addParameter( "d15_3_3" ,          TYPES.Text            ,req.body.d15_3_3 ? req.body.d15_3_3 : null );
+    request.addParameter( "d15_4_3" ,          TYPES.Text            ,req.body.d15_4_3 ? req.body.d15_4_3 : null );
+    request.addParameter( "d15_5_3" ,          TYPES.Text            ,req.body.d15_5_3 ? req.body.d15_5_3 : null );
+    request.addParameter( "d15_6_3" ,          TYPES.Text            ,req.body.d15_6_3 ? req.body.d15_6_3 : null );
+    request.addParameter( "d15_7_3" ,          TYPES.Text            ,req.body.d15_7_3 ? req.body.d15_7_3 : null );
+    request.addParameter( "d15_8_3" ,          TYPES.Text            ,req.body.d15_8_3 ? req.body.d15_8_3 : null );
+    request.addParameter( "d15_9_3" ,          TYPES.Text            ,req.body.d15_9_3 ? req.body.d15_9_3 : null );
+    request.addParameter( "d15_10_3" ,         TYPES.Text           ,req.body.d15_10_3 ? req.body.d15_10_3 : null );
+    request.addParameter( "d15_11_3" ,         TYPES.Text           ,req.body.d15_11_3 ? req.body.d15_11_3 : null );
+    request.addParameter( "d15_12_3" ,         TYPES.Text           ,req.body.d15_12_3 ? req.body.d15_12_3 : null );
+    request.addParameter( "d15_13_3" ,         TYPES.Text           ,req.body.d15_13_3 ? req.body.d15_13_3 : null );
+    request.addParameter( "d15_1_4 " ,         TYPES.Text            ,req.body.d15_1_4  ? req.body.d15_1_4  : null );
+    request.addParameter( "d15_2_4" ,          TYPES.Text            ,req.body.d15_2_4 ? req.body.d15_2_4 : null );
+    request.addParameter( "d15_3_4 " ,         TYPES.Text            ,req.body.d15_3_4  ? req.body.d15_3_4  : null );
+    request.addParameter( "d15_4_4" ,          TYPES.Text            ,req.body.d15_4_4 ? req.body.d15_4_4 : null );
+    request.addParameter( "d15_5_4" ,          TYPES.Text            ,req.body.d15_5_4 ? req.body.d15_5_4 : null );
+    request.addParameter( "d15_6_4 " ,         TYPES.Text            ,req.body.d15_6_4  ? req.body.d15_6_4  : null );
+    request.addParameter( "d15_7_4" ,          TYPES.Text            ,req.body.d15_7_4 ? req.body.d15_7_4 : null );
+    request.addParameter( "d15_8_4" ,          TYPES.Text            ,req.body.d15_8_4 ? req.body.d15_8_4 : null );
+    request.addParameter( "d15_9_4 " ,         TYPES.Text            ,req.body.d15_9_4  ? req.body.d15_9_4  : null );
+    request.addParameter( "d15_10_4" ,         TYPES.Text           ,req.body.d15_10_4 ? req.body.d15_10_4 : null );
+    request.addParameter( "d15_11_4" ,         TYPES.Text           ,req.body.d15_11_4 ? req.body.d15_11_4 : null );
+    request.addParameter( "d15_12_4" ,         TYPES.Text           ,req.body.d15_12_4 ? req.body.d15_12_4 : null );
+    request.addParameter( "d15_13_4" ,         TYPES.Text           ,req.body.d15_13_4 ? req.body.d15_13_4 : null );
+    request.addParameter( "d15_1_5" ,          TYPES.Text            ,req.body.d15_1_5 ? req.body.d15_1_5 : null );
+    request.addParameter( "d15_2_5" ,          TYPES.Text            ,req.body.d15_2_5 ? req.body.d15_2_5 : null );
+    request.addParameter( "d15_3_5" ,          TYPES.Text            ,req.body.d15_3_5 ? req.body.d15_3_5 : null );
+    request.addParameter( "d15_4_5" ,          TYPES.Text            ,req.body.d15_4_5 ? req.body.d15_4_5 : null );
+    request.addParameter( "d15_5_5" ,          TYPES.Text            ,req.body.d15_5_5 ? req.body.d15_5_5 : null );
+    request.addParameter( "d15_6_5" ,          TYPES.Text            ,req.body.d15_6_5 ? req.body.d15_6_5 : null );
+    request.addParameter( "d15_7_5" ,          TYPES.Text            ,req.body.d15_7_5 ? req.body.d15_7_5 : null );
+    request.addParameter( "d15_8_5" ,          TYPES.Text            ,req.body.d15_8_5 ? req.body.d15_8_5 : null );
+    request.addParameter( "d15_9_5" ,          TYPES.Text            ,req.body.d15_9_5 ? req.body.d15_9_5 : null );
+    request.addParameter( "d15_10_5" ,         TYPES.Text           ,req.body.d15_10_5 ? req.body.d15_10_5 : null );
+    request.addParameter( "d15_11_5" ,         TYPES.Text           ,req.body.d15_11_5 ? req.body.d15_11_5 : null );
+    request.addParameter( "d15_12_5" ,         TYPES.Text           ,req.body.d15_12_5 ? req.body.d15_12_5 : null );
+    request.addParameter( "d15_13_5" ,         TYPES.Text           ,req.body.d15_13_5 ? req.body.d15_13_5 : null );
+    request.addParameter( "d16_1_1" ,          TYPES.Text            ,req.body.d16_1_1 ? req.body.d16_1_1 : null );
+    request.addParameter( "d16_2_1" ,          TYPES.Text            ,req.body.d16_2_1 ? req.body.d16_2_1 : null );
+    request.addParameter( "d16_3_1" ,          TYPES.Text            ,req.body.d16_3_1 ? req.body.d16_3_1 : null );
+    request.addParameter( "d16_4_1" ,          TYPES.Text            ,req.body.d16_4_1 ? req.body.d16_4_1 : null );
+    request.addParameter( "d16_5_1" ,          TYPES.Text            ,req.body.d16_5_1 ? req.body.d16_5_1 : null );
+    request.addParameter( "d16_6_1" ,          TYPES.Text            ,req.body.d16_6_1 ? req.body.d16_6_1 : null );
+    request.addParameter( "d16_7_1" ,          TYPES.Text            ,req.body.d16_7_1 ? req.body.d16_7_1 : null );
+    request.addParameter( "d16_8_1" ,          TYPES.Text            ,req.body.d16_8_1 ? req.body.d16_8_1 : null );
+    request.addParameter( "d16_9_1" ,          TYPES.Text            ,req.body.d16_9_1 ? req.body.d16_9_1 : null );
+    request.addParameter( "d16_10_1" ,         TYPES.Text           ,req.body.d16_10_1 ? req.body.d16_10_1 : null );
+    request.addParameter( "d16_11_1" ,         TYPES.Text           ,req.body.d16_11_1 ? req.body.d16_11_1 : null );
+    request.addParameter( "d16_12_1" ,         TYPES.Text           ,req.body.d16_12_1 ? req.body.d16_12_1 : null );
+    request.addParameter( "d16_1_2" ,          TYPES.Text            ,req.body.d16_1_2 ? req.body.d16_1_2 : null );
+    request.addParameter( "d16_2_2" ,          TYPES.Text            ,req.body.d16_2_2 ? req.body.d16_2_2 : null );
+    request.addParameter( "d16_3_2" ,          TYPES.Text            ,req.body.d16_3_2 ? req.body.d16_3_2 : null );
+    request.addParameter( "d16_4_2" ,          TYPES.Text            ,req.body.d16_4_2 ? req.body.d16_4_2 : null );
+    request.addParameter( "d16_5_2" ,          TYPES.Text            ,req.body.d16_5_2 ? req.body.d16_5_2 : null );
+    request.addParameter( "d16_6_2" ,          TYPES.Text            ,req.body.d16_6_2 ? req.body.d16_6_2 : null );
+    request.addParameter( "d16_7_2" ,          TYPES.Text            ,req.body.d16_7_2 ? req.body.d16_7_2 : null );
+    request.addParameter( "d16_8_2" ,          TYPES.Text            ,req.body.d16_8_2 ? req.body.d16_8_2 : null );
+    request.addParameter( "d16_9_2" ,          TYPES.Text            ,req.body.d16_9_2 ? req.body.d16_9_2 : null );
+    request.addParameter( "d16_10_2" ,         TYPES.Text           ,req.body.d16_10_2 ? req.body.d16_10_2 : null );
+    request.addParameter( "d16_11_2" ,         TYPES.Text           ,req.body.d16_11_2 ? req.body.d16_11_2 : null );
+    request.addParameter( "d16_12_2" ,         TYPES.Text           ,req.body.d16_12_2 ? req.body.d16_12_2 : null );
+    request.addParameter( "d16_1_3" ,          TYPES.Text            ,req.body.d16_1_3 ? req.body.d16_1_3 : null );
+    request.addParameter( "d16_2_3" ,          TYPES.Text            ,req.body.d16_2_3 ? req.body.d16_2_3 : null );
+    request.addParameter( "d16_3_3" ,          TYPES.Text            ,req.body.d16_3_3 ? req.body.d16_3_3 : null );
+    request.addParameter( "d16_4_3" ,          TYPES.Text            ,req.body.d16_4_3 ? req.body.d16_4_3 : null );
+    request.addParameter( "d16_5_3" ,          TYPES.Text            ,req.body.d16_5_3 ? req.body.d16_5_3 : null );
+    request.addParameter( "d16_6_3" ,          TYPES.Text            ,req.body.d16_6_3 ? req.body.d16_6_3 : null );
+    request.addParameter( "d16_7_3" ,          TYPES.Text            ,req.body.d16_7_3 ? req.body.d16_7_3 : null );
+    request.addParameter( "d16_8_3" ,          TYPES.Text            ,req.body.d16_8_3 ? req.body.d16_8_3 : null );
+    request.addParameter( "d16_9_3" ,          TYPES.Text            ,req.body.d16_9_3 ? req.body.d16_9_3 : null );
+    request.addParameter( "d16_10_3" ,         TYPES.Text           ,req.body.d16_10_3 ? req.body.d16_10_3 : null );
+    request.addParameter( "d16_11_3" ,         TYPES.Text           ,req.body.d16_11_3 ? req.body.d16_11_3 : null );
+    request.addParameter( "d16_12_3" ,         TYPES.Text           ,req.body.d16_12_3 ? req.body.d16_12_3 : null );
+    request.addParameter( "d16_1_4" ,          TYPES.Text            ,req.body.d16_1_4 ? req.body.d16_1_4 : null );
+    request.addParameter( "d16_2_4" ,          TYPES.Text            ,req.body.d16_2_4 ? req.body.d16_2_4 : null );
+    request.addParameter( "d16_3_4" ,          TYPES.Text            ,req.body.d16_3_4 ? req.body.d16_3_4 : null );
+    request.addParameter( "d16_4_4" ,          TYPES.Text            ,req.body.d16_4_4 ? req.body.d16_4_4 : null );
+    request.addParameter( "d16_5_4" ,          TYPES.Text            ,req.body.d16_5_4 ? req.body.d16_5_4 : null );
+    request.addParameter( "d16_6_4" ,          TYPES.Text            ,req.body.d16_6_4 ? req.body.d16_6_4 : null );
+    request.addParameter( "d16_7_4" ,          TYPES.Text            ,req.body.d16_7_4 ? req.body.d16_7_4 : null );
+    request.addParameter( "d16_8_4" ,          TYPES.Text            ,req.body.d16_8_4 ? req.body.d16_8_4 : null );
+    request.addParameter( "d16_9_4" ,          TYPES.Text            ,req.body.d16_9_4 ? req.body.d16_9_4 : null );
+    request.addParameter( "d16_10_4" ,         TYPES.Text           ,req.body.d16_10_4 ? req.body.d16_10_4 : null );
+    request.addParameter( "d16_11_4" ,         TYPES.Text           ,req.body.d16_11_4 ? req.body.d16_11_4 : null );
+    request.addParameter( "d16_12_4" ,         TYPES.Text           ,req.body.d16_12_4 ? req.body.d16_12_4 : null );
+    request.addParameter( "d16_1_5" ,          TYPES.Text            ,req.body.d16_1_5 ? req.body.d16_1_5 : null );
+    request.addParameter( "d16_2_5" ,          TYPES.Text            ,req.body.d16_2_5 ? req.body.d16_2_5 : null );
+    request.addParameter( "d16_3_5" ,          TYPES.Text            ,req.body.d16_3_5 ? req.body.d16_3_5 : null );
+    request.addParameter( "d16_4_5" ,          TYPES.Text            ,req.body.d16_4_5 ? req.body.d16_4_5 : null );
+    request.addParameter( "d16_5_5" ,          TYPES.Text            ,req.body.d16_5_5 ? req.body.d16_5_5 : null );
+    request.addParameter( "d16_6_5" ,          TYPES.Text            ,req.body.d16_6_5 ? req.body.d16_6_5 : null );
+    request.addParameter( "d16_7_5" ,          TYPES.Text            ,req.body.d16_7_5 ? req.body.d16_7_5 : null );
+    request.addParameter( "d16_8_5" ,          TYPES.Text            ,req.body.d16_8_5 ? req.body.d16_8_5 : null );
+    request.addParameter( "d16_9_5" ,          TYPES.Text            ,req.body.d16_9_5 ? req.body.d16_9_5 : null );
+    request.addParameter( "d16_10_5" ,         TYPES.Text           ,req.body.d16_10_5 ? req.body.d16_10_5 : null );
+    request.addParameter( "d16_11_5" ,         TYPES.Text           ,req.body.d16_11_5 ? req.body.d16_11_5 : null );
+    request.addParameter( "d16_12_5" ,         TYPES.Text           ,req.body.d16_12_5 ? req.body.d16_12_5 : null );
+    request.addParameter( "d17_1_1" ,          TYPES.Text            ,req.body.d17_1_1 ? req.body.d17_1_1 : null );
+    request.addParameter( "d17_2_1" ,          TYPES.Text            ,req.body.d17_2_1 ? req.body.d17_2_1 : null );
+    request.addParameter( "d17_3_1" ,          TYPES.Text            ,req.body.d17_3_1 ? req.body.d17_3_1 : null );
+    request.addParameter( "d17_4_1" ,          TYPES.Text            ,req.body.d17_4_1 ? req.body.d17_4_1 : null );
+    request.addParameter( "d17_5_1" ,          TYPES.Text            ,req.body.d17_5_1 ? req.body.d17_5_1 : null );
+    request.addParameter( "d17_6_1" ,          TYPES.Text            ,req.body.d17_6_1 ? req.body.d17_6_1 : null );
+    request.addParameter( "d17_7_1" ,          TYPES.Text            ,req.body.d17_7_1 ? req.body.d17_7_1 : null );
+    request.addParameter( "d17_8_1" ,          TYPES.Text            ,req.body.d17_8_1 ? req.body.d17_8_1 : null );
+    request.addParameter( "d17_9_1" ,          TYPES.Text            ,req.body.d17_9_1 ? req.body.d17_9_1 : null );
+    request.addParameter( "d17_10_1" ,         TYPES.Text           ,req.body.d17_10_1 ? req.body.d17_10_1 : null );
+    request.addParameter( "d17_1_2" ,          TYPES.Text            ,req.body.d17_1_2 ? req.body.d17_1_2 : null );
+    request.addParameter( "d17_2_2" ,          TYPES.Text            ,req.body.d17_2_2 ? req.body.d17_2_2 : null );
+    request.addParameter( "d17_3_2" ,          TYPES.Text            ,req.body.d17_3_2 ? req.body.d17_3_2 : null );
+    request.addParameter( "d17_4_2" ,          TYPES.Text            ,req.body.d17_4_2 ? req.body.d17_4_2 : null );
+    request.addParameter( "d17_5_2" ,          TYPES.Text            ,req.body.d17_5_2 ? req.body.d17_5_2 : null );
+    request.addParameter( "d17_6_2" ,          TYPES.Text            ,req.body.d17_6_2 ? req.body.d17_6_2 : null );
+    request.addParameter( "d17_7_2" ,          TYPES.Text            ,req.body.d17_7_2 ? req.body.d17_7_2 : null );
+    request.addParameter( "d17_8_2" ,          TYPES.Text            ,req.body.d17_8_2 ? req.body.d17_8_2 : null );
+    request.addParameter( "d17_9_2" ,          TYPES.Text            ,req.body.d17_9_2 ? req.body.d17_9_2 : null );
+    request.addParameter( "d17_10_2" ,         TYPES.Text           ,req.body.d17_10_2 ? req.body.d17_10_2 : null );
+    request.addParameter( "d17_1_3" ,          TYPES.Text            ,req.body.d17_1_3 ? req.body.d17_1_3 : null );
+    request.addParameter( "d17_2_3" ,          TYPES.Text            ,req.body.d17_2_3 ? req.body.d17_2_3 : null );
+    request.addParameter( "d17_3_3" ,          TYPES.Text            ,req.body.d17_3_3 ? req.body.d17_3_3 : null );
+    request.addParameter( "d17_4_3" ,          TYPES.Text            ,req.body.d17_4_3 ? req.body.d17_4_3 : null );
+    request.addParameter( "d17_5_3" ,          TYPES.Text            ,req.body.d17_5_3 ? req.body.d17_5_3 : null );
+    request.addParameter( "d17_6_3" ,          TYPES.Text            ,req.body.d17_6_3 ? req.body.d17_6_3 : null );
+    request.addParameter( "d17_7_3" ,          TYPES.Text            ,req.body.d17_7_3 ? req.body.d17_7_3 : null );
+    request.addParameter( "d17_8_3" ,          TYPES.Text            ,req.body.d17_8_3 ? req.body.d17_8_3 : null );
+    request.addParameter( "d17_9_3" ,          TYPES.Text            ,req.body.d17_9_3 ? req.body.d17_9_3 : null );
+    request.addParameter( "d17_10_3" ,         TYPES.Text           ,req.body.d17_10_3 ? req.body.d17_10_3 : null );
+    request.addParameter( "d17_1_4" ,          TYPES.Text            ,req.body.d17_1_4  ? req.body.d17_1_4  : null );
+    request.addParameter( "d17_2_4" ,          TYPES.Text            ,req.body.d17_2_4 ? req.body.d17_2_4 : null );
+    request.addParameter( "d17_3_4" ,          TYPES.Text            ,req.body.d17_3_4  ? req.body.d17_3_4  : null );
+    request.addParameter( "d17_4_4" ,          TYPES.Text            ,req.body.d17_4_4 ? req.body.d17_4_4 : null );
+    request.addParameter( "d17_5_4" ,          TYPES.Text            ,req.body.d17_5_4 ? req.body.d17_5_4 : null );
+    request.addParameter( "d17_6_4" ,          TYPES.Text            ,req.body.d17_6_4  ? req.body.d17_6_4  : null );
+    request.addParameter( "d17_7_4" ,          TYPES.Text            ,req.body.d17_7_4 ? req.body.d17_7_4 : null );
+    request.addParameter( "d17_8_4" ,          TYPES.Text            ,req.body.d17_8_4 ? req.body.d17_8_4 : null );
+    request.addParameter( "d17_9_4" ,          TYPES.Text            ,req.body.d17_9_4  ? req.body.d17_9_4  : null );
+    request.addParameter( "d17_10_4" ,         TYPES.Text           ,req.body.d17_10_4 ? req.body.d17_10_4 : null );
+    request.addParameter( "d17_1_5" ,          TYPES.Text            ,req.body.d17_1_5  ? req.body.d17_1_5  : null );
+    request.addParameter( "d17_2_5" ,          TYPES.Text            ,req.body.d17_2_5 ? req.body.d17_2_5 : null );
+    request.addParameter( "d17_3_5" ,          TYPES.Text            ,req.body.d17_3_5  ? req.body.d17_3_5  : null );
+    request.addParameter( "d17_4_5" ,          TYPES.Text            ,req.body.d17_4_5 ? req.body.d17_4_5 : null );
+    request.addParameter( "d17_5_5" ,          TYPES.Text            ,req.body.d17_5_5 ? req.body.d17_5_5 : null );
+    request.addParameter( "d17_6_5" ,          TYPES.Text            ,req.body.d17_6_5  ? req.body.d17_6_5  : null );
+    request.addParameter( "d17_7_5" ,          TYPES.Text            ,req.body.d17_7_5 ? req.body.d17_7_5 : null );
+    request.addParameter( "d17_8_5" ,          TYPES.Text            ,req.body.d17_8_5 ? req.body.d17_8_5 : null );
+    request.addParameter( "d17_9_5" ,          TYPES.Text            ,req.body.d17_9_5  ? req.body.d17_9_5  : null );
+    request.addParameter( "d17_10_5" ,         TYPES.Text           ,req.body.d17_10_5 ? req.body.d17_10_5 : null );
+    request.addParameter( "d18_1_1" ,          TYPES.Text            ,req.body.d18_1_1  ? req.body.d18_1_1  : null );
+    request.addParameter( "d18_2_1" ,          TYPES.Text            ,req.body.d18_2_1 ? req.body.d18_2_1 : null );
+    request.addParameter( "d18_3_1" ,          TYPES.Text            ,req.body.d18_3_1  ? req.body.d18_3_1  : null );
+    request.addParameter( "d18_4_1" ,          TYPES.Text            ,req.body.d18_4_1 ? req.body.d18_4_1 : null );
+    request.addParameter( "d18_5_1" ,          TYPES.Text            ,req.body.d18_5_1 ? req.body.d18_5_1 : null );
+    request.addParameter( "d18_6_1" ,          TYPES.Text            ,req.body.d18_6_1  ? req.body.d18_6_1  : null );
+    request.addParameter( "d18_7_1" ,          TYPES.Text            ,req.body.d18_7_1 ? req.body.d18_7_1 : null );
+    request.addParameter( "d18_8_1" ,          TYPES.Text            ,req.body.d18_8_1 ? req.body.d18_8_1 : null );
+    request.addParameter( "d18_9_1" ,          TYPES.Text            ,req.body.d18_9_1  ? req.body.d18_9_1  : null );
+    request.addParameter( "d18_1_2" ,          TYPES.Text            ,req.body.d18_1_2  ? req.body.d18_1_2  : null );
+    request.addParameter( "d18_2_2" ,          TYPES.Text            ,req.body.d18_2_2 ? req.body.d18_2_2 : null );
+    request.addParameter( "d18_3_2" ,          TYPES.Text            ,req.body.d18_3_2  ? req.body.d18_3_2  : null );
+    request.addParameter( "d18_4_2" ,          TYPES.Text            ,req.body.d18_4_2 ? req.body.d18_4_2 : null );
+    request.addParameter( "d18_5_2" ,          TYPES.Text            ,req.body.d18_5_2 ? req.body.d18_5_2 : null );
+    request.addParameter( "d18_6_2" ,          TYPES.Text            ,req.body.d18_6_2  ? req.body.d18_6_2  : null );
+    request.addParameter( "d18_7_2" ,          TYPES.Text            ,req.body.d18_7_2 ? req.body.d18_7_2 : null );
+    request.addParameter( "d18_8_2" ,          TYPES.Text            ,req.body.d18_8_2 ? req.body.d18_8_2 : null );
+    request.addParameter( "d18_9_2" ,          TYPES.Text            ,req.body.d18_9_2  ? req.body.d18_9_2  : null );
+    request.addParameter( "d18_1_3" ,          TYPES.Text            ,req.body.d18_1_3 ? req.body.d18_1_3 : null );
+    request.addParameter( "d18_2_3" ,          TYPES.Text            ,req.body.d18_2_3 ? req.body.d18_2_3 : null );
+    request.addParameter( "d18_3_3" ,          TYPES.Text            ,req.body.d18_3_3 ? req.body.d18_3_3 : null );
+    request.addParameter( "d18_4_3" ,          TYPES.Text            ,req.body.d18_4_3 ? req.body.d18_4_3 : null );
+    request.addParameter( "d18_5_3" ,          TYPES.Text            ,req.body.d18_5_3 ? req.body.d18_5_3 : null );
+    request.addParameter( "d18_6_3" ,          TYPES.Text            ,req.body.d18_6_3 ? req.body.d18_6_3 : null );
+    request.addParameter( "d18_7_3" ,          TYPES.Text            ,req.body.d18_7_3 ? req.body.d18_7_3 : null );
+    request.addParameter( "d18_8_3" ,          TYPES.Text            ,req.body.d18_8_3 ? req.body.d18_8_3 : null );
+    request.addParameter( "d18_9_3" ,          TYPES.Text            ,req.body.d18_9_3 ? req.body.d18_9_3 : null );
+    request.addParameter( "d18_1_4" ,          TYPES.Text            ,req.body.d18_1_4  ? req.body.d18_1_4  : null );
+    request.addParameter( "d18_2_4" ,          TYPES.Text            ,req.body.d18_2_4 ? req.body.d18_2_4 : null );
+    request.addParameter( "d18_3_4" ,          TYPES.Text            ,req.body.d18_3_4  ? req.body.d18_3_4  : null );
+    request.addParameter( "d18_4_4" ,          TYPES.Text            ,req.body.d18_4_4 ? req.body.d18_4_4 : null );
+    request.addParameter( "d18_5_4" ,          TYPES.Text            ,req.body.d18_5_4 ? req.body.d18_5_4 : null );
+    request.addParameter( "d18_6_4" ,          TYPES.Text            ,req.body.d18_6_4  ? req.body.d18_6_4  : null );
+    request.addParameter( "d18_7_4" ,          TYPES.Text            ,req.body.d18_7_4 ? req.body.d18_7_4 : null );
+    request.addParameter( "d18_8_4" ,          TYPES.Text            ,req.body.d18_8_4 ? req.body.d18_8_4 : null );
+    request.addParameter( "d18_9_4" ,          TYPES.Text            ,req.body.d18_9_4 ? req.body.d18_9_4 : null );
+    request.addParameter( "d18_1_5" ,          TYPES.Text            ,req.body.d18_1_5 ? req.body.d18_1_5 : null );
+    request.addParameter( "d18_2_5" ,          TYPES.Text            ,req.body.d18_2_5 ? req.body.d18_2_5 : null );
+    request.addParameter( "d18_3_5" ,          TYPES.Text            ,req.body.d18_3_5  ? req.body.d18_3_5  : null );
+    request.addParameter( "d18_4_5" ,          TYPES.Text            ,req.body.d18_4_5 ? req.body.d18_4_5 : null );
+    request.addParameter( "d18_5_5" ,          TYPES.Text            ,req.body.d18_5_5 ? req.body.d18_5_5 : null );
+    request.addParameter( "d18_6_5" ,          TYPES.Text            ,req.body.d18_6_5  ? req.body.d18_6_5  : null );
+    request.addParameter( "d18_7_5" ,          TYPES.Text            ,req.body.d18_7_5 ? req.body.d18_7_5 : null );
+    request.addParameter( "d18_8_5" ,          TYPES.Text            ,req.body.d18_8_5 ? req.body.d18_8_5 : null );
+    request.addParameter( "d18_9_5" ,          TYPES.Text            ,req.body.d18_9_5 ? req.body.d18_9_5 : null );
+    request.addParameter( "d19_1_1" ,          TYPES.Text            ,req.body.d19_1_1  ? req.body.d19_1_1  : null );
+    request.addParameter( "d19_2_1" ,          TYPES.Text            ,req.body.d19_2_1 ? req.body.d19_2_1 : null );
+    request.addParameter( "d19_3_1" ,          TYPES.Text            ,req.body.d19_3_1  ? req.body.d19_3_1  : null );
+    request.addParameter( "d19_4_1" ,          TYPES.Text            ,req.body.d19_4_1 ? req.body.d19_4_1 : null );
+    request.addParameter( "d19_5_1" ,          TYPES.Text            ,req.body.d19_5_1 ? req.body.d19_5_1 : null );
+    request.addParameter( "d19_6_1" ,          TYPES.Text            ,req.body.d19_6_1  ? req.body.d19_6_1  : null );
+    request.addParameter( "d19_7_1" ,          TYPES.Text            ,req.body.d19_7_1  ? req.body.d19_7_1  : null );
+    request.addParameter( "d19_1_2" ,          TYPES.Text            ,req.body.d19_1_2  ? req.body.d19_1_2  : null );
+    request.addParameter( "d19_2_2" ,          TYPES.Text            ,req.body.d19_2_2 ? req.body.d19_2_2 : null );
+    request.addParameter( "d19_3_2" ,          TYPES.Text            ,req.body.d19_3_2  ? req.body.d19_3_2  : null );
+    request.addParameter( "d19_4_2" ,          TYPES.Text            ,req.body.d19_4_2 ? req.body.d19_4_2 : null );
+    request.addParameter( "d19_5_2" ,          TYPES.Text            ,req.body.d19_5_2 ? req.body.d19_5_2 : null );
+    request.addParameter( "d19_6_2" ,          TYPES.Text            ,req.body.d19_6_2  ? req.body.d19_6_2  : null );
+    request.addParameter( "d19_7_2" ,          TYPES.Text            ,req.body.d19_7_2  ? req.body.d19_7_2  : null );
+    request.addParameter( "d19_1_3" ,          TYPES.Text            ,req.body.d19_1_3 ? req.body.d19_1_3 : null );
+    request.addParameter( "d19_2_3" ,          TYPES.Text            ,req.body.d19_2_3 ? req.body.d19_2_3 : null );
+    request.addParameter( "d19_3_3" ,          TYPES.Text            ,req.body.d19_3_3 ? req.body.d19_3_3 : null );
+    request.addParameter( "d19_4_3" ,          TYPES.Text            ,req.body.d19_4_3 ? req.body.d19_4_3 : null );
+    request.addParameter( "d19_5_3" ,          TYPES.Text            ,req.body.d19_5_3 ? req.body.d19_5_3 : null );
+    request.addParameter( "d19_6_3" ,          TYPES.Text            ,req.body.d19_6_3 ? req.body.d19_6_3 : null );
+    request.addParameter( "d19_7_3" ,          TYPES.Text            ,req.body.d19_7_3 ? req.body.d19_7_3 : null );
+    request.addParameter( "d19_1_4" ,          TYPES.Text            ,req.body.d19_1_4  ? req.body.d19_1_4  : null );
+    request.addParameter( "d19_2_4" ,          TYPES.Text            ,req.body.d19_2_4 ? req.body.d19_2_4 : null );
+    request.addParameter( "d19_3_4" ,          TYPES.Text            ,req.body.d19_3_4  ? req.body.d19_3_4  : null );
+    request.addParameter( "d19_4_4" ,          TYPES.Text            ,req.body.d19_4_4 ? req.body.d19_4_4 : null );
+    request.addParameter( "d19_5_4" ,          TYPES.Text            ,req.body.d19_5_4 ? req.body.d19_5_4 : null );
+    request.addParameter( "d19_6_4" ,          TYPES.Text            ,req.body.d19_6_4  ? req.body.d19_6_4  : null );
+    request.addParameter( "d19_7_4" ,          TYPES.Text            ,req.body.d19_7_4 ? req.body.d19_7_4 : null );
+    request.addParameter( "d19_1_5" ,          TYPES.Text            ,req.body.d19_1_5 ? req.body.d19_1_5 : null );
+    request.addParameter( "d19_2_5" ,          TYPES.Text            ,req.body.d19_2_5 ? req.body.d19_2_5 : null );
+    request.addParameter( "d19_3_5" ,          TYPES.Text            ,req.body.d19_3_5  ? req.body.d19_3_5  : null );
+    request.addParameter( "d19_4_5" ,          TYPES.Text            ,req.body.d19_4_5 ? req.body.d19_4_5 : null );
+    request.addParameter( "d19_5_5" ,          TYPES.Text            ,req.body.d19_5_5 ? req.body.d19_5_5 : null );
+    request.addParameter( "d19_6_5" ,          TYPES.Text            ,req.body.d19_6_5  ? req.body.d19_6_5  : null );
+    request.addParameter( "d19_7_5" ,          TYPES.Text            ,req.body.d19_7_5  ? req.body.d19_7_5 : null );
+    
 
     conn.execSql(request);
 
@@ -679,7 +1301,11 @@ router.post('/visualizar', function(req, res, next) {
     var conversion = require("phantom-html-to-pdf")();
     var pdf = require('../models/pdf').pdf;
 
-    var sql = 'SELECT usuario.*, proyectos.*  from unjfsc.dbo.proyectos INNER JOIN unjfsc.dbo.usuario ON usuario.id_usuario = 3 and proyectos.id_proyecto = 1';
+    var sql = `SELECT usuario.*, proyectos.*, tablas.*, tablas2.* from unjfsc.dbo.proyectos 
+    INNER JOIN unjfsc.dbo.usuario ON usuario.id_usuario = @id_usuario and proyectos.id_proyecto = @idproyecto
+    INNER JOIN unjfsc.dbo.tablas ON tablas.id_proyecto = @idproyecto
+    INNER JOIN unjfsc.dbo.tablas2 ON tablas2.id_proyecto = @idproyecto`;
+
     var result = {};
 
     var request = new Request(sql, function(err) {
