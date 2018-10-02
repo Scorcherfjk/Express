@@ -48,3 +48,12 @@ th{
 td{
   vertical-align:center ;
 }
+#fondo1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/m1.jpg') fixed center center;
+  background-size: cover;
+  padding: 110px;
+}
+
+.check{
+  max-width: none;
+}
