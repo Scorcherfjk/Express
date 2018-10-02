@@ -741,17 +741,69 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>Es Investigador</td>
-            <td>Nombre</td>
-            <td>Ap. Paterno</td>
-            <td>Ap. Materno</td>
-            <td>Especialidad</td>
-            <td>Función Técnica</td>
-            <td>Porcentaje de Dedicación</td>
-            <td>Investigador Principal</td>
-            <td>Coordinador General</td>
-            <td>Coordinador Administrativo</td>
-            <td>Entidad a la que pertenecen</td>
+            <td>`+ lista.c8_1_1 +`</td>
+            <td>`+ lista.c8_2_1 +`</td>
+            <td>`+ lista.c8_3_1 +`</td>
+            <td>`+ lista.c8_4_1 +`</td>
+            <td>`+ lista.c8_5_1 +`</td>
+            <td>`+ lista.c8_6_1 +`</td>
+            <td>`+ lista.c8_7_1 +`</td>
+            <td>`+ lista.c8_8_1 +`</td>
+            <td>`+ lista.c8_9_1 +`</td>
+            <td>`+ lista.c8_10_1 +`</td>
+            <td>`+ lista.c8_11_1 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.c8_1_2 +`</td>
+            <td>`+ lista.c8_2_2 +`</td>
+            <td>`+ lista.c8_3_2 +`</td>
+            <td>`+ lista.c8_4_2 +`</td>
+            <td>`+ lista.c8_5_2 +`</td>
+            <td>`+ lista.c8_6_2 +`</td>
+            <td>`+ lista.c8_7_2 +`</td>
+            <td>`+ lista.c8_8_2 +`</td>
+            <td>`+ lista.c8_9_2 +`</td>
+            <td>`+ lista.c8_10_2 +`</td>
+            <td>`+ lista.c8_11_2 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.c8_1_3 +`</td>
+            <td>`+ lista.c8_2_3 +`</td>
+            <td>`+ lista.c8_3_3 +`</td>
+            <td>`+ lista.c8_4_3 +`</td>
+            <td>`+ lista.c8_5_3 +`</td>
+            <td>`+ lista.c8_6_3 +`</td>
+            <td>`+ lista.c8_7_3 +`</td>
+            <td>`+ lista.c8_8_3 +`</td>
+            <td>`+ lista.c8_9_3 +`</td>
+            <td>`+ lista.c8_10_3 +`</td>
+            <td>`+ lista.c8_11_3 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.c8_1_4 +`</td>
+            <td>`+ lista.c8_2_4 +`</td>
+            <td>`+ lista.c8_3_4 +`</td>
+            <td>`+ lista.c8_4_4 +`</td>
+            <td>`+ lista.c8_5_4 +`</td>
+            <td>`+ lista.c8_6_4 +`</td>
+            <td>`+ lista.c8_7_4 +`</td>
+            <td>`+ lista.c8_8_4 +`</td>
+            <td>`+ lista.c8_9_4 +`</td>
+            <td>`+ lista.c8_10_4 +`</td>
+            <td>`+ lista.c8_11_4 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.c8_1_5 +`</td>
+            <td>`+ lista.c8_2_5 +`</td>
+            <td>`+ lista.c8_3_5 +`</td>
+            <td>`+ lista.c8_4_5 +`</td>
+            <td>`+ lista.c8_5_5 +`</td>
+            <td>`+ lista.c8_6_5 +`</td>
+            <td>`+ lista.c8_7_5 +`</td>
+            <td>`+ lista.c8_8_5 +`</td>
+            <td>`+ lista.c8_9_5 +`</td>
+            <td>`+ lista.c8_10_5 +`</td>
+            <td>`+ lista.c8_11_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -783,18 +835,74 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr> 
-            <td>Valorizable </td>
-            <td>Equipos y Bienes duraderos </td>
-            <td>Especificación técnica </td>
-            <td>Proforma </td>
-            <td>Unidad de medida </td>
-            <td>Costo Unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento NO monetario </td>
-            <td>Entidad Aportante </td>
+            <td>`+ lista.d11_1_1 +`</td>
+            <td>`+ lista.d11_2_1 +`</td>
+            <td>`+ lista.d11_3_1 +`</td>
+            <td>`+ lista.d11_4_1 +`</td>
+            <td>`+ lista.d11_5_1 +`</td>
+            <td>`+ lista.d11_6_1 +`</td>
+            <td>`+ lista.d11_7_1 +`</td>
+            <td>`+ lista.d11_8_1 +`</td>
+            <td>`+ lista.d11_9_1 +`</td>
+            <td>`+ lista.d11_10_1 +`</td>
+            <td>`+ lista.d11_11_1 +`</td>
+            <td>`+ lista.d11_12_1 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d11_1_2 +`</td>
+            <td>`+ lista.d11_2_2 +`</td>
+            <td>`+ lista.d11_3_2 +`</td>
+            <td>`+ lista.d11_4_2 +`</td>
+            <td>`+ lista.d11_5_2 +`</td>
+            <td>`+ lista.d11_6_2 +`</td>
+            <td>`+ lista.d11_7_2 +`</td>
+            <td>`+ lista.d11_8_2 +`</td>
+            <td>`+ lista.d11_9_2 +`</td>
+            <td>`+ lista.d11_10_2 +`</td>
+            <td>`+ lista.d11_11_2 +`</td>
+            <td>`+ lista.d11_12_2 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d11_1_3 +`</td>
+            <td>`+ lista.d11_2_3 +`</td>
+            <td>`+ lista.d11_3_3 +`</td>
+            <td>`+ lista.d11_4_3 +`</td>
+            <td>`+ lista.d11_5_3 +`</td>
+            <td>`+ lista.d11_6_3 +`</td>
+            <td>`+ lista.d11_7_3 +`</td>
+            <td>`+ lista.d11_8_3 +`</td>
+            <td>`+ lista.d11_9_3 +`</td>
+            <td>`+ lista.d11_10_3 +`</td>
+            <td>`+ lista.d11_11_3 +`</td>
+            <td>`+ lista.d11_12_3 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d11_1_4 +`</td>
+            <td>`+ lista.d11_2_4 +`</td>
+            <td>`+ lista.d11_3_4 +`</td>
+            <td>`+ lista.d11_4_4 +`</td>
+            <td>`+ lista.d11_5_4 +`</td>
+            <td>`+ lista.d11_6_4 +`</td>
+            <td>`+ lista.d11_7_4 +`</td>
+            <td>`+ lista.d11_8_4 +`</td>
+            <td>`+ lista.d11_9_4 +`</td>
+            <td>`+ lista.d11_10_4 +`</td>
+            <td>`+ lista.d11_11_4 +`</td>
+            <td>`+ lista.d11_12_4 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d11_1_5 +`</td>
+            <td>`+ lista.d11_2_5 +`</td>
+            <td>`+ lista.d11_3_5 +`</td>
+            <td>`+ lista.d11_4_5 +`</td>
+            <td>`+ lista.d11_5_5 +`</td>
+            <td>`+ lista.d11_6_5 +`</td>
+            <td>`+ lista.d11_7_5 +`</td>
+            <td>`+ lista.d11_8_5 +`</td>
+            <td>`+ lista.d11_9_5 +`</td>
+            <td>`+ lista.d11_10_5 +`</td>
+            <td>`+ lista.d11_11_5 +`</td>
+            <td>`+ lista.d11_12_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -817,16 +925,64 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>Nombre </td>
-            <td>Entidad </td>
-            <td>Porcentaje de dedicación </td>
-            <td>Honorario mensual </td>
-            <td>No. Meses </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento no monetario </td>
-            <td>Entidad Aportante</td>
+            <td>`+ lista.d12_1_1 +`</td>
+            <td>`+ lista.d12_2_1 +`</td>
+            <td>`+ lista.d12_3_1 +`</td>
+            <td>`+ lista.d12_4_1 +`</td>
+            <td>`+ lista.d12_5_1 +`</td>
+            <td>`+ lista.d12_6_1 +`</td>
+            <td>`+ lista.d12_7_1 +`</td>
+            <td>`+ lista.d12_8_1 +`</td>
+            <td>`+ lista.d12_9_1 +`</td>
+            <td>`+ lista.d12_10_1 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d12_1_2 +`</td>
+            <td>`+ lista.d12_2_2 +`</td>
+            <td>`+ lista.d12_3_2 +`</td>
+            <td>`+ lista.d12_4_2 +`</td>
+            <td>`+ lista.d12_5_2 +`</td>
+            <td>`+ lista.d12_6_2 +`</td>
+            <td>`+ lista.d12_7_2 +`</td>
+            <td>`+ lista.d12_8_2 +`</td>
+            <td>`+ lista.d12_9_2 +`</td>
+            <td>`+ lista.d12_10_2 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d12_1_3 +`</td>
+            <td>`+ lista.d12_2_3 +`</td>
+            <td>`+ lista.d12_3_3 +`</td>
+            <td>`+ lista.d12_4_3 +`</td>
+            <td>`+ lista.d12_5_3 +`</td>
+            <td>`+ lista.d12_6_3 +`</td>
+            <td>`+ lista.d12_7_3 +`</td>
+            <td>`+ lista.d12_8_3 +`</td>
+            <td>`+ lista.d12_9_3 +`</td>
+            <td>`+ lista.d12_10_3 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d12_1_4 +`</td>
+            <td>`+ lista.d12_2_4 +`</td>
+            <td>`+ lista.d12_3_4 +`</td>
+            <td>`+ lista.d12_4_4 +`</td>
+            <td>`+ lista.d12_5_4 +`</td>
+            <td>`+ lista.d12_6_4 +`</td>
+            <td>`+ lista.d12_7_4 +`</td>
+            <td>`+ lista.d12_8_4 +`</td>
+            <td>`+ lista.d12_9_4 +`</td>
+            <td>`+ lista.d12_10_4 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d12_1_5 +`</td>
+            <td>`+ lista.d12_2_5 +`</td>
+            <td>`+ lista.d12_3_5 +`</td>
+            <td>`+ lista.d12_4_5 +`</td>
+            <td>`+ lista.d12_5_5 +`</td>
+            <td>`+ lista.d12_6_5 +`</td>
+            <td>`+ lista.d12_7_5 +`</td>
+            <td>`+ lista.d12_8_5 +`</td>
+            <td>`+ lista.d12_9_5 +`</td>
+            <td>`+ lista.d12_10_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -848,15 +1004,59 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>Descripción </td>
-            <td>Unidad Medida </td>
-            <td>Costo unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento no monetario </td>
-            <td>Entidad Aportante</td>
+            <td>`+ lista.d13_1_1 +`</td>
+            <td>`+ lista.d13_2_1 +`</td>
+            <td>`+ lista.d13_3_1 +`</td>
+            <td>`+ lista.d13_4_1 +`</td>
+            <td>`+ lista.d13_5_1 +`</td>
+            <td>`+ lista.d13_6_1 +`</td>
+            <td>`+ lista.d13_7_1 +`</td>
+            <td>`+ lista.d13_8_1 +`</td>
+            <td>`+ lista.d13_9_1 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d13_1_2 +`</td>
+            <td>`+ lista.d13_2_2 +`</td>
+            <td>`+ lista.d13_3_2 +`</td>
+            <td>`+ lista.d13_4_2 +`</td>
+            <td>`+ lista.d13_5_2 +`</td>
+            <td>`+ lista.d13_6_2 +`</td>
+            <td>`+ lista.d13_7_2 +`</td>
+            <td>`+ lista.d13_8_2 +`</td>
+            <td>`+ lista.d13_9_2 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d13_1_3 +`</td>
+            <td>`+ lista.d13_2_3 +`</td>
+            <td>`+ lista.d13_3_3 +`</td>
+            <td>`+ lista.d13_4_3 +`</td>
+            <td>`+ lista.d13_5_3 +`</td>
+            <td>`+ lista.d13_6_3 +`</td>
+            <td>`+ lista.d13_7_3 +`</td>
+            <td>`+ lista.d13_8_3 +`</td>
+            <td>`+ lista.d13_9_3 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d13_1_4 +`</td>
+            <td>`+ lista.d13_2_4 +`</td>
+            <td>`+ lista.d13_3_4 +`</td>
+            <td>`+ lista.d13_4_4 +`</td>
+            <td>`+ lista.d13_5_4 +`</td>
+            <td>`+ lista.d13_6_4 +`</td>
+            <td>`+ lista.d13_7_4 +`</td>
+            <td>`+ lista.d13_8_4 +`</td>
+            <td>`+ lista.d13_9_4 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d13_1_5 +`</td>
+            <td>`+ lista.d13_2_5 +`</td>
+            <td>`+ lista.d13_3_5 +`</td>
+            <td>`+ lista.d13_4_5 +`</td>
+            <td>`+ lista.d13_5_5 +`</td>
+            <td>`+ lista.d13_6_5 +`</td>
+            <td>`+ lista.d13_7_5 +`</td>
+            <td>`+ lista.d13_8_5 +`</td>
+            <td>`+ lista.d13_9_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -878,15 +1078,59 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>Descripción </td>
-            <td>Unidad de medida </td>
-            <td>Costo Unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento NO monetario </td>
-            <td>Entidad Aportante</td>
+            <td>`+ lista.d14_1_1 +`</td>
+            <td>`+ lista.d14_2_1 +`</td>
+            <td>`+ lista.d14_3_1 +`</td>
+            <td>`+ lista.d14_4_1 +`</td>
+            <td>`+ lista.d14_5_1 +`</td>
+            <td>`+ lista.d14_6_1 +`</td>
+            <td>`+ lista.d14_7_1 +`</td>
+            <td>`+ lista.d14_8_1 +`</td>
+            <td>`+ lista.d14_9_1 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d14_1_2 +`</td>
+            <td>`+ lista.d14_2_2 +`</td>
+            <td>`+ lista.d14_3_2 +`</td>
+            <td>`+ lista.d14_4_2 +`</td>
+            <td>`+ lista.d14_5_2 +`</td>
+            <td>`+ lista.d14_6_2 +`</td>
+            <td>`+ lista.d14_7_2 +`</td>
+            <td>`+ lista.d14_8_2 +`</td>
+            <td>`+ lista.d14_9_2 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d14_1_3 +`</td>
+            <td>`+ lista.d14_2_3 +`</td>
+            <td>`+ lista.d14_3_3 +`</td>
+            <td>`+ lista.d14_4_3 +`</td>
+            <td>`+ lista.d14_5_3 +`</td>
+            <td>`+ lista.d14_6_3 +`</td>
+            <td>`+ lista.d14_7_3 +`</td>
+            <td>`+ lista.d14_8_3 +`</td>
+            <td>`+ lista.d14_9_3 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d14_1_4 +`</td>
+            <td>`+ lista.d14_2_4 +`</td>
+            <td>`+ lista.d14_3_4 +`</td>
+            <td>`+ lista.d14_4_4 +`</td>
+            <td>`+ lista.d14_5_4 +`</td>
+            <td>`+ lista.d14_6_4 +`</td>
+            <td>`+ lista.d14_7_4 +`</td>
+            <td>`+ lista.d14_8_4 +`</td>
+            <td>`+ lista.d14_9_4 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d14_1_5 +`</td>
+            <td>`+ lista.d14_2_5 +`</td>
+            <td>`+ lista.d14_3_5 +`</td>
+            <td>`+ lista.d14_4_5 +`</td>
+            <td>`+ lista.d14_5_5 +`</td>
+            <td>`+ lista.d14_6_5 +`</td>
+            <td>`+ lista.d14_7_5 +`</td>
+            <td>`+ lista.d14_8_5 +`</td>
+            <td>`+ lista.d14_9_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -912,19 +1156,79 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr> 
-            <td>Tipo </td>
-            <td>Tipo de viático </td>
-            <td>Tipo de Actividad </td>
-            <td>Destino </td>
-            <td>Descripción </td>
-            <td>Unidad de medida </td>
-            <td>Costo Unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento NO monetario </td>
-            <td>Entidad Aportante</td>
+            <td>`+ lista.d15_1_1 +`</td>
+            <td>`+ lista.d15_2_1 +`</td>
+            <td>`+ lista.d15_3_1 +`</td>
+            <td>`+ lista.d15_4_1 +`</td>
+            <td>`+ lista.d15_5_1 +`</td>
+            <td>`+ lista.d15_6_1 +`</td>
+            <td>`+ lista.d15_7_1 +`</td>
+            <td>`+ lista.d15_8_1 +`</td>
+            <td>`+ lista.d15_9_1 +`</td>
+            <td>`+ lista.d15_10_1 +`</td>
+            <td>`+ lista.d15_11_1 +`</td>
+            <td>`+ lista.d15_12_1 +`</td>
+            <td>`+ lista.d15_13_1 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d15_1_2 +`</td>
+            <td>`+ lista.d15_2_2 +`</td>
+            <td>`+ lista.d15_3_2 +`</td>
+            <td>`+ lista.d15_4_2 +`</td>
+            <td>`+ lista.d15_5_2 +`</td>
+            <td>`+ lista.d15_6_2 +`</td>
+            <td>`+ lista.d15_7_2 +`</td>
+            <td>`+ lista.d15_8_2 +`</td>
+            <td>`+ lista.d15_9_2 +`</td>
+            <td>`+ lista.d15_10_2 +`</td>
+            <td>`+ lista.d15_11_2 +`</td>
+            <td>`+ lista.d15_12_2 +`</td>
+            <td>`+ lista.d15_13_2 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d15_1_3 +`</td>
+            <td>`+ lista.d15_2_3 +`</td>
+            <td>`+ lista.d15_3_3 +`</td>
+            <td>`+ lista.d15_4_3 +`</td>
+            <td>`+ lista.d15_5_3 +`</td>
+            <td>`+ lista.d15_6_3 +`</td>
+            <td>`+ lista.d15_7_3 +`</td>
+            <td>`+ lista.d15_8_3 +`</td>
+            <td>`+ lista.d15_9_3 +`</td>
+            <td>`+ lista.d15_10_3 +`</td>
+            <td>`+ lista.d15_11_3 +`</td>
+            <td>`+ lista.d15_12_3 +`</td>
+            <td>`+ lista.d15_13_3 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d15_1_4 +`</td>
+            <td>`+ lista.d15_2_4 +`</td>
+            <td>`+ lista.d15_3_4 +`</td>
+            <td>`+ lista.d15_4_4 +`</td>
+            <td>`+ lista.d15_5_4 +`</td>
+            <td>`+ lista.d15_6_4 +`</td>
+            <td>`+ lista.d15_7_4 +`</td>
+            <td>`+ lista.d15_8_4 +`</td>
+            <td>`+ lista.d15_9_4 +`</td>
+            <td>`+ lista.d15_10_4 +`</td>
+            <td>`+ lista.d15_11_4 +`</td>
+            <td>`+ lista.d15_12_4 +`</td>
+            <td>`+ lista.d15_13_4 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d15_1_5 +`</td>
+            <td>`+ lista.d15_2_5 +`</td>
+            <td>`+ lista.d15_3_5 +`</td>
+            <td>`+ lista.d15_4_5 +`</td>
+            <td>`+ lista.d15_5_5 +`</td>
+            <td>`+ lista.d15_6_5 +`</td>
+            <td>`+ lista.d15_7_5 +`</td>
+            <td>`+ lista.d15_8_5 +`</td>
+            <td>`+ lista.d15_9_5 +`</td>
+            <td>`+ lista.d15_10_5 +`</td>
+            <td>`+ lista.d15_11_5 +`</td>
+            <td>`+ lista.d15_12_5 +`</td>
+            <td>`+ lista.d15_13_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -949,18 +1253,74 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr> 
-            <td>Valorizable </td>
-            <td>Descripción </td>
-            <td>Especificación técnica </td>
-            <td>Proforma </td>
-            <td>Unidad Medida </td>
-            <td>Costo unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento no monetario </td>
-            <td>Entidad Aportante</td>
+            <td>`+ lista.d16_1_1 +`</td>
+            <td>`+ lista.d16_2_1 +`</td>
+            <td>`+ lista.d16_3_1 +`</td>
+            <td>`+ lista.d16_4_1 +`</td>
+            <td>`+ lista.d16_5_1 +`</td>
+            <td>`+ lista.d16_6_1 +`</td>
+            <td>`+ lista.d16_7_1 +`</td>
+            <td>`+ lista.d16_8_1 +`</td>
+            <td>`+ lista.d16_9_1 +`</td>
+            <td>`+ lista.d16_10_1 +`</td>
+            <td>`+ lista.d16_11_1 +`</td>
+            <td>`+ lista.d16_12_1 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d16_1_2 +`</td>
+            <td>`+ lista.d16_2_2 +`</td>
+            <td>`+ lista.d16_3_2 +`</td>
+            <td>`+ lista.d16_4_2 +`</td>
+            <td>`+ lista.d16_5_2 +`</td>
+            <td>`+ lista.d16_6_2 +`</td>
+            <td>`+ lista.d16_7_2 +`</td>
+            <td>`+ lista.d16_8_2 +`</td>
+            <td>`+ lista.d16_9_2 +`</td>
+            <td>`+ lista.d16_10_2 +`</td>
+            <td>`+ lista.d16_11_2 +`</td>
+            <td>`+ lista.d16_12_2 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d16_1_3 +`</td>
+            <td>`+ lista.d16_2_3 +`</td>
+            <td>`+ lista.d16_3_3 +`</td>
+            <td>`+ lista.d16_4_3 +`</td>
+            <td>`+ lista.d16_5_3 +`</td>
+            <td>`+ lista.d16_6_3 +`</td>
+            <td>`+ lista.d16_7_3 +`</td>
+            <td>`+ lista.d16_8_3 +`</td>
+            <td>`+ lista.d16_9_3 +`</td>
+            <td>`+ lista.d16_10_3 +`</td>
+            <td>`+ lista.d16_11_3 +`</td>
+            <td>`+ lista.d16_12_3 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d16_1_4 +`</td>
+            <td>`+ lista.d16_2_4 +`</td>
+            <td>`+ lista.d16_3_4 +`</td>
+            <td>`+ lista.d16_4_4 +`</td>
+            <td>`+ lista.d16_5_4 +`</td>
+            <td>`+ lista.d16_6_4 +`</td>
+            <td>`+ lista.d16_7_4 +`</td>
+            <td>`+ lista.d16_8_4 +`</td>
+            <td>`+ lista.d16_9_4 +`</td>
+            <td>`+ lista.d16_10_4 +`</td>
+            <td>`+ lista.d16_11_4 +`</td>
+            <td>`+ lista.d16_12_4 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d16_1_5 +`</td>
+            <td>`+ lista.d16_2_5 +`</td>
+            <td>`+ lista.d16_3_5 +`</td>
+            <td>`+ lista.d16_4_5 +`</td>
+            <td>`+ lista.d16_5_5 +`</td>
+            <td>`+ lista.d16_6_5 +`</td>
+            <td>`+ lista.d16_7_5 +`</td>
+            <td>`+ lista.d16_8_5 +`</td>
+            <td>`+ lista.d16_9_5 +`</td>
+            <td>`+ lista.d16_10_5 +`</td>
+            <td>`+ lista.d16_11_5 +`</td>
+            <td>`+ lista.d16_12_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -983,16 +1343,64 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr> 
-            <td>Valorizable </td>
-            <td>Descripción </td>
-            <td>Unidad Medida </td>
-            <td>Costo unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento no monetario </td>
-            <td>Entidad Aportante</td>
+            <td>`+ lista.d17_1_1 +`</td>
+            <td>`+ lista.d17_2_1 +`</td>
+            <td>`+ lista.d17_3_1 +`</td>
+            <td>`+ lista.d17_4_1 +`</td>
+            <td>`+ lista.d17_5_1 +`</td>
+            <td>`+ lista.d17_6_1 +`</td>
+            <td>`+ lista.d17_7_1 +`</td>
+            <td>`+ lista.d17_8_1 +`</td>
+            <td>`+ lista.d17_9_1 +`</td>
+            <td>`+ lista.d17_10_1 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d17_1_2 +`</td>
+            <td>`+ lista.d17_2_2 +`</td>
+            <td>`+ lista.d17_3_2 +`</td>
+            <td>`+ lista.d17_4_2 +`</td>
+            <td>`+ lista.d17_5_2 +`</td>
+            <td>`+ lista.d17_6_2 +`</td>
+            <td>`+ lista.d17_7_2 +`</td>
+            <td>`+ lista.d17_8_2 +`</td>
+            <td>`+ lista.d17_9_2 +`</td>
+            <td>`+ lista.d17_10_2 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d17_1_3 +`</td>
+            <td>`+ lista.d17_2_3 +`</td>
+            <td>`+ lista.d17_3_3 +`</td>
+            <td>`+ lista.d17_4_3 +`</td>
+            <td>`+ lista.d17_5_3 +`</td>
+            <td>`+ lista.d17_6_3 +`</td>
+            <td>`+ lista.d17_7_3 +`</td>
+            <td>`+ lista.d17_8_3 +`</td>
+            <td>`+ lista.d17_9_3 +`</td>
+            <td>`+ lista.d17_10_3 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d17_1_4 +`</td>
+            <td>`+ lista.d17_2_4 +`</td>
+            <td>`+ lista.d17_3_4 +`</td>
+            <td>`+ lista.d17_4_4 +`</td>
+            <td>`+ lista.d17_5_4 +`</td>
+            <td>`+ lista.d17_6_4 +`</td>
+            <td>`+ lista.d17_7_4 +`</td>
+            <td>`+ lista.d17_8_4 +`</td>
+            <td>`+ lista.d17_9_4 +`</td>
+            <td>`+ lista.d17_10_4 +`</td>
+        </tr>
+        <tr> 
+            <td>`+ lista.d17_1_5 +`</td>
+            <td>`+ lista.d17_2_5 +`</td>
+            <td>`+ lista.d17_3_5 +`</td>
+            <td>`+ lista.d17_4_5 +`</td>
+            <td>`+ lista.d17_5_5 +`</td>
+            <td>`+ lista.d17_6_5 +`</td>
+            <td>`+ lista.d17_7_5 +`</td>
+            <td>`+ lista.d17_8_5 +`</td>
+            <td>`+ lista.d17_9_5 +`</td>
+            <td>`+ lista.d17_10_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -1014,15 +1422,59 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>      
-            <td>Descripción </td>
-            <td>Unidad Medida </td>
-            <td>Costo unitario </td>
-            <td>Cantidad </td>
-            <td>Costo Total </td>
-            <td>RNR </td>
-            <td>Cofinanciamiento monetario </td>
-            <td>Cofinanciamiento no monetario </td>
-            <td>Entidad Aportante </td>
+            <td>`+ lista.d18_1_1 +`</td>
+            <td>`+ lista.d18_2_1 +`</td>
+            <td>`+ lista.d18_3_1 +`</td>
+            <td>`+ lista.d18_4_1 +`</td>
+            <td>`+ lista.d18_5_1 +`</td>
+            <td>`+ lista.d18_6_1 +`</td>
+            <td>`+ lista.d18_7_1 +`</td>
+            <td>`+ lista.d18_8_1 +`</td>
+            <td>`+ lista.d18_9_1 +`</td>
+        </tr>
+        <tr>      
+            <td>`+ lista.d18_1_2 +`</td>
+            <td>`+ lista.d18_2_2 +`</td>
+            <td>`+ lista.d18_3_2 +`</td>
+            <td>`+ lista.d18_4_2 +`</td>
+            <td>`+ lista.d18_5_2 +`</td>
+            <td>`+ lista.d18_6_2 +`</td>
+            <td>`+ lista.d18_7_2 +`</td>
+            <td>`+ lista.d18_8_2 +`</td>
+            <td>`+ lista.d18_9_2 +`</td>
+        </tr>
+        <tr>      
+            <td>`+ lista.d18_1_3 +`</td>
+            <td>`+ lista.d18_2_3 +`</td>
+            <td>`+ lista.d18_3_3 +`</td>
+            <td>`+ lista.d18_4_3 +`</td>
+            <td>`+ lista.d18_5_3 +`</td>
+            <td>`+ lista.d18_6_3 +`</td>
+            <td>`+ lista.d18_7_3 +`</td>
+            <td>`+ lista.d18_8_3 +`</td>
+            <td>`+ lista.d18_9_3 +`</td>
+        </tr>
+        <tr>      
+            <td>`+ lista.d18_1_4 +`</td>
+            <td>`+ lista.d18_2_4 +`</td>
+            <td>`+ lista.d18_3_4 +`</td>
+            <td>`+ lista.d18_4_4 +`</td>
+            <td>`+ lista.d18_5_4 +`</td>
+            <td>`+ lista.d18_6_4 +`</td>
+            <td>`+ lista.d18_7_4 +`</td>
+            <td>`+ lista.d18_8_4 +`</td>
+            <td>`+ lista.d18_9_4 +`</td>
+        </tr>
+        <tr>      
+            <td>`+ lista.d18_1_5 +`</td>
+            <td>`+ lista.d18_2_5 +`</td>
+            <td>`+ lista.d18_3_5 +`</td>
+            <td>`+ lista.d18_4_5 +`</td>
+            <td>`+ lista.d18_5_5 +`</td>
+            <td>`+ lista.d18_6_5 +`</td>
+            <td>`+ lista.d18_7_5 +`</td>
+            <td>`+ lista.d18_8_5 +`</td>
+            <td>`+ lista.d18_9_5 +`</td>
         </tr>
     </tbody>
 </table>
@@ -1042,13 +1494,49 @@ C.4 Objetivos
     </thead>
     <tbody>
         <tr>
-            <td>Tipo de Documento </td>
-            <td>Número de Documento </td>
-            <td>Nombres </td>
-            <td>Apellidos </td>
-            <td>Correo </td>
-            <td>Teléfono </td>
-            <td>Celular </td>
+            <td>`+ lista.d19_1_1 +`</td>
+            <td>`+ lista.d19_2_1 +`</td>
+            <td>`+ lista.d19_3_1 +`</td>
+            <td>`+ lista.d19_4_1 +`</td>
+            <td>`+ lista.d19_5_1 +`</td>
+            <td>`+ lista.d19_6_1 +`</td>
+            <td>`+ lista.d19_7_1 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d19_1_2 +`</td>
+            <td>`+ lista.d19_2_2 +`</td>
+            <td>`+ lista.d19_3_2 +`</td>
+            <td>`+ lista.d19_4_2 +`</td>
+            <td>`+ lista.d19_5_2 +`</td>
+            <td>`+ lista.d19_6_2 +`</td>
+            <td>`+ lista.d19_7_2 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d19_1_3 +`</td>
+            <td>`+ lista.d19_2_3 +`</td>
+            <td>`+ lista.d19_3_3 +`</td>
+            <td>`+ lista.d19_4_3 +`</td>
+            <td>`+ lista.d19_5_3 +`</td>
+            <td>`+ lista.d19_6_3 +`</td>
+            <td>`+ lista.d19_7_3 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d19_1_4 +`</td>
+            <td>`+ lista.d19_2_4 +`</td>
+            <td>`+ lista.d19_3_4 +`</td>
+            <td>`+ lista.d19_4_4 +`</td>
+            <td>`+ lista.d19_5_4 +`</td>
+            <td>`+ lista.d19_6_4 +`</td>
+            <td>`+ lista.d19_7_4 +`</td>
+        </tr>
+        <tr>
+            <td>`+ lista.d19_1_5 +`</td>
+            <td>`+ lista.d19_2_5 +`</td>
+            <td>`+ lista.d19_3_5 +`</td>
+            <td>`+ lista.d19_4_5 +`</td>
+            <td>`+ lista.d19_5_5 +`</td>
+            <td>`+ lista.d19_6_5 +`</td>
+            <td>`+ lista.d19_7_5 +`</td>
         </tr>
     </tbody>
 </table>
